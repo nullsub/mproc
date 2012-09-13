@@ -1,6 +1,6 @@
 /*TODO:
-  * use malloc instead of static WORD_LENGTH defines
-  */
+ * use malloc instead of static WORD_LENGTH defines
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -121,11 +121,11 @@ struct label_table {
 }; 
 
 struct define {
-	char str[WORD_LENGTH];
-	char name[WORD_LENGTH];
+	char *str;
+	char *name;
 	struct define *next;
 }; 
-struct define defines;
+struct define *defines;
 
 struct label_table provide_label;// provides the actual numbers.
 struct label_table need_label; //labels which need to be exchanged by the numbers
@@ -146,8 +146,7 @@ int get_number_8(char *str,  uint8_t *c);
 void print_table();
 void add_label(char * label_name, unsigned int target_offset, enum label_type type, struct label_table *target);
 void add_define_list(char *name, char *list);
-void free_label(struct label_entry *label);
-
+void free_lists();
 
 void assemble(FILE * file, char * output_file_name)
 {	
@@ -155,7 +154,7 @@ void assemble(FILE * file, char * output_file_name)
 	provide_label.nr = 0;
 	need_label.nr = 0;
 	src_file = file;
-	defines.next = NULL;	
+	defines = NULL;
 
 	//now translate
 	curr_statement = NULL;
@@ -170,6 +169,7 @@ void assemble(FILE * file, char * output_file_name)
 	free(curr_statement);
 
 	fix_labels();
+	free_lists();
 
 	FILE *output_file = fopen(output_file_name, "w");
 	if (output_file == NULL) {
@@ -201,22 +201,26 @@ int get_statement(char **str) //returns line number. If end of file, it returns 
 
 void add_define_list(char *name, char *str)
 {
-	struct define *define_list_curr = &defines;
-	struct define *prev = &defines;
-	while(define_list_curr) {
-		prev = define_list_curr;
-		define_list_curr = define_list_curr->next;
-	}
-	if(prev == &defines) {
-		defines.next = NULL;
-		strcpy(defines.str, str);
-		strcpy(defines.name, name);
+	if(defines == NULL) {
+		defines = (struct define *) malloc(sizeof(struct define));
+		defines->next = NULL;
+		defines->str = (char *) malloc(strlen(str) + 1);
+		defines->name = (char *) malloc(strlen(name) + 1);
+		strcpy(defines->str, str);
+		strcpy(defines->name, name);
 		return;
 	}
-	prev->next = (struct define *) malloc(sizeof(struct define));
-	prev->next->next = NULL;
-	strcpy(prev->next->str, str);
-	strcpy(prev->next->name, name);
+
+	struct define * define_list_curr = defines;
+	while(define_list_curr->next) {
+		define_list_curr = define_list_curr->next;
+	}
+	define_list_curr->next = (struct define *) malloc(sizeof(struct define));
+	define_list_curr->next->next = NULL;
+	define_list_curr->next->str = (char *) malloc(strlen(str) + 1);
+	define_list_curr->next->name = (char *) malloc(strlen(name) + 1);
+	strcpy(define_list_curr->next->str, str);
+	strcpy(define_list_curr->next->name, name);
 	return;
 }
 
@@ -253,7 +257,7 @@ void exchange_str(char **str1, char * str2, char * str3) //exchange every str2 i
 
 void apply_defines(char **str)
 {
-	struct define *define_list_curr = &defines;
+	struct define *define_list_curr = defines;
 
 	while(define_list_curr) {
 		exchange_str(str, define_list_curr->name, define_list_curr->str);
@@ -349,7 +353,7 @@ int get_line(char **str)
 	for(int i = 1;; i++) {
 		c = fgetc (src_file);	
 		*str = realloc(*str, i + 1);
-		*((*str)+i) = c;	
+		*((*str) + i) = c;	
 		if(c == EOF) {	
 			*(*str+i) = 0x00;
 			return curr_line;
@@ -530,20 +534,15 @@ struct instruction * decode_instruction(char * statement)
 	if(cmd->arg1[strlen(cmd->arg1)-1] == ',')
 		cmd->arg1[strlen(cmd->arg1)-1] = 0x00; //get rid of the ','
 	get_word(statement, cmd->arg2, 2 + word_offset);
-		
-	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg4", cmd->arg1) && strlen(cmd->arg2) != 0) {	
-		failure_exit("JMP cannot be used with reg4 and a number!");
+
+	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg1", cmd->arg1) && strlen(cmd->arg2) != 0) {	
+		failure_exit("JMP cannot be used with reg1 and a number!");
 	}
 
 	if(strlen(cmd->arg2) == 0) { // only instruction with on argument. add one... it should not matter... FIXME
 
 		strcpy(cmd->arg2, cmd->arg1);
-		if(!strcmp("JMP", cmd->cmd_name)) {
-			strcpy(cmd->arg1, "reg4");
-		}
-		else {	
-			strcpy(cmd->arg1, "reg1");
-		}
+		strcpy(cmd->arg1, "reg1");
 	}
 
 	if(!strcmp("PUSH_RET", cmd->cmd_name)) {
@@ -603,7 +602,7 @@ int translate(char *line) //translates one stament to the opcode
 			type = HIGH_ADDRESS;
 		}	
 
-		if(!strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg4", cmd->arg1) && !strcmp("number", cmd->arg2))) { //not nice.. FIXME
+		if(!strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg1", cmd->arg1) && !strcmp("number", cmd->arg2))) { //not nice.. FIXME
 			type = OFFSET; // this JMP instrcutions needs its operand as an offset.
 		}
 
@@ -644,7 +643,7 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	if(target->nr == 0) {
 		target->first = (struct label_entry *) malloc(sizeof(struct label_entry));
 		target->first->next = NULL;
-		target->first->name = (char *)malloc(strlen(label_name)+1);
+		target->first->name = (char *)malloc(strlen(label_name) + 1);
 		strcpy(target->first->name, label_name);
 		target->first->target_offset = target_offset;
 		target->first->type = type;
@@ -661,7 +660,7 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	target->nr ++;
 	prev->next = (struct label_entry*) malloc(sizeof(struct label_entry));
 	prev->next->next = NULL;
-	prev->next->name = (char *)malloc(strlen(label_name)+1);
+	prev->next->name = (char *)malloc(strlen(label_name) + 1);
 	strcpy(prev->next->name, label_name);
 	prev->next->target_offset = target_offset;
 	prev->next->type = type;
@@ -675,6 +674,25 @@ void free_label(struct label_entry *label)
 	free(label->name);
 	free(label);
 }
+
+void free_define(struct define *def)
+{
+	if(def == NULL)
+		return;
+	free_define(def->next);
+	free(def->name);
+	free(def->str);
+	free(def);
+}
+
+void free_lists()
+{
+	free_label(need_label.first);
+	free_label(provide_label.first);
+	
+	free_define(defines);
+}
+
 void fix_labels()
 {
 	struct label_entry *need = need_label.first;
@@ -697,18 +715,18 @@ void fix_labels()
 						byte = ((prov->target_offset + offset_bin) >> 8);
 						break;
 					case OFFSET:{	
-						int diff = prov->target_offset - need->target_offset;
-						diff -= 1; // its a two byte instruction. thus, the PC advances by one on its own
-						if(diff >= 128 || diff <= -128) {	
-							printf("JMP jumps too far..\n");
-							exit(-1);
-						}
-						byte = (int8_t)diff;
-						}
-						break;
+							    int diff = prov->target_offset - need->target_offset;
+							    diff -= 1; // its a two byte instruction. thus, the PC advances by one on its own
+							    if(diff >= 128 || diff <= -128) {	
+								    printf("JMP jumps too far..\n");
+								    exit(-1);
+							    }
+							    byte = (int8_t)diff;
+						    }
+						    break;
 					default:
-						printf("unknown label type!\n");
-						exit(-1);
+						    printf("unknown label type!\n");
+						    exit(-1);
 				}
 				target_bin[need->target_offset] = byte;				
 				break;
@@ -721,8 +739,6 @@ void fix_labels()
 		}
 		need = need->next;
 	}
-	free_label(need_label.first);
-	free_label(provide_label.first);
 }
 
 void failure_exit(char * cause)
