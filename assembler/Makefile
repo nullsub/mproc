@@ -66,7 +66,6 @@ clean:
 test:	all
 	@echo "testing assembler"
 	build/asm.elf test.asm
-	@echo "bin at output_file.bin"
 	hexdump -C output_file.bin 
 # Create output files directory
 $(shell mkdir -p $(OUTDIR))

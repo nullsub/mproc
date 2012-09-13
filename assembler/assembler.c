@@ -1,7 +1,5 @@
 /*TODO:
-  replace get_word with strtok
-  add some memory management and do not forget to free it!
-  get rid of those disgusting WORD_LENGTH defines which are just ridiculous and restricting
+  * use malloc instead of static WORD_LENGTH defines
   */
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,19 +18,7 @@ const uint16_t offset_bin = 0x7FFF;
 
 uint8_t *target_bin; 
 unsigned int target_length = 0; // length of the target_bin array
-int translate(char *); //translates one stament to the opcode and
-int get_statement(char **); //returns line number. If end of file, it returns 0
-int get_line(char **str); //return line number ...
-void add_byte(uint8_t c); 
-void fix_labels(); // NULL on success, ptr to wrong label on failure
-void failure_exit(char * cause);
-int preprocess(char **str);//preprocess one line
-int get_word(const char * str, char * target, int word_nr);
 
-int get_number_16(char *str, uint16_t *c);
-int get_number_8(char *str,  uint8_t *c);
-
-void print_table();
 char *curr_statement;
 
 int push_ret = 0;
@@ -124,7 +110,7 @@ enum label_type {HIGH_ADDRESS, LOW_ADDRESS, OFFSET};
 
 struct label_entry {
 	uint16_t target_offset;
-	char name[WORD_LENGTH];
+	char *name;
 	enum label_type type; //JMP needs an offset, not a direct address
 	struct label_entry * next;
 };
@@ -144,8 +130,24 @@ struct define defines;
 struct label_table provide_label;// provides the actual numbers.
 struct label_table need_label; //labels which need to be exchanged by the numbers
 
+
+int translate(char *); //translates one stament to the opcode
+int get_statement(char **); //returns line number. If end of file, it returns 0
+int get_line(char **str); //return line number
+void add_byte(uint8_t c); 
+void fix_labels();
+void failure_exit(char * cause);
+int preprocess(char **str);//preprocess one line
+void get_word(char * str, char * target, int word_nr);
+
+int get_number_16(char *str, uint16_t *c);
+int get_number_8(char *str,  uint8_t *c);
+
+void print_table();
 void add_label(char * label_name, unsigned int target_offset, enum label_type type, struct label_table *target);
 void add_define_list(char *name, char *list);
+void free_label(struct label_entry *label);
+
 
 void assemble(FILE * file, char * output_file_name)
 {	
@@ -168,7 +170,6 @@ void assemble(FILE * file, char * output_file_name)
 	free(curr_statement);
 
 	fix_labels();
-	print_table();
 
 	FILE *output_file = fopen(output_file_name, "w");
 	if (output_file == NULL) {
@@ -309,10 +310,10 @@ int preprocess(char **str) //resolve macros and define before a statement is int
 	char name[WORD_LENGTH];
 	char val[WORD_LENGTH];
 
-	get_word(*str, name, 0);
-
 	apply_defines(str);
 	apply_macros(str);	
+
+	get_word(*str, name, 0);
 
 	if(!strcmp(".define",name)) { // whether there are new defines
 		get_word(*str, name, 1);
@@ -360,11 +361,8 @@ int get_line(char **str)
 	}	
 } 
 
-int get_word(const char * str, char * target, int word_nr)
+void get_word(char * str, char * target, int word_nr)
 {
-	//FIXME:use strtok instead!
-
-	const char *start = str;
 	while(*str == ' '|| *str == '\t')
 		str++; // skip leading space
 	for(int i = 0; i < word_nr; i++) {	//skip words
@@ -378,7 +376,6 @@ int get_word(const char * str, char * target, int word_nr)
 		target ++;
 	}
 	*target = 0x00;
-	return (int)(str-start);
 }
 
 void lookup_opcode(struct instruction * cmd)
@@ -426,7 +423,7 @@ error:
 
 int get_number_8(char *str, uint8_t *c)
 {
-	int ret = get_number_16(str, c);
+	int ret = get_number_16(str, (uint16_t*)c);
 	if(*c > 255 && ret) {
 		failure_exit("number too large");
 	}
@@ -647,6 +644,7 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	if(target->nr == 0) {
 		target->first = (struct label_entry *) malloc(sizeof(struct label_entry));
 		target->first->next = NULL;
+		target->first->name = (char *)malloc(strlen(label_name)+1);
 		strcpy(target->first->name, label_name);
 		target->first->target_offset = target_offset;
 		target->first->type = type;
@@ -663,11 +661,20 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	target->nr ++;
 	prev->next = (struct label_entry*) malloc(sizeof(struct label_entry));
 	prev->next->next = NULL;
+	prev->next->name = (char *)malloc(strlen(label_name)+1);
 	strcpy(prev->next->name, label_name);
 	prev->next->target_offset = target_offset;
 	prev->next->type = type;
 }
 
+void free_label(struct label_entry *label)
+{
+	if(label == NULL)
+		return;
+	free_label(label->next);
+	free(label->name);
+	free(label);
+}
 void fix_labels()
 {
 	struct label_entry *need = need_label.first;
@@ -696,7 +703,6 @@ void fix_labels()
 							printf("JMP jumps too far..\n");
 							exit(-1);
 						}
-						printf("diff is %i\n", diff);
 						byte = (int8_t)diff;
 						}
 						break;
@@ -715,22 +721,8 @@ void fix_labels()
 		}
 		need = need->next;
 	}
-}
-
-void print_table()
-{
-	struct label_entry *need = need_label.first;
-	struct label_entry *prov = provide_label.first;
-	printf("need_table:\n");
-	for(int i = 0; i < need_label.nr; i++) {
-		printf("nr %i:\t%s\n", i, need->name);
-		need = need->next;
-	}
-	printf("prov_table:\n");
-	for(int i = 0; i < provide_label.nr; i++) {
-		printf("nr %i:\t%s\n", i, prov->name);
-		prov = prov->next;
-	}
+	free_label(need_label.first);
+	free_label(provide_label.first);
 }
 
 void failure_exit(char * cause)
