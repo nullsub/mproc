@@ -1,8 +1,8 @@
 /*TODO:
-	replace get_word with strtok
-	add some memory management and do not forget to free it!
-	get rid of those disgusting WORD_LENGTH defines which are just ridiculous and restricting
-*/
+  replace get_word with strtok
+  add some memory management and do not forget to free it!
+  get rid of those disgusting WORD_LENGTH defines which are just ridiculous and restricting
+  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -63,15 +63,15 @@ const struct opcode opcodes[] = {
 	{"NOR",0,0x02},
 	{"AND",0,0x03},
 	{"MOV",0,0x04},
-	{"DR",1,0x05}, //DR needs special care!
-	{"STR",0,0x06},
-	{"MOVZ",0,0x07},
-	{"MOVC",0,0x08},
-	{"LDA",0,0x09},
-	{"OUT",0,0x0A},
-	{"IN",0,0x0B},
-	{"SREG",0,0x0C},
-	{"FAR_JMP",0,0x0D},
+	{"MOVZ",0,0x05},
+	{"JMP",0,0x06},
+	{"JMPZ",1,0x07},
+	{"JMPC",1,0x08},
+	{"STR",0,0x09},
+	{"LDA",0,0x0A},
+	{"SET_DR",1,0x0B},
+	{"IO",0,0x0C},
+	{"INC_PTR",0,0x0D},
 	{"PUSH",1,0x0E},
 	{"POP",1,0x0F},
 };
@@ -82,7 +82,8 @@ struct arg_entry {
 	uint8_t opcode;
 };
 
-const struct arg_entry arg_table[2][16] = { {
+const struct arg_entry arg_table[2][16] = { 
+	{
 		{"reg1","number",0x00},
 		{"reg2","number",0x10},
 		{"reg3","number",0x20},
@@ -95,18 +96,18 @@ const struct arg_entry arg_table[2][16] = { {
 		{"reg2","reg4",0x90},
 		{"reg3","reg1",0xA0},
 		{"reg3","reg2",0xB0},
-		{"reg4","reg1",0xC0},
-		{"reg4","reg2",0xD0},
-		{"reg4","reg3",0xE0},
-		{"pc","number",0xF0},
-},{
+		{"reg3","reg4",0xC0},
+		{"reg4","reg1",0xD0},
+		{"reg4","reg2",0xE0},
+		{"reg4","reg3",0xF0},
+	},{
 		{"reg1","number",0x00},
 		{"reg1","reg1",0x10},
 		{"reg1","reg2",0x20},
 		{"reg1","reg3",0x30},
 		{"reg1","reg4",0x40},
 		{"reg1","pc",0x50},
-		{"reg1","reg1",0x60}, //Unused
+		{"reg1","dr",0x60},
 		{"reg1","reg1",0x70}, //Unused
 		{"reg1","reg1",0x80}, //Unused
 		{"reg1","reg1",0x90}, //Unused
@@ -116,13 +117,15 @@ const struct arg_entry arg_table[2][16] = { {
 		{"reg1","reg1",0xD0}, //Unused
 		{"reg1","reg1",0xE0}, //Unused
 		{"reg1","reg1",0xF0}, //Unused
-}
+	}
 };
+
+enum label_type {HIGH_ADDRESS, LOW_ADDRESS, OFFSET};
 
 struct label_entry {
 	uint16_t target_offset;
-	int high; //whether high or low byte is used
 	char name[WORD_LENGTH];
+	enum label_type type; //JMP needs an offset, not a direct address
 	struct label_entry * next;
 };
 
@@ -141,7 +144,7 @@ struct define defines;
 struct label_table provide_label;// provides the actual numbers.
 struct label_table need_label; //labels which need to be exchanged by the numbers
 
-void add_label(char * label_name, unsigned int target_offset, int high, struct label_table *target);
+void add_label(char * label_name, unsigned int target_offset, enum label_type type, struct label_table *target);
 void add_define_list(char *name, char *list);
 
 void assemble(FILE * file, char * output_file_name)
@@ -397,7 +400,7 @@ void lookup_opcode(struct instruction * cmd)
 	int number_present = get_number_8(cmd->arg2, &cmd->second_byte);
 	if(!number_present) {
 		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')){
-			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4"))) { //FIXME
+			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "dr") || !strcmp(cmd->arg2, "pc"))) { //FIXME!!!
 				label_present = 1;
 				strcpy(cmd->need_label,cmd->arg2);
 			}
@@ -423,10 +426,8 @@ error:
 
 int get_number_8(char *str, uint8_t *c)
 {
-	uint16_t tmp = 0;
-	int ret = get_number_16(str, &tmp);
-	*c = tmp;
-	if(tmp > 255 && ret) {
+	int ret = get_number_16(str, c);
+	if(*c > 255 && ret) {
 		failure_exit("number too large");
 	}
 	return ret;
@@ -510,7 +511,7 @@ struct instruction * decode_instruction(char * statement)
 		strcpy(tmp, cmd->cmd_name);
 		tmp[strlen(tmp)-1] = 0x00;
 		add_label(tmp, target_length, 0, &provide_label);	
-		
+
 		free(tmp);
 
 		get_word(statement, cmd->cmd_name, 1);
@@ -532,16 +533,24 @@ struct instruction * decode_instruction(char * statement)
 	if(cmd->arg1[strlen(cmd->arg1)-1] == ',')
 		cmd->arg1[strlen(cmd->arg1)-1] = 0x00; //get rid of the ','
 	get_word(statement, cmd->arg2, 2 + word_offset);
+		
+	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg4", cmd->arg1) && strlen(cmd->arg2) != 0) {	
+		failure_exit("JMP cannot be used with reg4 and a number!");
+	}
 
+	if(strlen(cmd->arg2) == 0) { // only instruction with on argument. add one... it should not matter... FIXME
 
-	if(!strcmp("DR", cmd->cmd_name) || !strcmp("PUSH", cmd->cmd_name) || !strcmp("POP", cmd->cmd_name)) { // only instruction with on argument. add one... it should not matter... FIXME
 		strcpy(cmd->arg2, cmd->arg1);
-		strcpy(cmd->arg1, "reg1");
+		if(!strcmp("JMP", cmd->cmd_name)) {
+			strcpy(cmd->arg1, "reg4");
+		}
+		else {	
+			strcpy(cmd->arg1, "reg1");
+		}
 	}
 
 	if(!strcmp("PUSH_RET", cmd->cmd_name)) {
-	
-		if(push_ret)//I ALMOST HAVE to puke
+		if(push_ret)//FIXME
 			failure_exit("PUSH_RET without call");
 		push_ret = 1;
 		char tmp[WORD_LENGTH];
@@ -579,13 +588,14 @@ int translate(char *line) //translates one stament to the opcode
 			return -1;
 	}	
 	if(*cmd->need_label) {
-		int high = 0; // by default take low byte...
+		enum label_type type = LOW_ADDRESS; // by default take low byte...
 		char *loc = strstr(cmd->need_label, "LOW(");
 		if(loc) {
 			int i;
 			for(i = strlen("LOW("); loc[i] && loc[i] != ')'; i++)
 				cmd->need_label[i-strlen("LOW(")] = loc[i];	
 			cmd->need_label[i-strlen("LOW(")] = 0x00;
+			type = LOW_ADDRESS;
 		}
 		loc = strstr(cmd->need_label, "HIGH(");
 		if(loc) {
@@ -593,11 +603,16 @@ int translate(char *line) //translates one stament to the opcode
 			for(i = strlen("HIGH("); loc[i] && loc[i] != ')'; i++)
 				cmd->need_label[i-strlen("HIGH(")] = loc[i];	
 			cmd->need_label[i-strlen("HIGH(")] = 0x00;
-			high = 1;
+			type = HIGH_ADDRESS;
+		}	
+
+		if(!strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg4", cmd->arg1) && !strcmp("number", cmd->arg2))) { //not nice.. FIXME
+			type = OFFSET; // this JMP instrcutions needs its operand as an offset.
 		}
-		add_label(cmd->need_label, target_length-1, high, &need_label);	
+
+		add_label(cmd->need_label, target_length-1, type, &need_label);	
 	}
-	if(!strcmp("FAR_JMP", cmd->cmd_name) && push_ret) {
+	if(!strcmp("JMP", cmd->cmd_name) && push_ret) {
 		char tmp[WORD_LENGTH];
 		sprintf(tmp, "__ret_label_nr_%i_", push_ret_nr);
 		add_label(tmp, target_length, 0, &provide_label);	
@@ -614,7 +629,7 @@ void add_byte(uint8_t c) // returns offset at which the byte was added
 	target_bin[target_length++] = c;
 }
 
-void add_label(char * label_name, unsigned int offset, int high, struct label_table *target) 
+void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_table *target) 
 {
 	if(target == &provide_label) {
 		struct label_entry *test = provide_label.first;
@@ -634,7 +649,7 @@ void add_label(char * label_name, unsigned int offset, int high, struct label_ta
 		target->first->next = NULL;
 		strcpy(target->first->name, label_name);
 		target->first->target_offset = target_offset;
-		target->first->high = high;
+		target->first->type = type;
 		target->nr ++;
 		return;
 	}
@@ -650,7 +665,7 @@ void add_label(char * label_name, unsigned int offset, int high, struct label_ta
 	prev->next->next = NULL;
 	strcpy(prev->next->name, label_name);
 	prev->next->target_offset = target_offset;
-	prev->next->high = high;
+	prev->next->type = type;
 }
 
 void fix_labels()
@@ -664,12 +679,32 @@ void fix_labels()
 		for(int j = 0; j < provide_label.nr; j++) { 	
 			if(!strcmp(need->name, prov->name)) {
 				found = 1;
-				uint8_t byte = ((prov->target_offset + offset_bin) & 0x00FF);
-				if(need->high) { //default is low byte!
-					byte = ((prov->target_offset + offset_bin) >> 8);
-				}
 				//printf("label %s with address 0x%.4x, byte is %hi, high is %i\n", need->name, prov->target_offset + offset_bin, byte, need->high);
-				target_bin[need->target_offset] = byte;
+				int8_t byte;
+
+				switch(need->type){
+					case LOW_ADDRESS:
+						byte = ((prov->target_offset + offset_bin) & 0x00FF);
+						break;
+					case HIGH_ADDRESS:
+						byte = ((prov->target_offset + offset_bin) >> 8);
+						break;
+					case OFFSET:{	
+						int diff = prov->target_offset - need->target_offset;
+						diff -= 1; // its a two byte instruction. thus, the PC advances by one on its own
+						if(diff >= 128 || diff <= -128) {	
+							printf("JMP jumps too far..\n");
+							exit(-1);
+						}
+						printf("diff is %i\n", diff);
+						byte = (int8_t)diff;
+						}
+						break;
+					default:
+						printf("unknown label type!\n");
+						exit(-1);
+				}
+				target_bin[need->target_offset] = byte;				
 				break;
 			}
 			prov = prov->next;

@@ -13,7 +13,6 @@ int main ( int argc, char *argv[] ) {
 		return -1;
 	} 
 	emu(file,"output_file.bin");
-	printf("done\n");
 	fclose(file);
 	return 0;
 }

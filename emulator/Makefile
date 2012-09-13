@@ -15,7 +15,7 @@ INCDIRS  += $(DEVICE_DIR)
 
 CFLAGS += $(patsubst %,-I%,$(INCDIRS)) -I.
 CFLAGS += -std=gnu99
-CFLAGS += -Wall -Wextra
+CFLAGS += -Wall -Wextra -g
 
 LDFLAGS += 
 
