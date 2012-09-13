@@ -55,7 +55,7 @@ const struct opcode opcodes[] = {
 	{"JMPC",1,0x08},
 	{"STR",0,0x09},
 	{"LDA",0,0x0A},
-	{"SET_DR",1,0x0B},
+	{"SET_BR",1,0x0B},
 	{"IO",0,0x0C},
 	{"INC_PTR",0,0x0D},
 	{"PUSH",1,0x0E},
@@ -92,9 +92,9 @@ const struct arg_entry arg_table[2][16] = {
 		{"reg1","reg2",0x20},
 		{"reg1","reg3",0x30},
 		{"reg1","reg4",0x40},
-		{"reg1","pc",0x50},
-		{"reg1","dr",0x60},
-		{"reg1","reg1",0x70}, //Unused
+		{"reg1","pc_low",0x50},
+		{"reg1","pc_high",0x60},
+		{"reg1","br",0x70},
 		{"reg1","reg1",0x80}, //Unused
 		{"reg1","reg1",0x90}, //Unused
 		{"reg1","reg1",0xA0}, //Unused
@@ -397,7 +397,7 @@ void lookup_opcode(struct instruction * cmd)
 	int number_present = get_number_8(cmd->arg2, &cmd->second_byte);
 	if(!number_present) {
 		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')){
-			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "dr") || !strcmp(cmd->arg2, "pc"))) { //FIXME!!!
+			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "br") || !strcmp(cmd->arg2, "pc"))) { //FIXME!!!
 				label_present = 1;
 				strcpy(cmd->need_label,cmd->arg2);
 			}

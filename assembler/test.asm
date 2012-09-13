@@ -56,14 +56,14 @@ end_fibonacci:
 ;reg1 = HIGH(String)
 ;ARG2 = LOW(String)
 uart_print: 
-	SET_DR	reg1
+	SET_BR	reg1
 uart_print_loop:
 	LDA	reg1, reg2
 	JMPZ	uart_print_end
-	PUSH	dr
-	SET_DR	HIGH(UART)
+	PUSH	br
+	SET_BR	HIGH(UART)
 	STR	reg1, LOW(UART)
-	POP	dr
+	POP	br
 	INC_PTR reg2, 1
 	JMP	uart_print_loop
 uart_print_end:
@@ -76,7 +76,7 @@ uart_print_end:
 ;returns STRING ptr in reg1, reg2
 .define ITOA_MEM 0x7E00
 itoa:
-	SET_DR	HIGH(ITOA_MEM)
+	SET_BR	HIGH(ITOA_MEM)
 	MOV	reg2, LOW(ITOA_MEM)
 
 	PUSH	reg2
