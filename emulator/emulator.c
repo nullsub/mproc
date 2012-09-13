@@ -11,9 +11,6 @@
 
 #define MAX_UART_LINE 100
 
-char uart_bffr[MAX_UART_LINE];
-int uart_i = 0;
-
 void dump_mem();
 
 struct registers{
@@ -89,7 +86,7 @@ struct arg_entry {
 	uint8_t *arg2;
 };
 
-const struct arg_entry arg_table[2][16] = { 
+const struct arg_entry arg_table[2][16] = {
 	{
 		{"reg1","number",0x00, &cpu.regs.reg1, &cpu.regs.a_number},
 		{"reg2","number",0x10, &cpu.regs.reg2, &cpu.regs.a_number},
@@ -188,7 +185,7 @@ void emu(FILE * file, char * output_file)
 	}
 	if(!feof(file))
 		printf("bin too large!\n");
-		
+
 	cpu.regs.reg1 = 0x00;
 	cpu.regs.reg2 = 0x00;
 	cpu.regs.reg3 = 0x00;
@@ -200,12 +197,15 @@ void emu(FILE * file, char * output_file)
 	cpu.sp = 0x0000;
 	cpu.carry = 0;
 
+	char uart_bffr[MAX_UART_LINE];
+	int uart_i = 0;
+
 	while(1) {
 		get_cmd();
 
-		uint8_t *arg1 = curr_cmd.arg1;			
-		uint8_t *arg2 = curr_cmd.arg2;			
-		uint16_t address;		
+		uint8_t *arg1 = curr_cmd.arg1;
+		uint8_t *arg2 = curr_cmd.arg2;
+		uint16_t address;
 
 		switch(curr_cmd.opcode & 0x0F){
 			case ADD:
@@ -222,13 +222,13 @@ void emu(FILE * file, char * output_file)
 				if(*arg2 > *arg1) {
 					cpu.carry = 1;
 				}
-				*arg1 = *arg1-*arg2; 
+				*arg1 = *arg1-*arg2;
 				break;
 			case NOR:
-				*arg1 = ~(*arg1|*arg2); 
+				*arg1 = ~(*arg1|*arg2);
 				break;
 			case AND:
-				*arg1 = *arg1 & *arg2;  
+				*arg1 = *arg1 & *arg2;
 				break;
 			case MOV: 
 				*arg1 = *arg2;
@@ -250,7 +250,7 @@ void emu(FILE * file, char * output_file)
 				address = ((cpu.regs.dr << 8) | (*arg2));
 				if(address == UART) {
 					uart_bffr[uart_i++] = *arg1;
-					if(*arg1 == '\n') {
+					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
 						uart_bffr[uart_i] = 0x00;
 						printf("UART: %s",uart_bffr);
 						uart_i = 0;
