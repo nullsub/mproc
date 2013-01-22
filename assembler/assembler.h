@@ -5,4 +5,4 @@
 
 void assemble(FILE *file, char * output_name);
 
-#endif
+#endif //ASSEMBLER_H_

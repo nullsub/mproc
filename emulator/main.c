@@ -12,7 +12,7 @@ int main ( int argc, char *argv[] ) {
 		printf( "Could not open file\n" );
 		return -1;
 	} 
-	emu(file,"output_file.bin");
+	emu(file);
 	fclose(file);
 	return 0;
 }

@@ -15,8 +15,7 @@ INCDIRS  += $(DEVICE_DIR)
 
 CFLAGS += $(patsubst %,-I%,$(INCDIRS)) -I.
 CFLAGS += -std=gnu99
-CFLAGS += -Wall -Wextra -g
-
+CFLAGS += -Wall -Wextra -g -O0
 LDFLAGS += 
 
 TCHAIN_PREFIX = 
@@ -27,7 +26,6 @@ OBJCOPY = $(TCHAIN_PREFIX)objcopy
 OBJDUMP = $(TCHAIN_PREFIX)objdump
 SIZE    = $(TCHAIN_PREFIX)size
 NM      = $(TCHAIN_PREFIX)nm
-GDB     = $(TCHAIN_PREFIX)gdb
 REMOVE  = rm -rf
 
 # List of all source files without directory and file-extension.

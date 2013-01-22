@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-void emu(FILE *file, char * output_name);
+void emu(FILE *file);
 
-#endif
+#endif //EMULATOR_H_

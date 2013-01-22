@@ -309,7 +309,7 @@ void apply_macros(char **str)
 	}
 }
 
-int preprocess(char **str) //resolve macros and define before a statement is interpreted!
+int preprocess(char **str) //resolve macros and defines before a statement is interpreted!
 {
 	char name[WORD_LENGTH];
 	char val[WORD_LENGTH];
@@ -400,7 +400,7 @@ void lookup_opcode(struct instruction * cmd)
 	int label_present = 0;
 	int number_present = get_number_8(cmd->arg2, &cmd->second_byte);
 	if(!number_present) {
-		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')){
+		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')) {
 			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "br") || !strcmp(cmd->arg2, "pc"))) { //FIXME!!!
 				label_present = 1;
 				strcpy(cmd->need_label,cmd->arg2);
@@ -445,7 +445,7 @@ int get_number_16(char *str, uint16_t *c)
 		}
 		return strlen(str);
 	} 
-	if(str[0] == '0' && str[1] == 'x'){
+	if(str[0] == '0' && str[1] == 'x') {
 		for(unsigned int i = 2; i < strlen(str); i++) {
 			if(!((str[i] <= '9' && str[i] >= '0') || (str[i] <= 'F' && str[i] >= 'A'))) {
 				failure_exit("wrong number");
@@ -539,8 +539,7 @@ struct instruction * decode_instruction(char * statement)
 		failure_exit("JMP cannot be used with reg1 and a number!");
 	}
 
-	if(strlen(cmd->arg2) == 0) { // only instruction with on argument. add one... it should not matter... FIXME
-
+	if(strlen(cmd->arg2) == 0) { // only instruction with one argument. add one... it should not matter... FIXME
 		strcpy(cmd->arg2, cmd->arg1);
 		strcpy(cmd->arg1, "reg1");
 	}
@@ -698,7 +697,7 @@ void fix_labels()
 	struct label_entry *need = need_label.first;
 	struct label_entry *prov = provide_label.first;
 	int found;
-	for(int i = 0; i < need_label.nr; i++){
+	for(int i = 0; i < need_label.nr; i++) {
 		found = 0;
 		prov = provide_label.first;
 		for(int j = 0; j < provide_label.nr; j++) { 	
@@ -707,7 +706,7 @@ void fix_labels()
 				//printf("label %s with address 0x%.4x, byte is %hi, high is %i\n", need->name, prov->target_offset + offset_bin, byte, need->high);
 				int8_t byte;
 
-				switch(need->type){
+				switch(need->type) {
 					case LOW_ADDRESS:
 						byte = ((prov->target_offset + offset_bin) & 0x00FF);
 						break;

@@ -60,11 +60,11 @@ struct the_cmd{
 };
 
 const struct opcode opcodes[] = {
-	{"ADD", 0,ADD},
-	{"SUB", 0,  SUB},
+	{"ADD", 0, ADD},
+	{"SUB", 0, SUB},
 	{"NOR", 0, NOR},
 	{"AND", 0, AND},
-	{"MOV", 0 , MOV},
+	{"MOV", 0, MOV},
 	{"MOVZ", 0, MOVZ},
 	{"JMP", 0, JMP},
 	{"JMPZ", 1, JMPZ},
@@ -73,7 +73,7 @@ const struct opcode opcodes[] = {
 	{"LDA", 0, LDA},
 	{"SET_BR", 1, SET_BR},
 	{"IO", 0, IO},
-	{"IN_PTR", 0, INC_PTR},
+	{"INC_PTR", 0, INC_PTR},
 	{"PUSH",1, PUSH},
 	{"POP",1, POP},
 };
@@ -139,7 +139,7 @@ uint8_t get_byte(uint16_t address)
 void write_byte(uint8_t val, uint16_t address)
 {
 	if(address >= RAM_SIZE) {
-		printf("cannot write into flash!\n");
+		printf("Flash is read only\n");
 		//cpu.flash[address-0x7FFF] = val;
 		return;
 	}
@@ -176,7 +176,7 @@ void get_cmd()
 	}
 }
 
-void emu(FILE * file, char * output_file)
+void emu(FILE * file)
 {
 	char c = fgetc(file);
 	for(int i = 0; !feof(file) && i < FLASH_SIZE; i++) {
@@ -264,6 +264,7 @@ void emu(FILE * file, char * output_file)
 			case IO:	
 				printf("hit IO! exit!\n");
 				dump_mem();
+				printf("registers:\n reg1: 0x%.2x, reg2, 0x%.2x\n", cpu.regs.reg1, cpu.regs.reg2);
 				return;
 				cpu.out_port1 = *arg1;
 				cpu.out_port2 = *arg2; 
@@ -287,7 +288,7 @@ void emu(FILE * file, char * output_file)
 				}
 				break;
 			case JMP: 
-				if(*arg1 == cpu.regs.reg4 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
+				if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
 					int8_t offset = (int8_t)*arg2;
 					address = get_pc();
 					address += offset;
