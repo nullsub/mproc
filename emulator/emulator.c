@@ -212,8 +212,7 @@ void emu(FILE * file)
 				cpu.carry = 0;
 				uint16_t result = *arg1 + *arg2; 
 				*arg1 = (result & 0x00FF);
-				if(result & 0x00) {
-					printf("ADD: setting carry flag!");
+				if(result > 0xFF) {
 					cpu.carry = 1;
 				}
 				break;
@@ -264,7 +263,8 @@ void emu(FILE * file)
 			case IO:	
 				printf("hit IO! exit!\n");
 				dump_mem();
-				printf("registers:\n reg1: 0x%.2x, reg2, 0x%.2x\n", cpu.regs.reg1, cpu.regs.reg2);
+				printf("registers:\n reg1: 0x%.2x, reg2: 0x%.2x\n", cpu.regs.reg1, cpu.regs.reg2);
+				printf("i16(reg1,reg2): %i \n", (cpu.regs.reg1) | (cpu.regs.reg2 << 8));
 				return;
 				cpu.out_port1 = *arg1;
 				cpu.out_port2 = *arg2; 

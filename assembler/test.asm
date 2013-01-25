@@ -1,6 +1,11 @@
-
 .define	ITOA_MEM	0x7E00 ;some free ram for a string
 .define	UART		0x7FD0 
+;main
+	;Fiboncacci row	
+	PUSH_RET
+	MOV	reg1, 13
+	MOV	reg3, LOW(compute_fibonacci)
+	JMP	reg3, HIGH(compute_fibonacci)
 
 	;print Hello world
 	PUSH_RET
@@ -9,22 +14,17 @@
 	MOV	reg3, LOW(uart_print)
 	JMP	reg3, HIGH(uart_print)
 	
-	;Fiboncacci row	
+	;Add two 16bit integers
 	PUSH_RET
-	MOV	reg1, 13
-	MOV	reg3, LOW(compute_fibonacci)
-	JMP	reg3, HIGH(compute_fibonacci)
-
-	;Add two 8bit integers
-	PUSH_RET
-	MOV	reg1, LOW(501)
-	MOV	reg2, HIGH(501)
-	PUSH	LOW(502)
-	PUSH	HIGH(502)
+	MOV	reg1, LOW(500)
+	MOV	reg2, HIGH(500)
+	PUSH	LOW(30)
+	PUSH	HIGH(0)
 	MOV	reg4, LOW(add16)
 	JMP	reg4, HIGH(add16)
 
 	IO	reg1, reg2 ;done 
+
 
 ;add two 16bit numbers together. result is 16 bit
 ;reg1 low(nr1)
@@ -35,12 +35,12 @@
 add16:
 	POP reg4
 	POP reg3
-	ADD reg1, reg3
+	ADD reg2, reg4; add HIGH
+	ADD reg1, reg3; add LOW
 	JMPC add16_2		
-	SUB reg4, 1
+	SUB reg2, 1
 add16_2:
-	ADD reg4, 1
-	ADD reg2, reg4
+	ADD reg2, 1
 
 	IO reg1, reg2;end and show me the register content	
 

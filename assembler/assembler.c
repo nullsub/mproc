@@ -267,8 +267,8 @@ void apply_defines(char **str)
 
 void apply_macros(char **str)
 {
-	char word[WORD_LENGTH];
-	char word1[WORD_LENGTH];
+	char token[WORD_LENGTH];
+	char token_name[WORD_LENGTH];
 	uint16_t c;
 	unsigned int i = 0;
 
@@ -276,35 +276,36 @@ void apply_macros(char **str)
 	char *loc = strstr(*str, "LOW(");
 	if(loc) {
 		for(i = 0; loc[i] && loc[i] != ')'; i++) {
-			word1[i] = loc[i];
+			token_name[i] = loc[i];
 			if(i >= strlen("LOW("))
-				word[i-strlen("LOW(")] = loc[i];
+				token[i-strlen("LOW(")] = loc[i];
 		}	
-		word[i-strlen("LOW(")] = 0x00;
-		word1[i] = loc[i];
+		token[i-strlen("LOW(")] = 0x00;
+		token_name[i] = loc[i];
 		i++;
-		word1[i] = 0x00;
-		if(get_number_16(word,&c)) {
-			word[2] = word[4];
-			word[3] = word[5];
-			word[4] = 0x00;
-			exchange_str(str, word1, word);
+		token_name[i] = 0x00;
+		if(get_number_16(token,&c)) {
+			c = c & 0xFF; // apply LOW mask
+			snprintf(token, 4,"%d", c);
+			exchange_str(str, token_name, token);
 		}
 	}  	
 	loc = strstr(*str, "HIGH(");
 	if(loc) {
 		for(i = 0; loc[i] && loc[i] != ')'; i++) {
-			word1[i] = loc[i];
+			token_name[i] = loc[i];
 			if(i >= strlen("HIGH("))
-				word[i-strlen("HIGH(")] = loc[i];
+				token[i-strlen("HIGH(")] = loc[i];
 		}	
-		word[i-strlen("HIGH(")] = 0x00;
-		word1[i] = loc[i];
+		token[i-strlen("HIGH(")] = 0x00;
+		token_name[i] = loc[i];
 		i++;
-		word1[i] = 0x00;
-		if(get_number_16(word,&c)) {
-			word[4] = 0x00;
-			exchange_str(str, word1, word);
+		token_name[i] = 0x00;
+
+		if(get_number_16(token,&c)) {
+			c = c >> 8; // apply HIGH mask
+			snprintf(token, 4,"%d", c);
+			exchange_str(str, token_name, token);
 		}
 	}
 }
@@ -434,9 +435,9 @@ int get_number_8(char *str, uint8_t *c)
 	return ret;
 }
 
-int get_number_16(char *str, uint16_t *c)
+int get_number_16(char *str, uint16_t *c) //returns length of the string
 {	
-	if(str[0] <= '9' && str[0] > '0') { 
+	if((str[0] <= '9' && str[0] > '0') || (str[0] == '0' && str[1] == 0x00)) { 
 		*c = atoi(str);
 		for(unsigned int i  = 0; i < strlen(str); i++) {
 			if(str[i] > '9' || str[i] < '0') { 
@@ -583,7 +584,7 @@ int translate(char *line) //translates one stament to the opcode
 			return -1;
 	}	
 	if(*cmd->need_label) {
-		enum label_type type = LOW_ADDRESS; // by default take low byte...
+		enum label_type type = LOW_ADDRESS; // by default take low byte
 		char *loc = strstr(cmd->need_label, "LOW(");
 		if(loc) {
 			int i;
