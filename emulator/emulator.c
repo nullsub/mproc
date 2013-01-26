@@ -170,7 +170,7 @@ void get_cmd()
 
 	inc_pc();
 
-	if(curr_cmd.arg2 == &cpu.regs.a_number) {
+	if(curr_cmd.arg2 == &cpu.regs.a_number) { //two byte instruction
 		*curr_cmd.arg2 = get_byte(get_pc());
 		inc_pc();
 	}
@@ -271,12 +271,8 @@ void emu(FILE * file)
 				break;
 			case JMPZ:
 				if(!cpu.regs.reg1) {
-					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
-						int8_t offset = (int8_t)*arg2;
-						address = get_pc();
-						address += offset;
-						cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
-						cpu.regs.pc_high = (uint8_t)((address >> 8));
+					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
+						cpu.regs.pc_low = *arg2;
 						break;
 					}
 					cpu.regs.pc_low = *arg1;
@@ -285,12 +281,8 @@ void emu(FILE * file)
 				break;
 			case JMPC:
 				if(cpu.carry) {
-					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
-						int8_t offset = (int8_t)*arg2;
-						address = get_pc();
-						address += offset;
-						cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
-						cpu.regs.pc_high = (uint8_t)((address >> 8));
+					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
+						cpu.regs.pc_low = *arg2;
 						break;
 					}
 					cpu.regs.pc_low = *arg1;
@@ -298,12 +290,8 @@ void emu(FILE * file)
 				}
 				break;
 			case JMP: 
-				if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
-					int8_t offset = (int8_t)*arg2;
-					address = get_pc();
-					address += offset;
-					cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
-					cpu.regs.pc_high = (uint8_t)((address >> 8));
+				if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
+					cpu.regs.pc_low = *arg2;
 					break;
 				}
 				cpu.regs.pc_low = *arg1;

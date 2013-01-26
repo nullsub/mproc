@@ -106,7 +106,7 @@ const struct arg_entry arg_table[2][16] = {
 	}
 };
 
-enum label_type {HIGH_ADDRESS, LOW_ADDRESS, OFFSET};
+enum label_type {HIGH_ADDRESS, LOW_ADDRESS};
 
 struct label_entry {
 	uint16_t target_offset;
@@ -436,7 +436,7 @@ int get_number_8(char *str, uint8_t *c)
 	return ret;
 }
 
-int get_number_16(char *str, uint16_t *c) //returns length of the string
+int get_number_16(char *str, uint16_t *c)
 {	
 	if((str[0] <= '9' && str[0] > '0') || (str[0] == '0' && str[1] == 0x00)) {
 		*c = atoi(str);
@@ -489,7 +489,7 @@ void add_constant(char * constant)
 			char tmp[WORD_LENGTH];
 			int cnt = 0;  
 			while(constant[cnt+i] && constant[cnt+i] != ' ' && constant[cnt+i] != '\t' && constant[cnt+i] != ',') {
-				tmp[cnt] = constant[i+cnt];
+				tmp[cnt] = constant[cnt+i];
 				cnt++;
 			}
 			tmp[cnt] = 0x00;
@@ -555,7 +555,7 @@ struct instruction * decode_instruction(char * statement)
 		sprintf(tmp, "PUSH HIGH(__ret_label_nr_%i_)", push_ret_nr);
 		translate(tmp);	
 		sprintf(tmp, "PUSH LOW(__ret_label_nr_%i_)", push_ret_nr);
-		translate(tmp);		
+		translate(tmp);	
 		cmd->type = NO_CMD;
 		return cmd;
 	}	
@@ -602,12 +602,7 @@ int translate(char *line) //translates one stament to the opcode
 			cmd->need_label[i-strlen("HIGH(")] = 0x00;
 			type = HIGH_ADDRESS;
 		}
-
-		if(!strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg1", cmd->arg1) && !strcmp("number", cmd->arg2))) { //not nice.. FIXME
-			type = OFFSET; // this JMP instrcutions needs its operand as an offset.
-		}
-
-		add_label(cmd->need_label, target_length-1, type, &need_label);	
+		add_label(cmd->need_label, target_length-1, type, &need_label);
 	}
 	if(!strcmp("JMP", cmd->cmd_name) && push_ret) {
 		char tmp[WORD_LENGTH];
@@ -705,7 +700,6 @@ void fix_labels()
 		for(int j = 0; j < provide_label.nr; j++) {
 			if(!strcmp(need->name, prov->name)) {
 				found = 1;
-				//printf("label %s with address 0x%.4x, byte is %hi, high is %i\n", need->name, prov->target_offset + offset_bin, byte, need->high);
 				int8_t byte;
 
 				switch(need->type) {
@@ -715,16 +709,6 @@ void fix_labels()
 					case HIGH_ADDRESS:
 						byte = ((prov->target_offset + offset_bin) >> 8);
 						break;
-					case OFFSET:{	
-							    int diff = prov->target_offset - need->target_offset;
-							    diff -= 1; // its a two byte instruction. thus, the PC advances by one on its own
-							    if(diff >= 128 || diff <= -128) {	
-								    printf("JMP jumps too far..\n");
-								    exit(-1);
-							    }
-							    byte = (int8_t)diff;
-						    }
-						    break;
 					default:
 						    printf("unknown label type!\n");
 						    exit(-1);
