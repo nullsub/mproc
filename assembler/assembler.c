@@ -56,7 +56,7 @@ const struct opcode opcodes[] = {
 	{"STR",0,0x09},
 	{"LDA",0,0x0A},
 	{"SET_BR",1,0x0B},
-	{"IO",0,0x0C},
+	{"BREAK",0,0x0C},
 	{"INC_PTR",0,0x0D},
 	{"PUSH",1,0x0E},
 	{"POP",1,0x0F},
@@ -70,39 +70,39 @@ struct arg_entry {
 
 const struct arg_entry arg_table[2][16] = { 
 	{
-		{"reg1","number",0x00},
-		{"reg2","number",0x10},
-		{"reg3","number",0x20},
-		{"reg4","number",0x30},
-		{"reg1","reg2",0x40},
-		{"reg1","reg3",0x50},
-		{"reg1","reg4",0x60},
-		{"reg2","reg1",0x70},
-		{"reg2","reg3",0x80},
-		{"reg2","reg4",0x90},
-		{"reg3","reg1",0xA0},
-		{"reg3","reg2",0xB0},
-		{"reg3","reg4",0xC0},
-		{"reg4","reg1",0xD0},
-		{"reg4","reg2",0xE0},
-		{"reg4","reg3",0xF0},
+		{"reg1", "number", 0x00},
+		{"reg2", "number", 0x10},
+		{"reg3", "number", 0x20},
+		{"reg4", "number", 0x30},
+		{"reg1", "reg2", 0x40},
+		{"reg1", "reg3", 0x50},
+		{"reg1", "reg4", 0x60},
+		{"reg2", "reg1", 0x70},
+		{"reg2", "reg3", 0x80},
+		{"reg2", "reg4", 0x90},
+		{"reg3", "reg1", 0xA0},
+		{"reg3", "reg2", 0xB0},
+		{"reg3", "reg4", 0xC0},
+		{"reg4", "reg1", 0xD0},
+		{"reg4", "reg2", 0xE0},
+		{"reg4", "reg3", 0xF0},
 	},{
-		{"reg1","number",0x00},
-		{"reg1","reg1",0x10},
-		{"reg1","reg2",0x20},
-		{"reg1","reg3",0x30},
-		{"reg1","reg4",0x40},
-		{"reg1","pc_low",0x50},
-		{"reg1","pc_high",0x60},
-		{"reg1","br",0x70},
-		{"reg1","reg1",0x80}, //Unused
-		{"reg1","reg1",0x90}, //Unused
-		{"reg1","reg1",0xA0}, //Unused
-		{"reg1","reg1",0xB0}, //Unused
-		{"reg1","reg1",0xC0}, //Unused
-		{"reg1","reg1",0xD0}, //Unused
-		{"reg1","reg1",0xE0}, //Unused
-		{"reg1","reg1",0xF0}, //Unused
+		{"reg1", "number", 0x00},
+		{"reg1", "reg1", 0x10},
+		{"reg1", "reg2", 0x20},
+		{"reg1", "reg3", 0x30},
+		{"reg1", "reg4", 0x40},
+		{"reg1", "pc_low", 0x50},
+		{"reg1", "pc_high", 0x60},
+		{"reg1", "br", 0x70},
+		{"reg1", "reg1", 0x80}, //Unused
+		{"reg1", "reg1", 0x90}, //Unused
+		{"reg1", "reg1", 0xA0}, //Unused
+		{"reg1", "reg1", 0xB0}, //Unused
+		{"reg1", "reg1", 0xC0}, //Unused
+		{"reg1", "reg1", 0xD0}, //Unused
+		{"reg1", "reg1", 0xE0}, //Unused
+		{"reg1", "reg1", 0xF0}, //Unused
 	}
 };
 
@@ -117,7 +117,7 @@ struct label_entry {
 
 struct label_table {
 	int nr;
-	struct label_entry *first;	
+	struct label_entry *first;
 }; 
 
 struct define {
@@ -191,10 +191,10 @@ int get_statement(char **str) //returns line number. If end of file, it returns 
 			return 0;
 		char * comment = strchr(*str, COMMENT_CHARACKTER);
 		if(comment != NULL)
-			*comment = 0x00;	
-		if(strlen(*str) > 2) { 
+			*comment = 0x00;
+		if(strlen(*str) > 2) {
 			if(preprocess(str))
-				return line_nr;		
+				return line_nr;
 		}
 	}
 }
@@ -234,7 +234,7 @@ void exchange_str(char **str1, char * str2, char * str3) //exchange every str2 i
 	define =  strstr(*str1, str2);
 
 	if(define != NULL) {
-		while(str_cnt < (define-*str1)) {
+		while(str_cnt < (define - *str1)) {
 			target = realloc(target, target_cnt + 1);
 			target[target_cnt++] = src[str_cnt++];
 		}
@@ -368,7 +368,7 @@ int get_line(char **str)
 
 void get_word(char * str, char * target, int word_nr)
 {
-	while(*str == ' '|| *str == '\t')
+	while(*str == ' ' || *str == '\t')
 		str++; // skip leading space
 	for(int i = 0; i < word_nr; i++) {	//skip words
 		while(*str != 0x00 && *str != ' ' && *str != '\t')
@@ -394,7 +394,8 @@ void lookup_opcode(struct instruction * cmd)
 		}
 	}	
 	if(cmd->arg_set == -1) {
-		goto error;
+		cmd->type = BROKEN_CMD;
+		return;
 	}
 
 	cmd->type = ONE_BYTE_CMD;
@@ -411,7 +412,7 @@ void lookup_opcode(struct instruction * cmd)
 
 	if(number_present || label_present) {
 		cmd->type = TWO_BYTE_CMD;
-		strcpy(cmd->arg2,"number");	
+		strcpy(cmd->arg2,"number");
 
 	}
 	for(unsigned int i = 0; i < sizeof(arg_table)/sizeof(struct arg_entry); i++) {
@@ -420,7 +421,7 @@ void lookup_opcode(struct instruction * cmd)
 			return;
 		}
 	}	
-error:
+
 	cmd->type = BROKEN_CMD;
 	cmd->arg_set = -1;
 	return;
@@ -437,7 +438,7 @@ int get_number_8(char *str, uint8_t *c)
 
 int get_number_16(char *str, uint16_t *c) //returns length of the string
 {	
-	if((str[0] <= '9' && str[0] > '0') || (str[0] == '0' && str[1] == 0x00)) { 
+	if((str[0] <= '9' && str[0] > '0') || (str[0] == '0' && str[1] == 0x00)) {
 		*c = atoi(str);
 		for(unsigned int i  = 0; i < strlen(str); i++) {
 			if(str[i] > '9' || str[i] < '0') { 
@@ -479,7 +480,7 @@ void add_constant(char * constant)
 		if(is_string) {
 			add_byte(constant[i]);
 			i++;
-		}else{
+		} else {
 			if(constant[i] == ',' || constant[i]  == ' ' || constant[i] == '\t') {
 				i++;
 				continue;
@@ -500,7 +501,7 @@ void add_constant(char * constant)
 	}
 }
 
-struct instruction * decode_instruction(char * statement) 
+struct instruction * decode_instruction(char * statement)
 {
 	struct instruction *cmd = (struct instruction *) malloc(sizeof(struct instruction));
 
@@ -512,7 +513,7 @@ struct instruction * decode_instruction(char * statement)
 		char * tmp = (char*) malloc(strlen(cmd->cmd_name) + 1);
 		strcpy(tmp, cmd->cmd_name);
 		tmp[strlen(tmp)-1] = 0x00;
-		add_label(tmp, target_length, 0, &provide_label);	
+		add_label(tmp, target_length, 0, &provide_label);
 
 		free(tmp);
 
@@ -534,6 +535,7 @@ struct instruction * decode_instruction(char * statement)
 
 	if(cmd->arg1[strlen(cmd->arg1)-1] == ',')
 		cmd->arg1[strlen(cmd->arg1)-1] = 0x00; //get rid of the ','
+
 	get_word(statement, cmd->arg2, 2 + word_offset);
 
 	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg1", cmd->arg1) && strlen(cmd->arg2) != 0) {	
@@ -559,19 +561,18 @@ struct instruction * decode_instruction(char * statement)
 	}	
 
 	lookup_opcode(cmd);
-
 	return cmd;
 }
 
 int translate(char *line) //translates one stament to the opcode
 {	
-	struct instruction * cmd =  decode_instruction(line); 	
+	struct instruction * cmd =  decode_instruction(line);
 
-	switch(cmd->type) {	
+	switch(cmd->type) {
 		case ONE_BYTE_CMD:
 			add_byte(cmd->first_byte);
 			break;
-		case TWO_BYTE_CMD:	
+		case TWO_BYTE_CMD:
 			add_byte(cmd->first_byte);
 			add_byte(cmd->second_byte);
 			break;
@@ -589,7 +590,7 @@ int translate(char *line) //translates one stament to the opcode
 		if(loc) {
 			int i;
 			for(i = strlen("LOW("); loc[i] && loc[i] != ')'; i++)
-				cmd->need_label[i-strlen("LOW(")] = loc[i];	
+				cmd->need_label[i-strlen("LOW(")] = loc[i];
 			cmd->need_label[i-strlen("LOW(")] = 0x00;
 			type = LOW_ADDRESS;
 		}
@@ -597,10 +598,10 @@ int translate(char *line) //translates one stament to the opcode
 		if(loc) {
 			int i;
 			for(i = strlen("HIGH("); loc[i] && loc[i] != ')'; i++)
-				cmd->need_label[i-strlen("HIGH(")] = loc[i];	
+				cmd->need_label[i-strlen("HIGH(")] = loc[i];
 			cmd->need_label[i-strlen("HIGH(")] = 0x00;
 			type = HIGH_ADDRESS;
-		}	
+		}
 
 		if(!strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg1", cmd->arg1) && !strcmp("number", cmd->arg2))) { //not nice.. FIXME
 			type = OFFSET; // this JMP instrcutions needs its operand as an offset.
@@ -611,7 +612,7 @@ int translate(char *line) //translates one stament to the opcode
 	if(!strcmp("JMP", cmd->cmd_name) && push_ret) {
 		char tmp[WORD_LENGTH];
 		sprintf(tmp, "__ret_label_nr_%i_", push_ret_nr);
-		add_label(tmp, target_length, 0, &provide_label);	
+		add_label(tmp, target_length, 0, &provide_label);
 		push_ret = 0;
 		push_ret_nr ++;
 	}
@@ -625,11 +626,11 @@ void add_byte(uint8_t c) // returns offset at which the byte was added
 	target_bin[target_length++] = c;
 }
 
-void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_table *target) 
+void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_table *target)
 {
 	if(target == &provide_label) {
 		struct label_entry *test = provide_label.first;
-		for(int j = 0; j < provide_label.nr; j++) { 	
+		for(int j = 0; j < provide_label.nr; j++) { 
 			if(!strcmp(test->name,label_name)) {
 				failure_exit("label declared more than once. exit!");
 			}
@@ -675,7 +676,7 @@ void free_label(struct label_entry *label)
 	free(label);
 }
 
-void free_define(struct define *def)
+void free_define(struct define *def) //recursivly free the define structures
 {
 	if(def == NULL)
 		return;
@@ -701,7 +702,7 @@ void fix_labels()
 	for(int i = 0; i < need_label.nr; i++) {
 		found = 0;
 		prov = provide_label.first;
-		for(int j = 0; j < provide_label.nr; j++) { 	
+		for(int j = 0; j < provide_label.nr; j++) {
 			if(!strcmp(need->name, prov->name)) {
 				found = 1;
 				//printf("label %s with address 0x%.4x, byte is %hi, high is %i\n", need->name, prov->target_offset + offset_bin, byte, need->high);
@@ -728,7 +729,7 @@ void fix_labels()
 						    printf("unknown label type!\n");
 						    exit(-1);
 				}
-				target_bin[need->target_offset] = byte;				
+				target_bin[need->target_offset] = byte;
 				break;
 			}
 			prov = prov->next;

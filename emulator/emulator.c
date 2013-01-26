@@ -43,7 +43,7 @@ struct cpu {
 	int carry;
 }cpu;
 
-enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_BR, IO, INC_PTR, PUSH, POP};
+enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_BR, BREAK, INC_PTR, PUSH, POP};
 
 struct opcode{
 	char name[10];
@@ -72,7 +72,7 @@ const struct opcode opcodes[] = {
 	{"STR", 0, STR},
 	{"LDA", 0, LDA},
 	{"SET_BR", 1, SET_BR},
-	{"IO", 0, IO},
+	{"BREAK", 0, BREAK},
 	{"INC_PTR", 0, INC_PTR},
 	{"PUSH",1, PUSH},
 	{"POP",1, POP},
@@ -88,45 +88,45 @@ struct arg_entry {
 
 const struct arg_entry arg_table[2][16] = {
 	{
-		{"reg1","number",0x00, &cpu.regs.reg1, &cpu.regs.a_number},
-		{"reg2","number",0x10, &cpu.regs.reg2, &cpu.regs.a_number},
-		{"reg3","number",0x20, &cpu.regs.reg3, &cpu.regs.a_number},
-		{"reg4","number",0x30, &cpu.regs.reg4, &cpu.regs.a_number},
-		{"reg1","reg2",0x40, &cpu.regs.reg1, &cpu.regs.reg2},
-		{"reg1","reg3",0x50, &cpu.regs.reg1, &cpu.regs.reg3},
-		{"reg1","reg4",0x60, &cpu.regs.reg1, &cpu.regs.reg4},
-		{"reg2","reg1",0x70, &cpu.regs.reg2, &cpu.regs.reg1},
-		{"reg2","reg3",0x80, &cpu.regs.reg2, &cpu.regs.reg3},
-		{"reg2","reg4",0x90, &cpu.regs.reg2, &cpu.regs.reg4},
-		{"reg3","reg1",0xA0, &cpu.regs.reg3, &cpu.regs.reg1},
-		{"reg3","reg2",0xB0, &cpu.regs.reg3, &cpu.regs.reg2},
-		{"reg3","reg4",0xC0, &cpu.regs.reg3, &cpu.regs.reg4},
-		{"reg4","reg1",0xD0, &cpu.regs.reg4, &cpu.regs.reg1},
-		{"reg4","reg2",0xE0, &cpu.regs.reg4, &cpu.regs.reg2},
-		{"reg4","reg3",0xF0, &cpu.regs.reg4, &cpu.regs.reg3},
+		{"reg1", "number", 0x00, &cpu.regs.reg1, &cpu.regs.a_number},
+		{"reg2", "number", 0x10, &cpu.regs.reg2, &cpu.regs.a_number},
+		{"reg3", "number", 0x20, &cpu.regs.reg3, &cpu.regs.a_number},
+		{"reg4", "number", 0x30, &cpu.regs.reg4, &cpu.regs.a_number},
+		{"reg1", "reg2", 0x40, &cpu.regs.reg1, &cpu.regs.reg2},
+		{"reg1", "reg3", 0x50, &cpu.regs.reg1, &cpu.regs.reg3},
+		{"reg1", "reg4", 0x60, &cpu.regs.reg1, &cpu.regs.reg4},
+		{"reg2", "reg1", 0x70, &cpu.regs.reg2, &cpu.regs.reg1},
+		{"reg2", "reg3", 0x80, &cpu.regs.reg2, &cpu.regs.reg3},
+		{"reg2", "reg4", 0x90, &cpu.regs.reg2, &cpu.regs.reg4},
+		{"reg3", "reg1", 0xA0, &cpu.regs.reg3, &cpu.regs.reg1},
+		{"reg3", "reg2", 0xB0, &cpu.regs.reg3, &cpu.regs.reg2},
+		{"reg3", "reg4", 0xC0, &cpu.regs.reg3, &cpu.regs.reg4},
+		{"reg4", "reg1", 0xD0, &cpu.regs.reg4, &cpu.regs.reg1},
+		{"reg4", "reg2", 0xE0, &cpu.regs.reg4, &cpu.regs.reg2},
+		{"reg4", "reg3", 0xF0, &cpu.regs.reg4, &cpu.regs.reg3},
 	},{
-		{"reg1","number",0x00, &cpu.regs.reg1, &cpu.regs.a_number},
-		{"reg1","reg1",0x10, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg2",0x20, &cpu.regs.reg1, &cpu.regs.reg2},
-		{"reg1","reg3",0x30, &cpu.regs.reg1, &cpu.regs.reg3},
-		{"reg1","reg4",0x40, &cpu.regs.reg1, &cpu.regs.reg4},
-		{"reg1","pc_low" ,0x50, &cpu.regs.reg1, &cpu.regs.pc_low},
-		{"reg1","pc_high",0x60, &cpu.regs.reg1, &cpu.regs.pc_high},
-		{"reg1","br",0x70, &cpu.regs.reg1, &cpu.regs.br},
-		{"reg1","reg1",0x80, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg1",0x90, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg1",0xA0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg1",0xB0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg1",0xC0, &cpu.regs.reg4, &cpu.regs.reg1},
-		{"reg1","reg1",0xD0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg1",0xE0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1","reg1",0xF0, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "number", 0x00, &cpu.regs.reg1, &cpu.regs.a_number},
+		{"reg1", "reg1", 0x10, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg2", 0x20, &cpu.regs.reg1, &cpu.regs.reg2},
+		{"reg1", "reg3", 0x30, &cpu.regs.reg1, &cpu.regs.reg3},
+		{"reg1", "reg4", 0x40, &cpu.regs.reg1, &cpu.regs.reg4},
+		{"reg1", "pc_low" , 0x50, &cpu.regs.reg1, &cpu.regs.pc_low},
+		{"reg1", "pc_high", 0x60, &cpu.regs.reg1, &cpu.regs.pc_high},
+		{"reg1", "br", 0x70, &cpu.regs.reg1, &cpu.regs.br},
+		{"reg1", "reg1", 0x80, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg1", 0x90, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg1", 0xA0, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg1", 0xB0, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg1", 0xC0, &cpu.regs.reg4, &cpu.regs.reg1},
+		{"reg1", "reg1", 0xD0, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg1", 0xE0, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg1", 0xF0, &cpu.regs.reg1, &cpu.regs.reg1},
 	}
 };
 
 struct the_cmd curr_cmd;
 
-uint8_t get_byte(uint16_t address) 
+uint8_t get_byte(uint16_t address)
 {
 	if(address >= RAM_SIZE) {
 		//printf("getting from address 0x%.4x\n", address-0x7FFF);
@@ -207,10 +207,10 @@ void emu(FILE * file)
 		uint8_t *arg2 = curr_cmd.arg2;
 		uint16_t address;
 
-		switch(curr_cmd.opcode & 0x0F){
+		switch(curr_cmd.opcode & 0x0F) {
 			case ADD:
 				cpu.carry = 0;
-				uint16_t result = *arg1 + *arg2; 
+				uint16_t result = *arg1 + *arg2;
 				*arg1 = (result & 0x00FF);
 				if(result > 0xFF) {
 					cpu.carry = 1;
@@ -260,8 +260,8 @@ void emu(FILE * file)
 			case LDA:
 				*arg1 = get_byte((cpu.regs.br << 8)| (*arg2));
 				break;
-			case IO:	
-				printf("hit IO! exit!\n");
+			case BREAK:	
+				printf("hit BREAK! exit!\n");
 				dump_mem();
 				printf("registers:\n reg1: 0x%.2x, reg2: 0x%.2x\n", cpu.regs.reg1, cpu.regs.reg2);
 				printf("i16(reg1,reg2): %i \n", (cpu.regs.reg1) | (cpu.regs.reg2 << 8));
@@ -271,20 +271,30 @@ void emu(FILE * file)
 				break;
 			case JMPZ:
 				if(!cpu.regs.reg1) {
-					int8_t offset = (int8_t)*arg2;
-					address = get_pc();
-					address += offset;
-					cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
-					cpu.regs.pc_high = (uint8_t)((address >> 8));
+					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
+						int8_t offset = (int8_t)*arg2;
+						address = get_pc();
+						address += offset;
+						cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
+						cpu.regs.pc_high = (uint8_t)((address >> 8));
+						break;
+					}
+					cpu.regs.pc_low = *arg1;
+					cpu.regs.pc_high = *arg2;
 				}
 				break;
 			case JMPC:
 				if(cpu.carry) {
-					int8_t offset = (int8_t)*arg2;
-					address = get_pc();
-					address += offset;
-					cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
-					cpu.regs.pc_high = (uint8_t)((address >> 8));
+					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: use as offset
+						int8_t offset = (int8_t)*arg2;
+						address = get_pc();
+						address += offset;
+						cpu.regs.pc_low = (uint8_t)(address & 0x00FF);
+						cpu.regs.pc_high = (uint8_t)((address >> 8));
+						break;
+					}
+					cpu.regs.pc_low = *arg1;
+					cpu.regs.pc_high = *arg2;
 				}
 				break;
 			case JMP: 
