@@ -13,16 +13,17 @@
 
 void dump_mem();
 
-struct registers{
+struct registers {
 	uint8_t reg1;
 	uint8_t reg2;
 	uint8_t reg3;
 	uint8_t	reg4;
-	uint8_t br;
+	uint8_t br_low;
+	uint8_t br_high;
 	uint8_t pc_low;
 	uint8_t pc_high;
 
-	uint8_t a_number;
+	uint8_t a_number; //corresponds to the IR register
 };
 
 struct cpu {
@@ -43,15 +44,15 @@ struct cpu {
 	int carry;
 }cpu;
 
-enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_BR, BREAK, INC_PTR, PUSH, POP};
+enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_BR, BREAK, COUNT_BR, PUSH, POP};
 
-struct opcode{
+struct opcode {
 	char name[10];
 	int arg_set;
 	enum cmds opcode;
 };
 
-struct the_cmd{
+struct the_cmd {
 	char name[10];
 	int arg_set;
 	uint8_t *arg1;
@@ -69,11 +70,11 @@ const struct opcode opcodes[] = {
 	{"JMP", 0, JMP},
 	{"JMPZ", 1, JMPZ},
 	{"JMPC", 1, JMPC},
-	{"STR", 0, STR},
-	{"LDA", 0, LDA},
-	{"SET_BR", 1, SET_BR},
+	{"STR", 1, STR},
+	{"LDA", 1, LDA},
+	{"SET_BR", 0, SET_BR},
 	{"BREAK", 0, BREAK},
-	{"INC_PTR", 0, INC_PTR},
+	{"COUNT_BR", 1, COUNT_BR},
 	{"PUSH",1, PUSH},
 	{"POP",1, POP},
 };
@@ -105,14 +106,14 @@ const struct arg_entry arg_table[2][16] = {
 		{"reg4", "reg2", 0xE0, &cpu.regs.reg4, &cpu.regs.reg2},
 		{"reg4", "reg3", 0xF0, &cpu.regs.reg4, &cpu.regs.reg3},
 	},{
-		{"reg1", "number", 0x00, &cpu.regs.reg1, &cpu.regs.a_number},
-		{"reg1", "reg1", 0x10, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg2", 0x20, &cpu.regs.reg1, &cpu.regs.reg2},
-		{"reg1", "reg3", 0x30, &cpu.regs.reg1, &cpu.regs.reg3},
-		{"reg1", "reg4", 0x40, &cpu.regs.reg1, &cpu.regs.reg4},
-		{"reg1", "pc_low" , 0x50, &cpu.regs.reg1, &cpu.regs.pc_low},
-		{"reg1", "pc_high", 0x60, &cpu.regs.reg1, &cpu.regs.pc_high},
-		{"reg1", "br", 0x70, &cpu.regs.reg1, &cpu.regs.br},
+		{"reg1", "reg1", 0x00, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg1", "reg2", 0x10, &cpu.regs.reg1, &cpu.regs.reg2},
+		{"reg1", "reg3", 0x20, &cpu.regs.reg1, &cpu.regs.reg3},
+		{"reg1", "reg4", 0x30, &cpu.regs.reg1, &cpu.regs.reg4},
+		{"reg1", "number", 0x40, &cpu.regs.reg1, &cpu.regs.a_number},
+		{"reg1", "br_low" , 0x50, &cpu.regs.reg1, &cpu.regs.br_low},
+		{"reg1", "br_high", 0x60, &cpu.regs.reg1, &cpu.regs.br_high},
+		{"reg1", "reg1", 0x70, &cpu.regs.reg1, &cpu.regs.reg1},
 		{"reg1", "reg1", 0x80, &cpu.regs.reg1, &cpu.regs.reg1},
 		{"reg1", "reg1", 0x90, &cpu.regs.reg1, &cpu.regs.reg1},
 		{"reg1", "reg1", 0xA0, &cpu.regs.reg1, &cpu.regs.reg1},
@@ -190,7 +191,8 @@ void emu(FILE * file)
 	cpu.regs.reg2 = 0x00;
 	cpu.regs.reg3 = 0x00;
 	cpu.regs.reg4 = 0x00;
-	cpu.regs.br = 0x00; 
+	cpu.regs.br_low = 0x00; 
+	cpu.regs.br_high = 0x00; 
 	cpu.regs.pc_high = 0x7F;
 	cpu.regs.pc_low = 0xFF;
 
@@ -205,14 +207,14 @@ void emu(FILE * file)
 
 		uint8_t *arg1 = curr_cmd.arg1;
 		uint8_t *arg2 = curr_cmd.arg2;
-		uint16_t address;
+		uint16_t tmp16_bit;
 
 		switch(curr_cmd.opcode & 0x0F) {
 			case ADD:
 				cpu.carry = 0;
-				uint16_t result = *arg1 + *arg2;
-				*arg1 = (result & 0x00FF);
-				if(result > 0xFF) {
+				tmp16_bit = *arg1 + *arg2;
+				*arg1 = (tmp16_bit & 0x00FF);
+				if(tmp16_bit > 0xFF) {
 					cpu.carry = 1;
 				}
 				break;
@@ -237,28 +239,34 @@ void emu(FILE * file)
 					*arg1 = *arg2;
 				break;
 			case SET_BR: 
-				cpu.regs.br = *arg2;
+				cpu.regs.br_high = *arg1;
+				cpu.regs.br_low = *arg2;
 				break;
-			case INC_PTR: 
-				address = (cpu.regs.br << 8) | (*arg1);
-				address += *arg2;
-				*arg1 = (uint8_t)(address & 0x00FF);
-				cpu.regs.br = (uint8_t)((address >> 8));
+			case COUNT_BR: 
+				tmp16_bit = ((cpu.regs.br_high << 8) | (cpu.regs.br_low));
+				if(*arg2 == 1) {
+					tmp16_bit ++;
+				} else {
+					tmp16_bit --;
+
+				}
+				cpu.regs.br_low = (uint8_t)(tmp16_bit & 0x00FF);
+				cpu.regs.br_high = (uint8_t)((tmp16_bit >> 8));
 				break;
 			case STR:
-				address = ((cpu.regs.br << 8) | (*arg2));
-				if(address == UART) {
-					uart_bffr[uart_i++] = *arg1;
+				tmp16_bit = ((cpu.regs.br_high << 8) | (cpu.regs.br_low));
+				if(tmp16_bit == UART) {
+					uart_bffr[uart_i++] = *arg2;
 					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
 						uart_bffr[uart_i] = 0x00;
 						printf("UART: %s",uart_bffr);
 						uart_i = 0;
 					}
 				}
-				write_byte(*arg1, address);
+				write_byte(*arg2, tmp16_bit);
 				break;
 			case LDA:
-				*arg1 = get_byte((cpu.regs.br << 8)| (*arg2));
+				*arg2 = get_byte((cpu.regs.br_high << 8)| (cpu.regs.br_low));
 				break;
 			case BREAK:	
 				printf("hit BREAK! exit!\n");

@@ -53,11 +53,11 @@ const struct opcode opcodes[] = {
 	{"JMP",0,0x06},
 	{"JMPZ",1,0x07},
 	{"JMPC",1,0x08},
-	{"STR",0,0x09},
-	{"LDA",0,0x0A},
-	{"SET_BR",1,0x0B},
+	{"STR",1,0x09},
+	{"LDA",1,0x0A},
+	{"SET_BR",0,0x0B},
 	{"BREAK",0,0x0C},
-	{"INC_PTR",0,0x0D},
+	{"COUNT_BR",1,0x0D},
 	{"PUSH",1,0x0E},
 	{"POP",1,0x0F},
 };
@@ -87,14 +87,14 @@ const struct arg_entry arg_table[2][16] = {
 		{"reg4", "reg2", 0xE0},
 		{"reg4", "reg3", 0xF0},
 	},{
-		{"reg1", "number", 0x00},
-		{"reg1", "reg1", 0x10},
-		{"reg1", "reg2", 0x20},
-		{"reg1", "reg3", 0x30},
-		{"reg1", "reg4", 0x40},
-		{"reg1", "pc_low", 0x50},
-		{"reg1", "pc_high", 0x60},
-		{"reg1", "br", 0x70},
+		{"reg1", "reg1", 0x00},
+		{"reg1", "reg2", 0x10},
+		{"reg1", "reg3", 0x20},
+		{"reg1", "reg4", 0x30},
+		{"reg1", "number", 0x40},
+		{"reg1", "br_low", 0x50},
+		{"reg1", "br_high", 0x60},
+		{"reg1", "reg1", 0x70}, 
 		{"reg1", "reg1", 0x80}, //Unused
 		{"reg1", "reg1", 0x90}, //Unused
 		{"reg1", "reg1", 0xA0}, //Unused
@@ -111,7 +111,7 @@ enum label_type {HIGH_ADDRESS, LOW_ADDRESS};
 struct label_entry {
 	uint16_t target_offset;
 	char *name;
-	enum label_type type; //JMP needs an offset, not a direct address
+	enum label_type type;
 	struct label_entry * next;
 };
 
@@ -403,7 +403,7 @@ void lookup_opcode(struct instruction * cmd)
 	int number_present = get_number_8(cmd->arg2, &cmd->second_byte);
 	if(!number_present) {
 		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')) {
-			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "br") || !strcmp(cmd->arg2, "pc"))) { //FIXME!!!
+			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "br_high") || !strcmp(cmd->arg2, "br_low"))) { //FIXME!!!
 				label_present = 1;
 				strcpy(cmd->need_label,cmd->arg2);
 			}

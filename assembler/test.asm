@@ -90,15 +90,18 @@ fibonacci_end:
 ;reg1 = HIGH(String)
 ;reg2 = LOW(String)
 uart_print: 
-	SET_BR	reg1
+	SET_BR	reg1, reg2
 uart_print_loop:
-	LDA	reg1, reg2
+	LDA	reg1
 	JMPZ	uart_print_end
-	PUSH	br
-	SET_BR	HIGH(UART)
-	STR	reg1, LOW(UART)
-	POP	br
-	INC_PTR reg2, 1
+	PUSH	br_low
+	PUSH	br_high
+	MOV	reg3, HIGH(UART)
+	SET_BR	reg3, LOW(UART)
+	STR	reg1
+	POP	br_high
+	POP	br_low
+	COUNT_BR 1
 	JMP	uart_print_loop
 uart_print_end:
 	POP 	reg3; LOW
@@ -109,10 +112,9 @@ uart_print_end:
 ;reg1 nr to be converted
 ;returns STRING ptr in reg1, reg2
 itoa:
-	SET_BR	HIGH(ITOA_MEM)
-	MOV	reg2, LOW(ITOA_MEM)
+	MOV	reg2, HIGH(ITOA_MEM)
+	SET_BR	reg2, LOW(ITOA_MEM)
 
-	PUSH	reg2
 	MOV	reg3, 0x30; ASCII 0
 itoa_100_loop:
 	MOV	reg2, reg1
@@ -122,11 +124,9 @@ itoa_100_loop:
 	JMP	itoa_100_loop
 itoa_end_100_loop:
 	MOV	reg1, reg2
-	POP	reg2
-	STR	reg3, reg2
-	INC_PTR	reg2, 0x01
+	STR	reg3
+	COUNT_BR 1
 	
-	PUSH	reg2
 	MOV	reg3, 0x30; ASCII 0
 itoa_10_loop:
 	MOV	reg2, reg1
@@ -136,19 +136,18 @@ itoa_10_loop:
 	JMP	itoa_10_loop
 itoa_end_10_loop:
 	MOV	reg1, reg2
-	POP	reg2
-	STR	reg3, reg2
-	INC_PTR	reg2, 0x01
+	STR	reg3
+	COUNT_BR 1
 ;add the rest
 	ADD	reg1, 0x30
-	STR	reg1, reg2
-	INC_PTR	reg2, 0x01
+	STR	reg1
+	COUNT_BR	1
 ;end
 	MOV	reg3, 0x0A
-	STR	reg3, reg2
-	INC_PTR	reg2, 0x01
+	STR	reg3
+	COUNT_BR	1
 	MOV	reg3, 0x00
-	STR	reg3, reg2
+	STR	reg3
 	MOV	reg1, HIGH(ITOA_MEM)
 	MOV	reg2, LOW(ITOA_MEM)
 	POP	reg3
