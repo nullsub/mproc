@@ -1,0 +1,1104 @@
+// kate: syntax c; encoding utf-8
+
+/*
+	Copyright (c) 2008..2010, Sven Pauli
+	All rights reserved.
+	sven_pauli@gmx.de
+*/
+
+string fmt;
+
+/* Scale factors */
+real scu_package = 0.25;
+real scu_symbol = 1.0;
+
+enum {
+	SCU_SYMBOL,
+	SCU_PACKAGE
+};
+int scu_mode;
+
+real scu(int x) {
+	switch (scu_mode) {
+		/* Symbol */
+		case SCU_SYMBOL:
+			return u2mic(x) * scu_symbol;
+
+		/* Package */
+		case SCU_PACKAGE:
+			return u2mic(x) * scu_package;
+
+		default:
+			return 0.0;
+	}
+}
+
+
+void calling_error() {
+	dlgMessageBox(";Dieses Skript möchte ohne Argumente aufgerufen werden.");
+	exit(EXIT_FAILURE);
+}
+
+
+int file_exists(string file) {
+	string a[];
+	int n = fileglob(a, file);
+
+	return n > 0;
+}
+
+
+string str_replace(string s, char c, string r) {
+	int pos;
+	int start = 0;
+	string result = "";
+
+	pos = strchr(s, c);
+	if (pos == -1) {
+		return s;
+	}
+
+
+	while (pos >= 0) {
+		result += strsub(s, start, pos - start);
+		result += r;
+		start = pos + 1;
+		pos = strchr(s, c, start);
+	}
+	result += strsub(s, start);
+
+	return result;
+}
+
+string format_string(string s) {
+	/* Possible traps:
+		- apostrophes
+		- a pair of brackets (= point)
+		- newline
+	*/
+	return "'" + str_replace(str_replace(s, '\n', "\\n"), '\'', "''") + "'";
+}
+
+string format_path(string s) {
+	return s;
+}
+
+string format_name(string s) {
+	return str_replace(s, '\'', "''");
+}
+
+
+
+string strip_path(string path) {
+	int i = strlen(path);
+	while ( (--i >= 0) && (path[i] == '/') );
+
+	return strsub(path, 0, i + 1);
+}
+
+string strip_at(string s) {
+	int pos = strchr(s, '@');
+
+	if (pos > 0) {
+		return strsub(s, 0, pos);
+	}
+
+	return s;
+}
+
+
+void progress(string description, int prog, int total, string current) {
+	if (prog % 10)
+		return;
+
+	string pluses = "####################";
+	string scores = "____________________";
+	int n = prog * 20 / total;
+
+	string s;
+	sprintf(s, "%s: [%s%s] (%d von %d) %s",
+		description,
+		strsub(pluses, 0, n),
+		strsub(scores, 0, 20 - n),
+		prog,
+		total,
+		current
+	);
+	status(s);
+
+	/* Necessary to allow GUI update and script cancellation */
+	system("sleep 0.1");
+}
+
+
+int current_layer = -1;
+void layer(int l) {
+	if (l == current_layer)
+		return;
+
+	printf("LAYER %d;\n", l);
+	current_layer = l;
+}
+
+
+void export_circle(UL_CIRCLE C) {
+	layer(C.layer);
+
+	/* First click = center, then move = radius, then click = done */
+	real sx = scu(C.x);
+	real sy = scu(C.y);
+	printf("CIRCLE %f (%f %f) (%f %f);\n",
+		scu(C.width),
+		sx, sy,
+		sx + scu(C.radius), sy
+	);
+}
+
+
+void export_contact(UL_CONTACT C) {
+	string flags = "";
+
+	if (C.pad) {
+		if ( !(C.pad.flags & PAD_FLAG_STOP) )
+			flags += " NOSTOP";
+
+		if ( !(C.pad.flags & PAD_FLAG_THERMALS) )
+			flags += " NOTHERMALS";
+
+		if (C.pad.flags & PAD_FLAG_FIRST)
+			flags += " FIRST";
+
+
+		string shape;
+		switch(C.pad.shape[LAYER_PADS]) {
+			case PAD_SHAPE_SQUARE:
+				shape = "Square";
+				break;
+
+			case PAD_SHAPE_ROUND:
+				shape = "Round";
+				break;
+
+			case PAD_SHAPE_OCTAGON:
+				shape = "Octagon";
+				break;
+
+			case PAD_SHAPE_LONG:
+				shape = "Long";
+				break;
+
+			case PAD_SHAPE_OFFSET:
+				shape = "Offset";
+				break;
+		}
+
+
+		printf("CHANGE DRILL %f;\n", scu(C.pad.drill));
+		printf("PAD %f %s R%.1f %s '%s' (%f %f);\n",
+			scu(C.pad.diameter[LAYER_PADS]),
+			shape,
+			C.pad.angle,
+			flags,
+			format_name(C.pad.name),
+			scu(C.pad.x), scu(C.pad.y)
+		);
+	}
+	else if (C.smd) {
+		if ( !(C.smd.flags & SMD_FLAG_STOP) )
+			flags += " NOSTOP";
+
+		if ( !(C.smd.flags & SMD_FLAG_THERMALS) )
+			flags += " NOTHERMALS";
+
+		if ( !(C.smd.flags & SMD_FLAG_CREAM) )
+			flags += " NOCREAM";
+
+
+		layer(C.smd.layer);
+		printf("SMD %f %f -%d R%.1f %s '%s' (%f %f);\n",
+			scu(C.smd.dx), scu(C.smd.dy),
+			C.smd.roundness,
+			C.smd.angle,
+			flags,
+			format_name(C.smd.name),
+			scu(C.smd.x), scu(C.smd.y)
+		);
+	}
+}
+
+
+void export_frame(UL_FRAME F) {
+	layer(F.layer);
+
+	string borders = "";
+	if (F.border & FRAME_BORDER_BOTTOM)
+		borders += " Bottom";
+
+	if (F.border & FRAME_BORDER_RIGHT)
+		borders += " Right";
+
+	if (F.border & FRAME_BORDER_TOP)
+		borders += " Top";
+
+	if (F.border & FRAME_BORDER_LEFT)
+		borders += " Left";
+
+	printf("FRAME %d %d%s (%f %f) (%f %f);\n",
+		F.columns,
+		F.rows,
+		borders,
+		scu(F.x1), scu(F.y1),
+		scu(F.x2), scu(F.y2)
+	);
+}
+
+
+void export_hole(UL_HOLE H) {
+	printf("CHANGE DRILL %f;\n", scu(H.drill));
+	printf("HOLE (%f %f);\n",
+		scu(H.x), scu(H.y)
+	);
+}
+
+
+void export_pin(UL_PIN P) {
+	string direction;
+	switch (P.direction) {
+		case PIN_DIRECTION_NC:
+			direction = "NC";
+			break;
+
+		case PIN_DIRECTION_IN:
+			direction = "In";
+			break;
+
+		case PIN_DIRECTION_OUT:
+			direction = "Out";
+			break;
+
+		case PIN_DIRECTION_IO:
+			direction = "I/O";
+			break;
+
+		case PIN_DIRECTION_OC:
+			direction = "OC";
+			break;
+
+		case PIN_DIRECTION_PWR:
+			direction = "Pwr";
+			break;
+
+		case PIN_DIRECTION_PAS:
+			direction = "Pas";
+			break;
+
+		case PIN_DIRECTION_HIZ:
+			direction = "Hiz";
+			break;
+
+		case PIN_DIRECTION_SUP:
+			direction = "Sup";
+			break;
+	}
+
+	string function;
+	switch (P.function) {
+		case PIN_FUNCTION_FLAG_NONE:
+			function = "None";
+			break;
+
+		case PIN_FUNCTION_FLAG_DOT:
+			function = "Dot";
+			break;
+
+		case PIN_FUNCTION_FLAG_CLK:
+			function = "Clk";
+			break;
+
+		case (PIN_FUNCTION_FLAG_DOT | PIN_FUNCTION_FLAG_CLK):
+			function = "DotClk";
+			break;
+	}
+
+	string length;
+	switch	(P.length) {
+		case PIN_LENGTH_POINT:
+			length = "Point";
+			break;
+
+		case PIN_LENGTH_SHORT:
+			length = "Short";
+			break;
+
+		case PIN_LENGTH_MIDDLE:
+			length = "Middle";
+			break;
+
+		case PIN_LENGTH_LONG:
+			length = "LONG";
+			break;
+	}
+
+	string visible;
+	switch (P.visible) {
+		case PIN_VISIBLE_FLAG_OFF:
+			visible = "Off";
+			break;
+
+		case PIN_VISIBLE_FLAG_PIN:
+			visible = "Pin";
+			break;
+
+		case PIN_VISIBLE_FLAG_PAD:
+			visible = "Pad";
+			break;
+
+		case (PIN_VISIBLE_FLAG_PIN | PIN_VISIBLE_FLAG_PAD):
+			visible = "Both";
+			break;
+	}
+
+	printf("PIN '%s' %s %s %s %s R%.0f %d (%f %f);\n",
+		format_name(P.name),
+		direction,
+		function,
+		length,
+		visible,
+		P.angle,
+		P.swaplevel,
+		scu(P.x), scu(P.y)
+	);
+}
+
+
+void export_polygon(UL_POLYGON P) {
+	layer(P.layer);
+
+	string pour;
+	switch (P.pour) {
+		case POLYGON_POUR_SOLID:
+			pour = "Solid";
+			break;
+
+		case POLYGON_POUR_HATCH:
+			pour = "Hatch";
+			break;
+	}
+
+	printf("CHANGE ISOLATE %f;\n", scu(P.isolate));
+	printf("CHANGE ORPHANS %s;\n", (P.orphans) ? "On" : "Off");
+	printf("CHANGE POUR %s;\n", pour);
+	printf("CHANGE SPACING %f;\n", scu(P.spacing));
+	printf("CHANGE THERMALS %s;\n", (P.thermals) ? "On" : "Off");
+	printf("CHANGE RANK %d;\n", P.rank);
+	
+
+	printf("POLYGON %f", scu(P.width));
+
+	/* Only the endpoints and the curve do matter in this case */
+	P.wires(W) {
+		/* Starting point */
+		printf(" (%f %f)", scu(W.x1), scu(W.y1));
+		break;
+	}
+
+	P.wires(W) {
+		/* Following segments */
+		printf(" %+f (%f %f)",
+			W.curve,
+			scu(W.x2), scu(W.y2)
+		);
+	}
+
+	printf(";\n");
+}
+
+
+void export_rectangle(UL_RECTANGLE R) {
+	layer(R.layer);
+	printf("RECT R%.1f (%f %f) (%f %f);\n",
+		R.angle,
+		scu(R.x1), scu(R.y1),
+		scu(R.x2), scu(R.y2)
+	);
+}
+
+
+void export_text(UL_TEXT T) {
+	layer(T.layer);
+
+	string font;
+	switch (T.font) {
+		case FONT_VECTOR:
+			font = "VECTOR";
+			break;
+
+		case FONT_PROPORTIONAL:
+			font = "PROPORTIONAL";
+			break;
+
+		case FONT_FIXED:
+			font = "FIXED";
+			break;
+	}
+
+	string mirror = (T.mirror) ? "M" : "";
+	string spin = (T.spin) ? "S" : "";
+
+	printf("CHANGE RATIO %d;\n", T.ratio);
+	printf("CHANGE SIZE %f;\n", scu(T.size));
+
+	printf("TEXT %s %s%sR%.1f (%f %f);\n",
+		format_string(T.value),
+		mirror, spin, T.angle,
+		scu(T.x), scu(T.y)
+	);
+}
+
+
+void export_wire(UL_WIRE W) {
+	layer(W.layer);
+
+	string cap;
+	switch (W.cap) {
+		case CAP_FLAT:
+			cap = "Flat";
+			break;
+
+		case CAP_ROUND:
+			cap = "Round";
+			break;
+	}
+
+	string style;
+	switch (W.style) {
+		case WIRE_STYLE_CONTINUOUS:
+			style = "Continuous";
+			break;
+
+		case WIRE_STYLE_LONGDASH:
+			style = "LongDash";
+			break;
+
+		case WIRE_STYLE_SHORTDASH:
+			style = "ShortDash";
+			break;
+
+		case WIRE_STYLE_DASHDOT:
+			style = "DashDot";
+			break;
+	}
+
+	printf("CHANGE STYLE %s;\n", style);
+
+	if (W.arc) {
+		printf("WIRE %f %s (%f %f) %+f (%f %f);\n",
+			scu(W.width),
+			cap,
+			scu(W.x1), scu(W.y1),
+			W.curve,
+			scu(W.x2), scu(W.y2)
+		);
+	}
+	else {
+		printf("WIRE %f (%f %f) (%f %f);\n",
+			scu(W.width),
+			scu(W.x1), scu(W.y1),
+			scu(W.x2), scu(W.y2)
+		);
+	}
+}
+
+
+void export_package(UL_PACKAGE P) {
+	/* Meta */
+	scu_mode = SCU_PACKAGE;
+	current_layer = -1;
+	printf("EDIT %s.pac;\n", P.name);
+	printf("DESCRIPTION %s;\n", format_string(P.description));
+
+	/* Contents */
+	P.circles(C) export_circle(C);
+	P.contacts(C) export_contact(C);
+	P.frames(F) export_frame(F);
+	P.holes(H) export_hole(H);
+	P.polygons(P) export_polygon(P);
+	P.rectangles(R) export_rectangle(R);
+	P.texts(T) export_text(T);
+	P.wires(W) export_wire(W);
+}
+
+void export_symbol(UL_SYMBOL S) {
+	/* Meta */
+	scu_mode = SCU_SYMBOL;
+	current_layer = -1;
+	printf("EDIT %s.sym;\n", S.name);
+
+	/* Contents */
+	S.circles(C) export_circle(C);
+	S.frames(F) export_frame(F);
+	S.rectangles(R) export_rectangle(R);
+	S.pins(P) export_pin(P);
+	S.polygons(P) export_polygon(P);
+	S.texts(T) export_text(T);
+	S.wires(W) export_wire(W);
+}
+
+
+void export_attributes(UL_ATTRIBUTE A) {
+	string variable = (A.constant) ? "Constant" : "Variable";
+
+	printf("ATTRIBUTE '%s' %s %s;\n",
+		format_name(A.name),
+		format_string(A.value),
+		variable
+	);
+}
+
+
+void export_deviceset(UL_DEVICESET DS) {
+	/* Meta */
+	scu_mode = SCU_SYMBOL;
+	printf("EDIT %s.dev;\n", format_name(DS.name));
+	printf("DESCRIPTION %s;\n", format_string(DS.description));
+	printf("PREFIX '%s';\n", format_name(DS.prefix));
+	printf("VALUE %s;\n", DS.value);
+
+	DS.gates(G) {
+		string addlevel;
+		switch (G.addlevel) {
+			case GATE_ADDLEVEL_NEXT:
+				addlevel = "Next";
+				break;
+
+			case GATE_ADDLEVEL_MUST:
+				addlevel = "Must";
+				break;
+
+			case GATE_ADDLEVEL_CAN:
+				addlevel = "Can";
+				break;
+
+			case GATE_ADDLEVEL_REQUEST:
+				addlevel = "Request";
+				break;
+
+			case GATE_ADDLEVEL_ALWAYS:
+				addlevel = "Always";
+				break;
+		}
+
+		printf("CHANGE ADDLEVEL %s;\n", addlevel);
+		printf("CHANGE SWAPLEVEL %d;\n", G.swaplevel);
+		printf("ADD '%s' '%s' (%f %f);\n",
+			format_name(G.symbol.name),
+			format_name(G.name),
+			scu(G.x), scu(G.y)
+		);
+	}
+
+
+	DS.devices(D) {
+		if (D.package) {
+			printf("PACKAGE '%s' '%s';\n",
+				format_name(D.package.name),
+				format_name(D.name)
+			);
+
+			/* Technologies */
+			string technologies[];
+			int count = strsplit(technologies, D.technologies, ' ');
+
+			for (int i = 0; i < count; i++) {
+				string technology;
+				if (technologies[i] == "''")
+					technology = "''";
+				else
+					technology = "'" + format_name(technologies[i]) + "'";
+
+				printf("TECHNOLOGY %s;\n", technology);
+
+
+				/* Attributes */
+				D.attributes(A, technologies[i])
+					export_attributes(A);
+			}
+		}
+
+
+		/* Connect them */
+		D.gates(G) {
+			G.symbol.pins(P) {
+				if (D.package && P.contact) {
+					printf("CONNECT '%s.%s' '%s';\n",
+						format_name(G.name),
+						format_name(P.name),
+						format_name(P.contact.name)
+					);
+				}
+			}
+		}
+	}
+}
+
+
+
+int result;
+string ulp = argv[0];
+
+/* Find pass */
+int pass = 1;
+if (argc > 1) {
+	pass = strtol(argv[1]);
+	if ( (pass < 1) || (pass > 4) )
+		pass = 1;
+}
+
+
+
+if (pass == 1) {
+	/* First pass **************************************************/
+	int source_dir = 1;
+	int update_only = 1;
+	string source;
+	string destination;
+	string this_library;
+
+	if (!library) {
+		dlgMessageBox(";Den Skalierer bitte in einer Bibliothek ausführen.");
+		exit(EXIT_FAILURE);
+	}
+
+	library(L) {
+		this_library = L.name;
+		string dir = strip_path(filedir(this_library));
+		source = dir + "/*.lbr";
+		destination = dir + "/sc";
+	}
+
+
+
+	/* Legal check */
+	result = dlgMessageBox(
+		"!<strong>Der Autor verfügt:</strong><br />"
+		"Dieses Werkzeug darf nur für nicht-kommerzielle Zwecke benutzt werden!",
+		"+Ja, damit bin ich einverstanden", "-Nein, das lehne ich ab"
+	);
+
+	if (result)
+		/* Denied */
+		exit(EXIT_SUCCESS);
+
+
+	/* Convert to percent */
+	scu_symbol *= 100.0;
+	scu_package *= 100.0;
+
+	result = dlgDialog("Super-Duper-Eagle-Skalierer") {
+		dlgHBoxLayout
+			dlgSpacing(400);
+
+		dlgTabWidget {
+			dlgTabPage("Skalierer") {
+				dlgGroup("Skalierungsfaktoren") {
+					dlgHBoxLayout {
+						dlgLabel("Symbole:");
+
+						dlgStretch(1);
+						dlgRealEdit(scu_symbol, 0.0, 100.0);
+						dlgLabel("%");
+					}
+
+					dlgHBoxLayout {
+						dlgLabel("Gehäuse:");
+
+						dlgStretch(1);
+						dlgRealEdit(scu_package, 0.0, 100.0);
+						dlgLabel("%");
+					}
+				}
+
+				dlgGroup("Quellen") {
+					dlgRadioButton("einzelne Bibliothek", source_dir) {
+						source = this_library;
+					}
+					dlgRadioButton("ganzes Verzeichnis", source_dir);
+
+					dlgLabel("Bibliothek(en):");
+					dlgHBoxLayout {
+						dlgStringEdit(source);
+						dlgPushButton("...") {
+							string s = source;
+							if (source_dir)
+								source = dlgDirectory("Quell-Bibliotheksverzeichnis");
+							else
+								source = dlgFileOpen("Quellbibliothek", "", "*.lbr");
+
+							if (source == "")
+								source = s;
+							else if (source_dir)
+								source = strip_path(source) + "/*";
+						}
+					}
+
+					dlgCheckBox("Nur geänderte oder fehlende Bibliotheken bearbeiten", update_only);
+				}
+
+				dlgGroup("Ziel") {
+					dlgLabel("Bibliotheksverzeichnis:");
+					dlgHBoxLayout {
+						dlgStringEdit(destination);
+						dlgPushButton("...") {
+							string d = destination;
+							destination = dlgDirectory("Ziel-Bibliotheksverzeichnis");
+
+							if (destination == "")
+								destination = d;
+							else
+								destination = strip_path(destination);
+						}
+					}
+				}
+			}
+
+			dlgTabPage("Hinweise") {
+				dlgLabel("<strong>Hinweise zur Benutzung:</strong>");
+				dlgLabel("<ul>"
+					"<li>Beim Quellverzeichnis ggf. zu '*.lbr' oder dergleichen ergänzen,"
+					" um nicht sämtliche Sicherungsdateien zu bearbeiten.\n"
+					"<li>Die Skalierung wird in mehreren Durchläufen erfolgen;"
+					" das Ende gestaltet sich aber eindeutig erkennbar.\n"
+					"<li>Sollten beim Ausführen des Ausgabeskriptes seltsame Fehler"
+					" erscheinen (Maße außerhalb des gültigen Bereiches usw.), so hilft"
+					" es oft, eine leere Bibliothek zu öffnen und das Ausgabeskript"
+					" manuell mit dem SCRIPT-Befehl zu starten.\n"
+					"<li>Das Ausgabeskript kann nach dem Bibliothekenbau gelöscht werden.\n"
+					"<li>Die skalierten Bohrdurchmesser usw. in den Gehäusen werden von den"
+					" Designregeln überschrieben, daher müssen auch die Designregeln (manuell)"
+					" skaliert werden.\n"
+					"<li>Das Zielverzeichnis muss exisitieren!</li>\n"
+					"<li>Die Bestätigungen für das Löschen von zu aktualisierenden oder zu"
+					" Überschreibenden Zielen werden auf einmal angezeigt, damit EAGLE"
+					" im Anschluss ohne weitere Nachfragen durcharbeiten kann.</li>\n"
+					"<li>Es sollte keine der Zielbibliotheken gerade im Bibliotheks-Editor"
+					" geladen sein. Andernfalls äußert sich der Schreibfehler in einer"
+					" Fehlermeldung zu genau jener Zeile im Ausgabeskript, die den WRITE"
+					"-Befehl enthält.\n"
+				"</li>");
+				dlgStretch(1);
+			}
+
+			dlgTabPage("Info") {
+				dlgHBoxLayout
+					dlgSpacing(300);
+
+				dlgLabel("<strong>Super-Duper-Eagle-Skalierer <small>v2</small></strong>");
+				dlgLabel(
+					"Copyright (c) 2008..2010, Sven Pauli<br />"
+					"All rights reserved.<br />"
+					"sven_pauli@gmx.de"
+				);
+				dlgLabel("Frei für nicht-kommerzielle Verwendung.");
+
+				dlgStretch(1);
+			}
+		}
+
+		dlgHBoxLayout {
+			dlgStretch(1);
+			dlgPushButton("+Start")
+				dlgAccept();
+
+			dlgPushButton("-Schließen")
+				dlgReject();
+		}
+	};
+
+	if (!result)
+		/* Aborted */
+		exit(EXIT_SUCCESS);
+
+
+	/* Convert from percent */
+	scu_symbol /= 100.0;
+	scu_package /= 100.0;
+
+
+	int selected[];
+	string items[];
+	int count;
+	if (source_dir) {
+		/* Glob pattern */
+		count = fileglob(items, source);
+
+		/* Check status */
+		string libraries[];
+		for (int i = 0; i < count; i++) {
+			string destination_file = destination + "/" + filename(items[i]);
+			string action;
+			if (!file_exists(destination_file)) {
+				/* Destination does not exist */
+				action = "erzeugen";
+				selected[i] = 1;
+			}
+			else if ( filetime(items[i]) > filetime(destination_file) ) {
+				/* Source is newer than destination */
+				action = "aktualisieren";
+				selected[i] = 2;
+			}
+			else if (!update_only) {
+				/* Treat all libraries */
+				action = "überschreiben";
+				selected[i] = 3;
+			}
+			else {
+				/* Destination is up to date */
+				action = "";
+				selected[i] = -3;
+			}
+
+			libraries[i] =
+				str_replace(items[i], '\t', " ") +
+				"\t" + action;
+		}
+
+		/* Validate */
+		int selected_item;
+		result = dlgDialog("Bestätigung") {
+			dlgLabel("Folgende Bibliotheken werden bearbeitet (Doppelklick schaltet um):");
+
+			dlgHBoxLayout
+				dlgSpacing(400);
+
+			dlgHBoxLayout {
+				dlgVBoxLayout
+					dlgSpacing(400);
+
+				dlgListView("Datei\tVorgang", libraries, selected_item) {
+					string fields[];
+					strsplit(fields, libraries[selected_item], '\t');
+
+					selected[selected_item] *= -1;
+					switch (selected[selected_item]) {
+						case 1:
+							fields[1] = "erzeugen";
+							break;
+
+						case 2:
+							fields[1] = "aktualisieren";
+							break;
+
+						case 3:
+							fields[1] = "überschreiben";
+							break;
+
+						default:
+							fields[1] = "";
+							break;
+					}
+
+					libraries[selected_item] = strjoin(fields, '\t');
+				}
+			}
+
+			dlgHBoxLayout {
+				dlgStretch(1);
+				dlgPushButton("+Start")
+					dlgAccept();
+
+				dlgPushButton("-Abbrechen")
+					dlgReject();
+			}
+		};
+
+		if (!result)
+			/* Aborted */
+			exit(EXIT_SUCCESS);
+
+	}
+	else {
+		items[0] = source;
+		selected[0] = 1;
+		count = 1;
+	}
+
+
+	/* Ask for script file */
+	string script = dlgFileSave("Ausgabeskript", "", "*.scr");
+	if (script == "")
+		/* Aborted */
+		exit(EXIT_SUCCESS);
+
+
+	/* Create or empty file */
+	fileerror();
+	output(script, "wtF");
+	if (fileerror()) {
+		dlgMessageBox("!Konnte Ausgabeskript nicht erzeugen.");
+		exit(EXIT_FAILURE);
+	}
+
+
+	/* Build control script */
+	destination = strip_path(destination);
+	string ooo_commands = "";
+	string commands = "";
+
+	/* Then initiate update or creation */
+	for (int i = 0; i < count; i++) {
+		progress("Erster Durchlauf", i + count, count * 2, "");
+
+		if (selected[i] < 0)
+			/* Do not scale */
+			continue;
+
+
+		if (selected[i] > 1) {
+			/* Need to delete old file first */
+			sprintf(fmt, "REMOVE %s;\n",
+				format_path(destination + "/" + filename(items[i]))
+			); ooo_commands += fmt;
+
+			/* Separately generate these commands in order to allow
+			the user to confirm all the deletions at once before the
+			intense work begins. */
+		}
+
+		sprintf(fmt,
+			"OPEN %s;\n"
+			"RUN %s '2' %d %d %s %s %f %f;\n",
+			format_path(items[i]),
+			format_path(ulp),
+			i, count,
+			format_path(script),
+			format_path(destination + "/" + filename(items[i])),
+			scu_symbol,
+			scu_package
+		); commands += fmt;
+	}
+
+	sprintf(fmt, "RUN %s '3' %s;\n",
+		format_path(ulp),
+		format_path(script)
+	); commands += fmt;
+
+	/* Start second pass */
+	status("Fertig.");
+	exit(ooo_commands + commands);
+}
+else if (pass == 2) {
+	/* Second pass *************************************************/
+	if ( (argc != (2 + 6)) || !library )
+		calling_error();
+
+	/* Arguments */
+	int prog = strtol(argv[2]);
+	int count = strtol(argv[3]);
+	string script = argv[4];
+	string destination = argv[5];
+	scu_symbol = strtod(argv[6]);
+	scu_package = strtod(argv[7]);
+
+	fileerror();
+	output(script, "atF") {
+		progress("Zweiter Durchlauf", prog, count, filename(destination));
+
+		/* Open destination library */
+		printf("OPEN %s;\n", format_path(destination));
+
+		/* 'Header' */
+		printf("SET SELECT_FACTOR 0;\n");
+		printf("SET UNDO_LOG Off;\n");
+		printf("SET WIRE_BEND 2;\n");
+		printf("GRID mic 1;\n");
+		printf("DISPLAY All;\n");
+
+		/* Export library */
+		library(L) {
+			/* Meta */
+			printf("DESCRIPTION %s;\n", format_string(L.description));
+
+			/* Bits */
+			L.packages(P) export_package(P);
+			L.symbols(S) export_symbol(S);
+
+			/* Devices */
+			L.devicesets(DS) export_deviceset(DS);
+		}
+
+		/* Save new library */
+		printf("WRITE;\n");
+	}
+
+	if (fileerror()) {
+		dlgMessageBox("!Konnte nicht an Ausgabeskript anhängen.");
+		exit(EXIT_FAILURE);
+	}
+
+
+	/* Done */
+	status("Fertig.");
+}
+else if (pass == 3) {
+	/* Third pass **************************************************/
+	if (argc != (2 + 1))
+		calling_error();
+
+	/* Arguments */
+	string script = argv[2];
+	
+	string commands;
+	status("Dritter Durchlauf: Bibliotheken bauen");
+	result = dlgMessageBox(";Skript erstellt.<br />Möchten Sie es nun ausführen?", "-Nein", "+Ja", "Lieber vorher nochmal reingucken");
+	if (result == 2) {
+		/* Read script */
+		fileerror();
+		fileread(commands, script);
+		if (fileerror()) {
+			dlgMessageBox("!Konnte erzeugtes Ausgabeskript nicht mehr lesen.");
+			exit(EXIT_FAILURE);
+		}
+
+		result = dlgDialog("Ausgabeskript") {
+			dlgHBoxLayout
+				dlgSpacing(400);
+
+			dlgLabel("Erzeugtes Skript:");
+			dlgHBoxLayout {
+				dlgVBoxLayout
+					dlgSpacing(400);
+
+				dlgTextView(commands);
+			}
+
+			dlgHBoxLayout {
+				dlgStretch(1);
+				dlgPushButton("+Jetzt ausführen")
+					dlgAccept();
+
+				dlgPushButton("-Lieber doch nicht")
+					dlgReject();
+			}
+		};
+	}
+
+	if (result) {
+		/* Add a little message when finished */
+		sprintf(commands,
+			"SCRIPT %s;\n"
+			"RUN %s '4';\n",
+			script,
+			format_path(ulp)
+		);
+
+		exit(commands);
+	}
+}
+else if (pass = 4) {
+	/* Fourth pass *************************************************/
+	dlgMessageBox(";Fertig!");
+}
+else {
+	calling_error();
+}
+
