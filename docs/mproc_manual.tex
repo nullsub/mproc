@@ -1,0 +1,232 @@
+\documentclass[a4paper, 12pt]{article}
+\pagestyle{plain}
+\usepackage{textcomp}
+\usepackage[none]{hyphenat}
+\title{MPROC Manual and Architecture Description}
+\author{Christian Deussen}
+\date{2013}
+\begin{document}
+	\maketitle
+	\begin{abstract}
+		MPROC is a 16 bit CPU built out of TTL logic chips. The 74HCTxxx logic series is used.
+	\end{abstract}
+	\tableofcontents
+	\newpage
+		\section{Overview}
+	\subsection {Machine word}
+	\begin{itemize}
+		\item always one nibble of opcode bits and the second nibble includes which registers are involved
+		\item the next byte can be an immediate value.
+		\item data-bus is 8 bits wide
+		\item address-bus is 15 bits wide: 0x0000 to 0x7FFF is the ram, 0x8000 to 0xFFFF is the flash! 
+		\item thus we have 32kb flash and 32kb ram. We can execute both from ram and flash
+		\item To adress something larger than 8-bit addresses, the BankRegister(BR) is used for the bits 7..15. Affected instructions: STR and LDA
+		\item PC is 16 bits wide: P\_L:0...7; PC\_H:8...15
+		\item ALU is 8 bits wide
+	\end{itemize}
+
+	\subsection {Stack}
+	\begin{itemize}
+		\item 32kb Stack FIFO. The stack memory can only be addressed via PUSH and POP. No stack pointer arithmetic is possible because the stack is not connected to the address-bus. Thus we have a total of 32kb Ram +32KB Stack = 64kb RAM and 32kb ROM.
+		\item The Stack pointer is implemented using 74xx193 binary counter chips. 
+	\end{itemize}
+
+	\subsection{I/O}
+	\begin{itemize}
+		\item I/O can be written to with the pop/ldr and read from with the push/str instructions. There are 2 Output ports and one input port. Always 8 bits wide.
+	\end{itemize}
+
+	\subsection{Memory}
+	\begin{itemize}
+		\item Ram(w24129ak12) and Flash(W29EE011) is connected to the same address Bus. The memory devices have both three-states outputs. The bank register(BR) controls with the highest bit(bit14 on the address bus) whether RAM or the flash will be targeted. Writing to the flash will not work since a whole page(256bits) needs to be written at once. Maybe I can upgrade this later with a more decent flash chip, which will allow easy writing just like the ram.
+	\end{itemize}
+
+	\subsection{JMP(C/Z)-instructions}
+	\begin{itemize}
+		\item Since the jmp instructions do not support offset but only immediate operands, the compiler needs to make sure that if a target of a jmp is not in the current 256byte block, a FAR\_JMP with both  high and low address are emmitted.
+		\item If the JMP has only one argument, it is used as an offset instead as an address. Encoded with operand 0x00: reg1, number.
+	\end{itemize}
+	\newpage
+\section{Overview}
+	\subsection {Machine word}
+	\begin{itemize}
+		\item always one nibble of opcode bits and the second nibble includes which registers are involved
+		\item the next byte can be an immediate value.
+		\item data-bus is 8 bits wide
+		\item address-bus is 15 bits wide: 0x0000 to 0x7FFF is the ram, 0x8000 to 0xFFFF is the flash! 
+		\item thus we have 32kb flash and 32kb ram. We can execute both from ram and flash
+		\item To adress something larger than 8-bit addresses, the BankRegister(BR) is used for the bits 7..15. Affected instructions: STR and LDA
+		\item PC is 16 bits wide: P\_L:0...7; PC\_H:8...15
+		\item ALU is 8 bits wide
+	\end{itemize}
+
+	\subsection {Stack}
+	\begin{itemize}
+		\item 32kb Stack FIFO. The stack memory can only be addressed via PUSH and POP. No stack pointer arithmetic is possible because the stack is not connected to the address-bus. Thus we have a total of 32kb Ram +32KB Stack = 64kb RAM and 32kb ROM.
+		\item The Stack pointer is implemented using 74xx193 binary counter chips. 
+	\end{itemize}
+
+	\subsection{I/O}
+	\begin{itemize}
+		\item I/O can be written to with the pop/ldr and read from with the push/str instructions. There are 2 Output ports and one input port. Always 8 bits wide.
+	\end{itemize}
+
+	\subsection{Memory}
+	\begin{itemize}
+		\item Ram(w24129ak12) and Flash(W29EE011) is connected to the same address Bus. The memory devices have both three-states outputs. The bank register(BR) controls with the highest bit(bit14 on the address bus) whether RAM or the flash will be targeted. Writing to the flash will not work since a whole page(256bits) needs to be written at once. Maybe I can upgrade this later with a more decent flash chip, which will allow easy writing just like the ram.
+	\end{itemize}
+
+	\subsection{JMP(C/Z)-instructions}
+	\begin{itemize}
+		\item Since the jmp instructions do not support offset but only immediate operands, the compiler needs to make sure that if a target of a jmp is not in the current 256byte block, a FAR\_JMP with both  high and low address are emmitted.
+		\item If the JMP has only one argument, it is used as an offset instead as an address. Encoded with operand 0x00: reg1, number.
+	\end{itemize}
+	\newpage
+	\section{Instructions}
+	\subsection{Instruction Set}
+	\small\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Low Nibble & Instruction & Note & Decode Table\\ \hline
+			0x0 & ADD reg1, reg2 & reg1 + reg2. Result in reg1 & A\\ \hline
+			0x1 & SUB reg1, reg2 & reg1 - reg2. Result in reg1 & C \\ \hline
+			0x2 & NOR reg1, reg2 & reg1 = !(reg1 OR reg2) & C \\ \hline
+			0x3 & AND reg1, reg2 & reg1 = reg1 AND reg2 & A\\ \hline
+			0x4 & MOV reg1, reg2 & reg1 = reg2 & A\\ \hline
+			0x5 & MOVZ reg1, reg2 & MOV if reg1 is zero &  A\\ \hline
+			0x6 & JMP reg1, reg2 & set PC\_L to reg1, PC\_H to reg2 & A\\ \hline
+			0x7 & JMPZ reg1, reg2 & JMP if reg1 is zero & A\\ \hline
+			0x8 & JMPC reg1, reg2 & JMP if carry is set & A\\ \hline
+			0x9 & STR reg1 & Store reg1 where BR points to & A\\ \hline
+			0xA & LDR reg1 & Load into reg1 where BR points to & A\\ \hline
+			0xB & SET\_BR reg1, reg2 & Set BR\_L to reg1, BR\_H to reg2 & A\\ \hline
+			0xC & Unused &  &  \\ \hline
+			0xD & COUNT\_BR UP/DOWN & increase(UP) or decrease(down) BR by one & A\\ \hline
+			0xE & PUSH reg1 & Push reg1 to the stack & A\\ \hline
+			0xF & POP reg1 & Pop stack item into reg1 & A\\	\hline
+		\end{tabular}
+	\end{center}
+	\newpage
+	\subsection{Argument Decode Table A}
+ The second instruction Nibble defines the operand registers.
+Table A is used by MOV, ALU, SET\_BR and ALU
+	\begin{center}
+		\begin{tabular}{|c|c|p{6cm}|}
+			\hline
+			Opcode Nibble 2 & Involved Registers & Note \\ \hline
+			0x0 & reg1, number &JMP(Z/C) uses this operand byte to encode 
+JMP(Z/C) pc\_high, number
+thus JMP(Z/C) reg1, number cant be used. \\ \hline
+			0x1 & reg2, number & \\ \hline
+			0x2 & reg3, number & \\ \hline
+			0x3 & reg4, number & \\ \hline
+			0x4 & reg1, reg2 & \\ \hline
+			0x5 & reg1, reg3 & \\ \hline
+			0x6 & reg1, reg4 & \\ \hline
+			0x7 & reg1, reg1 & \\ \hline
+			0x8 & reg2, reg3 & \\ \hline
+			0x9 & reg2, reg4 & \\ \hline
+			0xA & reg2, reg1 & \\ \hline
+			0xB & reg3, reg2 & \\ \hline
+			0xC & reg3, reg4 & \\ \hline
+			0xD & reg3, reg1 & \\ \hline
+			0xE & reg4, reg2 & \\ \hline
+			0xF & reg4, reg3 & \\ \hline
+		\end{tabular}
+	\end{center}	
+	\newpage
+	\subsection{Argument Input Table B}
+	Used by LDA and POP
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Opcode Nibble 2 & Involved Registers \\ \hline
+			0x0 & reg1 \\ \hline
+			0x1 & reg2 \\ \hline
+			0x2 & reg3 \\ \hline
+			0x3 & reg4 \\ \hline
+			0x4 & BR\_LOW \\ \hline
+			0x5 & BR\_HIGH \\ \hline
+			0x6 & IO\_OUTPUT\_REGISTER\_1 \\ \hline
+			0x7 & IO\_OUTPUT\_REGISTER\_2 \\ \hline
+		\end{tabular}
+	\end{center}	
+	\subsection{Argument Output Table C}
+	Used by STR and PUSH
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Opcode Nibble 2 & Involved Registers \\ \hline
+			0x0 & reg1 \\ \hline
+			0x1 & reg2 \\ \hline
+			0x2 & reg3 \\ \hline
+			0x3 & reg4 \\ \hline
+			0x4 & number \\ \hline
+			0x5 & BR\_LOW \\ \hline
+			0x6 & BR\_HIGH \\ \hline
+			0x7 & IO\_INPUT\_REGISTER\_1 \\ \hline
+		\end{tabular}
+	\end{center}
+	\section{Calling Convention}
+		\begin{itemize}
+			\item Caller saves his working registers(For example on the stack)
+			\item Arguments are passed in Reg1, Reg2, Reg3. Additional arguments are passed via the stack(Reg4 cannot be used since it is needed for the call)
+			\item Return Address is passed through the stack. First the Low byte is pushed, than the High byte
+			\item Return values are in Reg1 and Reg2. Additional return values are on the stack (Reg3 and 4 cannot be used since they are needed for the return JMP instruction)
+		\end{itemize}
+	\section{Hardware Implementation}
+	The 74HCT logic family is used.  Write here the propagation delay calculation, Power consumption, and performance charachteristics.
+	PC and SP are implemented using 74xx193 binary counters. With that no 16 bit addition needs to be done.
+	\subsection{Accessing Memory}
+	\begin{center}
+		\begin{tabular}{|c|p{6cm}|p{6cm}|}
+			\hline
+			Step & Read & Write \\ \hline
+			1 & Apply address to A-bus, clear Not\_OE and NOT\_CS & Apply address to A-bus, Apply data to D-bus, clear Not\_OE and NOT\_CS \\ \hline
+			2 & wait \textgreater\ 6ns  & wait \textgreater\ 6ns \\ \hline
+			3 & Read Data from Databus/Write read data back to registers & Set NOT\_CS \\ \hline
+			4 & Set NOT\_CS  & \\ \hline
+		\end{tabular}
+	\end{center}
+	\subsection{Fetch and Decode}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Step & Fetch and Decode \\ \hline
+			1 & Connect PC to Mem Addr, IR to DBus \\ \hline
+			2 & Do Mem Read and IR write Signals \\ \hline
+			3 & Connect PC and 1(through multiplexer ctrl)to ALU, ADD ctrl \\ \hline
+			4 & Reg write back \\ \hline
+		\end{tabular}
+	\end{center}	
+	\newpage
+	\subsection{Execution Steps}
+	\begin{center}
+		\begin{tabular}{|c|p{2cm}|p{3cm}|p{3cm}|p{2cm}|c|}
+			\hline
+			Command & 1 & 2 & 3 & 4 & 5 \\ \hline
+			ALU & Write Reg A to DBUS. High to low triggered & Latch Reg A from DBUS for the ALU. Happens at the High to low transition. & Write Reg B to DBUS & At the High to low transition of the state signal the ALU output is latched & Fill Reg\\ \hline
+			MOV(Z) & Write Reg to DBUS & Fill Regs & & &\\ \hline
+			LDA & & & & & \\ \hline
+			STR & & & & & \\ \hline
+			JMP(C/Z) & Write Reg A to DBUS & Full PC\_LOW with reg. if Reg1 is 0x00 done& Apply Reg B to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH with Reg B & \\ \hline
+			COUNT\_BR & Increment/Decrement BR & & & & \\ \hline
+			PUSH & Decrement SP & & & & \\ \hline
+			POP & & & Increment SP & & \\ \hline
+			SET\_BR & Write Reg to DBUS & Fill PC\_LOW with reg & Apply the Table 2 multiplexer that decode table 2 is used & Fill BR with Reg 2 & \\ \hline
+			& & & & & \\ \hline
+		\end{tabular}
+	\end{center}
+	\newpage
+	\section{Current Problems}
+	\subsection{ALU}
+		ALU carry\_out signal is changed by NOR and AND instructions. Need a flip flop or something similar.
+		Do we need a flip flop for REG1\_ZERO\_MOVZ if reg1 is changed during a MOVZ instruction(Which could in turn have an effect on the STATE\_SIGNAL of the MOV instruction)?
+	\subsection{Startup}
+		How to initialize the registers when power is turned on?
+		RING\_CNTR\_CLR needs to go high. This clears the Ring Counter. Is this signal low active?
+		CLR\_ALL\_REGS\_NOT needs to go low for a short period and then for the rest of the time HIGH
+	\subsection{Memory Access}
+		Read: Can we apply the address, clear\_not\_oe and clear\_not\_cs in one instruction and fill the registers in the following instruction? 2 cycle memory access would be possible with this!
+\end{document}
+
