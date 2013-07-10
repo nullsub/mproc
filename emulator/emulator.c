@@ -14,12 +14,12 @@
 void dump_mem();
 
 struct registers {
+	uint8_t reg0;
 	uint8_t reg1;
 	uint8_t reg2;
-	uint8_t reg3;
-	uint8_t	reg4;
-	uint8_t br_low;
-	uint8_t br_high;
+	uint8_t	reg3;
+	uint8_t ptr_low;
+	uint8_t ptr_high;
 	uint8_t pc_low;
 	uint8_t pc_high;
 
@@ -31,8 +31,8 @@ struct cpu {
 	uint8_t flash[FLASH_SIZE];
 	uint8_t stack[STACK_SIZE];
 
+	uint8_t sreg0;
 	uint8_t sreg1;
-	uint8_t sreg2;
 	uint8_t in_port1;
 	uint8_t in_port2;
 	uint8_t out_port1;
@@ -44,7 +44,7 @@ struct cpu {
 	int carry;
 }cpu;
 
-enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_BR, BREAK, COUNT_BR, PUSH, POP};
+enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_PTR, BREAK, PTR_ADD, PUSH, POP};
 
 struct opcode {
 	char name[10];
@@ -72,9 +72,9 @@ const struct opcode opcodes[] = {
 	{"JMPC", 1, JMPC},
 	{"STR", 1, STR},
 	{"LDA", 1, LDA},
-	{"SET_BR", 0, SET_BR},
+	{"SET_PTR", 0, SET_PTR},
 	{"BREAK", 0, BREAK},
-	{"COUNT_BR", 1, COUNT_BR},
+	{"PTR_ADD", 1, PTR_ADD},
 	{"PUSH",1, PUSH},
 	{"POP",1, POP},
 };
@@ -89,39 +89,39 @@ struct arg_entry {
 
 const struct arg_entry arg_table[2][16] = {
 	{
-		{"reg1", "number", 0x00, &cpu.regs.reg1, &cpu.regs.a_number},
-		{"reg2", "number", 0x10, &cpu.regs.reg2, &cpu.regs.a_number},
-		{"reg3", "number", 0x20, &cpu.regs.reg3, &cpu.regs.a_number},
-		{"reg4", "number", 0x30, &cpu.regs.reg4, &cpu.regs.a_number},
-		{"reg1", "reg2", 0x40, &cpu.regs.reg1, &cpu.regs.reg2},
-		{"reg1", "reg3", 0x50, &cpu.regs.reg1, &cpu.regs.reg3},
-		{"reg1", "reg4", 0x60, &cpu.regs.reg1, &cpu.regs.reg4},
-		{"reg2", "reg1", 0x70, &cpu.regs.reg2, &cpu.regs.reg1},
-		{"reg2", "reg3", 0x80, &cpu.regs.reg2, &cpu.regs.reg3},
-		{"reg2", "reg4", 0x90, &cpu.regs.reg2, &cpu.regs.reg4},
-		{"reg3", "reg1", 0xA0, &cpu.regs.reg3, &cpu.regs.reg1},
-		{"reg3", "reg2", 0xB0, &cpu.regs.reg3, &cpu.regs.reg2},
-		{"reg3", "reg4", 0xC0, &cpu.regs.reg3, &cpu.regs.reg4},
-		{"reg4", "reg1", 0xD0, &cpu.regs.reg4, &cpu.regs.reg1},
-		{"reg4", "reg2", 0xE0, &cpu.regs.reg4, &cpu.regs.reg2},
-		{"reg4", "reg3", 0xF0, &cpu.regs.reg4, &cpu.regs.reg3},
+		{"reg0", "number", 0x00, &cpu.regs.reg0, &cpu.regs.a_number},
+		{"reg1", "number", 0x10, &cpu.regs.reg1, &cpu.regs.a_number},
+		{"reg2", "number", 0x20, &cpu.regs.reg2, &cpu.regs.a_number},
+		{"reg3", "number", 0x30, &cpu.regs.reg3, &cpu.regs.a_number},
+		{"reg0", "reg1", 0x40, &cpu.regs.reg0, &cpu.regs.reg1},
+		{"reg0", "reg2", 0x50, &cpu.regs.reg0, &cpu.regs.reg2},
+		{"reg0", "reg3", 0x60, &cpu.regs.reg0, &cpu.regs.reg3},
+		{"reg1", "reg0", 0x70, &cpu.regs.reg1, &cpu.regs.reg0},
+		{"reg1", "reg2", 0x80, &cpu.regs.reg1, &cpu.regs.reg2},
+		{"reg1", "reg3", 0x90, &cpu.regs.reg1, &cpu.regs.reg3},
+		{"reg2", "reg0", 0xA0, &cpu.regs.reg2, &cpu.regs.reg0},
+		{"reg2", "reg1", 0xB0, &cpu.regs.reg2, &cpu.regs.reg1},
+		{"reg2", "reg3", 0xC0, &cpu.regs.reg2, &cpu.regs.reg3},
+		{"reg3", "reg0", 0xD0, &cpu.regs.reg3, &cpu.regs.reg0},
+		{"reg3", "reg1", 0xE0, &cpu.regs.reg3, &cpu.regs.reg1},
+		{"reg3", "reg2", 0xF0, &cpu.regs.reg3, &cpu.regs.reg2},
 	},{
-		{"reg1", "reg1", 0x00, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg2", 0x10, &cpu.regs.reg1, &cpu.regs.reg2},
-		{"reg1", "reg3", 0x20, &cpu.regs.reg1, &cpu.regs.reg3},
-		{"reg1", "reg4", 0x30, &cpu.regs.reg1, &cpu.regs.reg4},
-		{"reg1", "number", 0x40, &cpu.regs.reg1, &cpu.regs.a_number},
-		{"reg1", "br_low" , 0x50, &cpu.regs.reg1, &cpu.regs.br_low},
-		{"reg1", "br_high", 0x60, &cpu.regs.reg1, &cpu.regs.br_high},
-		{"reg1", "reg1", 0x70, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0x80, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0x90, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0xA0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0xB0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0xC0, &cpu.regs.reg4, &cpu.regs.reg1},
-		{"reg1", "reg1", 0xD0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0xE0, &cpu.regs.reg1, &cpu.regs.reg1},
-		{"reg1", "reg1", 0xF0, &cpu.regs.reg1, &cpu.regs.reg1},
+		{"reg0", "reg0", 0x00, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg1", 0x10, &cpu.regs.reg0, &cpu.regs.reg1},
+		{"reg0", "reg2", 0x20, &cpu.regs.reg0, &cpu.regs.reg2},
+		{"reg0", "reg3", 0x30, &cpu.regs.reg0, &cpu.regs.reg3},
+		{"reg0", "number", 0x40, &cpu.regs.reg0, &cpu.regs.a_number},
+		{"reg0", "ptr_low" , 0x50, &cpu.regs.reg0, &cpu.regs.ptr_low},
+		{"reg0", "ptr_high", 0x60, &cpu.regs.reg0, &cpu.regs.ptr_high},
+		{"reg0", "reg0", 0x70, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0x80, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0x90, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0xA0, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0xB0, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0xC0, &cpu.regs.reg3, &cpu.regs.reg0},
+		{"reg0", "reg0", 0xD0, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0xE0, &cpu.regs.reg0, &cpu.regs.reg0},
+		{"reg0", "reg0", 0xF0, &cpu.regs.reg0, &cpu.regs.reg0},
 	}
 };
 
@@ -187,12 +187,12 @@ void emu(FILE * file)
 	if(!feof(file))
 		printf("bin too large!\n");
 
+	cpu.regs.reg0 = 0x00;
 	cpu.regs.reg1 = 0x00;
 	cpu.regs.reg2 = 0x00;
 	cpu.regs.reg3 = 0x00;
-	cpu.regs.reg4 = 0x00;
-	cpu.regs.br_low = 0x00; 
-	cpu.regs.br_high = 0x00; 
+	cpu.regs.ptr_low = 0x00; 
+	cpu.regs.ptr_high = 0x00; 
 	cpu.regs.pc_high = 0x7F;
 	cpu.regs.pc_low = 0xFF;
 
@@ -235,26 +235,26 @@ void emu(FILE * file)
 				*arg1 = *arg2;
 				break;	
 			case MOVZ:
-				if(!cpu.regs.reg1) 
+				if(!cpu.regs.reg0) 
 					*arg1 = *arg2;
 				break;
-			case SET_BR: 
-				cpu.regs.br_high = *arg1;
-				cpu.regs.br_low = *arg2;
+			case SET_PTR: 
+				cpu.regs.ptr_high = *arg1;
+				cpu.regs.ptr_low = *arg2;
 				break;
-			case COUNT_BR: 
-				tmp16_bit = ((cpu.regs.br_high << 8) | (cpu.regs.br_low));
-				if(*arg2 == 1) {
-					tmp16_bit ++;
-				} else {
-					tmp16_bit --;
+			case PTR_ADD: 
+				tmp16_bit = ((cpu.regs.ptr_high << 8) | (cpu.regs.ptr_low));
 
-				}
-				cpu.regs.br_low = (uint8_t)(tmp16_bit & 0x00FF);
-				cpu.regs.br_high = (uint8_t)((tmp16_bit >> 8));
+				int8_t nr = *arg2;
+				//printf("16 bit is %i, arg is %i\n", tmp16_bit, nr);
+				tmp16_bit += nr;
+				//printf("after: 16 bit is %i, arg is %i\n", tmp16_bit, nr);
+
+				cpu.regs.ptr_low = (uint8_t)(tmp16_bit & 0x00FF);
+				cpu.regs.ptr_high = (uint8_t)((tmp16_bit >> 8));
 				break;
 			case STR:
-				tmp16_bit = ((cpu.regs.br_high << 8) | (cpu.regs.br_low));
+				tmp16_bit = ((cpu.regs.ptr_high << 8) | (cpu.regs.ptr_low));
 				if(tmp16_bit == UART) {
 					uart_bffr[uart_i++] = *arg2;
 					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
@@ -266,20 +266,20 @@ void emu(FILE * file)
 				write_byte(*arg2, tmp16_bit);
 				break;
 			case LDA:
-				*arg2 = get_byte((cpu.regs.br_high << 8)| (cpu.regs.br_low));
+				*arg2 = get_byte((cpu.regs.ptr_high << 8)| (cpu.regs.ptr_low));
 				break;
 			case BREAK:	
-				printf("hit BREAK! exit!\n");
+				printf("hit break! exit!\n");
 				dump_mem();
-				printf("registers:\n reg1: 0x%.2x, reg2: 0x%.2x\n", cpu.regs.reg1, cpu.regs.reg2);
-				printf("i16(reg1,reg2): %i \n", (cpu.regs.reg1) | (cpu.regs.reg2 << 8));
+				printf("registers:\n reg0: 0x%.2x, reg1: 0x%.2x\n", cpu.regs.reg0, cpu.regs.reg1);
+				printf("i16(reg0,reg1): %i \n", (cpu.regs.reg0) | (cpu.regs.reg1 << 8));
 				return;
 				cpu.out_port1 = *arg1;
 				cpu.out_port2 = *arg2; 
 				break;
 			case JMPZ:
-				if(!cpu.regs.reg1) {
-					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
+				if(!cpu.regs.reg0) {
+					if(*arg1 == cpu.regs.reg0 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
 						cpu.regs.pc_low = *arg2;
 						break;
 					}
@@ -289,7 +289,7 @@ void emu(FILE * file)
 				break;
 			case JMPC:
 				if(cpu.carry) {
-					if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
+					if(*arg1 == cpu.regs.reg0 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
 						cpu.regs.pc_low = *arg2;
 						break;
 					}
@@ -298,7 +298,7 @@ void emu(FILE * file)
 				}
 				break;
 			case JMP: 
-				if(*arg1 == cpu.regs.reg1 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
+				if(*arg1 == cpu.regs.reg0 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
 					cpu.regs.pc_low = *arg2;
 					break;
 				}

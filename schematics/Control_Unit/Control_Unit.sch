@@ -7389,7 +7389,7 @@ type V526-0, grid 2.5 mm</description>
 <text x="228.6" y="-363.22" size="1.778" layer="91">SP never needs to load input. I just gets reseted on startup</text>
 <text x="1168.4" y="330.2" size="5.08" layer="91">StackMemory</text>
 <text x="-264.16" y="480.06" size="2.54" layer="91">Multiplexer to use either Output_REGX or INPUT_REGX for the output selecter</text>
-<text x="325.12" y="-208.28" size="1.778" layer="91">BR-Data Register</text>
+<text x="325.12" y="-208.28" size="1.778" layer="91">PTR - Pointer Register</text>
 <text x="-419.1" y="-335.28" size="1.778" layer="91">COUNT_BR</text>
 <text x="-444.5" y="-337.82" size="1.778" layer="91">UP</text>
 <text x="-447.04" y="-355.6" size="1.778" layer="91">DOWN</text>

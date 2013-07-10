@@ -5,3 +5,8 @@
 *.fls
 *.fdb_latexmk
 *.toc
+*.xref
+*.lg
+*.idv
+*.4ct
+*.4tc

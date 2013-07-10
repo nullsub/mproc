@@ -1,5 +1,6 @@
 /*TODO:
  * use malloc instead of static WORD_LENGTH defines
+ * implement range check for PTR_ADD operand. PTR_ADD 254 should emit an error! now it emits PTR_ADD -2
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +9,7 @@
 #include "assembler.h"
 
 #define COMMENT_CHARACKTER ';'
-#define MAX_OPCODE_LENGTH  2// Max length in bytes an instruction might take
+#define MAX_OPCODE_LENGTH  2 //Max length in bytes an instruction might take
 #define WORD_LENGTH	50  //MAX instruction or ARG length in the source file
 
 unsigned int curr_line = 0;
@@ -17,7 +18,7 @@ FILE *src_file;
 const uint16_t offset_bin = 0x7FFF;
 
 uint8_t *target_bin; 
-unsigned int target_length = 0; // length of the target_bin array
+unsigned int target_bin_len = 0;
 
 char *curr_statement;
 
@@ -55,9 +56,9 @@ const struct opcode opcodes[] = {
 	{"JMPC",1,0x08},
 	{"STR",1,0x09},
 	{"LDA",1,0x0A},
-	{"SET_BR",0,0x0B},
+	{"SET_PTR",0,0x0B},
 	{"BREAK",0,0x0C},
-	{"COUNT_BR",1,0x0D},
+	{"PTR_ADD",1,0x0D},
 	{"PUSH",1,0x0E},
 	{"POP",1,0x0F},
 };
@@ -70,39 +71,39 @@ struct arg_entry {
 
 const struct arg_entry arg_table[2][16] = { 
 	{
-		{"reg1", "number", 0x00},
-		{"reg2", "number", 0x10},
-		{"reg3", "number", 0x20},
-		{"reg4", "number", 0x30},
-		{"reg1", "reg2", 0x40},
-		{"reg1", "reg3", 0x50},
-		{"reg1", "reg4", 0x60},
-		{"reg2", "reg1", 0x70},
-		{"reg2", "reg3", 0x80},
-		{"reg2", "reg4", 0x90},
-		{"reg3", "reg1", 0xA0},
-		{"reg3", "reg2", 0xB0},
-		{"reg3", "reg4", 0xC0},
-		{"reg4", "reg1", 0xD0},
-		{"reg4", "reg2", 0xE0},
-		{"reg4", "reg3", 0xF0},
+		{"reg0", "number", 0x00},
+		{"reg1", "number", 0x10},
+		{"reg2", "number", 0x20},
+		{"reg3", "number", 0x30},
+		{"reg0", "reg1", 0x40},
+		{"reg0", "reg2", 0x50},
+		{"reg0", "reg3", 0x60},
+		{"reg1", "reg0", 0x70},
+		{"reg1", "reg2", 0x80},
+		{"reg1", "reg3", 0x90},
+		{"reg2", "reg0", 0xA0},
+		{"reg2", "reg1", 0xB0},
+		{"reg2", "reg3", 0xC0},
+		{"reg3", "reg0", 0xD0},
+		{"reg3", "reg1", 0xE0},
+		{"reg3", "reg2", 0xF0},
 	},{
-		{"reg1", "reg1", 0x00},
-		{"reg1", "reg2", 0x10},
-		{"reg1", "reg3", 0x20},
-		{"reg1", "reg4", 0x30},
-		{"reg1", "number", 0x40},
-		{"reg1", "br_low", 0x50},
-		{"reg1", "br_high", 0x60},
-		{"reg1", "reg1", 0x70}, 
-		{"reg1", "reg1", 0x80}, //Unused
-		{"reg1", "reg1", 0x90}, //Unused
-		{"reg1", "reg1", 0xA0}, //Unused
-		{"reg1", "reg1", 0xB0}, //Unused
-		{"reg1", "reg1", 0xC0}, //Unused
-		{"reg1", "reg1", 0xD0}, //Unused
-		{"reg1", "reg1", 0xE0}, //Unused
-		{"reg1", "reg1", 0xF0}, //Unused
+		{"reg0", "reg0", 0x00},
+		{"reg0", "reg1", 0x10},
+		{"reg0", "reg2", 0x20},
+		{"reg0", "reg3", 0x30},
+		{"reg0", "number", 0x40},
+		{"reg0", "ptr_low", 0x50},
+		{"reg0", "ptr_high", 0x60},
+		{"reg0", "reg0", 0x70}, 
+		{"reg0", "reg0", 0x80}, //Unused
+		{"reg0", "reg0", 0x90}, //Unused
+		{"reg0", "reg0", 0xA0}, //Unused
+		{"reg0", "reg0", 0xB0}, //Unused
+		{"reg0", "reg0", 0xC0}, //Unused
+		{"reg0", "reg0", 0xD0}, //Unused
+		{"reg0", "reg0", 0xE0}, //Unused
+		{"reg0", "reg0", 0xF0}, //Unused
 	}
 };
 
@@ -127,9 +128,8 @@ struct define {
 }; 
 struct define *defines;
 
-struct label_table provide_label;// provides the actual numbers.
+struct label_table provide_label; // provides the actual numbers 
 struct label_table need_label; //labels which need to be exchanged by the numbers
-
 
 int translate(char *); //translates one stament to the opcode
 int get_statement(char **); //returns line number. If end of file, it returns 0
@@ -137,16 +137,45 @@ int get_line(char **str); //return line number
 void add_byte(uint8_t c); 
 void fix_labels();
 void failure_exit(char * cause);
-int preprocess(char **str);//preprocess one line
+int preprocess(char **str); //preprocess one line
 void get_word(char * str, char * target, int word_nr);
-
-int get_number_16(char *str, uint16_t *c);
-int get_number_8(char *str,  uint8_t *c);
 
 void print_table();
 void add_label(char * label_name, unsigned int target_offset, enum label_type type, struct label_table *target);
 void add_define_list(char *name, char *list);
 void free_lists();
+
+int get_number_8(char *str, int8_t *c)
+{
+	int16_t nr;
+	int ret = get_number_16(str, &nr);
+	if(ret && (nr > 255 || nr < -128)) {
+		failure_exit("number out of range");
+	}
+	*c = nr;
+	return ret;
+}
+
+int get_number_16(char *str, int16_t *c)
+{	
+	if(str[0] == '0' && str[1] == 'x') {
+		for(int i = 2; i < strlen(str); i++) {
+			if(!((str[i] <= '9' && str[i] >= '0') || (str[i] <= 'F' && str[i] >= 'A'))) {
+				failure_exit("wrong number");
+			}
+		}
+		unsigned int tmp;
+		char * tmp_str = &str[2];
+		sscanf(tmp_str,"%x",&tmp);
+		*c = tmp;
+		return 1;
+	}
+	if((str[0] <= '9' && str[0] > '0') || (str[0] == '-' && str[1] <= '9' && str[1] > '0') || (str[0] == '0' && str[1] == 0x00)) {
+		*c = atoi(str);
+		return 1;
+	} 
+	return 0;
+}
 
 void assemble(FILE * file, char * output_file_name)
 {	
@@ -176,7 +205,7 @@ void assemble(FILE * file, char * output_file_name)
 		printf("Error in opening output file: %s\n", output_file_name);
 		exit(-1);
 	}
-	fwrite(target_bin, target_length, 1, output_file);
+	fwrite(target_bin, target_bin_len, 1, output_file);
 	fclose(output_file);
 	free(target_bin);
 }
@@ -320,7 +349,7 @@ int preprocess(char **str) //resolve macros and defines before a statement is in
 
 	get_word(*str, name, 0);
 
-	if(!strcmp(".define",name)) { // whether there are new defines
+	if(!strcmp(".define",name)) { //whether there are new defines
 		get_word(*str, name, 1);
 		if(name == NULL) {
 			failure_exit("broken define");
@@ -339,7 +368,7 @@ int get_line(char **str)
 {
 	char c;
 	*str = realloc(*str, 1);
-	do{  // remove leading space
+	do{  //remove leading space
 		c = fgetc (src_file);	
 		if(c == EOF) {
 			*str = 0x00;
@@ -369,12 +398,12 @@ int get_line(char **str)
 void get_word(char * str, char * target, int word_nr)
 {
 	while(*str == ' ' || *str == '\t')
-		str++; // skip leading space
+		str++; //skip leading space
 	for(int i = 0; i < word_nr; i++) {	//skip words
 		while(*str != 0x00 && *str != ' ' && *str != '\t')
 			str++; 
 		while(*str == ' ' || *str  == '\t' || *str == ',')
-			str++; // skip leading space
+			str++; //skip leading space
 	}
 	while(*str && *str != ' ' && *str != '\t' && *str != ',') { //copy word to target
 		*target = *str ++;
@@ -403,7 +432,7 @@ void lookup_opcode(struct instruction * cmd)
 	int number_present = get_number_8(cmd->arg2, &cmd->second_byte);
 	if(!number_present) {
 		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')) {
-			if(!(!strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "reg4") || !strcmp(cmd->arg2, "br_high") || !strcmp(cmd->arg2, "br_low"))) { //FIXME!!!
+			if(!(!strcmp(cmd->arg2, "reg0") || !strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "ptr_high") || !strcmp(cmd->arg2, "ptr_low"))) { //FIXME!
 				label_present = 1;
 				strcpy(cmd->need_label,cmd->arg2);
 			}
@@ -427,40 +456,6 @@ void lookup_opcode(struct instruction * cmd)
 	return;
 }
 
-int get_number_8(char *str, uint8_t *c)
-{
-	int ret = get_number_16(str, (uint16_t*)c);
-	if(*c > 255 && ret) {
-		failure_exit("number too large");
-	}
-	return ret;
-}
-
-int get_number_16(char *str, uint16_t *c)
-{	
-	if((str[0] <= '9' && str[0] > '0') || (str[0] == '0' && str[1] == 0x00)) {
-		*c = atoi(str);
-		for(unsigned int i  = 0; i < strlen(str); i++) {
-			if(str[i] > '9' || str[i] < '0') { 
-				return i+1;
-			}
-		}
-		return strlen(str);
-	} 
-	if(str[0] == '0' && str[1] == 'x') {
-		for(unsigned int i = 2; i < strlen(str); i++) {
-			if(!((str[i] <= '9' && str[i] >= '0') || (str[i] <= 'F' && str[i] >= 'A'))) {
-				failure_exit("wrong number");
-			}
-		}
-		unsigned int tmp;
-		char * tmp_str = &str[2];
-		sscanf(tmp_str,"%x",&tmp);
-		*c = tmp;
-		return strlen(str);
-	}
-	return 0;
-}
 
 void add_constant(char * constant)
 {
@@ -509,11 +504,11 @@ struct instruction * decode_instruction(char * statement)
 	int word_offset = 0;
 	get_word(statement, cmd->cmd_name, 0);
 
-	if(cmd->cmd_name[strlen(cmd->cmd_name)-1] == ':') { // check for labels
+	if(cmd->cmd_name[strlen(cmd->cmd_name)-1] == ':') { //check for labels
 		char * tmp = (char*) malloc(strlen(cmd->cmd_name) + 1);
 		strcpy(tmp, cmd->cmd_name);
 		tmp[strlen(tmp)-1] = 0x00;
-		add_label(tmp, target_length, 0, &provide_label);
+		add_label(tmp, target_bin_len, 0, &provide_label);
 
 		free(tmp);
 
@@ -538,17 +533,17 @@ struct instruction * decode_instruction(char * statement)
 
 	get_word(statement, cmd->arg2, 2 + word_offset);
 
-	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg1", cmd->arg1) && strlen(cmd->arg2) != 0) {	
-		failure_exit("JMP cannot be used with reg1 and a number!");
+	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
+		failure_exit("JMP cannot be used with reg0 and a number!");
 	}
 
-	if(strlen(cmd->arg2) == 0) { // only instruction with one argument. add one... it should not matter... FIXME
+	if(strlen(cmd->arg2) == 0) { //only instruction with one argument. add one... it should not matter... FIXME
 		strcpy(cmd->arg2, cmd->arg1);
-		strcpy(cmd->arg1, "reg1");
+		strcpy(cmd->arg1, "reg0");
 	}
 
 	if(!strcmp("PUSH_RET", cmd->cmd_name)) {
-		if(push_ret)//FIXME
+		if(push_ret) //FIXME
 			failure_exit("PUSH_RET without call");
 		push_ret = 1;
 		char tmp[WORD_LENGTH];
@@ -585,7 +580,7 @@ int translate(char *line) //translates one stament to the opcode
 			return -1;
 	}	
 	if(*cmd->need_label) {
-		enum label_type type = LOW_ADDRESS; // by default take low byte
+		enum label_type type = LOW_ADDRESS; //by default take low byte
 		char *loc = strstr(cmd->need_label, "LOW(");
 		if(loc) {
 			int i;
@@ -602,12 +597,12 @@ int translate(char *line) //translates one stament to the opcode
 			cmd->need_label[i-strlen("HIGH(")] = 0x00;
 			type = HIGH_ADDRESS;
 		}
-		add_label(cmd->need_label, target_length-1, type, &need_label);
+		add_label(cmd->need_label, target_bin_len-1, type, &need_label);
 	}
 	if(!strcmp("JMP", cmd->cmd_name) && push_ret) {
 		char tmp[WORD_LENGTH];
 		sprintf(tmp, "__ret_label_nr_%i_", push_ret_nr);
-		add_label(tmp, target_length, 0, &provide_label);
+		add_label(tmp, target_bin_len, 0, &provide_label);
 		push_ret = 0;
 		push_ret_nr ++;
 	}
@@ -615,10 +610,10 @@ int translate(char *line) //translates one stament to the opcode
 	return 0;
 }
 
-void add_byte(uint8_t c) // returns offset at which the byte was added
+void add_byte(uint8_t c)
 {
-	target_bin = (uint8_t *)realloc(target_bin, target_length+1);
-	target_bin[target_length++] = c;
+	target_bin = (uint8_t *)realloc(target_bin, target_bin_len+1);
+	target_bin[target_bin_len++] = c;
 }
 
 void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_table *target)
@@ -654,7 +649,7 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	}
 
 	target->nr ++;
-	prev->next = (struct label_entry*) malloc(sizeof(struct label_entry));
+	prev->next = (struct label_entry *) malloc(sizeof(struct label_entry));
 	prev->next->next = NULL;
 	prev->next->name = (char *)malloc(strlen(label_name) + 1);
 	strcpy(prev->next->name, label_name);
@@ -671,7 +666,7 @@ void free_label(struct label_entry *label)
 	free(label);
 }
 
-void free_define(struct define *def) //recursivly free the define structures
+void free_define(struct define *def)
 {
 	if(def == NULL)
 		return;

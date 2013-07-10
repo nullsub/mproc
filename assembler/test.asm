@@ -3,156 +3,161 @@
 ;main
 	;Fiboncacci row	
 	PUSH_RET
-	MOV	reg1, 13
-	MOV	reg4, LOW(compute_fibonacci)
-	JMP	reg4, HIGH(compute_fibonacci)
+	PUSH 	0x33
+	PUSH 	0x44
+	POP	ptr_high
+	POP	ptr_low
+	PTR_ADD  -126
+	MOV	reg0, 13
+	MOV	reg3, LOW(compute_fibonacci)
+	JMP	reg3, HIGH(compute_fibonacci)
 
 	;print Hello world
 	PUSH_RET
-	MOV	reg1, HIGH(hello_world)
-	MOV	reg2, LOW(hello_world)
-	MOV	reg4, LOW(uart_print)
-	JMP	reg4, HIGH(uart_print)
+	MOV	reg0, HIGH(hello_world)
+	MOV	reg1, LOW(hello_world)
+	MOV	reg3, LOW(uart_print)
+	JMP	reg3, HIGH(uart_print)
 	
 	;Add two 16bit integers
 	PUSH_RET
-	MOV	reg1, LOW(500)
-	MOV	reg2, HIGH(500)
+	MOV	reg0, LOW(500)
+	MOV	reg1, HIGH(500)
 	PUSH	LOW(30)
 	PUSH	HIGH(30)
-	MOV	reg4, LOW(add16)
-	JMP	reg4, HIGH(add16)
+	MOV	reg3, LOW(add16)
+	JMP	reg3, HIGH(add16)
 
-	BREAK	reg1, reg2 ;done 
+	BREAK	reg0, reg1 ;done 
 
 
 ;add two 16bit numbers together. result is 16 bit
-;reg1 low(nr1)
-;reg2 high(nr1)
-;stack1 low(nr2) -->reg3
-;stack2 high(nr2) -->reg4
-;return in reg1(low), reg2(high)
+;reg0 low(nr1)
+;reg1 high(nr1)
+;stack1 low(nr2) -->reg2
+;stack2 high(nr2) -->reg3
+;return in reg0(low), reg1(high)
 add16:
-	POP	reg4
 	POP	reg3
-	ADD	reg2, reg4; add HIGH
-	ADD	reg1, reg3; add LOW
+	POP	reg2
+	ADD	reg1, reg3; add HIGH
+	ADD	reg0, reg2; add LOW
 	JMPC	add16_2		
-	SUB	reg2, 1
+	SUB	reg1, 1
 add16_2:
-	ADD	reg2, 1
+	ADD	reg1, 1
 
 add_16_end:	
+	POP	reg2
 	POP	reg3
-	POP	reg4
-	JMP	reg3, reg4
+	JMP	reg2, reg3
 
 ;compute *SP fibonacci numbers and print them via UART
 ;ARG1 = nr of fibonacci iterations. max is 255
 compute_fibonacci:
-	MOV	reg2, 0x01 ;reg2 is prev result 2
-	MOV	reg3, reg2 ;reg3 is prev-prev result 1
-	SUB	reg1, 0x02 ; dont need to loop for the numbers 0 and 1
+	MOV	reg1, 0x01 ;reg1 is prev result 2
+	MOV	reg2, reg1 ;reg2 is prev-prev result 1
+	SUB	reg0, 0x02 ; dont need to loop for the numbers 0 and 1
 fibonacci_loop:
 	
 	JMPZ	fibonacci_end
 	JMPC	fibonacci_end
 
-	PUSH	reg2
-	ADD	reg2, reg3 
-	POP	reg3
+	PUSH	reg1
+	ADD	reg1, reg2 
+	POP	reg2
 	
+	PUSH	reg0
 	PUSH	reg1
 	PUSH	reg2
-	PUSH	reg3
 
 	PUSH_RET
-	MOV	reg1, reg2; current fibonacci
-	MOV	reg3, LOW(itoa)
-	JMP	reg3, HIGH(itoa)
+	MOV	reg0, reg1; current fibonacci
+	MOV	reg2, LOW(itoa)
+	JMP	reg2, HIGH(itoa)
 
 	PUSH_RET
-	MOV	reg3, LOW(uart_print)
-	JMP	reg3, HIGH(uart_print)
+	MOV	reg2, LOW(uart_print)
+	JMP	reg2, HIGH(uart_print)
 
-	POP	reg3
 	POP	reg2
 	POP	reg1
+	POP	reg0
 
-	SUB	reg1, 0x01
+	SUB	reg0, 0x01
 	JMP	fibonacci_loop
 fibonacci_end:
+	POP	reg2
 	POP	reg3
-	POP	reg4
-	JMP	reg3, reg4
+	JMP	reg2, reg3
 
 ;print a null terminated c-string.
-;reg1 = HIGH(String)
-;reg2 = LOW(String)
+;reg0 = HIGH(String)
+;reg1 = LOW(String)
 uart_print: 
-	SET_BR	reg1, reg2
+	SET_PTR	reg0, reg1
 uart_print_loop:
-	LDA	reg1
+	LDA	reg0
 	JMPZ	uart_print_end
-	PUSH	br_low
-	PUSH	br_high
-	MOV	reg3, HIGH(UART)
-	SET_BR	reg3, LOW(UART)
-	STR	reg1
-	POP	br_high
-	POP	br_low
-	COUNT_BR 1
+	PUSH	ptr_low
+	PUSH	ptr_high
+	MOV	reg2, HIGH(UART)
+	SET_PTR	reg2, LOW(UART)
+	STR	reg0
+	POP	ptr_high
+	POP	ptr_low
+	PTR_ADD 1
 	JMP	uart_print_loop
 uart_print_end:
-	POP 	reg3; LOW
-	POP 	reg4;HIGH
-	JMP	reg3, reg4
+	POP 	reg2 ;LOW
+	POP 	reg3 ;HIGH
+	JMP	reg2, reg3
 
 ;convert int to string
-;reg1 nr to be converted
-;returns STRING ptr in reg1, reg2
+;reg0 nr to be converted
+;returns STRING ptr in reg0, reg1
 itoa:
-	MOV	reg2, HIGH(ITOA_MEM)
-	SET_BR	reg2, LOW(ITOA_MEM)
+	MOV	reg1, HIGH(ITOA_MEM)
+	SET_PTR	reg1, LOW(ITOA_MEM)
 
-	MOV	reg3, 0x30; ASCII 0
+	MOV	reg2, 0x30; ASCII 0
 itoa_100_loop:
-	MOV	reg2, reg1
-	SUB	reg1, 100 ;if > 100
+	MOV	reg1, reg0
+	SUB	reg0, 100 ;if > 100
 	JMPC	itoa_end_100_loop; no carry detected
-	ADD	reg3, 1
+	ADD	reg2, 1
 	JMP	itoa_100_loop
 itoa_end_100_loop:
-	MOV	reg1, reg2
-	STR	reg3
-	COUNT_BR 1
+	MOV	reg0, reg1
+	STR	reg2
+	PTR_ADD 1
 	
-	MOV	reg3, 0x30; ASCII 0
+	MOV	reg2, 0x30 ;ASCII 0
 itoa_10_loop:
-	MOV	reg2, reg1
-	SUB	reg1, 10 
+	MOV	reg1, reg0
+	SUB	reg0, 10 
 	JMPC	itoa_end_10_loop; no carry detected
-	ADD	reg3, 1
+	ADD	reg2, 1
 	JMP	itoa_10_loop
 itoa_end_10_loop:
-	MOV	reg1, reg2
-	STR	reg3
-	COUNT_BR 1
+	MOV	reg0, reg1
+	STR	reg2
+	PTR_ADD 1
 ;add the rest
-	ADD	reg1, 0x30
-	STR	reg1
-	COUNT_BR	1
+	ADD	reg0, 0x30
+	STR	reg0
+	PTR_ADD	1
 ;end
-	MOV	reg3, 0x0A
-	STR	reg3
-	COUNT_BR	1
-	MOV	reg3, 0x00
-	STR	reg3
-	MOV	reg1, HIGH(ITOA_MEM)
-	MOV	reg2, LOW(ITOA_MEM)
+	MOV	reg2, 0x0A
+	STR	reg2
+	PTR_ADD	1
+	MOV	reg2, 0x00
+	STR	reg2
+	MOV	reg0, HIGH(ITOA_MEM)
+	MOV	reg1, LOW(ITOA_MEM)
+	POP	reg2
 	POP	reg3
-	POP	reg4
-	JMP	reg3, reg4
+	JMP	reg2, reg3
 
 ;data section
 hello_world:
