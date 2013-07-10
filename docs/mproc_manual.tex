@@ -46,41 +46,23 @@
 		\item Since the jmp instructions do not support offset but only immediate operands, the compiler needs to make sure that if a target of a jmp is not in the current 256byte block, a FAR\_JMP with both  high and low address are emmitted.
 		\item If the JMP has only one argument, it is used as an offset instead as an address. Encoded with operand 0x00: reg1, number.
 	\end{itemize}
+
+	\subsection {Registers}
+	\small\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Register & Used by & Width & Note\\ \hline
+			SP & Push, Pop & 16 & Stack Pointer\\ \hline
+			PC & JMP*, & 16 & ProgramCounter\\ \hline
+			IR & - & 16 & Instruction Register, Stores opcode and operand\\ \hline
+			BR & .. . & 16 & BR\\\hline
+			OutputReg[0..1] & POP & 8 & Output ports\\ \hline
+			InputReg0] & PUSH & 8 & Input ports\\ \hline
+			Reg[0..3] & MOV, STR, LDR & 8 & General Purpose registers\\ \hline
+		\end{tabular}
+	\end{center}
 	\newpage
-\section{Overview}
-	\subsection {Machine word}
-	\begin{itemize}
-		\item always one nibble of opcode bits and the second nibble includes which registers are involved
-		\item the next byte can be an immediate value.
-		\item data-bus is 8 bits wide
-		\item address-bus is 15 bits wide: 0x0000 to 0x7FFF is the ram, 0x8000 to 0xFFFF is the flash! 
-		\item thus we have 32kb flash and 32kb ram. We can execute both from ram and flash
-		\item To adress something larger than 8-bit addresses, the BankRegister(BR) is used for the bits 7..15. Affected instructions: STR and LDA
-		\item PC is 16 bits wide: P\_L:0...7; PC\_H:8...15
-		\item ALU is 8 bits wide
-	\end{itemize}
 
-	\subsection {Stack}
-	\begin{itemize}
-		\item 32kb Stack FIFO. The stack memory can only be addressed via PUSH and POP. No stack pointer arithmetic is possible because the stack is not connected to the address-bus. Thus we have a total of 32kb Ram +32KB Stack = 64kb RAM and 32kb ROM.
-		\item The Stack pointer is implemented using 74xx193 binary counter chips. 
-	\end{itemize}
-
-	\subsection{I/O}
-	\begin{itemize}
-		\item I/O can be written to with the pop/ldr and read from with the push/str instructions. There are 2 Output ports and one input port. Always 8 bits wide.
-	\end{itemize}
-
-	\subsection{Memory}
-	\begin{itemize}
-		\item Ram(w24129ak12) and Flash(W29EE011) is connected to the same address Bus. The memory devices have both three-states outputs. The bank register(BR) controls with the highest bit(bit14 on the address bus) whether RAM or the flash will be targeted. Writing to the flash will not work since a whole page(256bits) needs to be written at once. Maybe I can upgrade this later with a more decent flash chip, which will allow easy writing just like the ram.
-	\end{itemize}
-
-	\subsection{JMP(C/Z)-instructions}
-	\begin{itemize}
-		\item Since the jmp instructions do not support offset but only immediate operands, the compiler needs to make sure that if a target of a jmp is not in the current 256byte block, a FAR\_JMP with both  high and low address are emmitted.
-		\item If the JMP has only one argument, it is used as an offset instead as an address. Encoded with operand 0x00: reg1, number.
-	\end{itemize}
 	\newpage
 	\section{Instructions}
 	\subsection{Instruction Set}
@@ -97,13 +79,13 @@
 			0x6 & JMP reg1, reg2 & set PC\_L to reg1, PC\_H to reg2 & A\\ \hline
 			0x7 & JMPZ reg1, reg2 & JMP if reg1 is zero & A\\ \hline
 			0x8 & JMPC reg1, reg2 & JMP if carry is set & A\\ \hline
-			0x9 & STR reg1 & Store reg1 where BR points to & A\\ \hline
-			0xA & LDR reg1 & Load into reg1 where BR points to & A\\ \hline
+			0x9 & STR reg1 & Store reg1 where BR points to & C\\ \hline
+			0xA & LDR reg1 & Load into reg1 where BR points to & B\\ \hline
 			0xB & SET\_BR reg1, reg2 & Set BR\_L to reg1, BR\_H to reg2 & A\\ \hline
 			0xC & Unused &  &  \\ \hline
 			0xD & COUNT\_BR UP/DOWN & increase(UP) or decrease(down) BR by one & A\\ \hline
-			0xE & PUSH reg1 & Push reg1 to the stack & A\\ \hline
-			0xF & POP reg1 & Pop stack item into reg1 & A\\	\hline
+			0xE & PUSH reg1 & Push reg1 to the stack & C\\ \hline
+			0xF & POP reg1 & Pop stack item into reg1 & B\\	\hline
 		\end{tabular}
 	\end{center}
 	\newpage

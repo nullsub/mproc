@@ -1,0 +1,2 @@
+compile *.tex with:
+pdflatex mproc_manual.tex
