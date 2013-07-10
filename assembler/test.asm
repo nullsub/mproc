@@ -1,13 +1,7 @@
 .define	ITOA_MEM	0x7E00 ;some free ram for a string
 .define	UART		0x7FD0 
 ;main
-	;Fiboncacci row	
 	PUSH_RET
-	PUSH 	0x33
-	PUSH 	0x44
-	POP	ptr_high
-	POP	ptr_low
-	PTR_ADD  -126
 	MOV	reg0, 13
 	MOV	reg3, LOW(compute_fibonacci)
 	JMP	reg3, HIGH(compute_fibonacci)

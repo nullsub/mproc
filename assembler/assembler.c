@@ -107,7 +107,7 @@ const struct arg_entry arg_table[2][16] = {
 	}
 };
 
-enum label_type {HIGH_ADDRESS, LOW_ADDRESS};
+enum label_type {HIGH_ADDRESS, LOW_ADDRESS, OFFSET_ADDRESS};
 
 struct label_entry {
 	uint16_t target_offset;
@@ -145,17 +145,6 @@ void add_label(char * label_name, unsigned int target_offset, enum label_type ty
 void add_define_list(char *name, char *list);
 void free_lists();
 
-int get_number_8(char *str, int8_t *c)
-{
-	int16_t nr;
-	int ret = get_number_16(str, &nr);
-	if(ret && (nr > 255 || nr < -128)) {
-		failure_exit("number out of range");
-	}
-	*c = nr;
-	return ret;
-}
-
 int get_number_16(char *str, int16_t *c)
 {	
 	if(str[0] == '0' && str[1] == 'x') {
@@ -175,6 +164,17 @@ int get_number_16(char *str, int16_t *c)
 		return 1;
 	} 
 	return 0;
+}
+
+int get_number_8(char *str, int8_t *c)
+{
+	int16_t nr;
+	int ret = get_number_16(str, &nr);
+	if(ret && (nr > 255 || nr < -128)) {
+		failure_exit("number out of range");
+	}
+	*c = nr;
+	return ret;
 }
 
 void assemble(FILE * file, char * output_file_name)
@@ -298,7 +298,7 @@ void apply_macros(char **str)
 {
 	char token[WORD_LENGTH];
 	char token_name[WORD_LENGTH];
-	uint16_t c;
+	int16_t c;
 	unsigned int i = 0;
 
 	//FIXME, check whether there is more than one define in a word
@@ -315,7 +315,7 @@ void apply_macros(char **str)
 		token_name[i] = 0x00;
 		if(get_number_16(token,&c)) {
 			c = c & 0xFF; // apply LOW mask
-			snprintf(token, 4,"%d", c);
+			snprintf(token, 4, "%d", c);
 			exchange_str(str, token_name, token);
 		}
 	}  	
@@ -399,7 +399,7 @@ void get_word(char * str, char * target, int word_nr)
 {
 	while(*str == ' ' || *str == '\t')
 		str++; //skip leading space
-	for(int i = 0; i < word_nr; i++) {	//skip words
+	for(int i = 0; i < word_nr; i++) { //skip words
 		while(*str != 0x00 && *str != ' ' && *str != '\t')
 			str++; 
 		while(*str == ' ' || *str  == '\t' || *str == ',')
@@ -429,7 +429,7 @@ void lookup_opcode(struct instruction * cmd)
 
 	cmd->type = ONE_BYTE_CMD;
 	int label_present = 0;
-	int number_present = get_number_8(cmd->arg2, &cmd->second_byte);
+	int number_present = get_number_8(cmd->arg2, (int8_t *)&cmd->second_byte);
 	if(!number_present) {
 		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')) {
 			if(!(!strcmp(cmd->arg2, "reg0") || !strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "ptr_high") || !strcmp(cmd->arg2, "ptr_low"))) { //FIXME!
@@ -460,7 +460,7 @@ void lookup_opcode(struct instruction * cmd)
 void add_constant(char * constant)
 {
 	int i = 0;
-	uint8_t c;
+	int8_t c;
 	int is_string = 0;
 	while(constant[i]) {
 		if(constant[i] == '"') {
@@ -581,16 +581,18 @@ int translate(char *line) //translates one stament to the opcode
 	}	
 	if(*cmd->need_label) {
 		enum label_type type = LOW_ADDRESS; //by default take low byte
-		char *loc = strstr(cmd->need_label, "LOW(");
-		if(loc) {
+		char *loc;
+		if(!strcmp("PTR_ADD", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0)) {	
+			type = OFFSET_ADDRESS;
+		}
+		if((loc = strstr(cmd->need_label, "LOW("))) {
 			int i;
 			for(i = strlen("LOW("); loc[i] && loc[i] != ')'; i++)
 				cmd->need_label[i-strlen("LOW(")] = loc[i];
 			cmd->need_label[i-strlen("LOW(")] = 0x00;
 			type = LOW_ADDRESS;
-		}
-		loc = strstr(cmd->need_label, "HIGH(");
-		if(loc) {
+		} 
+		else if((loc = strstr(cmd->need_label, "HIGH("))) {
 			int i;
 			for(i = strlen("HIGH("); loc[i] && loc[i] != ')'; i++)
 				cmd->need_label[i-strlen("HIGH(")] = loc[i];
@@ -703,6 +705,16 @@ void fix_labels()
 						break;
 					case HIGH_ADDRESS:
 						byte = ((prov->target_offset + offset_bin) >> 8);
+						break;	
+					case OFFSET_ADDRESS: {
+						int tmp = (prov->target_offset - need->target_offset);
+						tmp -= 1;
+						if(tmp > INT8_MAX || tmp < INT8_MIN) {
+							printf("offset out of range. label: %s\n", need->name);
+							exit(-1);
+						}
+						byte = tmp;
+						}
 						break;
 					default:
 						    printf("unknown label type!\n");

@@ -269,7 +269,7 @@ void emu(FILE * file)
 				*arg2 = get_byte((cpu.regs.ptr_high << 8)| (cpu.regs.ptr_low));
 				break;
 			case BREAK:	
-				printf("hit break! exit!\n");
+				printf("hit break, exit!\n");
 				dump_mem();
 				printf("registers:\n reg0: 0x%.2x, reg1: 0x%.2x\n", cpu.regs.reg0, cpu.regs.reg1);
 				printf("i16(reg0,reg1): %i \n", (cpu.regs.reg0) | (cpu.regs.reg1 << 8));
@@ -299,7 +299,8 @@ void emu(FILE * file)
 				break;
 			case JMP: 
 				if(*arg1 == cpu.regs.reg0 && *arg2 == cpu.regs.a_number) { // single argument: only affects pc_low
-					cpu.regs.pc_low = *arg2;
+					int8_t nr = *arg2; //-128<nr<128
+					cpu.regs.pc_low += nr;
 					break;
 				}
 				cpu.regs.pc_low = *arg1;
