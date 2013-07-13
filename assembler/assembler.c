@@ -54,12 +54,13 @@ const struct opcode opcodes[] = {
 	{"JMP",0,0x06},
 	{"JMPZ",1,0x07},
 	{"JMPC",1,0x08},
-	{"STR",1,0x09},
+	{"STR",2,0x09},
 	{"LDA",1,0x0A},
 	{"SET_PTR",0,0x0B},
-	{"BREAK",0,0x0C},
-	{"PTR_ADD",1,0x0D},
-	{"PUSH",1,0x0E},
+	{"PTR_ADD",2,0x0C},
+	{"SAVE_LR",3,0x0D},
+	{"RET",0,0x1D},
+	{"PUSH",2,0x0E},
 	{"POP",1,0x0F},
 };
 
@@ -69,9 +70,9 @@ struct arg_entry {
 	uint8_t opcode;
 };
 
-const struct arg_entry arg_table[2][16] = { 
+const struct arg_entry arg_table[3][16] = { 
 	{
-		{"reg0", "number", 0x00},
+		{"reg0", "number", 0x00}, //Table 0
 		{"reg1", "number", 0x10},
 		{"reg2", "number", 0x20},
 		{"reg3", "number", 0x30},
@@ -88,17 +89,34 @@ const struct arg_entry arg_table[2][16] = {
 		{"reg3", "reg1", 0xE0},
 		{"reg3", "reg2", 0xF0},
 	},{
-		{"reg0", "reg0", 0x00},
+		{"reg0", "reg0", 0x00}, //Table 1
+		{"reg0", "reg1", 0x10},
+		{"reg0", "reg2", 0x20},
+		{"reg0", "reg3", 0x30},
+		{"reg0", "ptr_low", 0x40},
+		{"reg0", "ptr_high", 0x50},
+		{"reg0", "io_out0", 0x60},
+		{"reg0", "io_out1", 0x70}, 
+		{"reg0", "lr_low", 0x80},
+		{"reg0", "lr_high", 0x90}, 
+		{"reg0", "reg0", 0xA0}, //Unused
+		{"reg0", "reg0", 0xB0}, //Unused
+		{"reg0", "reg0", 0xC0}, //Unused
+		{"reg0", "reg0", 0xD0}, //Unused
+		{"reg0", "reg0", 0xE0}, //Unused
+		{"reg0", "reg0", 0xF0}, //Unused
+	},{
+		{"reg0", "reg0", 0x00}, //Table 2
 		{"reg0", "reg1", 0x10},
 		{"reg0", "reg2", 0x20},
 		{"reg0", "reg3", 0x30},
 		{"reg0", "number", 0x40},
 		{"reg0", "ptr_low", 0x50},
 		{"reg0", "ptr_high", 0x60},
-		{"reg0", "reg0", 0x70}, 
-		{"reg0", "reg0", 0x80}, //Unused
-		{"reg0", "reg0", 0x90}, //Unused
-		{"reg0", "reg0", 0xA0}, //Unused
+		{"reg0", "io_in0", 0x70}, 
+		{"reg0", "io_in1", 0x80},
+		{"reg0", "lr_low", 0x90}, 
+		{"reg0", "lr_high", 0xA0}, 
 		{"reg0", "reg0", 0xB0}, //Unused
 		{"reg0", "reg0", 0xC0}, //Unused
 		{"reg0", "reg0", 0xD0}, //Unused
@@ -412,6 +430,15 @@ void get_word(char * str, char * target, int word_nr)
 	*target = 0x00;
 }
 
+int is_register(char * str) {
+	for(int i = 0; i < 3; i++) {
+		for(int j = 0; j < 16; j++) {
+			if(!strcmp(str, arg_table[i][j].arg2))
+				return 1;
+		}
+	}
+	return 0;
+}
 void lookup_opcode(struct instruction * cmd)
 {
 	cmd->arg_set = -1;
@@ -432,7 +459,7 @@ void lookup_opcode(struct instruction * cmd)
 	int number_present = get_number_8(cmd->arg2, (int8_t *)&cmd->second_byte);
 	if(!number_present) {
 		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')) {
-			if(!(!strcmp(cmd->arg2, "reg0") || !strcmp(cmd->arg2, "reg1") || !strcmp(cmd->arg2, "reg2") || !strcmp(cmd->arg2, "reg3") || !strcmp(cmd->arg2, "ptr_high") || !strcmp(cmd->arg2, "ptr_low"))) { //FIXME!
+			if(!is_register(cmd->arg2)) {
 				label_present = 1;
 				strcpy(cmd->need_label,cmd->arg2);
 			}
@@ -533,6 +560,11 @@ struct instruction * decode_instruction(char * statement)
 
 	get_word(statement, cmd->arg2, 2 + word_offset);
 
+	if(!strcmp("CALL", cmd->cmd_name)) {
+		//add_byte(0x0D);
+		strcpy(cmd->cmd_name, "JMP");
+	}	
+
 	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
 		failure_exit("JMP cannot be used with reg0 and a number!");
 	}
@@ -542,15 +574,13 @@ struct instruction * decode_instruction(char * statement)
 		strcpy(cmd->arg1, "reg0");
 	}
 
-	if(!strcmp("PUSH_RET", cmd->cmd_name)) {
-		if(push_ret) //FIXME
-			failure_exit("PUSH_RET without call");
-		push_ret = 1;
-		char tmp[WORD_LENGTH];
-		sprintf(tmp, "PUSH HIGH(__ret_label_nr_%i_)", push_ret_nr);
-		translate(tmp);	
-		sprintf(tmp, "PUSH LOW(__ret_label_nr_%i_)", push_ret_nr);
-		translate(tmp);	
+	if(!strcmp("RET", cmd->cmd_name)) {
+	//	add_byte(0x1D);		
+		cmd->type = NO_CMD;
+		return cmd;
+	}
+	if(!strcmp("SAVE_LR", cmd->cmd_name)) {
+		//add_byte(0x0D);		
 		cmd->type = NO_CMD;
 		return cmd;
 	}	
@@ -600,13 +630,6 @@ int translate(char *line) //translates one stament to the opcode
 			type = HIGH_ADDRESS;
 		}
 		add_label(cmd->need_label, target_bin_len-1, type, &need_label);
-	}
-	if(!strcmp("JMP", cmd->cmd_name) && push_ret) {
-		char tmp[WORD_LENGTH];
-		sprintf(tmp, "__ret_label_nr_%i_", push_ret_nr);
-		add_label(tmp, target_bin_len, 0, &provide_label);
-		push_ret = 0;
-		push_ret_nr ++;
 	}
 	free(cmd);
 	return 0;

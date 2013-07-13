@@ -1,28 +1,30 @@
 .define	ITOA_MEM	0x7E00 ;some free ram for a string
 .define	UART		0x7FD0 
 ;main
-	PUSH_RET
-	MOV	reg0, 13
-	MOV	reg3, LOW(compute_fibonacci)
-	JMP	reg3, HIGH(compute_fibonacci)
+	;MOV	reg0, 13
+	;MOV	reg3, LOW(compute_fibonacci)
+	;CALL	reg3, HIGH(compute_fibonacci)
 
 	;print Hello world
-	PUSH_RET
 	MOV	reg0, HIGH(hello_world)
 	MOV	reg1, LOW(hello_world)
 	MOV	reg3, LOW(uart_print)
+	;SAVE_LR
 	JMP	reg3, HIGH(uart_print)
 	
 	;Add two 16bit integers
-	PUSH_RET
-	MOV	reg0, LOW(500)
-	MOV	reg1, HIGH(500)
-	PUSH	LOW(30)
-	PUSH	HIGH(30)
-	MOV	reg3, LOW(add16)
-	JMP	reg3, HIGH(add16)
+	;MOV	reg0, LOW(500)
+	;MOV	reg1, HIGH(500)
+	;PUSH	LOW(30)
+	;PUSH	HIGH(30)
+	;MOV	reg3, LOW(add16)
+	;CALL	reg3, HIGH(add16)
 
-	BREAK	reg0, reg1 ;done 
+
+;halt the emulator
+	MOV	reg0, 0
+	SET_PTR	reg0, 0
+	LDA	reg0; halts the emulator
 
 
 ;add two 16bit numbers together. result is 16 bit
@@ -40,15 +42,14 @@ add16:
 	SUB	reg1, 1
 add16_2:
 	ADD	reg1, 1
-
 add_16_end:	
-	POP	reg2
-	POP	reg3
-	JMP	reg2, reg3
+	RET
 
 ;compute *SP fibonacci numbers and print them via UART
 ;ARG1 = nr of fibonacci iterations. max is 255
 compute_fibonacci:
+	PUSH	lr_low
+	PUSH	lr_high
 	MOV	reg1, 0x01 ;reg1 is prev result 2
 	MOV	reg2, reg1 ;reg2 is prev-prev result 1
 	SUB	reg0, 0x02 ; dont need to loop for the numbers 0 and 1
@@ -65,14 +66,12 @@ fibonacci_loop:
 	PUSH	reg1
 	PUSH	reg2
 
-	PUSH_RET
 	MOV	reg0, reg1; current fibonacci
 	MOV	reg2, LOW(itoa)
-	JMP	reg2, HIGH(itoa)
+	CALL	reg2, HIGH(itoa)
 
-	PUSH_RET
 	MOV	reg2, LOW(uart_print)
-	JMP	reg2, HIGH(uart_print)
+	CALL	reg2, HIGH(uart_print)
 
 	POP	reg2
 	POP	reg1
@@ -81,9 +80,9 @@ fibonacci_loop:
 	SUB	reg0, 0x01
 	JMP	fibonacci_loop
 fibonacci_end:
-	POP	reg2
-	POP	reg3
-	JMP	reg2, reg3
+	POP	lr_high
+	POP	lr_low
+	RET
 
 ;print a null terminated c-string.
 ;reg0 = HIGH(String)
@@ -102,10 +101,11 @@ uart_print_loop:
 	POP	ptr_low
 	PTR_ADD 1
 	JMP	uart_print_loop
-uart_print_end:
-	POP 	reg2 ;LOW
-	POP 	reg3 ;HIGH
-	JMP	reg2, reg3
+uart_print_end:	
+	MOV	reg0, 0
+	SET_PTR	reg0, 0
+	LDA	reg0; halts the emulator
+	RET
 
 ;convert int to string
 ;reg0 nr to be converted
@@ -149,9 +149,7 @@ itoa_end_10_loop:
 	STR	reg2
 	MOV	reg0, HIGH(ITOA_MEM)
 	MOV	reg1, LOW(ITOA_MEM)
-	POP	reg2
-	POP	reg3
-	JMP	reg2, reg3
+	RET
 
 ;data section
 hello_world:

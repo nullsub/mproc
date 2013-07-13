@@ -69,26 +69,26 @@
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			Nibble 1 & Instruction & Note & Decode Table\\ \hline
-			0x0 & ADD regA, regB & regA + regB. Result in regA & A\\ \hline
-			0x1 & SUB regA, regB & regA - regB. Result in regA & C \\ \hline
-			0x2 & NOR regA, regB & regA = !(regA OR regB) & C \\ \hline
-			0x3 & AND regA, regB & regA = regA AND regB & A\\ \hline
-			0x4 & MOV regA, regB & regA = regB & A\\ \hline
-			0x5 & MOVZ regA, regB & MOV if reg0 is zero &  A\\ \hline
-			0x6 & JMP regA, regB & set PC\_L to regA, PC\_H to regB & A\\ \hline
-			0x60 & JMP number & Add sigend number to PC & A\\ \hline
-			0x7 & JMPZ regA, regB & JMP if reg0 is zero & A\\ \hline
-			0x70 & JMPZ number & Add sigend number to PC if reg0 is zero & A\\ \hline
-			0x8 & JMPC regA, regB & JMP if carry is set & A\\ \hline
-			0x80 & JMPC number & Add sigend number to PC if carry is set & A\\ \hline
-			0x9 & STR regA & Store regA where PTR points to & C\\ \hline
-			0xA & LDR regA & Load into regA where PTR points to & B\\ \hline
-			0xB & SET\_PTR regA, regB & Set PTR\_L to regA, PTR\_H to regB & A\\ \hline
-			0xC & PTR\_ADD regB & add regB to PTR & C\\ \hline
+			0x0 & ADD regA, regB & regA + regB. Result in regA & 0\\ \hline
+			0x1 & SUB regA, regB & regA - regB. Result in regA & 0 \\ \hline
+			0x2 & NOR regA, regB & regA = !(regA OR regB) & 0 \\ \hline
+			0x3 & AND regA, regB & regA = regA AND regB & 0\\ \hline
+			0x4 & MOV regA, regB & regA = regB & 0\\ \hline
+			0x5 & MOVZ regA, regB & MOV if reg0 is zero &  0\\ \hline
+			0x6 & JMP regA, regB & set PC\_L to regA, PC\_H to regB & 0\\ \hline
+			0x60 & JMP number & Add sigend number to PC & 0\\ \hline
+			0x7 & JMPZ regA, regB & JMP if reg0 is zero & 0\\ \hline
+			0x70 & JMPZ number & Add sigend number to PC if reg0 is zero & 0\\ \hline
+			0x8 & JMPC regA, regB & JMP if carry is set & 0\\ \hline
+			0x80 & JMPC number & Add sigend number to PC if carry is set & 0\\ \hline
+			0x9 & STR regA & Store regA where PTR points to & 2\\ \hline
+			0xA & LDR regA & Load into regA where PTR points to & 1\\ \hline
+			0xB & SET\_PTR regA, regB & Set PTR\_L to regA, PTR\_H to regB & 0\\ \hline
+			0xC & PTR\_ADD regB & add regB to PTR & 2\\ \hline
 			0xD0 & SAVE\_LR regA, regB & Save PC + 1 in LR &   \\ \hline
 			0xD1 & RET & Restore LR in PC &   \\ \hline
-			0xE & PUSH regA & Push regA to the stack & C\\ \hline
-			0xF & POP regA & Pop stack item into regA & B\\	\hline
+			0xE & PUSH regA & Push regA to the stack & 2\\ \hline
+			0xF & POP regA & Pop stack item into regA & 1\\	\hline
 		\end{tabular}	
 		\begin{itemize}
 			\item PTR\_ADD number adds number to PTR; [-128 \textless \space number \textless \space 128]
@@ -96,7 +96,7 @@
 		\end{itemize}
 	\end{center}
 	\newpage
-	\subsection{Argument Decode Table A}
+	\subsection{Argument Decode Table 0}
 	The second instruction Nibble defines the operand registers.
 	Table A is used by MOV, SET\_PTR and ALU
 	\begin{center}
@@ -122,7 +122,7 @@
 		\end{tabular}
 	\end{center}	
 	\newpage
-	\subsection{Argument Input Table B}
+	\subsection{Argument Input Table 1}
 	Used by LDA and POP
 	\begin{center}
 		\begin{tabular}{|c|c|}
@@ -132,15 +132,15 @@
 			0x1 & reg1 \\ \hline
 			0x2 & reg2 \\ \hline
 			0x3 & reg3 \\ \hline
-			0x4 & PTR\_LOW \\ \hline
-			0x5 & PTR\_HIGH \\ \hline
-			0x6 & IO\_OUTPUT\_REGISTER\_1 \\ \hline
-			0x7 & IO\_OUTPUT\_REGISTER\_2 \\ \hline
+			0x4 & ptr\_low\\ \hline
+			0x5 & ptr\_high \\ \hline
+			0x6 & io\_out0 \\ \hline
+			0x7 & io\_out1 \\ \hline
 			0x8 & LR\_LOW \\ \hline
 			0x9 & LR\_HIGH \\ \hline
 		\end{tabular}
 	\end{center}	
-	\subsection{Argument Output Table C}
+	\subsection{Argument Output Table 2}
 	Used by STR, PUSH and PTR\_ADD
 	\begin{center}
 		\begin{tabular}{|c|c|}
@@ -151,11 +151,12 @@
 			0x2 & reg2 \\ \hline
 			0x3 & reg3 \\ \hline
 			0x4 & number \\ \hline
-			0x5 & PTR\_LOW \\ \hline
-			0x6 & PTR\_HIGH \\ \hline
-			0x7 & IO\_INPUT\_REGISTER\_1 \\ \hline
-			0x8 & LR\_LOW \\ \hline
-			0x9 & LR\_HIGH \\ \hline
+			0x5 & ptr\_low \\ \hline
+			0x6 & ptr\_high \\ \hline
+			0x7 & io\_in0 \\ \hline
+			0x8 & io\_in1 \\ \hline
+			0x9 & LR\_LOW \\ \hline
+			0xA & LR\_HIGH \\ \hline
 		\end{tabular}
 	\end{center}
 	\section{Calling Convention}
@@ -219,4 +220,9 @@
 	CLR\_ALL\_REGS\_NOT needs to go low for a short period and then for the rest of the time HIGH
 	\subsection{Memory Access}
 	Read: Can we apply the address, clear\_not\_oe and clear\_not\_cs in one instruction and fill the registers in the following instruction? 2 cycle memory access would be possible with this!
+	\section{Toolchain}
+	\subsection{Assembler}
+	Supports .define  and CALL makro. CALL regA, regB equals to SAVE\_LR; CALL regA, regB
+	\subsection{Emulator}
+	Does not yet support clock emulation. It just executes the binary
 \end{document}
