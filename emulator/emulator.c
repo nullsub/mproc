@@ -68,13 +68,13 @@ const struct opcode opcodes[] = {
 	{"MOV", 0, MOV},
 	{"MOVZ", 0, MOVZ},
 	{"JMP", 0, JMP},
-	{"JMPZ", 1, JMPZ},
-	{"JMPC", 1, JMPC},
+	{"JMPZ", 0, JMPZ},
+	{"JMPC", 0, JMPC},
 	{"STR", 2, STR},
 	{"LDA", 1, LDA},
 	{"SET_PTR", 0, SET_PTR},
 	{"PTR_ADD", 2, PTR_ADD},
-	{"SAVE_LR", 3, SAVE_LR},
+	{"SAVE_LR", 2, SAVE_LR},
 	{"PUSH", 2, PUSH},
 	{"POP", 1, POP},
 };
@@ -282,7 +282,6 @@ void emu(FILE * file)
 			case STR:
 				tmp16_bit = ((cpu.ptr_high << 8)|(cpu.ptr_low));
 				if(tmp16_bit == UART) {
-					printf("UART: %c\n", *arg1);
 					uart_bffr[uart_i++] = *arg2;
 					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
 						uart_bffr[uart_i] = 0x00;
@@ -297,9 +296,10 @@ void emu(FILE * file)
 				break;
 			case SAVE_LR:	
 				if(curr_cmd.opcode != SAVE_LR) { // RET
-					printf("in ret!\n");
 					cpu.pc_low = cpu.lr_low;
 					cpu.pc_high = cpu.lr_high;
+					inc_pc();
+					inc_pc();
 					break;
 				}
 				cpu.lr_low = cpu.pc_low;
@@ -308,7 +308,8 @@ void emu(FILE * file)
 			case JMPZ:
 				if(!cpu.reg0) {
 					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) { // single argument: only affects pc_low
-						cpu.pc_low = *arg2;
+						int8_t nr = *arg2; //-128<nr<128
+						cpu.pc_low += nr;
 						break;
 					}
 					cpu.pc_low = *arg1;
@@ -318,7 +319,8 @@ void emu(FILE * file)
 			case JMPC:
 				if(cpu.carry) {
 					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) { // single argument: only affects pc_low
-						cpu.pc_low = *arg2;
+						int8_t nr = *arg2; //-128<nr<128
+						cpu.pc_low += nr;
 						break;
 					}
 					cpu.pc_low = *arg1;

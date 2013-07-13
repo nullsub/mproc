@@ -52,14 +52,14 @@ const struct opcode opcodes[] = {
 	{"MOV",0,0x04},
 	{"MOVZ",0,0x05},
 	{"JMP",0,0x06},
-	{"JMPZ",1,0x07},
-	{"JMPC",1,0x08},
+	{"JMPZ",0,0x07},
+	{"JMPC",0,0x08},
 	{"STR",2,0x09},
 	{"LDA",1,0x0A},
 	{"SET_PTR",0,0x0B},
 	{"PTR_ADD",2,0x0C},
-	{"SAVE_LR",3,0x0D},
-	{"RET",0,0x1D},
+	{"SAVE_LR",2,0x0D},
+	{"RET",2,0x1D},
 	{"PUSH",2,0x0E},
 	{"POP",1,0x0F},
 };
@@ -458,11 +458,9 @@ void lookup_opcode(struct instruction * cmd)
 	int label_present = 0;
 	int number_present = get_number_8(cmd->arg2, (int8_t *)&cmd->second_byte);
 	if(!number_present) {
-		if((cmd->arg2[0] >= 'A' && cmd->arg2[1] <= 'Z') || (cmd->arg2[0] >= 'a' && cmd->arg2[0] <= 'z')) {
-			if(!is_register(cmd->arg2)) {
-				label_present = 1;
-				strcpy(cmd->need_label,cmd->arg2);
-			}
+		if(!is_register(cmd->arg2)) {
+			label_present = 1;
+			strcpy(cmd->need_label,cmd->arg2);
 		}
 	}
 
@@ -561,11 +559,17 @@ struct instruction * decode_instruction(char * statement)
 	get_word(statement, cmd->arg2, 2 + word_offset);
 
 	if(!strcmp("CALL", cmd->cmd_name)) {
-		//add_byte(0x0D);
+		add_byte(0x0D);
 		strcpy(cmd->cmd_name, "JMP");
 	}	
 
 	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
+		failure_exit("JMP cannot be used with reg0 and a number!");
+	}
+	if(!strcmp("JMPC", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
+		failure_exit("JMP cannot be used with reg0 and a number!");
+	}
+	if(!strcmp("JMPZ", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
 		failure_exit("JMP cannot be used with reg0 and a number!");
 	}
 
@@ -575,12 +579,12 @@ struct instruction * decode_instruction(char * statement)
 	}
 
 	if(!strcmp("RET", cmd->cmd_name)) {
-	//	add_byte(0x1D);		
+		add_byte(0x1D);		
 		cmd->type = NO_CMD;
 		return cmd;
 	}
 	if(!strcmp("SAVE_LR", cmd->cmd_name)) {
-		//add_byte(0x0D);		
+		add_byte(0x0D);		
 		cmd->type = NO_CMD;
 		return cmd;
 	}	
@@ -612,7 +616,7 @@ int translate(char *line) //translates one stament to the opcode
 	if(*cmd->need_label) {
 		enum label_type type = LOW_ADDRESS; //by default take low byte
 		char *loc;
-		if(!strcmp("PTR_ADD", cmd->cmd_name) || (!strcmp("JMP", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0)) {	
+		if(!strcmp("PTR_ADD", cmd->cmd_name) || ((!strcmp("JMP", cmd->cmd_name) || !strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name))&& !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0)) {	
 			type = OFFSET_ADDRESS;
 		}
 		if((loc = strstr(cmd->need_label, "LOW("))) {

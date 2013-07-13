@@ -1,30 +1,29 @@
 .define	ITOA_MEM	0x7E00 ;some free ram for a string
 .define	UART		0x7FD0 
 ;main
-	;MOV	reg0, 13
-	;MOV	reg3, LOW(compute_fibonacci)
-	;CALL	reg3, HIGH(compute_fibonacci)
+	MOV	reg0, 13
+	MOV	reg3, LOW(compute_fibonacci)
+	CALL	reg3, HIGH(compute_fibonacci)
 
 	;print Hello world
 	MOV	reg0, HIGH(hello_world)
 	MOV	reg1, LOW(hello_world)
 	MOV	reg3, LOW(uart_print)
-	;SAVE_LR
-	JMP	reg3, HIGH(uart_print)
+	CALL	reg3, HIGH(uart_print)
 	
 	;Add two 16bit integers
-	;MOV	reg0, LOW(500)
-	;MOV	reg1, HIGH(500)
-	;PUSH	LOW(30)
-	;PUSH	HIGH(30)
-	;MOV	reg3, LOW(add16)
-	;CALL	reg3, HIGH(add16)
+	MOV	reg0, LOW(500)
+	MOV	reg1, HIGH(500)
+	PUSH	LOW(30)
+	PUSH	HIGH(30)
+	MOV	reg3, LOW(add16)
+	CALL	reg3, HIGH(add16)
 
 
 ;halt the emulator
-	MOV	reg0, 0
-	SET_PTR	reg0, 0
-	LDA	reg0; halts the emulator
+	MOV	reg2, 0
+	SET_PTR	reg2, 0
+	LDA	reg2; halts the emulator
 
 
 ;add two 16bit numbers together. result is 16 bit
@@ -102,9 +101,6 @@ uart_print_loop:
 	PTR_ADD 1
 	JMP	uart_print_loop
 uart_print_end:	
-	MOV	reg0, 0
-	SET_PTR	reg0, 0
-	LDA	reg0; halts the emulator
 	RET
 
 ;convert int to string
