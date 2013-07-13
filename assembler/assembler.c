@@ -399,7 +399,7 @@ int get_line(char **str)
 
 	**str = c;
 	for(int i = 1;; i++) {
-		c = fgetc (src_file);	
+		c = fgetc(src_file);	
 		*str = realloc(*str, i + 1);
 		*((*str) + i) = c;	
 		if(c == EOF) {	
@@ -455,20 +455,14 @@ void lookup_opcode(struct instruction * cmd)
 	}
 
 	cmd->type = ONE_BYTE_CMD;
-	int label_present = 0;
 	int number_present = get_number_8(cmd->arg2, (int8_t *)&cmd->second_byte);
-	if(!number_present) {
-		if(!is_register(cmd->arg2)) {
-			label_present = 1;
-			strcpy(cmd->need_label,cmd->arg2);
-		}
-	}
-
-	if(number_present || label_present) {
+	if(!is_register(cmd->arg2)) {
+		if(!number_present)
+			strcpy(cmd->need_label,cmd->arg2);	
 		cmd->type = TWO_BYTE_CMD;
 		strcpy(cmd->arg2,"number");
-
 	}
+
 	for(unsigned int i = 0; i < sizeof(arg_table)/sizeof(struct arg_entry); i++) {
 		if(!strcmp(cmd->arg1, arg_table[cmd->arg_set][i].arg1) && !strcmp(cmd->arg2, arg_table[cmd->arg_set][i].arg2)) {
 			cmd->first_byte |= arg_table[cmd->arg_set][i].opcode;
@@ -495,9 +489,7 @@ void add_constant(char * constant)
 				is_string = 0;
 			}
 			i++;
-			continue;
-		}
-		if(is_string) {
+		} else if(is_string) {
 			add_byte(constant[i]);
 			i++;
 		} else {
@@ -559,35 +551,21 @@ struct instruction * decode_instruction(char * statement)
 	get_word(statement, cmd->arg2, 2 + word_offset);
 
 	if(!strcmp("CALL", cmd->cmd_name)) {
-		add_byte(0x0D);
+		translate("SAVE_LR");	
 		strcpy(cmd->cmd_name, "JMP");
 	}	
 
-	if(!strcmp("JMP", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
+	int8_t tmp;
+	if(!strncmp("JMP", cmd->cmd_name, strlen("JMP")) && !strcmp("reg0", cmd->arg1) && get_number_8(cmd->arg2, &tmp))
 		failure_exit("JMP cannot be used with reg0 and a number!");
-	}
-	if(!strcmp("JMPC", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
-		failure_exit("JMP cannot be used with reg0 and a number!");
-	}
-	if(!strcmp("JMPZ", cmd->cmd_name) && !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0) {	
-		failure_exit("JMP cannot be used with reg0 and a number!");
-	}
 
-	if(strlen(cmd->arg2) == 0) { //only instruction with one argument. add one... it should not matter... FIXME
-		strcpy(cmd->arg2, cmd->arg1);
+	if(strlen(cmd->arg2) == 0) { //instruction with one argument.
+		if(strlen(cmd->arg1) == 0)
+			strcpy(cmd->arg2, "reg0");
+		else
+			strcpy(cmd->arg2, cmd->arg1);
 		strcpy(cmd->arg1, "reg0");
 	}
-
-	if(!strcmp("RET", cmd->cmd_name)) {
-		add_byte(0x1D);		
-		cmd->type = NO_CMD;
-		return cmd;
-	}
-	if(!strcmp("SAVE_LR", cmd->cmd_name)) {
-		add_byte(0x0D);		
-		cmd->type = NO_CMD;
-		return cmd;
-	}	
 
 	lookup_opcode(cmd);
 	return cmd;
@@ -616,10 +594,10 @@ int translate(char *line) //translates one stament to the opcode
 	if(*cmd->need_label) {
 		enum label_type type = LOW_ADDRESS; //by default take low byte
 		char *loc;
-		if(!strcmp("PTR_ADD", cmd->cmd_name) || ((!strcmp("JMP", cmd->cmd_name) || !strcmp("JMPZ", cmd->cmd_name) || !strcmp("JMPC", cmd->cmd_name))&& !strcmp("reg0", cmd->arg1) && strlen(cmd->arg2) != 0)) {	
+		if((!strncmp("JMP", cmd->cmd_name, strlen("JMP"))&& !strcmp("reg0", cmd->arg1) && !strcmp("number", cmd->arg2))) {	
 			type = OFFSET_ADDRESS;
 		}
-		if((loc = strstr(cmd->need_label, "LOW("))) {
+		else if((loc = strstr(cmd->need_label, "LOW("))) {
 			int i;
 			for(i = strlen("LOW("); loc[i] && loc[i] != ')'; i++)
 				cmd->need_label[i-strlen("LOW(")] = loc[i];
@@ -647,43 +625,28 @@ void add_byte(uint8_t c)
 
 void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_table *target)
 {
-	if(target == &provide_label) {
+	if(target == &provide_label) { //do not add the same label twice
 		struct label_entry *test = provide_label.first;
 		for(int j = 0; j < provide_label.nr; j++) { 
 			if(!strcmp(test->name,label_name)) {
-				failure_exit("label declared more than once. exit!");
+				failure_exit("label declared more than once.");
 			}
 			test = test->next;
 		}
 	}
-	unsigned char target_offset = offset;
+	struct label_entry **crrnt = &target->first;
 
-	struct label_entry *entry;
-	struct label_entry *prev;
-	if(target->nr == 0) {
-		target->first = (struct label_entry *) malloc(sizeof(struct label_entry));
-		target->first->next = NULL;
-		target->first->name = (char *)malloc(strlen(label_name) + 1);
-		strcpy(target->first->name, label_name);
-		target->first->target_offset = target_offset;
-		target->first->type = type;
-		target->nr ++;
-		return;
-	}
-	prev = target->first;
-	entry = target->first->next;
-	while(entry) {
-		prev = entry;
-		entry = prev->next;
+	while((*crrnt)) {
+		crrnt = &(*crrnt)->next;
 	}
 
+	*crrnt = (struct label_entry *) malloc(sizeof(struct label_entry));
+	(*crrnt)->next = NULL;
+	(*crrnt)->name = (char *) malloc(strlen(label_name) + 1);
+	strcpy((*crrnt)->name, label_name);
+	(*crrnt)->target_offset = offset;
+	(*crrnt)->type = type;
 	target->nr ++;
-	prev->next = (struct label_entry *) malloc(sizeof(struct label_entry));
-	prev->next->next = NULL;
-	prev->next->name = (char *)malloc(strlen(label_name) + 1);
-	strcpy(prev->next->name, label_name);
-	prev->next->target_offset = target_offset;
-	prev->next->type = type;
 }
 
 void free_label(struct label_entry *label)
@@ -734,13 +697,13 @@ void fix_labels()
 						byte = ((prov->target_offset + offset_bin) >> 8);
 						break;	
 					case OFFSET_ADDRESS: {
-						int tmp = (prov->target_offset - need->target_offset);
-						tmp -= 1;
-						if(tmp > INT8_MAX || tmp < INT8_MIN) {
-							printf("offset out of range. label: %s\n", need->name);
-							exit(-1);
-						}
-						byte = tmp;
+							int tmp = (prov->target_offset - need->target_offset);
+							tmp -= 1;
+							if(tmp > INT8_MAX || tmp < INT8_MIN) {
+								printf("offset out of range. label: %s\n", need->name);
+								exit(-1);
+							}
+							byte = tmp;
 						}
 						break;
 					default:

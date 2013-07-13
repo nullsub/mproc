@@ -272,9 +272,7 @@ void emu(FILE * file)
 				tmp16_bit = ((cpu.ptr_high << 8) | (cpu.ptr_low));
 
 				int8_t nr = *arg2;
-				//printf("16 bit is %i, arg is %i\n", tmp16_bit, nr);
 				tmp16_bit += nr;
-			//	printf("after: 16 bit is %i, arg is %i\n", tmp16_bit, nr);
 
 				cpu.ptr_low = (uint8_t)(tmp16_bit & 0x00FF);
 				cpu.ptr_high = (uint8_t)((tmp16_bit >> 8));
@@ -307,9 +305,12 @@ void emu(FILE * file)
 				break;
 			case JMPZ:
 				if(!cpu.reg0) {
-					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) { // single argument: only affects pc_low
+					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
 						int8_t nr = *arg2; //-128<nr<128
-						cpu.pc_low += nr;
+						uint16_t pc = get_pc();
+						pc += nr;
+						cpu.pc_low = pc & 0xFF;
+						cpu.pc_high = pc >>8;
 						break;
 					}
 					cpu.pc_low = *arg1;
@@ -318,9 +319,12 @@ void emu(FILE * file)
 				break;
 			case JMPC:
 				if(cpu.carry) {
-					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) { // single argument: only affects pc_low
+					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
 						int8_t nr = *arg2; //-128<nr<128
-						cpu.pc_low += nr;
+						uint16_t pc = get_pc();
+						pc += nr;
+						cpu.pc_low = pc & 0xFF;
+						cpu.pc_high = pc >>8;
 						break;
 					}
 					cpu.pc_low = *arg1;
@@ -328,9 +332,12 @@ void emu(FILE * file)
 				}
 				break;
 			case JMP: 
-				if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) { // single argument: only affects pc_low
+				if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
 					int8_t nr = *arg2; //-128<nr<128
-					cpu.pc_low += nr;
+					uint16_t pc = get_pc();
+					pc += nr;
+					cpu.pc_low = pc & 0xFF;
+					cpu.pc_high = pc >>8;
 					break;
 				}
 				cpu.pc_low = *arg1;
