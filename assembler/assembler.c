@@ -8,7 +8,7 @@
 #include <string.h>
 #include "assembler.h"
 
-#define COMMENT_CHARACKTER ';'
+#define COMMENT_CHAR ';'
 #define MAX_OPCODE_LENGTH  2 //Max length in bytes an instruction might take
 #define WORD_LENGTH	50  //MAX instruction or ARG length in the source file
 
@@ -25,7 +25,7 @@ char *curr_statement;
 int push_ret = 0;
 int push_ret_nr = 0;
 
-enum cmd {NO_CMD, ONE_BYTE_CMD, TWO_BYTE_CMD, BROKEN_CMD};
+enum cmd {NO_CMD, ONE_BYTE_CMD, TWO_BYTE_CMD};
 
 struct instruction{
 	char cmd_name[WORD_LENGTH];
@@ -198,12 +198,11 @@ int get_number_8(char *str, int8_t *c)
 void assemble(FILE * file, char * output_file_name)
 {	
 	target_bin = NULL;
+	defines = NULL;
 	provide_label.nr = 0;
 	need_label.nr = 0;
 	src_file = file;
-	defines = NULL;
 
-	//now translate
 	curr_statement = NULL;
 	int line_nr = get_statement(&curr_statement);
 	while(line_nr) {
@@ -233,10 +232,10 @@ int get_statement(char **str) //returns line number. If end of file, it returns 
 	unsigned int line_nr;
 	while(1) {
 		line_nr = get_line(str);
-		printf("get_lin returned %s \n", *str);
+		printf("get_st returned %s \n", *str);
 		if(line_nr == 0)
 			return 0;
-		char * comment = strchr(*str, COMMENT_CHARACKTER);
+		char * comment = strchr(*str, COMMENT_CHAR);
 		if(comment != NULL)
 			*comment = 0x00;
 		if(strlen(*str) > 2) {
@@ -332,7 +331,7 @@ void apply_macros(char **str)
 		i++;
 		token_name[i] = 0x00;
 		if(get_number_16(token,&c)) {
-			c = c & 0xFF; // apply LOW mask
+			c = c & 0xFF; //apply LOW mask
 			snprintf(token, 4, "%d", c);
 			exchange_str(str, token_name, token);
 		}
@@ -349,9 +348,9 @@ void apply_macros(char **str)
 		i++;
 		token_name[i] = 0x00;
 
-		if(get_number_16(token,&c)) {
-			c = c >> 8; // apply HIGH mask
-			snprintf(token, 4,"%d", c);
+		if(get_number_16(token, &c)) {
+			c = c >> 8; //apply HIGH mask
+			snprintf(token, 4, "%d", c);
 			exchange_str(str, token_name, token);
 		}
 	}
@@ -430,52 +429,6 @@ void get_word(char * str, char * target, int word_nr)
 	*target = 0x00;
 }
 
-int is_register(char * str) {
-	for(int i = 0; i < 3; i++) {
-		for(int j = 0; j < 16; j++) {
-			if(!strcmp(str, arg_table[i][j].arg2))
-				return 1;
-		}
-	}
-	return 0;
-}
-void lookup_opcode(struct instruction * cmd)
-{
-	cmd->arg_set = -1;
-	for(unsigned int i = 0; i < sizeof(opcodes)/sizeof(struct opcode); i++) {
-		if(!strcmp(cmd->cmd_name, opcodes[i].cmd_name)) {
-			cmd->arg_set = opcodes[i].arg_set;
-			cmd->first_byte = opcodes[i].opcode;
-			break;
-		}
-	}	
-	if(cmd->arg_set == -1) {
-		cmd->type = BROKEN_CMD;
-		return;
-	}
-
-	cmd->type = ONE_BYTE_CMD;
-	int number_present = get_number_8(cmd->arg2, (int8_t *)&cmd->second_byte);
-	if(!is_register(cmd->arg2)) {
-		if(!number_present)
-			strcpy(cmd->need_label,cmd->arg2);	
-		cmd->type = TWO_BYTE_CMD;
-		strcpy(cmd->arg2,"number");
-	}
-
-	for(unsigned int i = 0; i < sizeof(arg_table)/sizeof(struct arg_entry); i++) {
-		if(!strcmp(cmd->arg1, arg_table[cmd->arg_set][i].arg1) && !strcmp(cmd->arg2, arg_table[cmd->arg_set][i].arg2)) {
-			cmd->first_byte |= arg_table[cmd->arg_set][i].opcode;
-			return;
-		}
-	}	
-
-	cmd->type = BROKEN_CMD;
-	cmd->arg_set = -1;
-	return;
-}
-
-
 void add_constant(char * constant)
 {
 	int i = 0;
@@ -513,12 +466,51 @@ void add_constant(char * constant)
 	}
 }
 
+int is_register(char * str) {
+	for(int i = 0; i < 3; i++) {
+		for(int j = 0; j < 16; j++) {
+			if(!strcmp(str, arg_table[i][j].arg2))
+				return 1;
+		}
+	}
+	return 0;
+}
+
+void lookup_opcode(struct instruction * cmd)
+{
+	cmd->arg_set = -1;
+	for(unsigned int i = 0; i < sizeof(opcodes)/sizeof(struct opcode); i++) {
+		if(!strcmp(cmd->cmd_name, opcodes[i].cmd_name)) {
+			cmd->arg_set = opcodes[i].arg_set;
+			cmd->first_byte = opcodes[i].opcode;
+			break;
+		}
+	}	
+	if(cmd->arg_set == -1)
+		failure_exit("Command name not supported");
+
+	cmd->type = ONE_BYTE_CMD;
+	if(!is_register(cmd->arg2)) {
+		if(!get_number_8(cmd->arg2, (int8_t *)&cmd->second_byte))
+			strcpy(cmd->need_label, cmd->arg2);	
+		cmd->type = TWO_BYTE_CMD;
+		strcpy(cmd->arg2, "number");
+	}
+
+	for(unsigned int i = 0; i < sizeof(arg_table)/sizeof(struct arg_entry); i++) {
+		if(!strcmp(cmd->arg1, arg_table[cmd->arg_set][i].arg1) && !strcmp(cmd->arg2, arg_table[cmd->arg_set][i].arg2)) {
+			cmd->first_byte |= arg_table[cmd->arg_set][i].opcode;
+			return;
+		}
+	}	
+	failure_exit("Argument combination not allowed");
+}
+
 struct instruction * decode_instruction(char * statement)
 {
 	struct instruction *cmd = (struct instruction *) malloc(sizeof(struct instruction));
 
 	*cmd->need_label = 0x00;
-	int word_offset = 0;
 	get_word(statement, cmd->cmd_name, 0);
 
 	if(cmd->cmd_name[strlen(cmd->cmd_name)-1] == ':') { //check for labels
@@ -527,15 +519,15 @@ struct instruction * decode_instruction(char * statement)
 		tmp[strlen(tmp)-1] = 0x00;
 		add_label(tmp, target_bin_len, 0, &provide_label);
 
+		statement += strlen(tmp)+1;
 		free(tmp);
 
-		get_word(statement, cmd->cmd_name, 1);
+		get_word(statement, cmd->cmd_name, 0);
 		if(!*cmd->cmd_name) {
 			cmd->type = NO_CMD; //statement ends after label
 			return cmd;
 		}
-		word_offset = 1;
-	}	
+	}
 
 	if(!strcmp(cmd->cmd_name, ".db")) { //check whether it is a constant command
 		add_constant(statement+(strlen(cmd->cmd_name)));
@@ -543,12 +535,12 @@ struct instruction * decode_instruction(char * statement)
 		return cmd;
 	}
 
-	get_word(statement, cmd->arg1, 1 + word_offset);
+	get_word(statement, cmd->arg1, 1);
 
-	if(cmd->arg1[strlen(cmd->arg1)-1] == ',')
+	if(strlen(cmd->arg1) && cmd->arg1[strlen(cmd->arg1)-1] == ',')
 		cmd->arg1[strlen(cmd->arg1)-1] = 0x00; //get rid of the ','
 
-	get_word(statement, cmd->arg2, 2 + word_offset);
+	get_word(statement, cmd->arg2, 2);
 
 	if(!strcmp("CALL", cmd->cmd_name)) {
 		translate("SAVE_LR");	
@@ -586,7 +578,6 @@ int translate(char *line) //translates one stament to the opcode
 		case NO_CMD:
 			free(cmd);
 			return 0;
-		case BROKEN_CMD:
 		default:
 			free(cmd);
 			return -1;
@@ -628,17 +619,15 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	if(target == &provide_label) { //do not add the same label twice
 		struct label_entry *test = provide_label.first;
 		for(int j = 0; j < provide_label.nr; j++) { 
-			if(!strcmp(test->name,label_name)) {
+			if(!strcmp(test->name, label_name))
 				failure_exit("label declared more than once.");
-			}
 			test = test->next;
 		}
 	}
 	struct label_entry **crrnt = &target->first;
 
-	while((*crrnt)) {
+	while((*crrnt))
 		crrnt = &(*crrnt)->next;
-	}
 
 	*crrnt = (struct label_entry *) malloc(sizeof(struct label_entry));
 	(*crrnt)->next = NULL;

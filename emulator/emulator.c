@@ -307,10 +307,10 @@ void emu(FILE * file)
 				if(!cpu.reg0) {
 					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
 						int8_t nr = *arg2; //-128<nr<128
-						uint16_t pc = get_pc();
-						pc += nr;
-						cpu.pc_low = pc & 0xFF;
-						cpu.pc_high = pc >>8;
+						tmp16_bit = get_pc();
+						tmp16_bit += nr;
+						cpu.pc_low = tmp16_bit & 0xFF;
+						cpu.pc_high = tmp16_bit >> 8;
 						break;
 					}
 					cpu.pc_low = *arg1;
@@ -321,10 +321,10 @@ void emu(FILE * file)
 				if(cpu.carry) {
 					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
 						int8_t nr = *arg2; //-128<nr<128
-						uint16_t pc = get_pc();
-						pc += nr;
-						cpu.pc_low = pc & 0xFF;
-						cpu.pc_high = pc >>8;
+						tmp16_bit = get_pc();
+						tmp16_bit += nr;
+						cpu.pc_low = tmp16_bit & 0xFF;
+						cpu.pc_high = tmp16_bit >> 8;
 						break;
 					}
 					cpu.pc_low = *arg1;
@@ -334,10 +334,10 @@ void emu(FILE * file)
 			case JMP: 
 				if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
 					int8_t nr = *arg2; //-128<nr<128
-					uint16_t pc = get_pc();
-					pc += nr;
-					cpu.pc_low = pc & 0xFF;
-					cpu.pc_high = pc >>8;
+					tmp16_bit = get_pc();
+					tmp16_bit += nr;
+					cpu.pc_low = tmp16_bit & 0xFF;
+					cpu.pc_high = tmp16_bit >> 8;
 					break;
 				}
 				cpu.pc_low = *arg1;
