@@ -56,15 +56,19 @@ $(OUTDIR)/$(notdir $(basename $(1))).o : $(1)
 endef
 $(foreach src, $(SRC), $(eval $(call COMPILE_C_SOURCE, $(src))))
 
+ALL_TESTS = $(shell ls tests)
+ALL_TEST_TARGETS = $(foreach test,$(ALL_TESTS), tests/$(test)/$(test).bin)
+ALL_TEST_SRC = $(foreach test,$(ALL_TESTS), tests/$(test)/$(test).asm)
 
-# Target: clean project.
+%.bin:  %.asm
+	$(OUTDIR)/$(TARGET).elf $<
+
+test: all $(ALL_TEST_TARGETS)
+	@echo "Testing done"
+
 clean:
 	@echo "cleaned build"
 	@$(REMOVE) $(OUTDIR)
 
-test:	all
-	@echo "testing assembler"
-	build/asm.elf test.asm
-	hexdump -C output_file.bin 
 # Create output files directory
 $(shell mkdir -p $(OUTDIR))

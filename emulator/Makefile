@@ -56,14 +56,14 @@ $(OUTDIR)/$(notdir $(basename $(1))).o : $(1)
 endef
 $(foreach src, $(SRC), $(eval $(call COMPILE_C_SOURCE, $(src))))
 
+test: 
+	@./run_tests.sh
+	@echo "Testing done"
 
 # Target: clean project.
 clean:
 	@echo "cleaned build"
 	@$(REMOVE) $(OUTDIR)
-
-test: all
-	build/emu.elf ../assembler/output_file.bin	
 
 # Create output files directory
 $(shell mkdir -p $(OUTDIR))

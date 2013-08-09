@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "assembler.h"
 
 int main ( int argc, char *argv[] ) {
@@ -12,7 +14,9 @@ int main ( int argc, char *argv[] ) {
 		printf( "Could not open file\n" );
 		return -1;
 	} 
-	assemble(file,"output_file.bin");
+	char * output_name = (char*)malloc(strlen(argv[1])+4);
+	sprintf(output_name, "%s.bin", strtok(argv[1], "."));
+	assemble(file, output_name);
 	fclose(file);
 	return 0;
 }

@@ -147,10 +147,9 @@ struct the_cmd curr_cmd;
 uint8_t get_byte(uint16_t address)
 {
 	if(address == 0x0000) {
-		printf("break received\n");
 		dump_mem();
-		printf("registers:\n reg0: 0x%.2x, reg1: 0x%.2x\n", cpu.reg0, cpu.reg1);
-		printf("i16(reg0,reg1): %i \n", (cpu.reg0) | (cpu.reg1 << 8));
+	//	printf("registers:\n reg0: 0x%.2x, reg1: 0x%.2x\n", cpu.reg0, cpu.reg1);
+	//	printf("i16(reg0,reg1): %i \n", (cpu.reg0) | (cpu.reg1 << 8));
 		exit(0);
 		return 0;
 	}
@@ -283,7 +282,7 @@ void emu(FILE * file)
 					uart_bffr[uart_i++] = *arg2;
 					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
 						uart_bffr[uart_i] = 0x00;
-						printf("UART: %s",uart_bffr);
+						printf("%s",uart_bffr);
 						uart_i = 0;
 					}
 				}
@@ -293,7 +292,7 @@ void emu(FILE * file)
 				*arg2 = get_byte((cpu.ptr_high << 8) | (cpu.ptr_low));
 				break;
 			case SAVE_LR:	
-				if(curr_cmd.opcode != SAVE_LR) { // RET
+				if(curr_cmd.opcode != SAVE_LR) { // RET is encoded as SAVE_LR
 					cpu.pc_low = cpu.lr_low;
 					cpu.pc_high = cpu.lr_high;
 					inc_pc();

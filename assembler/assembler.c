@@ -232,7 +232,7 @@ int get_statement(char **str) //returns line number. If end of file, it returns 
 	unsigned int line_nr;
 	while(1) {
 		line_nr = get_line(str);
-		printf("get_st returned %s \n", *str);
+		//printf("get_st returned %s \n", *str);
 		if(line_nr == 0)
 			return 0;
 		char * comment = strchr(*str, COMMENT_CHAR);

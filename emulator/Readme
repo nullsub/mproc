@@ -1,0 +1,4 @@
+Emulator for mproc.
+./emu foo.bin #to emulate foo.bin
+Characters written to the uart are printed to stdout. To send the emulator stuff over uart write into stdin.
+JMP 0x0000 ends the emulation.

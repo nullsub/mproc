@@ -5,12 +5,6 @@
 	MOV	reg3, LOW(compute_fibonacci)
 	CALL	reg3, HIGH(compute_fibonacci)
 
-	;print Hello world
-	MOV	reg0, HIGH(hello_world)
-	MOV	reg1, LOW(hello_world)
-	MOV	reg3, LOW(uart_print)
-	CALL	reg3, HIGH(uart_print)
-	
 	;Add two 16bit integers
 	MOV	reg0, LOW(500)
 	MOV	reg1, HIGH(500)
@@ -19,12 +13,10 @@
 	MOV	reg3, LOW(add16)
 	CALL	reg3, HIGH(add16)
 
-
 ;halt the emulator
 	MOV	reg2, 0
 	SET_PTR	reg2, 0
 	LDA	reg2; halts the emulator
-
 
 ;add two 16bit numbers together. result is 16 bit
 ;reg0 low(nr1)
@@ -146,8 +138,3 @@ itoa_end_10_loop:
 	MOV	reg0, HIGH(ITOA_MEM)
 	MOV	reg1, LOW(ITOA_MEM)
 	RET
-
-;data section
-hello_world:
-.db	"Hello world", 0x0A, 0x00
-
