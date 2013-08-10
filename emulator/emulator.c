@@ -210,8 +210,8 @@ void do_jmp(uint8_t *arg1, uint8_t *arg2)
 		cpu.pc_high = tmp16_bit >> 8;
 		return;
 	}
-	cpu.pc_low = *arg1;
-	cpu.pc_high = *arg2;
+	cpu.pc_low = *arg2;
+	cpu.pc_high = *arg1;
 }
 
 void emu(FILE * file)
@@ -321,7 +321,7 @@ void emu(FILE * file)
 					do_jmp(arg1, arg2);
 				break;
 			case JMPC:
-				if(!cpu.carry)
+				if(cpu.carry)
 					do_jmp(arg1, arg2);
 				break;
 			case JMP: 

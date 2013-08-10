@@ -2,41 +2,15 @@
 .define	UART		0x7FD0 
 ;main
 	MOV	reg0, 13
-	MOV	reg3, LOW(compute_fibonacci)
-	CALL	reg3, HIGH(compute_fibonacci)
-
-	;Add two 16bit integers
-	MOV	reg0, LOW(500)
-	MOV	reg1, HIGH(500)
-	PUSH	LOW(30)
-	PUSH	HIGH(30)
-	MOV	reg3, LOW(add16)
-	CALL	reg3, HIGH(add16)
+	MOV	reg3, HIGH(compute_fibonacci)
+	CALL	reg3, LOW(compute_fibonacci)
 
 ;halt the emulator
 	MOV	reg2, 0
 	SET_PTR	reg2, 0
 	LDA	reg2; halts the emulator
 
-;add two 16bit numbers together. result is 16 bit
-;reg0 low(nr1)
-;reg1 high(nr1)
-;stack1 low(nr2) -->reg2
-;stack2 high(nr2) -->reg3
-;return in reg0(low), reg1(high)
-add16:
-	POP	reg3
-	POP	reg2
-	ADD	reg1, reg3; add HIGH
-	ADD	reg0, reg2; add LOW
-	JMPC	add16_2		
-	SUB	reg1, 1
-add16_2:
-	ADD	reg1, 1
-add_16_end:	
-	RET
-
-;compute *SP fibonacci numbers and print them via UART
+;compute reg0 fibonacci numbers and print them via UART
 ;ARG1 = nr of fibonacci iterations. max is 255
 compute_fibonacci:
 	PUSH	lr_low
@@ -58,11 +32,11 @@ fibonacci_loop:
 	PUSH	reg2
 
 	MOV	reg0, reg1; current fibonacci
-	MOV	reg2, LOW(itoa)
-	CALL	reg2, HIGH(itoa)
+	MOV	reg2, HIGH(itoa)
+	CALL	reg2, LOW(itoa)
 
-	MOV	reg2, LOW(uart_print)
-	CALL	reg2, HIGH(uart_print)
+	MOV	reg2, HIGH(uart_print)
+	CALL	reg2, LOW(uart_print)
 
 	POP	reg2
 	POP	reg1

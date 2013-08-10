@@ -6,17 +6,28 @@
 	MOV	reg1, HIGH(500)
 	PUSH	LOW(30)
 	PUSH	HIGH(30)
-	MOV	reg3, LOW(add16)
-	CALL	reg3, HIGH(add16)
+	MOV	reg3, HIGH(add16)
+	CALL	reg3, LOW(add16)
 
+;Print result
+	MOV	reg3, LOW(itoa16)
+	CALL	reg3, HIGH(itoa16)
+	MOV	reg3, HIGH(uart_print)
+	CALL	reg3, LOW(uart_print)
 
 ;subtract two 16bit integers
 	MOV	reg0, LOW(500)
 	MOV	reg1, HIGH(500)
-	PUSH	LOW(30)
-	PUSH	HIGH(30)
-	MOV	reg3, LOW(add16)
-	CALL	reg3, HIGH(add16)
+	;PUSH	LOW(30)
+	;PUSH	HIGH(30)
+	;MOV	reg3, HIGH(add16)
+	;CALL	reg3, LOW(add16)
+
+;Print result
+	MOV	reg3, LOW(itoa16)
+	;CALL	reg3, HIGH(itoa16)
+	MOV	reg3, HIGH(uart_print)
+	;CALL	reg3, LOW(uart_print)
 
 	;halt the emulator
 	MOV	reg2, 0
@@ -75,17 +86,17 @@ sub16_continue:
 uart_print: 
 	SET_PTR	reg0, reg1
 uart_print_loop:
-	LDA					reg0
-	JMPZ				uart_print_end
-	PUSH				ptr_low
-	PUSH				ptr_high
-	MOV					reg2, HIGH(UART)
-SET_PTR	reg2, LOW(UART)
-	STR					reg0
-	POP					ptr_high
-	POP					ptr_low
+	LDA	reg0
+	JMPZ	uart_print_end
+	PUSH	ptr_low
+	PUSH	ptr_high
+	MOV	reg2, HIGH(UART)
+	SET_PTR	reg2, LOW(UART)
+	STR	reg0
+	POP	ptr_high
+	POP	ptr_low
 	PTR_ADD 1
-	JMP					uart_print_loop
+	JMP	uart_print_loop
 uart_print_end:	
 	RET
 
@@ -93,12 +104,12 @@ uart_print_end:
 ;reg0 nr to be converted
 ;returns STRING ptr in reg0, reg1
 itoa:
-	MOV		reg2, HIGH(ITOA_MEM)
-SET_PTR	reg2, LOW(ITOA_MEM)
+	MOV	reg2, HIGH(ITOA_MEM)
+	SET_PTR	reg2, LOW(ITOA_MEM)
 
 	MOV	reg2, 0x30; ASCII 0
 itoa_100_loop:
-	MOV		reg1, reg0
+	MOV	reg1, reg0
 	SUB		reg0, 100 ;if > 100
 	JMPC		itoa_end_100_loop
 	ADD		reg2, 1
@@ -141,6 +152,12 @@ itoa16:
 	MOV		reg2, HIGH(ITOA_MEM)
 	SET_PTR	reg2, LOW(ITOA_MEM)
 	MOV		reg2, 0x30; ASCII 0
+itoa_16_1000_loop:
+;	PUSH	LOW(1000)
+;	PUSH	HIGH(1000)
+;	MOV	reg2, LOW(sub16)
+;	CALL	reg2, HIGH(
+
 itoa16_100_loop:
 	MOV		reg1, reg0
 	SUB		reg0, 100 ;if > 100

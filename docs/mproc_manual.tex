@@ -75,7 +75,7 @@
 			0x3 & AND regA, regB & regA = regA AND regB & 0\\ \hline
 			0x4 & MOV regA, regB & regA = regB & 0\\ \hline
 			0x5 & MOVZ regA, regB & MOV if reg0 is zero &  0\\ \hline
-			0x6 & JMP regA, regB & set PC\_L to regA, PC\_H to regB & 0\\ \hline
+			0x6 & JMP regA, regB & set PC\_H to regA, PC\_L to regB & 0\\ \hline
 			0x60 & JMP number & Add sigend number to PC & 0\\ \hline
 			0x7 & JMPZ regA, regB & JMP if reg0 is zero & 0\\ \hline
 			0x70 & JMPZ number & Add sigend number to PC if reg0 is zero & 0\\ \hline
@@ -83,7 +83,7 @@
 			0x80 & JMPC number & Add sigend number to PC if carry is set & 0\\ \hline
 			0x9 & STR regA & Store regA where PTR points to & 2\\ \hline
 			0xA & LDR regA & Load into regA where PTR points to & 1\\ \hline
-			0xB & SET\_PTR regA, regB & Set PTR\_L to regA, PTR\_H to regB & 0\\ \hline
+			0xB & SET\_PTR regA, regB & Set PTR\_H to regA, PTR\_L to regB & 0\\ \hline
 			0xC & PTR\_ADD regB & add regB to PTR & 2\\ \hline
 			0xD0 & SAVE\_LR regA, regB & Save PC + 1 in LR &   \\ \hline
 			0xD1 & RET & Restore LR in PC &   \\ \hline
@@ -103,7 +103,7 @@
 		\begin{tabular}{|c|c|p{6cm}|}
 			\hline
 			Nibble 2 & Involved Registers & Note \\ \hline
-			0x0 & reg0, number & JMP(Z/C) uses this operand byte to encode JMP(Z/C) pc\_high, number thus JMP(Z/C) reg0, number cant be used. \\ \hline
+			0x0 & reg0, number & JMP(Z/C) uses this operand byte to encode JMP(Z/C) PC\_H, number thus JMP(Z/C) reg0, number cant be used. \\ \hline
 			0x1 & reg1, number & \\ \hline
 			0x2 & reg2, number & \\ \hline
 			0x3 & reg3, number & \\ \hline
@@ -211,6 +211,8 @@
 	\end{center}
 	\newpage
 	\section{Current Problems}
+	\subsection{SAVE\_LR Implementation and RET}
+	SAVE\_LR does not know whether the following JMP instructions takes one or two bytes. How to decide whether to save PC+1 with SAVE\_LR or PC+2?
 	\subsection{ALU}
 	ALU carry\_out signal is changed by NOR and AND instructions. Need a flip flop or something similar.
 	Do we need a flip flop for REG1\_ZERO\_MOVZ if reg1 is changed during a MOVZ instruction(Which could in turn have an effect on the STATE\_SIGNAL of the MOV instruction)?
