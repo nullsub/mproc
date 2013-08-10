@@ -28,7 +28,7 @@ int push_ret_nr = 0;
 enum cmd {NO_CMD, ONE_BYTE_CMD, TWO_BYTE_CMD};
 
 struct instruction{
-	char cmd_name[WORD_LENGTH];
+	char name[WORD_LENGTH];
 	char arg1[WORD_LENGTH];
 	char arg2[WORD_LENGTH];
 	char need_label[WORD_LENGTH];
@@ -39,7 +39,7 @@ struct instruction{
 };
 
 struct opcode{
-	char cmd_name[WORD_LENGTH];
+	char name[WORD_LENGTH];
 	int arg_set;
 	unsigned char opcode;
 };
@@ -480,7 +480,7 @@ void lookup_opcode(struct instruction * cmd)
 {
 	cmd->arg_set = -1;
 	for(unsigned int i = 0; i < sizeof(opcodes)/sizeof(struct opcode); i++) {
-		if(!strcmp(cmd->cmd_name, opcodes[i].cmd_name)) {
+		if(!strcmp(cmd->name, opcodes[i].name)) {
 			cmd->arg_set = opcodes[i].arg_set;
 			cmd->first_byte = opcodes[i].opcode;
 			break;
@@ -511,26 +511,26 @@ struct instruction * decode_instruction(char * statement)
 	struct instruction *cmd = (struct instruction *) malloc(sizeof(struct instruction));
 
 	*cmd->need_label = 0x00;
-	get_word(statement, cmd->cmd_name, 0);
+	get_word(statement, cmd->name, 0);
 
-	if(cmd->cmd_name[strlen(cmd->cmd_name)-1] == ':') { //check for labels
-		char * tmp = (char*) malloc(strlen(cmd->cmd_name) + 1);
-		strcpy(tmp, cmd->cmd_name);
+	if(cmd->name[strlen(cmd->name)-1] == ':') { //check for labels
+		char * tmp = (char*) malloc(strlen(cmd->name) + 1);
+		strcpy(tmp, cmd->name);
 		tmp[strlen(tmp)-1] = 0x00;
 		add_label(tmp, target_bin_len, 0, &provide_label);
 
 		statement += strlen(tmp)+1;
 		free(tmp);
 
-		get_word(statement, cmd->cmd_name, 0);
-		if(!*cmd->cmd_name) {
+		get_word(statement, cmd->name, 0);
+		if(!*cmd->name) {
 			cmd->type = NO_CMD; //statement ends after label
 			return cmd;
 		}
 	}
 
-	if(!strcmp(cmd->cmd_name, ".db")) { //check whether it is a constant command
-		add_constant(statement+(strlen(cmd->cmd_name)));
+	if(!strcmp(cmd->name, ".db")) { //check whether it is a constant command
+		add_constant(statement+(strlen(cmd->name)));
 		cmd->type = NO_CMD;
 		return cmd;
 	}
@@ -542,13 +542,13 @@ struct instruction * decode_instruction(char * statement)
 
 	get_word(statement, cmd->arg2, 2);
 
-	if(!strcmp("CALL", cmd->cmd_name)) {
+	if(!strcmp("CALL", cmd->name)) {
 		translate("SAVE_LR");	
-		strcpy(cmd->cmd_name, "JMP");
+		strcpy(cmd->name, "JMP");
 	}	
 
 	int8_t tmp;
-	if(!strncmp("JMP", cmd->cmd_name, strlen("JMP")) && !strcmp("reg0", cmd->arg1) && get_number_8(cmd->arg2, &tmp))
+	if(!strncmp("JMP", cmd->name, strlen("JMP")) && !strcmp("reg0", cmd->arg1) && get_number_8(cmd->arg2, &tmp))
 		failure_exit("JMP cannot be used with reg0 and a number!");
 
 	if(strlen(cmd->arg2) == 0) { //instruction with one argument.
@@ -585,7 +585,7 @@ int translate(char *line) //translates one stament to the opcode
 	if(*cmd->need_label) {
 		enum label_type type = LOW_ADDRESS; //by default take low byte
 		char *loc;
-		if((!strncmp("JMP", cmd->cmd_name, strlen("JMP"))&& !strcmp("reg0", cmd->arg1) && !strcmp("number", cmd->arg2))) {	
+		if((!strncmp("JMP", cmd->name, strlen("JMP")) && !strcmp("reg0", cmd->arg1) && !strcmp("number", cmd->arg2))) {	
 			type = OFFSET_ADDRESS;
 		}
 		else if((loc = strstr(cmd->need_label, "LOW("))) {
