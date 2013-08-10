@@ -42,7 +42,7 @@ struct cpu {
 
 	uint8_t a_number; //corresponds to the IR register
 	int carry;
-}cpu;
+} cpu;
 
 enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_PTR, PTR_ADD, SAVE_LR, PUSH, POP};
 
@@ -200,6 +200,20 @@ void get_cmd()
 	}
 }
 
+void do_jmp(uint8_t *arg1, uint8_t *arg2)
+{
+	if(arg1 == &cpu.reg0 && arg2 == &cpu.a_number) {
+		int8_t nr = *arg2; //-128<nr<128
+		uint16_t tmp16_bit = get_pc();
+		tmp16_bit += nr;
+		cpu.pc_low = tmp16_bit & 0xFF;
+		cpu.pc_high = tmp16_bit >> 8;
+		return;
+	}
+	cpu.pc_low = *arg1;
+	cpu.pc_high = *arg2;
+}
+
 void emu(FILE * file)
 {
 	char c = fgetc(file);
@@ -303,44 +317,15 @@ void emu(FILE * file)
 				cpu.lr_high = cpu.pc_high;
 				break;
 			case JMPZ:
-				if(!cpu.reg0) {
-					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
-						int8_t nr = *arg2; //-128<nr<128
-						tmp16_bit = get_pc();
-						tmp16_bit += nr;
-						cpu.pc_low = tmp16_bit & 0xFF;
-						cpu.pc_high = tmp16_bit >> 8;
-						break;
-					}
-					cpu.pc_low = *arg1;
-					cpu.pc_high = *arg2;
-				}
+				if(!cpu.reg0)
+					do_jmp(arg1, arg2);
 				break;
 			case JMPC:
-				if(cpu.carry) {
-					if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
-						int8_t nr = *arg2; //-128<nr<128
-						tmp16_bit = get_pc();
-						tmp16_bit += nr;
-						cpu.pc_low = tmp16_bit & 0xFF;
-						cpu.pc_high = tmp16_bit >> 8;
-						break;
-					}
-					cpu.pc_low = *arg1;
-					cpu.pc_high = *arg2;
-				}
+				if(!cpu.carry)
+					do_jmp(arg1, arg2);
 				break;
 			case JMP: 
-				if(*arg1 == cpu.reg0 && *arg2 == cpu.a_number) {
-					int8_t nr = *arg2; //-128<nr<128
-					tmp16_bit = get_pc();
-					tmp16_bit += nr;
-					cpu.pc_low = tmp16_bit & 0xFF;
-					cpu.pc_high = tmp16_bit >> 8;
-					break;
-				}
-				cpu.pc_low = *arg1;
-				cpu.pc_high = *arg2;
+				do_jmp(arg1, arg2);
 				break;
 			case PUSH:
 				if(cpu.sp == STACK_SIZE-1) {
