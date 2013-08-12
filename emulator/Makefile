@@ -56,9 +56,8 @@ $(OUTDIR)/$(notdir $(basename $(1))).o : $(1)
 endef
 $(foreach src, $(SRC), $(eval $(call COMPILE_C_SOURCE, $(src))))
 
-test: 
+test:  all
 	@./run_tests.sh
-	@echo "Testing done"
 
 # Target: clean project.
 clean:
