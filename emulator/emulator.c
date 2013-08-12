@@ -4,13 +4,13 @@
 #include <string.h>
 #include "emulator.h"
 
-#define UART 0x7FD0
+#define UART		0x7FD0
 
-#define FLASH_SIZE	32767 //0x7FFF
-#define RAM_SIZE	32767 //0x7FFF
-#define STACK_SIZE	32767 //0x7FFF
+#define FLASH_SIZE	0x7FFF
+#define RAM_SIZE	0x7FFF
+#define STACK_SIZE	0x7FFF
 
-#define MAX_UART_LINE 100
+#define MAX_UART_LINE	100
 
 void dump_mem();
 
@@ -52,7 +52,7 @@ struct opcode {
 	enum cmds opcode;
 };
 
-struct the_cmd {
+struct instruction {
 	char name[10];
 	unsigned int arg_set;
 	uint8_t *arg1;
@@ -142,8 +142,6 @@ const struct arg_entry arg_table[3][16] = {
 	}
 };
 
-struct the_cmd curr_cmd;
-
 uint8_t get_byte(uint16_t address)
 {
 	if(address == 0x0000) {
@@ -153,10 +151,8 @@ uint8_t get_byte(uint16_t address)
 		exit(0);
 		return 0;
 	}
-	//printf("getting from ram address 0x%.4x\n", address);
-	if(address >= RAM_SIZE) {
+	if(address >= RAM_SIZE) 
 		return cpu.flash[address-0x7FFF];
-	} 
 	return cpu.ram[address];
 }
 
@@ -173,9 +169,8 @@ void write_byte(uint8_t val, uint16_t address)
 void inc_pc()
 {
 	cpu.pc_low ++;
-	if(cpu.pc_low == 0x00) {
+	if(cpu.pc_low == 0x00)
 		cpu.pc_high ++;
-	}
 }
 
 uint16_t get_pc()
@@ -183,21 +178,23 @@ uint16_t get_pc()
 	return ((cpu.pc_high << 8) | (cpu.pc_low));
 }
 
-void get_cmd()
+struct instruction get_instruction()
 {
-	curr_cmd.opcode = get_byte(get_pc());
+	struct instruction instr;
+	instr.opcode = get_byte(get_pc());
 
-	curr_cmd.arg_set = opcodes[curr_cmd.opcode&0x0F].arg_set;
-	strcpy(curr_cmd.name, opcodes[curr_cmd.opcode&0x0F].name);
-	curr_cmd.arg1 = arg_table[curr_cmd.arg_set][(curr_cmd.opcode&0xF0)>>4].arg1;
-	curr_cmd.arg2 = arg_table[curr_cmd.arg_set][(curr_cmd.opcode&0xF0)>>4].arg2;
+	instr.arg_set = opcodes[instr.opcode&0x0F].arg_set;
+	strcpy(instr.name, opcodes[instr.opcode&0x0F].name);
+	instr.arg1 = arg_table[instr.arg_set][(instr.opcode&0xF0)>>4].arg1;
+	instr.arg2 = arg_table[instr.arg_set][(instr.opcode&0xF0)>>4].arg2;
 
 	inc_pc();
 
-	if(curr_cmd.arg2 == &cpu.a_number && ((curr_cmd.opcode &0x0F) != SAVE_LR)) { //two byte instruction
-		*curr_cmd.arg2 = get_byte(get_pc());
+	if(instr.arg2 == &cpu.a_number && ((instr.opcode &0x0F) != SAVE_LR)) { //two byte instruction
+		*instr.arg2 = get_byte(get_pc());
 		inc_pc();
 	}
+	return instr;
 }
 
 void do_jmp(uint8_t *arg1, uint8_t *arg2)
@@ -242,26 +239,24 @@ void emu(FILE * file)
 	int uart_i = 0;
 
 	while(1) {
-		get_cmd();
+		struct instruction crrnt_instr = get_instruction();
 
-		uint8_t *arg1 = curr_cmd.arg1;
-		uint8_t *arg2 = curr_cmd.arg2;
+		uint8_t *arg1 = crrnt_instr.arg1;
+		uint8_t *arg2 = crrnt_instr.arg2;
 		uint16_t tmp16_bit;
 
-		switch(curr_cmd.opcode & 0x0F) {
+		switch(crrnt_instr.opcode & 0x0F) {
 			case ADD:
 				cpu.carry = 0;
 				tmp16_bit = *arg1 + *arg2;
 				*arg1 = (tmp16_bit & 0x00FF);
-				if(tmp16_bit > 0xFF) {
+				if(tmp16_bit > 0xFF)
 					cpu.carry = 1;
-				}
 				break;
 			case SUB:
 				cpu.carry = 0;
-				if(*arg2 > *arg1) {
+				if(*arg2 > *arg1) 
 					cpu.carry = 1;
-				}
 				*arg1 = *arg1-*arg2;
 				break;
 			case NOR:
@@ -296,7 +291,7 @@ void emu(FILE * file)
 					uart_bffr[uart_i++] = *arg2;
 					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
 						uart_bffr[uart_i] = 0x00;
-						printf("%s",uart_bffr);
+						printf("%s", uart_bffr);
 						uart_i = 0;
 					}
 				}
@@ -306,7 +301,7 @@ void emu(FILE * file)
 				*arg2 = get_byte((cpu.ptr_high << 8) | (cpu.ptr_low));
 				break;
 			case SAVE_LR:	
-				if(curr_cmd.opcode != SAVE_LR) { // RET is encoded as SAVE_LR
+				if(crrnt_instr.opcode != SAVE_LR) { // RET is encoded as SAVE_LR
 					cpu.pc_low = cpu.lr_low;
 					cpu.pc_high = cpu.lr_high;
 					inc_pc();
