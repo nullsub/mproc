@@ -33,7 +33,8 @@
 
 	\subsection{I/O}
 	\begin{itemize}
-		\item I/O can be written to with the pop/ldr and read from with the push/str instructions. There are 2 Output ports and one input port. Always 8 bits wide.
+		\item I/O can be written to with PUSH and read from with POP. 
+		\item There are 2 output ports and one input port. All 8 bits wide.
 	\end{itemize}
 
 	\subsection{Memory}
@@ -98,7 +99,7 @@
 	\newpage
 	\subsection{Argument Decode Table 0}
 	The second instruction Nibble defines the operand registers.
-	Table A is used by MOV, SET\_PTR and ALU
+	Table 0 is used by MOV, SET\_PTR and ALU
 	\begin{center}
 		\begin{tabular}{|c|c|p{6cm}|}
 			\hline
@@ -162,9 +163,9 @@
 	\section{Calling Convention}
 	\begin{itemize}
 		\item Caller saves his working registers(stack)
-		\item Arguments are passed in Reg0, Reg1, Reg2. Additional arguments are passed via the stack(Reg3 cannot be used since it is needed for the call)
-		\item Return Address is passed through the stack. First the Low byte is pushed, than the High byte
-		\item Return values are in Reg1 and Reg2. Additional return values are on the stack (Reg3 and 4 cannot be used since they are needed for the return JMP instruction)
+		\item Arguments are passed in Reg0 and Reg1. Additional arguments are passed via the stack.
+		\item Return Address is saved in LR. If the callee wants to call other functions it has to save LR.
+		\item Return values are in Reg0 and Reg1. Additional return values are on the stack.
 	\end{itemize}
 	\section{Hardware Implementation}
 	The 74HCT logic family is used.  Write here the propagation delay calculation, Power consumption, and performance charachteristics.
@@ -193,22 +194,25 @@
 	\end{center}	
 	\newpage
 	\subsection{Execution Steps}
+	{\tiny
 	\begin{center}
 		\begin{tabular}{|c|p{2cm}|p{3cm}|p{3cm}|p{2cm}|c|}
 			\hline
 			Command & 1 & 2 & 3 & 4 & 5 \\ \hline
-			ALU & Write Reg A to DBUS. High to low triggered & Latch Reg A from DBUS for the ALU. Happens at the High to low transition. & Write Reg B to DBUS & At the High to low transition of the state signal the ALU output is latched & Fill Reg\\ \hline
-			MOV(Z) & Write Reg to DBUS & Fill Regs & & &\\ \hline
+			ALU & Write regA to DBUS. High to low triggered & Latch regA from DBUS for the ALU. Happens at the High to low transition. & Write RegB to DBUS & At the High to low transition of the state signal the ALU output is latched & Fill Reg\\ \hline
+			MOV(Z) & Write regB to DBUS & Fill Regs & & &\\ \hline
 			LDA & & & & & \\ \hline
 			STR & & & & & \\ \hline
-			JMP(C/Z) & Write Reg A to DBUS & Full PC\_LOW with reg. if Reg1 is 0x00 done& Apply Reg B to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH with Reg B & \\ \hline
-			PTR\_ADD & Add ofset to PTR & & & & \\ \hline
+			JMP(C/Z) & Write RegA to DBUS & Fill PC\_LOW. & Write RegB to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH & \\ \hline
+			JMP(Offset) & Write IR to DBUS & Write PC\_L to ALU. & ADD/SUB ALU & Fill PC\_L with ALU & \\ \hline
+			PTR\_ADD & Write IR to DBUS & Write PTR\_L to ALU & ADD/SUB ALU& Fill PTR\_L with ALU & When carry inc. PTR\_H\\ \hline
+			SET\_PTR & Write RegB to DBUS & Fill PTR\_L. & Write RegA to DBUS & Fill PTR\_H. & \\ \hline
 			PUSH & Decrement SP & & & & \\ \hline
 			POP & & & Increment SP & & \\ \hline
-			SET\_PTR & Write Reg to DBUS & Fill PC\_LOW with reg & Apply the Table 2 multiplexer that decode table 2 is used & Fill PTR with Reg 2 & \\ \hline
 			& & & & & \\ \hline
 		\end{tabular}
 	\end{center}
+	}
 	\newpage
 	\section{Current Problems}
 	\subsection{SAVE\_LR Implementation and RET}
