@@ -1,9 +1,7 @@
 #Makefile for the assembler
 
-# Directory for output files (lst, obj, dep, elf, map, hex, bin etc.)
 OUTDIR = build
 
-# Target file name (without extension).
 TARGET = asm
 
 # Source files:
@@ -11,7 +9,7 @@ SRC += main.c
 SRC += assembler.c 
 
 # List any extra directories to look for include files here.
-INCDIRS  += $(DEVICE_DIR) 
+INCDIRS  += 
 
 CFLAGS += $(patsubst %,-I%,$(INCDIRS)) -I.
 CFLAGS += -std=gnu99

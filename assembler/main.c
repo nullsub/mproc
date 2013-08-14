@@ -14,7 +14,7 @@ int main ( int argc, char *argv[] ) {
 		printf( "Could not open file\n" );
 		return -1;
 	} 
-	char * output_name = (char*)malloc(strlen(argv[1])+4);
+	char * output_name = (char*)malloc(strlen(argv[1])+5);
 	sprintf(output_name, "%s.bin", strtok(argv[1], "."));
 	assemble(file, output_name);
 	fclose(file);

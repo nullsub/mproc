@@ -1,17 +1,14 @@
 #Makefile for the emulator
 
-# Directory for output files (lst, obj, dep, elf, map, hex, bin etc.)
 OUTDIR = build
 
-# Target file name (without extension).
 TARGET = emu
 
 # Source files:
 SRC += main.c 
 SRC += emulator.c 
 
-# List any extra directories to look for include files here.
-INCDIRS  += $(DEVICE_DIR) 
+INCDIRS  += 
 
 CFLAGS += $(patsubst %,-I%,$(INCDIRS)) -I.
 CFLAGS += -std=gnu99
@@ -56,7 +53,7 @@ $(OUTDIR)/$(notdir $(basename $(1))).o : $(1)
 endef
 $(foreach src, $(SRC), $(eval $(call COMPILE_C_SOURCE, $(src))))
 
-test:  all
+test: all
 	@./run_tests.sh
 
 # Target: clean project.

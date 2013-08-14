@@ -1,5 +1,2 @@
-It does not relly work and it uses alot of nasty hacks.
-
-assembler for my_cpu.
-
-Maybe its wiser to just port dasm to my_cpu...
+assemble with:
+build/asm.elf foo.asm
