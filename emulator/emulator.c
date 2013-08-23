@@ -74,7 +74,7 @@ const struct opcode opcodes[] = {
 	{"LDA", 1, LDA},
 	{"SET_PTR", 0, SET_PTR},
 	{"PTR_ADD", 2, PTR_ADD},
-	{"SAVE_LR", 2, SAVE_LR},
+	{"SAVE_LR", 1, SAVE_LR},
 	{"PUSH", 2, PUSH},
 	{"POP", 1, POP},
 };
@@ -113,9 +113,9 @@ const struct arg_entry arg_table[3][16] = {
 		{"reg0", "ptr_low", 0x40, &cpu.reg0, &cpu.ptr_low},
 		{"reg0", "ptr_high", 0x50, &cpu.reg0, &cpu.ptr_high},
 		{"reg0", "io_out0", 0x60, &cpu.reg0, &cpu.io_out0},
-		{"reg0", "io_out1", 0x70, &cpu.reg0, &cpu.io_out1}, 
+		{"reg0", "io_out1", 0x70, &cpu.reg0, &cpu.io_out1},
 		{"reg0", "lr_low", 0x80, &cpu.reg0, &cpu.lr_low},
-		{"reg0", "lr_high", 0x90, &cpu.reg0, &cpu.lr_high}, 
+		{"reg0", "lr_high", 0x90, &cpu.reg0, &cpu.lr_high},
 		{"reg0", "reg0", 0xA0, &cpu.reg0, &cpu.reg0}, //Unused
 		{"reg0", "reg0", 0xB0, &cpu.reg0, &cpu.reg0}, //Unused
 		{"reg0", "reg0", 0xC0, &cpu.reg0, &cpu.reg0}, //Unused
@@ -130,10 +130,10 @@ const struct arg_entry arg_table[3][16] = {
 		{"reg0", "number", 0x40, &cpu.reg0, &cpu.a_number},
 		{"reg0", "ptr_low", 0x50, &cpu.reg0, &cpu.ptr_low},
 		{"reg0", "ptr_high", 0x60, &cpu.reg0, &cpu.ptr_high},
-		{"reg0", "io_in0", 0x70, &cpu.reg0, &cpu.io_in0}, 
+		{"reg0", "io_in0", 0x70, &cpu.reg0, &cpu.io_in0},
 		{"reg0", "io_in1", 0x80, &cpu.reg0, &cpu.io_in1},
-		{"reg0", "lr_low", 0x90, &cpu.reg0, &cpu.lr_low}, 
-		{"reg0", "lr_high", 0xA0, &cpu.reg0, &cpu.lr_high}, 
+		{"reg0", "lr_low", 0x90, &cpu.reg0, &cpu.lr_low},
+		{"reg0", "lr_high", 0xA0, &cpu.reg0, &cpu.lr_high},
 		{"reg0", "reg0", 0xB0, &cpu.reg0, &cpu.reg0}, //Unused
 		{"reg0", "reg0", 0xC0, &cpu.reg0, &cpu.reg0}, //Unused
 		{"reg0", "reg0", 0xD0, &cpu.reg0, &cpu.reg0}, //Unused
@@ -151,7 +151,7 @@ uint8_t get_byte(uint16_t address)
 		exit(0);
 		return 0;
 	}
-	if(address >= RAM_SIZE) 
+	if(address >= RAM_SIZE)
 		return cpu.flash[address-0x7FFF];
 	return cpu.ram[address];
 }
@@ -225,10 +225,10 @@ void emu(FILE * file)
 	cpu.reg1 = 0x00;
 	cpu.reg2 = 0x00;
 	cpu.reg3 = 0x00;
-	cpu.ptr_low = 0x00; 
-	cpu.ptr_high = 0x00; 
-	cpu.lr_low = 0x00; 
-	cpu.lr_high = 0x00; 
+	cpu.ptr_low = 0x00;
+	cpu.ptr_high = 0x00;
+	cpu.lr_low = 0x00;
+	cpu.lr_high = 0x00;
 	cpu.pc_high = 0x7F;
 	cpu.pc_low = 0xFF;
 
@@ -255,7 +255,7 @@ void emu(FILE * file)
 				break;
 			case SUB:
 				cpu.carry = 0;
-				if(*arg2 > *arg1) 
+				if(*arg2 > *arg1)
 					cpu.carry = 1;
 				*arg1 = *arg1-*arg2;
 				break;
@@ -265,18 +265,18 @@ void emu(FILE * file)
 			case AND:
 				*arg1 = *arg1 & *arg2;
 				break;
-			case MOV: 
+			case MOV:
 				*arg1 = *arg2;
-				break;	
+				break;
 			case MOVZ:
-				if(!cpu.reg0) 
+				if(!cpu.reg0)
 					*arg1 = *arg2;
 				break;
-			case SET_PTR: 
+			case SET_PTR:
 				cpu.ptr_high = *arg1;
 				cpu.ptr_low = *arg2;
 				break;
-			case PTR_ADD: 
+			case PTR_ADD:
 				tmp16_bit = ((cpu.ptr_high << 8) | (cpu.ptr_low));
 
 				int8_t nr = *arg2;
@@ -300,7 +300,7 @@ void emu(FILE * file)
 			case LDA:
 				*arg2 = get_byte((cpu.ptr_high << 8) | (cpu.ptr_low));
 				break;
-			case SAVE_LR:	
+			case SAVE_LR:
 				if(crrnt_instr.opcode != SAVE_LR) { // RET is encoded as SAVE_LR
 					cpu.pc_low = cpu.lr_low;
 					cpu.pc_high = cpu.lr_high;
@@ -319,7 +319,7 @@ void emu(FILE * file)
 				if(cpu.carry)
 					do_jmp(arg1, arg2);
 				break;
-			case JMP: 
+			case JMP:
 				do_jmp(arg1, arg2);
 				break;
 			case PUSH:
@@ -341,7 +341,7 @@ void emu(FILE * file)
 				break;
 			default:
 				printf("unknown command in switch\n");
-		}	
+		}
 	}
 }
 
