@@ -86,7 +86,7 @@
 			0xA & LDR regA & Load into regA where PTR points to & 1\\ \hline
 			0xB & SET\_PTR regA, regB & Set PTR\_H to regA, PTR\_L to regB & 0\\ \hline
 			0xC & PTR\_ADD regB & add regB to PTR & 2\\ \hline
-			0xD0 & SAVE\_LR regA, regB & Save PC + 1 in LR &   \\ \hline
+			0xD0 & SAVE\_LR & Save PC + 1 in LR &   \\ \hline
 			0xD1 & RET & Restore LR in PC &   \\ \hline
 			0xE & PUSH regA & Push regA to the stack & 2\\ \hline
 			0xF & POP regA & Pop stack item into regA & 1\\	\hline
