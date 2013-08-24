@@ -106,11 +106,11 @@ const struct arg_entry arg_table[3][16] = {
 		{"reg0", "reg0", 0xE0}, //Unused
 		{"reg0", "reg0", 0xF0}, //Unused
 	},{
-		{"reg0", "reg0", 0x00}, //Table 2
-		{"reg0", "reg1", 0x10},
-		{"reg0", "reg2", 0x20},
-		{"reg0", "reg3", 0x30},
-		{"reg0", "number", 0x40},
+		{"reg0", "number", 0x00}, //Table 2
+		{"reg0", "reg0", 0x10},
+		{"reg0", "reg1", 0x20},
+		{"reg0", "reg2", 0x30},
+		{"reg0", "reg3", 0x40},
 		{"reg0", "ptr_low", 0x50},
 		{"reg0", "ptr_high", 0x60},
 		{"reg0", "io_in0", 0x70},

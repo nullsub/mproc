@@ -122,11 +122,11 @@ const struct arg_entry arg_table[3][16] = {
 		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
 		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
 	}, {
-		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Table 2
+		{"reg0", "number", &cpu.reg0, &cpu.a_number}, //Table 2
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0},
 		{"reg0", "reg1", &cpu.reg0, &cpu.reg1},
 		{"reg0", "reg2", &cpu.reg0, &cpu.reg2},
 		{"reg0", "reg3", &cpu.reg0, &cpu.reg3},
-		{"reg0", "number", &cpu.reg0, &cpu.a_number},
 		{"reg0", "ptr_low", &cpu.reg0, &cpu.ptr_low},
 		{"reg0", "ptr_high", &cpu.reg0, &cpu.ptr_high},
 		{"reg0", "io_in0", &cpu.reg0, &cpu.io_in0},
