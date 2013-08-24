@@ -44,12 +44,12 @@ struct cpu {
 	int carry;
 } cpu;
 
-enum cmds {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_PTR, PTR_ADD, SAVE_LR, PUSH, POP};
+enum opcodes {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_PTR, PTR_ADD, SAVE_LR, PUSH, POP};
 
 struct opcode {
 	char name[10];
 	int arg_set;
-	enum cmds opcode;
+	enum opcodes opcode;
 };
 
 struct instruction {
@@ -57,7 +57,7 @@ struct instruction {
 	unsigned int arg_set;
 	uint8_t *arg1;
 	uint8_t *arg2;
-	enum cmds opcode;
+	enum opcodes opcode;
 };
 
 const struct opcode opcodes[] = {
@@ -82,63 +82,62 @@ const struct opcode opcodes[] = {
 struct arg_entry {
 	char arg1_name[10];
 	char arg2_name[10];
-	uint8_t opcode;
 	uint8_t *arg1;
 	uint8_t *arg2;
 };
 
 const struct arg_entry arg_table[3][16] = {
 	{
-		{"reg0", "number", 0x00, &cpu.reg0, &cpu.a_number}, //Table 0
-		{"reg1", "number", 0x10, &cpu.reg1, &cpu.a_number},
-		{"reg2", "number", 0x20, &cpu.reg2, &cpu.a_number},
-		{"reg3", "number", 0x30, &cpu.reg3, &cpu.a_number},
-		{"reg0", "reg1", 0x40, &cpu.reg0, &cpu.reg1},
-		{"reg0", "reg2", 0x50, &cpu.reg0, &cpu.reg2},
-		{"reg0", "reg3", 0x60, &cpu.reg0, &cpu.reg3},
-		{"reg1", "reg0", 0x70, &cpu.reg1, &cpu.reg0},
-		{"reg1", "reg2", 0x80, &cpu.reg1, &cpu.reg2},
-		{"reg1", "reg3", 0x90, &cpu.reg1, &cpu.reg3},
-		{"reg2", "reg0", 0xA0, &cpu.reg2, &cpu.reg0},
-		{"reg2", "reg1", 0xB0, &cpu.reg2, &cpu.reg1},
-		{"reg2", "reg3", 0xC0, &cpu.reg2, &cpu.reg3},
-		{"reg3", "reg0", 0xD0, &cpu.reg3, &cpu.reg0},
-		{"reg3", "reg1", 0xE0, &cpu.reg3, &cpu.reg1},
-		{"reg3", "reg2", 0xF0, &cpu.reg3, &cpu.reg2},
+		{"reg0", "number", &cpu.reg0, &cpu.a_number}, //Table 0
+		{"reg1", "number", &cpu.reg1, &cpu.a_number},
+		{"reg2", "number", &cpu.reg2, &cpu.a_number},
+		{"reg3", "number", &cpu.reg3, &cpu.a_number},
+		{"reg0", "reg1", &cpu.reg0, &cpu.reg1},
+		{"reg0", "reg2", &cpu.reg0, &cpu.reg2},
+		{"reg0", "reg3", &cpu.reg0, &cpu.reg3},
+		{"reg1", "reg0", &cpu.reg1, &cpu.reg0},
+		{"reg1", "reg2", &cpu.reg1, &cpu.reg2},
+		{"reg1", "reg3", &cpu.reg1, &cpu.reg3},
+		{"reg2", "reg0", &cpu.reg2, &cpu.reg0},
+		{"reg2", "reg1", &cpu.reg2, &cpu.reg1},
+		{"reg2", "reg3", &cpu.reg2, &cpu.reg3},
+		{"reg3", "reg0", &cpu.reg3, &cpu.reg0},
+		{"reg3", "reg1", &cpu.reg3, &cpu.reg1},
+		{"reg3", "reg2", &cpu.reg3, &cpu.reg2},
 	}, {
-		{"reg0", "reg0", 0x00, &cpu.reg0, &cpu.reg0}, //Table 1
-		{"reg0", "reg1", 0x10, &cpu.reg0, &cpu.reg1},
-		{"reg0", "reg2", 0x20, &cpu.reg0, &cpu.reg2},
-		{"reg0", "reg3", 0x30, &cpu.reg0, &cpu.reg3},
-		{"reg0", "ptr_low", 0x40, &cpu.reg0, &cpu.ptr_low},
-		{"reg0", "ptr_high", 0x50, &cpu.reg0, &cpu.ptr_high},
-		{"reg0", "io_out0", 0x60, &cpu.reg0, &cpu.io_out0},
-		{"reg0", "io_out1", 0x70, &cpu.reg0, &cpu.io_out1},
-		{"reg0", "lr_low", 0x80, &cpu.reg0, &cpu.lr_low},
-		{"reg0", "lr_high", 0x90, &cpu.reg0, &cpu.lr_high},
-		{"reg0", "reg0", 0xA0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xB0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xC0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xD0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xE0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xF0, &cpu.reg0, &cpu.reg0}, //Unused
-	},{
-		{"reg0", "reg0", 0x00, &cpu.reg0, &cpu.reg0}, //Table 2
-		{"reg0", "reg1", 0x10, &cpu.reg0, &cpu.reg1},
-		{"reg0", "reg2", 0x20, &cpu.reg0, &cpu.reg2},
-		{"reg0", "reg3", 0x30, &cpu.reg0, &cpu.reg3},
-		{"reg0", "number", 0x40, &cpu.reg0, &cpu.a_number},
-		{"reg0", "ptr_low", 0x50, &cpu.reg0, &cpu.ptr_low},
-		{"reg0", "ptr_high", 0x60, &cpu.reg0, &cpu.ptr_high},
-		{"reg0", "io_in0", 0x70, &cpu.reg0, &cpu.io_in0},
-		{"reg0", "io_in1", 0x80, &cpu.reg0, &cpu.io_in1},
-		{"reg0", "lr_low", 0x90, &cpu.reg0, &cpu.lr_low},
-		{"reg0", "lr_high", 0xA0, &cpu.reg0, &cpu.lr_high},
-		{"reg0", "reg0", 0xB0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xC0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xD0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xE0, &cpu.reg0, &cpu.reg0}, //Unused
-		{"reg0", "reg0", 0xF0, &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Table 1
+		{"reg0", "reg1", &cpu.reg0, &cpu.reg1},
+		{"reg0", "reg2", &cpu.reg0, &cpu.reg2},
+		{"reg0", "reg3", &cpu.reg0, &cpu.reg3},
+		{"reg0", "ptr_low", &cpu.reg0, &cpu.ptr_low},
+		{"reg0", "ptr_high", &cpu.reg0, &cpu.ptr_high},
+		{"reg0", "io_out0", &cpu.reg0, &cpu.io_out0},
+		{"reg0", "io_out1", &cpu.reg0, &cpu.io_out1},
+		{"reg0", "lr_low", &cpu.reg0, &cpu.lr_low},
+		{"reg0", "lr_high", &cpu.reg0, &cpu.lr_high},
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+	}, {
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Table 2
+		{"reg0", "reg1", &cpu.reg0, &cpu.reg1},
+		{"reg0", "reg2", &cpu.reg0, &cpu.reg2},
+		{"reg0", "reg3", &cpu.reg0, &cpu.reg3},
+		{"reg0", "number", &cpu.reg0, &cpu.a_number},
+		{"reg0", "ptr_low", &cpu.reg0, &cpu.ptr_low},
+		{"reg0", "ptr_high", &cpu.reg0, &cpu.ptr_high},
+		{"reg0", "io_in0", &cpu.reg0, &cpu.io_in0},
+		{"reg0", "io_in1", &cpu.reg0, &cpu.io_in1},
+		{"reg0", "lr_low", &cpu.reg0, &cpu.lr_low},
+		{"reg0", "lr_high", &cpu.reg0, &cpu.lr_high},
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
+		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Unused
 	}
 };
 
@@ -183,14 +182,20 @@ struct instruction get_instruction()
 	struct instruction instr;
 	instr.opcode = get_byte(get_pc());
 
-	instr.arg_set = opcodes[instr.opcode&0x0F].arg_set;
-	strcpy(instr.name, opcodes[instr.opcode&0x0F].name);
+	for(int i = 0; i < 16; i++) {
+		if(opcodes[i].opcode == (instr.opcode&0x0F)) {
+			instr.arg_set = opcodes[i].arg_set;
+			strcpy(instr.name, opcodes[i].name);
+			break;
+		}
+	}
+
 	instr.arg1 = arg_table[instr.arg_set][(instr.opcode&0xF0)>>4].arg1;
 	instr.arg2 = arg_table[instr.arg_set][(instr.opcode&0xF0)>>4].arg2;
 
 	inc_pc();
 
-	if(instr.arg2 == &cpu.a_number && ((instr.opcode &0x0F) != SAVE_LR)) { //two byte instruction
+	if(instr.arg2 == &cpu.a_number) { //two byte instruction
 		*instr.arg2 = get_byte(get_pc());
 		inc_pc();
 	}
@@ -218,8 +223,10 @@ void emu(FILE * file)
 		cpu.flash[i] = c;
 		c = fgetc(file);
 	}
-	if(!feof(file))
+	if(!feof(file)) {
 		printf("bin too large!\n");
+		return;
+	}
 
 	cpu.reg0 = 0x00;
 	cpu.reg1 = 0x00;

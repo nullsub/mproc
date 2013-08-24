@@ -58,8 +58,8 @@ const struct opcode opcodes[] = {
 	{"LDA",1,0x0A},
 	{"SET_PTR",0,0x0B},
 	{"PTR_ADD",2,0x0C},
-	{"SAVE_LR",2,0x0D},
-	{"RET",2,0x1D},
+	{"SAVE_LR",1,0x0D},
+	{"RET",1,0x1D},
 	{"PUSH",2,0x0E},
 	{"POP",1,0x0F},
 };
