@@ -105,21 +105,21 @@
 			\hline
 			Nibble 2 & Involved Registers & Note \\ \hline
 			0x0 & reg0, number & JMP(Z/C) uses this operand byte to encode JMP(Z/C) PC\_H, number thus JMP(Z/C) reg0, number cant be used. \\ \hline
-			0x1 & reg1, number & \\ \hline
-			0x2 & reg2, number & \\ \hline
-			0x3 & reg3, number & \\ \hline
-			0x4 & reg0, reg1 & \\ \hline
-			0x5 & reg0, reg2 & \\ \hline
-			0x6 & reg0, reg3 & \\ \hline
-			0x7 & reg1, reg0 & \\ \hline
-			0x8 & reg1, reg2 & \\ \hline
-			0x9 & reg1, reg3 & \\ \hline
-			0xA & reg2, reg0 & \\ \hline
-			0xB & reg2, reg1 & \\ \hline
-			0xC & reg2, reg3 & \\ \hline
-			0xD & reg3, reg0 & \\ \hline
-			0xE & reg3, reg1 & \\ \hline
-			0xF & reg3, reg2 & \\ \hline
+			0x1 & reg0, reg1 & \\ \hline
+			0x2 & reg0, reg2 & \\ \hline
+			0x3 & reg0, reg3 & \\ \hline
+			0x4 & reg1, reg0 & \\ \hline
+			0x5 & reg1, number & \\ \hline
+			0x6 & reg1, reg2 & \\ \hline
+			0x7 & reg1, reg3 & \\ \hline
+			0x8 & reg2, reg0 & \\ \hline
+			0x9 & reg2, reg1 & \\ \hline
+			0xA & reg2, number & \\ \hline
+			0xB & reg2, reg3 & \\ \hline
+			0xC & reg3, reg0 & \\ \hline
+			0xD & reg3, reg1 & \\ \hline
+			0xE & reg3, reg2 & \\ \hline
+			0xF & reg3, number & \\ \hline
 		\end{tabular}
 	\end{center}	
 	\newpage
@@ -147,11 +147,11 @@
 		\begin{tabular}{|c|c|}
 			\hline
 			Nibble 2 & Involved Registers \\ \hline
-			0x0 & reg0 \\ \hline
-			0x1 & reg1 \\ \hline
-			0x2 & reg2 \\ \hline
-			0x3 & reg3 \\ \hline
-			0x4 & number \\ \hline
+			0x0 & number \\ \hline
+			0x1 & reg0 \\ \hline
+			0x2 & reg1 \\ \hline
+			0x3 & reg2 \\ \hline
+			0x4 & reg3 \\ \hline
 			0x5 & ptr\_low \\ \hline
 			0x6 & ptr\_high \\ \hline
 			0x7 & io\_in0 \\ \hline

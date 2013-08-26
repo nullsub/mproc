@@ -89,21 +89,21 @@ struct arg_entry {
 const struct arg_entry arg_table[3][16] = {
 	{
 		{"reg0", "number", &cpu.reg0, &cpu.a_number}, //Table 0
-		{"reg1", "number", &cpu.reg1, &cpu.a_number},
-		{"reg2", "number", &cpu.reg2, &cpu.a_number},
-		{"reg3", "number", &cpu.reg3, &cpu.a_number},
 		{"reg0", "reg1", &cpu.reg0, &cpu.reg1},
 		{"reg0", "reg2", &cpu.reg0, &cpu.reg2},
 		{"reg0", "reg3", &cpu.reg0, &cpu.reg3},
 		{"reg1", "reg0", &cpu.reg1, &cpu.reg0},
+		{"reg1", "number", &cpu.reg1, &cpu.a_number},
 		{"reg1", "reg2", &cpu.reg1, &cpu.reg2},
 		{"reg1", "reg3", &cpu.reg1, &cpu.reg3},
 		{"reg2", "reg0", &cpu.reg2, &cpu.reg0},
 		{"reg2", "reg1", &cpu.reg2, &cpu.reg1},
+		{"reg2", "number", &cpu.reg2, &cpu.a_number},
 		{"reg2", "reg3", &cpu.reg2, &cpu.reg3},
 		{"reg3", "reg0", &cpu.reg3, &cpu.reg0},
 		{"reg3", "reg1", &cpu.reg3, &cpu.reg1},
 		{"reg3", "reg2", &cpu.reg3, &cpu.reg2},
+		{"reg3", "number", &cpu.reg3, &cpu.a_number},
 	}, {
 		{"reg0", "reg0", &cpu.reg0, &cpu.reg0}, //Table 1
 		{"reg0", "reg1", &cpu.reg0, &cpu.reg1},

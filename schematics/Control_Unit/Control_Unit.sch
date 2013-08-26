@@ -7564,7 +7564,7 @@ type V526-0, grid 2.5 mm</description>
 <instance part="JP2" gate="A" x="604.52" y="-246.38"/>
 <instance part="JP5" gate="A" x="604.52" y="-312.42"/>
 <instance part="JP7" gate="A" x="662.94" y="-238.76" rot="R180"/>
-<instance part="IC168" gate="A" x="-673.1" y="673.1"/>
+<instance part="IC168" gate="A" x="-675.64" y="673.1"/>
 <instance part="IC168" gate="B" x="-353.06" y="734.06"/>
 <instance part="IC168" gate="C" x="-373.38" y="731.52"/>
 <instance part="IC168" gate="D" x="-337.82" y="629.92"/>
@@ -12329,7 +12329,7 @@ type V526-0, grid 2.5 mm</description>
 <pinref part="IC49" gate="A" pin="O"/>
 </segment>
 </net>
-<net name="INPUT_REG==OUTPUT_REG" class="0">
+<net name="INPUT_REG_IS_NOT_OUTPUT_REG" class="0">
 <segment>
 <label x="-325.12" y="629.92" size="1.778" layer="95"/>
 <pinref part="IC168" gate="D" pin="O"/>
@@ -13436,7 +13436,7 @@ type V526-0, grid 2.5 mm</description>
 <pinref part="IC24" gate="B" pin="O"/>
 </segment>
 <segment>
-<wire x1="-680.72" y1="675.64" x2="-718.82" y2="675.64" width="0.1524" layer="91"/>
+<wire x1="-683.26" y1="675.64" x2="-718.82" y2="675.64" width="0.1524" layer="91"/>
 <label x="-718.82" y="675.64" size="1.778" layer="95"/>
 <pinref part="IC168" gate="A" pin="I0"/>
 </segment>
@@ -13456,7 +13456,7 @@ type V526-0, grid 2.5 mm</description>
 </segment>
 <segment>
 <label x="-718.82" y="670.56" size="1.778" layer="95"/>
-<wire x1="-680.72" y1="670.56" x2="-718.82" y2="670.56" width="0.1524" layer="91"/>
+<wire x1="-683.26" y1="670.56" x2="-718.82" y2="670.56" width="0.1524" layer="91"/>
 <pinref part="IC168" gate="A" pin="I1"/>
 </segment>
 </net>
@@ -13599,7 +13599,7 @@ type V526-0, grid 2.5 mm</description>
 <wire x1="-660.4" y1="701.04" x2="-662.94" y2="701.04" width="0.1524" layer="91"/>
 <wire x1="-662.94" y1="701.04" x2="-662.94" y2="685.8" width="0.1524" layer="91"/>
 <wire x1="-662.94" y1="685.8" x2="-662.94" y2="673.1" width="0.1524" layer="91"/>
-<wire x1="-662.94" y1="673.1" x2="-665.48" y2="673.1" width="0.1524" layer="91"/>
+<wire x1="-662.94" y1="673.1" x2="-668.02" y2="673.1" width="0.1524" layer="91"/>
 <wire x1="-660.4" y1="685.8" x2="-662.94" y2="685.8" width="0.1524" layer="91"/>
 <junction x="-662.94" y="685.8"/>
 <pinref part="IC168" gate="A" pin="O"/>
