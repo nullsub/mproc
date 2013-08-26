@@ -15,14 +15,14 @@
 	\section{Overview}
 	\subsection {Machine word}
 	\begin{itemize}
-		\item always one nibble of opcode bits and the second nibble includes which registers are involved
-		\item the next byte can be an immediate value.
-		\item data-bus is 8 bits wide
-		\item address-bus is 15 bits wide: 0x0000 to 0x7FFF is the ram, 0x8000 to 0xFFFF is the flash! 
-		\item thus we have 32kb flash and 32kb ram. We can execute both from ram and flash
-		\item The Pointer Register PTR is used for 16 memory access. See SET\_PTR, PTR\_ADD
-		\item PC is 16 bits wide: P\_L:0...7; PC\_H:8...15
-		\item ALU is 8 bits wide
+		\item Always one nibble of opcode bits and the second nibble includes which registers are involved.
+		\item The next byte can be an immediate value.
+		\item Data-bus is 8 bits wide.
+		\item Address-bus is 15 bits wide: 0x0000 to 0x7FFF is the ram, 0x8000 to 0xFFFF is the flash! 
+		\item Thus we have 32kb flash and 32kb ram. We can execute both from ram and flash.
+		\item The Pointer Register PTR is used for 16 memory access. See SET\_PTR, PTR\_ADD.
+		\item PC is 16 bits wide: P\_L:0...7; PC\_H:8...15.
+		\item ALU is 8 bits wide.
 	\end{itemize}
 
 	\subsection {Stack}
@@ -124,7 +124,7 @@
 	\end{center}	
 	\newpage
 	\subsection{Argument Input Table 1}
-	Used by LDA and POP
+	Used by LDR and POP
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -133,8 +133,8 @@
 			0x1 & reg1 \\ \hline
 			0x2 & reg2 \\ \hline
 			0x3 & reg3 \\ \hline
-			0x4 & ptr\_low\\ \hline
-			0x5 & ptr\_high \\ \hline
+			0x4 & PTR\_L\\ \hline
+			0x5 & PTR\_H \\ \hline
 			0x6 & io\_out0 \\ \hline
 			0x7 & io\_out1 \\ \hline
 			0x8 & LR\_LOW \\ \hline
@@ -152,8 +152,8 @@
 			0x2 & reg1 \\ \hline
 			0x3 & reg2 \\ \hline
 			0x4 & reg3 \\ \hline
-			0x5 & ptr\_low \\ \hline
-			0x6 & ptr\_high \\ \hline
+			0x5 & PTR\_L \\ \hline
+			0x6 & PTR\_H \\ \hline
 			0x7 & io\_in0 \\ \hline
 			0x8 & io\_in1 \\ \hline
 			0x9 & LR\_LOW \\ \hline
@@ -200,7 +200,7 @@
 			Command & 1 & 2 & 3 & 4 & 5 \\ \hline
 			ALU & Write regA to DBUS. High to low triggered & Latch regA from DBUS for the ALU. Happens at the High to low transition. & Write RegB to DBUS & At the High to low transition of the state signal the ALU output is latched & Fill Reg\\ \hline
 			MOV(Z) & Write regB to DBUS & Fill Regs & & &\\ \hline
-			LDA & & & & & \\ \hline
+			LDR & & & & & \\ \hline
 			STR & & & & & \\ \hline
 			JMP(C/Z) & Write RegA to DBUS & Fill PC\_LOW. & Write RegB to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH & \\ \hline
 			JMP(Offset) & Write PC\_L to ALU & Latch PC\_L to ALU input & Write RegB to DBUS. & Fill PC\_L with ALU & Inc or Dec PC\_H depending on carry\\ \hline
