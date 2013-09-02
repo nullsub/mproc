@@ -43,17 +43,18 @@
 	\end{itemize}
 
 	\subsection {Registers}
-	\small\begin{center}
+	\tiny\begin{center}
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			Register & Used by & Width & Note\\ \hline
-			SP & Push, Pop & 16 & Stack Pointer\\ \hline
+			SP & PUSH/POP & 16 & Stack Pointer\\ \hline
 			PC & JMP[Z/C] & 16 & ProgramCounter\\ \hline
 			IR & - & 16 & Instruction Register, holds current instruction\\ \hline
+			LR & SAVE\_LR, RET, PUSH/POP & 16 &  Link Register, stores current return address\\ \hline
 			PTR & STR, LDR & 16 & Pointer Register\\\hline
 			OutputReg[0..1] & POP & 8 & Output ports\\ \hline
 			InputReg0] & PUSH & 8 & Input ports\\ \hline
-			Reg[0..3] & MOV, STR, LDR & 8 & General Purpose registers\\ \hline
+			Reg[0..3] & MOV, STR, LDR, PUSH/POP & 8 & General Purpose registers\\ \hline
 		\end{tabular}
 	\end{center}
 	\newpage
@@ -214,6 +215,8 @@
 	}
 	\newpage
 	\section{Current Problems}
+	\subsection{DBUS Selector Encoding}
+	PTR\_ADD and SAVE\_LR/RET need custom WRITE\_XXX\_DBUS signals. To be able to encode those for the dbus selector another multiplexer needs to be added.
 	\subsection{SAVE\_LR Implementation and RET}
 	SAVE\_LR does not know whether the following JMP instructions takes one or two bytes. How to decide whether to save PC+1 with SAVE\_LR or PC+2?
 	\subsection{ALU}
@@ -227,7 +230,7 @@
 	Read: Can we apply the address, clear\_not\_oe and clear\_not\_cs in one instruction and fill the registers in the following instruction? 2 cycle memory access would be possible with this!
 	\section{Toolchain}
 	\subsection{Assembler}
-	Supports .define  and CALL makro. CALL regA, regB equals to SAVE\_LR; CALL regA, regB
+	Supports .define  and CALL macro. CALL regA, regB equals to SAVE\_LR; CALL regA, regB
 	\subsection{Emulator}
 	Does not yet support clock emulation. It just executes the binary
 \end{document}
