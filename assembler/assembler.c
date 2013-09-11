@@ -114,13 +114,13 @@ const struct arg_entry arg_table[3][16] = {
 		{"reg0", "ptr_low", 0x50},
 		{"reg0", "ptr_high", 0x60},
 		{"reg0", "io_in0", 0x70},
-		{"reg0", "io_in1", 0x80},
-		{"reg0", "lr_low", 0x90},
-		{"reg0", "lr_high", 0xA0},
-		{"reg0", "reg0", 0xB0}, //Unused
-		{"reg0", "reg0", 0xC0}, //Unused
-		{"reg0", "reg0", 0xD0}, //Unused
-		{"reg0", "reg0", 0xE0}, //Unused
+		{"reg0", "lr_low", 0x80},
+		{"reg0", "lr_high", 0x90},
+		{"reg0", "pc_low", 0xA0},
+		{"reg0", "pc_high", 0xB0},
+		{"reg0", "io_in1", 0xC0},
+		{"reg0", "io_out0", 0xD0},
+		{"reg0", "io_out1", 0xE0},
 		{"reg0", "reg0", 0xF0}, //Unused
 	}
 };
