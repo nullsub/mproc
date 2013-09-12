@@ -140,6 +140,8 @@
 			0x7 & io\_out1 \\ \hline
 			0x8 & LR\_LOW \\ \hline
 			0x9 & LR\_HIGH \\ \hline
+			0xA & PC\_LOW \\ \hline
+			0xB & PC\_HIGH \\ \hline
 		\end{tabular}
 	\end{center}	
 	\subsection{Argument Output Table 2}
@@ -173,7 +175,7 @@
 		\item Return values are in Reg0 and Reg1. Additional return values are on the stack.
 	\end{itemize}
 	\section{Hardware Implementation}
-	The 74HCT logic family is used.  Write here the propagation delay calculation, Power consumption, and performance charachteristics.
+	The 74HCT logic family is used. The design is not limited by the fanout. HCT chips have a typical fanout of \textgreater 50. Propagation delay is 9ns, max frequency is 50MHz.
 	PC and SP are implemented using 74xx193 binary counters.
 	\subsection{Accessing Memory}
 	\begin{center}
