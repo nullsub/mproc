@@ -6418,7 +6418,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="C21" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C22" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C23" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C24" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C25" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C26" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C27" library="rcl" deviceset="C-EU" device="C1206"/>
@@ -6433,11 +6432,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="C38" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C39" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C40" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C41" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C42" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C44" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C45" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C46" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C47" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C48" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C50" library="rcl" deviceset="C-EU" device="C1206"/>
@@ -6456,7 +6453,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="C28" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C37" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C61" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="GND25" library="supply1" deviceset="GND" device=""/>
 <part name="GND26" library="supply1" deviceset="GND" device=""/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
@@ -6467,7 +6463,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 <part name="GND35" library="supply1" deviceset="GND" device=""/>
-<part name="GND36" library="supply1" deviceset="GND" device=""/>
 <part name="GND37" library="supply1" deviceset="GND" device=""/>
 <part name="GND38" library="supply1" deviceset="GND" device=""/>
 <part name="GND39" library="supply1" deviceset="GND" device=""/>
@@ -6483,7 +6478,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND49" library="supply1" deviceset="GND" device=""/>
 <part name="GND50" library="supply1" deviceset="GND" device=""/>
 <part name="GND51" library="supply1" deviceset="GND" device=""/>
-<part name="GND52" library="supply1" deviceset="GND" device=""/>
 <part name="GND53" library="supply1" deviceset="GND" device=""/>
 <part name="GND54" library="supply1" deviceset="GND" device=""/>
 <part name="GND55" library="supply1" deviceset="GND" device=""/>
@@ -6529,7 +6523,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+20" library="supply1" deviceset="VCC" device=""/>
 <part name="P+21" library="supply1" deviceset="VCC" device=""/>
 <part name="P+22" library="supply1" deviceset="VCC" device=""/>
-<part name="P+23" library="supply1" deviceset="VCC" device=""/>
 <part name="P+24" library="supply1" deviceset="VCC" device=""/>
 <part name="P+25" library="supply1" deviceset="VCC" device=""/>
 <part name="P+26" library="supply1" deviceset="VCC" device=""/>
@@ -6562,7 +6555,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+53" library="supply1" deviceset="VCC" device=""/>
 <part name="P+54" library="supply1" deviceset="VCC" device=""/>
 <part name="P+55" library="supply1" deviceset="VCC" device=""/>
-<part name="P+56" library="supply1" deviceset="VCC" device=""/>
 <part name="P+57" library="supply1" deviceset="VCC" device=""/>
 <part name="P+58" library="supply1" deviceset="VCC" device=""/>
 <part name="P+59" library="supply1" deviceset="VCC" device=""/>
@@ -6573,7 +6565,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+64" library="supply1" deviceset="VCC" device=""/>
 <part name="P+65" library="supply1" deviceset="VCC" device=""/>
 <part name="P+66" library="supply1" deviceset="VCC" device=""/>
-<part name="P+67" library="supply1" deviceset="VCC" device=""/>
 <part name="P+68" library="supply1" deviceset="VCC" device=""/>
 <part name="P+69" library="supply1" deviceset="VCC" device=""/>
 <part name="P+70" library="supply1" deviceset="VCC" device=""/>
@@ -6587,44 +6578,34 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="C63" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C64" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C65" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C66" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C67" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C68" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C69" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C70" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C71" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C72" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C73" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C74" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C75" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C76" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C77" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C78" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C79" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C80" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C81" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C82" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C83" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C84" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C85" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C86" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C87" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C88" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C89" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
-<part name="GND21" library="supply1" deviceset="GND" device=""/>
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
 <part name="GND23" library="supply1" deviceset="GND" device=""/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
 <part name="GND87" library="supply1" deviceset="GND" device=""/>
 <part name="GND88" library="supply1" deviceset="GND" device=""/>
-<part name="GND89" library="supply1" deviceset="GND" device=""/>
 <part name="GND90" library="supply1" deviceset="GND" device=""/>
 <part name="GND91" library="supply1" deviceset="GND" device=""/>
 <part name="GND92" library="supply1" deviceset="GND" device=""/>
 <part name="GND93" library="supply1" deviceset="GND" device=""/>
-<part name="GND94" library="supply1" deviceset="GND" device=""/>
-<part name="GND95" library="supply1" deviceset="GND" device=""/>
 <part name="GND96" library="supply1" deviceset="GND" device=""/>
 <part name="GND97" library="supply1" deviceset="GND" device=""/>
 <part name="GND98" library="supply1" deviceset="GND" device=""/>
@@ -6633,7 +6614,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND101" library="supply1" deviceset="GND" device=""/>
 <part name="GND102" library="supply1" deviceset="GND" device=""/>
 <part name="GND103" library="supply1" deviceset="GND" device=""/>
-<part name="GND104" library="supply1" deviceset="GND" device=""/>
 <part name="GND105" library="supply1" deviceset="GND" device=""/>
 <part name="GND106" library="supply1" deviceset="GND" device=""/>
 <part name="GND107" library="supply1" deviceset="GND" device=""/>
@@ -6641,7 +6621,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND109" library="supply1" deviceset="GND" device=""/>
 <part name="GND110" library="supply1" deviceset="GND" device=""/>
 <part name="GND111" library="supply1" deviceset="GND" device=""/>
-<part name="GND112" library="supply1" deviceset="GND" device=""/>
 <part name="C90" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C91" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C92" library="rcl" deviceset="C-EU" device="C1206"/>
@@ -6650,26 +6629,20 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+7" library="supply1" deviceset="VCC" device=""/>
 <part name="P+12" library="supply1" deviceset="VCC" device=""/>
 <part name="P+13" library="supply1" deviceset="VCC" device=""/>
-<part name="P+15" library="supply1" deviceset="VCC" device=""/>
 <part name="P+71" library="supply1" deviceset="VCC" device=""/>
-<part name="P+72" library="supply1" deviceset="VCC" device=""/>
 <part name="P+73" library="supply1" deviceset="VCC" device=""/>
 <part name="P+74" library="supply1" deviceset="VCC" device=""/>
 <part name="P+75" library="supply1" deviceset="VCC" device=""/>
 <part name="P+83" library="supply1" deviceset="VCC" device=""/>
-<part name="P+84" library="supply1" deviceset="VCC" device=""/>
 <part name="P+85" library="supply1" deviceset="VCC" device=""/>
 <part name="P+86" library="supply1" deviceset="VCC" device=""/>
 <part name="P+87" library="supply1" deviceset="VCC" device=""/>
 <part name="P+88" library="supply1" deviceset="VCC" device=""/>
 <part name="P+89" library="supply1" deviceset="VCC" device=""/>
-<part name="P+90" library="supply1" deviceset="VCC" device=""/>
 <part name="P+91" library="supply1" deviceset="VCC" device=""/>
 <part name="P+92" library="supply1" deviceset="VCC" device=""/>
 <part name="P+93" library="supply1" deviceset="VCC" device=""/>
 <part name="P+94" library="supply1" deviceset="VCC" device=""/>
-<part name="P+95" library="supply1" deviceset="VCC" device=""/>
-<part name="P+96" library="supply1" deviceset="VCC" device=""/>
 <part name="P+97" library="supply1" deviceset="VCC" device=""/>
 <part name="P+98" library="supply1" deviceset="VCC" device=""/>
 <part name="P+99" library="supply1" deviceset="VCC" device=""/>
@@ -6679,8 +6652,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+103" library="supply1" deviceset="VCC" device=""/>
 <part name="C94" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C95" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C96" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C97" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C98" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C99" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C100" library="rcl" deviceset="C-EU" device="C1206"/>
@@ -6702,7 +6673,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="C116" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C117" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C118" library="rcl" deviceset="C-EU" device="C1206"/>
-<part name="C119" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C120" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="GND113" library="supply1" deviceset="GND" device=""/>
 <part name="GND114" library="supply1" deviceset="GND" device=""/>
@@ -6714,9 +6684,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND120" library="supply1" deviceset="GND" device=""/>
 <part name="GND121" library="supply1" deviceset="GND" device=""/>
 <part name="GND122" library="supply1" deviceset="GND" device=""/>
-<part name="GND123" library="supply1" deviceset="GND" device=""/>
 <part name="GND124" library="supply1" deviceset="GND" device=""/>
-<part name="GND125" library="supply1" deviceset="GND" device=""/>
 <part name="GND126" library="supply1" deviceset="GND" device=""/>
 <part name="GND127" library="supply1" deviceset="GND" device=""/>
 <part name="GND128" library="supply1" deviceset="GND" device=""/>
@@ -6726,7 +6694,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND132" library="supply1" deviceset="GND" device=""/>
 <part name="GND133" library="supply1" deviceset="GND" device=""/>
 <part name="GND134" library="supply1" deviceset="GND" device=""/>
-<part name="GND135" library="supply1" deviceset="GND" device=""/>
 <part name="GND136" library="supply1" deviceset="GND" device=""/>
 <part name="GND137" library="supply1" deviceset="GND" device=""/>
 <part name="GND138" library="supply1" deviceset="GND" device=""/>
@@ -6745,7 +6712,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+107" library="supply1" deviceset="VCC" device=""/>
 <part name="P+108" library="supply1" deviceset="VCC" device=""/>
 <part name="P+109" library="supply1" deviceset="VCC" device=""/>
-<part name="P+110" library="supply1" deviceset="VCC" device=""/>
 <part name="P+111" library="supply1" deviceset="VCC" device=""/>
 <part name="P+112" library="supply1" deviceset="VCC" device=""/>
 <part name="P+113" library="supply1" deviceset="VCC" device=""/>
@@ -6759,9 +6725,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+121" library="supply1" deviceset="VCC" device=""/>
 <part name="P+122" library="supply1" deviceset="VCC" device=""/>
 <part name="P+123" library="supply1" deviceset="VCC" device=""/>
-<part name="P+124" library="supply1" deviceset="VCC" device=""/>
 <part name="P+125" library="supply1" deviceset="VCC" device=""/>
-<part name="P+126" library="supply1" deviceset="VCC" device=""/>
 <part name="P+127" library="supply1" deviceset="VCC" device=""/>
 <part name="P+128" library="supply1" deviceset="VCC" device=""/>
 <part name="P+129" library="supply1" deviceset="VCC" device=""/>
@@ -6770,7 +6734,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+132" library="supply1" deviceset="VCC" device=""/>
 <part name="P+133" library="supply1" deviceset="VCC" device=""/>
 <part name="P+134" library="supply1" deviceset="VCC" device=""/>
-<part name="C125" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C126" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C127" library="rcl" deviceset="C-EU" device="C1206"/>
 <part name="C128" library="rcl" deviceset="C-EU" device="C1206"/>
@@ -6806,7 +6769,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND150" library="supply1" deviceset="GND" device=""/>
 <part name="GND151" library="supply1" deviceset="GND" device=""/>
 <part name="GND152" library="supply1" deviceset="GND" device=""/>
-<part name="GND153" library="supply1" deviceset="GND" device=""/>
 <part name="GND154" library="supply1" deviceset="GND" device=""/>
 <part name="GND155" library="supply1" deviceset="GND" device=""/>
 <part name="GND156" library="supply1" deviceset="GND" device=""/>
@@ -6851,7 +6813,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="P+151" library="supply1" deviceset="VCC" device=""/>
 <part name="P+152" library="supply1" deviceset="VCC" device=""/>
 <part name="P+153" library="supply1" deviceset="VCC" device=""/>
-<part name="P+154" library="supply1" deviceset="VCC" device=""/>
 <part name="P+155" library="supply1" deviceset="VCC" device=""/>
 <part name="P+156" library="supply1" deviceset="VCC" device=""/>
 <part name="P+157" library="supply1" deviceset="VCC" device=""/>
@@ -6873,6 +6834,10 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="GND176" library="supply1" deviceset="GND" device=""/>
 <part name="P+166" library="supply1" deviceset="VCC" device=""/>
 <part name="JP6" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="P+15" library="supply1" deviceset="VCC" device=""/>
+<part name="GND21" library="supply1" deviceset="GND" device=""/>
+<part name="P+23" library="supply1" deviceset="VCC" device=""/>
+<part name="GND25" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7015,8 +6980,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="IC21" gate="C" x="-891.54" y="-264.16"/>
 <instance part="IC21" gate="D" x="-891.54" y="-276.86"/>
 <instance part="IC42" gate="A" x="1351.28" y="218.44"/>
-<instance part="P+4" gate="VCC" x="861.06" y="2.54"/>
-<instance part="GND10" gate="1" x="861.06" y="-20.32"/>
+<instance part="P+4" gate="VCC" x="861.06" y="0"/>
+<instance part="GND10" gate="1" x="861.06" y="-22.86"/>
 <instance part="IC103" gate="A" x="1135.38" y="203.2"/>
 <instance part="GND2" gate="1" x="1115.06" y="182.88"/>
 <instance part="IC128" gate="A" x="-561.34" y="579.12"/>
@@ -7137,11 +7102,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="IC76" gate="B" x="-520.7" y="568.96"/>
 <instance part="IC76" gate="C" x="-520.7" y="556.26"/>
 <instance part="IC76" gate="D" x="-520.7" y="543.56"/>
-<instance part="IC35" gate="A" x="-612.14" y="566.42"/>
-<instance part="IC35" gate="B" x="-612.14" y="548.64"/>
 <instance part="IC35" gate="E" x="1320.8" y="203.2"/>
 <instance part="IC35" gate="F" x="1059.18" y="500.38"/>
-<instance part="IC37" gate="F" x="1267.46" y="467.36"/>
 <instance part="IC43" gate="E" x="-937.26" y="500.38"/>
 <instance part="IC47" gate="A" x="-1021.08" y="-154.94"/>
 <instance part="IC47" gate="B" x="-1021.08" y="-175.26"/>
@@ -7157,7 +7119,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="IC84" gate="B" x="-30.48" y="314.96"/>
 <instance part="IC101" gate="C" x="-716.28" y="-180.34"/>
 <instance part="IC104" gate="D" x="-599.44" y="-180.34"/>
-<instance part="IC110" gate="B" x="1277.62" y="198.12"/>
 <instance part="IC124" gate="B" x="-779.78" y="-175.26" rot="R180"/>
 <instance part="IC125" gate="C" x="-792.48" y="-200.66"/>
 <instance part="IC127" gate="C" x="-792.48" y="-187.96"/>
@@ -7175,13 +7136,10 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="IC127" gate="D" x="-144.78" y="-167.64"/>
 <instance part="IC125" gate="A" x="-144.78" y="-180.34"/>
 <instance part="IC47" gate="E" x="-335.28" y="-416.56"/>
-<instance part="IC110" gate="A" x="1297.94" y="203.2"/>
 <instance part="IC110" gate="D" x="1120.14" y="157.48" rot="R90"/>
 <instance part="IC33" gate="C" x="1249.68" y="165.1" rot="R180"/>
 <instance part="IC33" gate="B" x="1249.68" y="177.8" rot="R180"/>
 <instance part="IC52" gate="D" x="406.4" y="172.72"/>
-<instance part="IC33" gate="D" x="386.08" y="177.8"/>
-<instance part="IC33" gate="A" x="386.08" y="165.1"/>
 <instance part="IC49" gate="A" x="-541.02" y="492.76"/>
 <instance part="IC124" gate="C" x="-800.1" y="-127"/>
 <instance part="IC191" gate="D" x="-815.34" y="-76.2"/>
@@ -7316,14 +7274,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="C16" gate="G$1" x="988.06" y="-160.02"/>
 <instance part="C17" gate="G$1" x="1003.3" y="-160.02"/>
 <instance part="C18" gate="G$1" x="995.68" y="-160.02"/>
-<instance part="C20" gate="G$1" x="957.58" y="-185.42"/>
-<instance part="C21" gate="G$1" x="949.96" y="-185.42"/>
-<instance part="C22" gate="G$1" x="965.2" y="-185.42"/>
+<instance part="C20" gate="G$1" x="965.2" y="-185.42"/>
+<instance part="C21" gate="G$1" x="957.58" y="-185.42"/>
+<instance part="C22" gate="G$1" x="972.82" y="-185.42"/>
 <instance part="C23" gate="G$1" x="980.44" y="-185.42"/>
-<instance part="C24" gate="G$1" x="972.82" y="-185.42"/>
-<instance part="C25" gate="G$1" x="927.1" y="-185.42"/>
-<instance part="C26" gate="G$1" x="942.34" y="-185.42"/>
-<instance part="C27" gate="G$1" x="934.72" y="-185.42"/>
+<instance part="C25" gate="G$1" x="934.72" y="-185.42"/>
+<instance part="C26" gate="G$1" x="949.96" y="-185.42"/>
+<instance part="C27" gate="G$1" x="942.34" y="-185.42"/>
 <instance part="C29" gate="G$1" x="1018.54" y="-185.42"/>
 <instance part="C30" gate="G$1" x="1010.92" y="-185.42"/>
 <instance part="C31" gate="G$1" x="1026.16" y="-185.42"/>
@@ -7334,42 +7291,38 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="C36" gate="G$1" x="995.68" y="-185.42"/>
 <instance part="C38" gate="G$1" x="919.48" y="-160.02"/>
 <instance part="C39" gate="G$1" x="911.86" y="-160.02"/>
-<instance part="C40" gate="G$1" x="889" y="-160.02"/>
-<instance part="C41" gate="G$1" x="904.24" y="-160.02"/>
-<instance part="C42" gate="G$1" x="896.62" y="-160.02"/>
-<instance part="C44" gate="G$1" x="919.48" y="-185.42"/>
-<instance part="C45" gate="G$1" x="911.86" y="-185.42"/>
-<instance part="C46" gate="G$1" x="889" y="-185.42"/>
-<instance part="C47" gate="G$1" x="904.24" y="-185.42"/>
-<instance part="C48" gate="G$1" x="896.62" y="-185.42"/>
-<instance part="C50" gate="G$1" x="881.38" y="-185.42"/>
-<instance part="C51" gate="G$1" x="873.76" y="-185.42"/>
-<instance part="C52" gate="G$1" x="850.9" y="-185.42"/>
-<instance part="C53" gate="G$1" x="866.14" y="-185.42"/>
-<instance part="C54" gate="G$1" x="858.52" y="-185.42"/>
-<instance part="C56" gate="G$1" x="881.38" y="-160.02"/>
-<instance part="C57" gate="G$1" x="873.76" y="-160.02"/>
-<instance part="C58" gate="G$1" x="850.9" y="-160.02"/>
-<instance part="C59" gate="G$1" x="866.14" y="-160.02"/>
-<instance part="C60" gate="G$1" x="858.52" y="-160.02"/>
-<instance part="C1" gate="G$1" x="843.28" y="-160.02"/>
-<instance part="C10" gate="G$1" x="835.66" y="-160.02"/>
-<instance part="C19" gate="G$1" x="812.8" y="-160.02"/>
-<instance part="C28" gate="G$1" x="828.04" y="-160.02"/>
-<instance part="C37" gate="G$1" x="820.42" y="-160.02"/>
-<instance part="C61" gate="G$1" x="843.28" y="-185.42"/>
-<instance part="GND25" gate="1" x="889" y="-195.58"/>
-<instance part="GND26" gate="1" x="896.62" y="-195.58"/>
-<instance part="GND27" gate="1" x="904.24" y="-195.58"/>
-<instance part="GND28" gate="1" x="911.86" y="-195.58"/>
-<instance part="GND29" gate="1" x="919.48" y="-195.58"/>
-<instance part="GND30" gate="1" x="927.1" y="-195.58"/>
-<instance part="GND31" gate="1" x="934.72" y="-195.58"/>
-<instance part="GND32" gate="1" x="942.34" y="-195.58"/>
-<instance part="GND33" gate="1" x="949.96" y="-195.58"/>
-<instance part="GND34" gate="1" x="957.58" y="-195.58"/>
-<instance part="GND35" gate="1" x="965.2" y="-195.58"/>
-<instance part="GND36" gate="1" x="972.82" y="-195.58"/>
+<instance part="C40" gate="G$1" x="896.62" y="-160.02"/>
+<instance part="C42" gate="G$1" x="904.24" y="-160.02"/>
+<instance part="C44" gate="G$1" x="927.1" y="-185.42"/>
+<instance part="C45" gate="G$1" x="919.48" y="-185.42"/>
+<instance part="C47" gate="G$1" x="911.86" y="-185.42"/>
+<instance part="C48" gate="G$1" x="904.24" y="-185.42"/>
+<instance part="C50" gate="G$1" x="889" y="-185.42"/>
+<instance part="C51" gate="G$1" x="881.38" y="-185.42"/>
+<instance part="C52" gate="G$1" x="858.52" y="-185.42"/>
+<instance part="C53" gate="G$1" x="873.76" y="-185.42"/>
+<instance part="C54" gate="G$1" x="866.14" y="-185.42"/>
+<instance part="C56" gate="G$1" x="889" y="-160.02"/>
+<instance part="C57" gate="G$1" x="881.38" y="-160.02"/>
+<instance part="C58" gate="G$1" x="858.52" y="-160.02"/>
+<instance part="C59" gate="G$1" x="873.76" y="-160.02"/>
+<instance part="C60" gate="G$1" x="866.14" y="-160.02"/>
+<instance part="C1" gate="G$1" x="850.9" y="-160.02"/>
+<instance part="C10" gate="G$1" x="843.28" y="-160.02"/>
+<instance part="C19" gate="G$1" x="820.42" y="-160.02"/>
+<instance part="C28" gate="G$1" x="835.66" y="-160.02"/>
+<instance part="C37" gate="G$1" x="828.04" y="-160.02"/>
+<instance part="C61" gate="G$1" x="850.9" y="-185.42"/>
+<instance part="GND26" gate="1" x="904.24" y="-195.58"/>
+<instance part="GND27" gate="1" x="911.86" y="-195.58"/>
+<instance part="GND28" gate="1" x="919.48" y="-195.58"/>
+<instance part="GND29" gate="1" x="927.1" y="-195.58"/>
+<instance part="GND30" gate="1" x="934.72" y="-195.58"/>
+<instance part="GND31" gate="1" x="942.34" y="-195.58"/>
+<instance part="GND32" gate="1" x="949.96" y="-195.58"/>
+<instance part="GND33" gate="1" x="957.58" y="-195.58"/>
+<instance part="GND34" gate="1" x="965.2" y="-195.58"/>
+<instance part="GND35" gate="1" x="972.82" y="-195.58"/>
 <instance part="GND37" gate="1" x="980.44" y="-195.58"/>
 <instance part="GND38" gate="1" x="988.06" y="-195.58"/>
 <instance part="GND39" gate="1" x="995.68" y="-195.58"/>
@@ -7378,14 +7331,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="GND42" gate="1" x="1018.54" y="-195.58"/>
 <instance part="GND43" gate="1" x="1026.16" y="-195.58"/>
 <instance part="GND44" gate="1" x="1033.78" y="-195.58"/>
-<instance part="GND45" gate="1" x="850.9" y="-170.18"/>
-<instance part="GND46" gate="1" x="858.52" y="-170.18"/>
-<instance part="GND47" gate="1" x="866.14" y="-170.18"/>
-<instance part="GND48" gate="1" x="873.76" y="-170.18"/>
-<instance part="GND49" gate="1" x="881.38" y="-170.18"/>
-<instance part="GND50" gate="1" x="889" y="-170.18"/>
-<instance part="GND51" gate="1" x="896.62" y="-170.18"/>
-<instance part="GND52" gate="1" x="904.24" y="-170.18"/>
+<instance part="GND45" gate="1" x="858.52" y="-170.18"/>
+<instance part="GND46" gate="1" x="866.14" y="-170.18"/>
+<instance part="GND47" gate="1" x="873.76" y="-170.18"/>
+<instance part="GND48" gate="1" x="881.38" y="-170.18"/>
+<instance part="GND49" gate="1" x="889" y="-170.18"/>
+<instance part="GND50" gate="1" x="896.62" y="-170.18"/>
+<instance part="GND51" gate="1" x="904.24" y="-170.18"/>
 <instance part="GND53" gate="1" x="911.86" y="-170.18"/>
 <instance part="GND54" gate="1" x="919.48" y="-170.18"/>
 <instance part="GND55" gate="1" x="927.1" y="-170.18"/>
@@ -7405,33 +7357,32 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="GND69" gate="1" x="1033.78" y="-170.18"/>
 <instance part="GND70" gate="1" x="1041.4" y="-170.18"/>
 <instance part="GND71" gate="1" x="1041.4" y="-195.58"/>
-<instance part="GND72" gate="1" x="850.9" y="-195.58"/>
-<instance part="GND73" gate="1" x="858.52" y="-195.58"/>
-<instance part="GND74" gate="1" x="866.14" y="-195.58"/>
-<instance part="GND75" gate="1" x="873.76" y="-195.58"/>
-<instance part="GND76" gate="1" x="881.38" y="-195.58"/>
-<instance part="GND77" gate="1" x="812.8" y="-170.18"/>
-<instance part="GND78" gate="1" x="820.42" y="-170.18"/>
-<instance part="GND79" gate="1" x="828.04" y="-170.18"/>
-<instance part="GND80" gate="1" x="835.66" y="-170.18"/>
-<instance part="GND81" gate="1" x="843.28" y="-170.18"/>
-<instance part="GND82" gate="1" x="812.8" y="-195.58"/>
-<instance part="GND83" gate="1" x="820.42" y="-195.58"/>
-<instance part="GND84" gate="1" x="828.04" y="-195.58"/>
-<instance part="GND85" gate="1" x="835.66" y="-195.58"/>
-<instance part="GND86" gate="1" x="843.28" y="-195.58"/>
-<instance part="C43" gate="G$1" x="835.66" y="-185.42"/>
-<instance part="C49" gate="G$1" x="828.04" y="-185.42"/>
-<instance part="C55" gate="G$1" x="820.42" y="-185.42"/>
-<instance part="C62" gate="G$1" x="812.8" y="-185.42"/>
-<instance part="P+16" gate="VCC" x="850.9" y="-152.4" rot="MR0"/>
-<instance part="P+17" gate="VCC" x="858.52" y="-152.4" rot="MR0"/>
-<instance part="P+18" gate="VCC" x="866.14" y="-152.4" rot="MR0"/>
-<instance part="P+19" gate="VCC" x="873.76" y="-152.4" rot="MR0"/>
-<instance part="P+20" gate="VCC" x="881.38" y="-152.4" rot="MR0"/>
-<instance part="P+21" gate="VCC" x="889" y="-152.4" rot="MR0"/>
-<instance part="P+22" gate="VCC" x="896.62" y="-152.4" rot="MR0"/>
-<instance part="P+23" gate="VCC" x="904.24" y="-152.4" rot="MR0"/>
+<instance part="GND72" gate="1" x="858.52" y="-195.58"/>
+<instance part="GND73" gate="1" x="866.14" y="-195.58"/>
+<instance part="GND74" gate="1" x="873.76" y="-195.58"/>
+<instance part="GND75" gate="1" x="881.38" y="-195.58"/>
+<instance part="GND76" gate="1" x="889" y="-195.58"/>
+<instance part="GND77" gate="1" x="820.42" y="-170.18"/>
+<instance part="GND78" gate="1" x="828.04" y="-170.18"/>
+<instance part="GND79" gate="1" x="835.66" y="-170.18"/>
+<instance part="GND80" gate="1" x="843.28" y="-170.18"/>
+<instance part="GND81" gate="1" x="850.9" y="-170.18"/>
+<instance part="GND82" gate="1" x="820.42" y="-195.58"/>
+<instance part="GND83" gate="1" x="828.04" y="-195.58"/>
+<instance part="GND84" gate="1" x="835.66" y="-195.58"/>
+<instance part="GND85" gate="1" x="843.28" y="-195.58"/>
+<instance part="GND86" gate="1" x="850.9" y="-195.58"/>
+<instance part="C43" gate="G$1" x="843.28" y="-185.42"/>
+<instance part="C49" gate="G$1" x="835.66" y="-185.42"/>
+<instance part="C55" gate="G$1" x="828.04" y="-185.42"/>
+<instance part="C62" gate="G$1" x="820.42" y="-185.42"/>
+<instance part="P+16" gate="VCC" x="858.52" y="-152.4" rot="MR0"/>
+<instance part="P+17" gate="VCC" x="866.14" y="-152.4" rot="MR0"/>
+<instance part="P+18" gate="VCC" x="873.76" y="-152.4" rot="MR0"/>
+<instance part="P+19" gate="VCC" x="881.38" y="-152.4" rot="MR0"/>
+<instance part="P+20" gate="VCC" x="889" y="-152.4" rot="MR0"/>
+<instance part="P+21" gate="VCC" x="896.62" y="-152.4" rot="MR0"/>
+<instance part="P+22" gate="VCC" x="904.24" y="-152.4" rot="MR0"/>
 <instance part="P+24" gate="VCC" x="911.86" y="-152.4" rot="MR0"/>
 <instance part="P+25" gate="VCC" x="919.48" y="-152.4" rot="MR0"/>
 <instance part="P+26" gate="VCC" x="927.1" y="-152.4" rot="MR0"/>
@@ -7449,33 +7400,31 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="P+38" gate="VCC" x="1018.54" y="-152.4" rot="MR0"/>
 <instance part="P+39" gate="VCC" x="1026.16" y="-152.4" rot="MR0"/>
 <instance part="P+40" gate="VCC" x="1033.78" y="-152.4" rot="MR0"/>
-<instance part="P+41" gate="VCC" x="812.8" y="-177.8" rot="MR0"/>
-<instance part="P+42" gate="VCC" x="820.42" y="-177.8" rot="MR0"/>
-<instance part="P+43" gate="VCC" x="828.04" y="-177.8" rot="MR0"/>
-<instance part="P+44" gate="VCC" x="835.66" y="-177.8" rot="MR0"/>
-<instance part="P+45" gate="VCC" x="843.28" y="-177.8" rot="MR0"/>
-<instance part="P+46" gate="VCC" x="812.8" y="-152.4" rot="MR0"/>
-<instance part="P+47" gate="VCC" x="820.42" y="-152.4" rot="MR0"/>
-<instance part="P+48" gate="VCC" x="828.04" y="-152.4" rot="MR0"/>
-<instance part="P+49" gate="VCC" x="835.66" y="-152.4" rot="MR0"/>
-<instance part="P+50" gate="VCC" x="843.28" y="-152.4" rot="MR0"/>
-<instance part="P+51" gate="VCC" x="850.9" y="-177.8" rot="MR0"/>
-<instance part="P+52" gate="VCC" x="858.52" y="-177.8" rot="MR0"/>
-<instance part="P+53" gate="VCC" x="866.14" y="-177.8" rot="MR0"/>
-<instance part="P+54" gate="VCC" x="873.76" y="-177.8" rot="MR0"/>
-<instance part="P+55" gate="VCC" x="881.38" y="-177.8" rot="MR0"/>
-<instance part="P+56" gate="VCC" x="889" y="-177.8" rot="MR0"/>
-<instance part="P+57" gate="VCC" x="896.62" y="-177.8" rot="MR0"/>
-<instance part="P+58" gate="VCC" x="904.24" y="-177.8" rot="MR0"/>
-<instance part="P+59" gate="VCC" x="911.86" y="-177.8" rot="MR0"/>
-<instance part="P+60" gate="VCC" x="919.48" y="-177.8" rot="MR0"/>
-<instance part="P+61" gate="VCC" x="927.1" y="-177.8" rot="MR0"/>
-<instance part="P+62" gate="VCC" x="934.72" y="-177.8" rot="MR0"/>
-<instance part="P+63" gate="VCC" x="942.34" y="-177.8" rot="MR0"/>
-<instance part="P+64" gate="VCC" x="949.96" y="-177.8" rot="MR0"/>
-<instance part="P+65" gate="VCC" x="957.58" y="-177.8" rot="MR0"/>
-<instance part="P+66" gate="VCC" x="965.2" y="-177.8" rot="MR0"/>
-<instance part="P+67" gate="VCC" x="972.82" y="-177.8" rot="MR0"/>
+<instance part="P+41" gate="VCC" x="820.42" y="-177.8" rot="MR0"/>
+<instance part="P+42" gate="VCC" x="828.04" y="-177.8" rot="MR0"/>
+<instance part="P+43" gate="VCC" x="835.66" y="-177.8" rot="MR0"/>
+<instance part="P+44" gate="VCC" x="843.28" y="-177.8" rot="MR0"/>
+<instance part="P+45" gate="VCC" x="850.9" y="-177.8" rot="MR0"/>
+<instance part="P+46" gate="VCC" x="820.42" y="-152.4" rot="MR0"/>
+<instance part="P+47" gate="VCC" x="828.04" y="-152.4" rot="MR0"/>
+<instance part="P+48" gate="VCC" x="835.66" y="-152.4" rot="MR0"/>
+<instance part="P+49" gate="VCC" x="843.28" y="-152.4" rot="MR0"/>
+<instance part="P+50" gate="VCC" x="850.9" y="-152.4" rot="MR0"/>
+<instance part="P+51" gate="VCC" x="858.52" y="-177.8" rot="MR0"/>
+<instance part="P+52" gate="VCC" x="866.14" y="-177.8" rot="MR0"/>
+<instance part="P+53" gate="VCC" x="873.76" y="-177.8" rot="MR0"/>
+<instance part="P+54" gate="VCC" x="881.38" y="-177.8" rot="MR0"/>
+<instance part="P+55" gate="VCC" x="889" y="-177.8" rot="MR0"/>
+<instance part="P+57" gate="VCC" x="904.24" y="-177.8" rot="MR0"/>
+<instance part="P+58" gate="VCC" x="911.86" y="-177.8" rot="MR0"/>
+<instance part="P+59" gate="VCC" x="919.48" y="-177.8" rot="MR0"/>
+<instance part="P+60" gate="VCC" x="927.1" y="-177.8" rot="MR0"/>
+<instance part="P+61" gate="VCC" x="934.72" y="-177.8" rot="MR0"/>
+<instance part="P+62" gate="VCC" x="942.34" y="-177.8" rot="MR0"/>
+<instance part="P+63" gate="VCC" x="949.96" y="-177.8" rot="MR0"/>
+<instance part="P+64" gate="VCC" x="957.58" y="-177.8" rot="MR0"/>
+<instance part="P+65" gate="VCC" x="965.2" y="-177.8" rot="MR0"/>
+<instance part="P+66" gate="VCC" x="972.82" y="-177.8" rot="MR0"/>
 <instance part="P+68" gate="VCC" x="980.44" y="-177.8" rot="MR0"/>
 <instance part="P+69" gate="VCC" x="988.06" y="-177.8" rot="MR0"/>
 <instance part="P+70" gate="VCC" x="995.68" y="-177.8" rot="MR0"/>
@@ -7486,47 +7435,37 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="P+80" gate="VCC" x="1033.78" y="-177.8" rot="MR0"/>
 <instance part="P+81" gate="VCC" x="1041.4" y="-177.8" rot="MR0"/>
 <instance part="P+82" gate="VCC" x="1041.4" y="-152.4" rot="MR0"/>
-<instance part="C63" gate="G$1" x="957.58" y="-210.82"/>
-<instance part="C64" gate="G$1" x="949.96" y="-210.82"/>
-<instance part="C65" gate="G$1" x="965.2" y="-210.82"/>
-<instance part="C66" gate="G$1" x="980.44" y="-210.82"/>
-<instance part="C67" gate="G$1" x="972.82" y="-210.82"/>
-<instance part="C68" gate="G$1" x="927.1" y="-210.82"/>
-<instance part="C69" gate="G$1" x="942.34" y="-210.82"/>
-<instance part="C70" gate="G$1" x="934.72" y="-210.82"/>
+<instance part="C63" gate="G$1" x="972.82" y="-210.82"/>
+<instance part="C64" gate="G$1" x="965.2" y="-210.82"/>
+<instance part="C65" gate="G$1" x="980.44" y="-210.82"/>
+<instance part="C67" gate="G$1" x="988.06" y="-210.82"/>
+<instance part="C68" gate="G$1" x="949.96" y="-210.82"/>
+<instance part="C70" gate="G$1" x="957.58" y="-210.82"/>
 <instance part="C71" gate="G$1" x="1018.54" y="-210.82"/>
 <instance part="C72" gate="G$1" x="1010.92" y="-210.82"/>
 <instance part="C73" gate="G$1" x="1026.16" y="-210.82"/>
 <instance part="C74" gate="G$1" x="1041.4" y="-210.82"/>
 <instance part="C75" gate="G$1" x="1033.78" y="-210.82"/>
-<instance part="C76" gate="G$1" x="988.06" y="-210.82"/>
 <instance part="C77" gate="G$1" x="1003.3" y="-210.82"/>
 <instance part="C78" gate="G$1" x="995.68" y="-210.82"/>
-<instance part="C79" gate="G$1" x="919.48" y="-210.82"/>
-<instance part="C80" gate="G$1" x="911.86" y="-210.82"/>
-<instance part="C81" gate="G$1" x="889" y="-210.82"/>
-<instance part="C82" gate="G$1" x="904.24" y="-210.82"/>
-<instance part="C83" gate="G$1" x="896.62" y="-210.82"/>
-<instance part="C84" gate="G$1" x="881.38" y="-210.82"/>
-<instance part="C85" gate="G$1" x="873.76" y="-210.82"/>
-<instance part="C86" gate="G$1" x="850.9" y="-210.82"/>
-<instance part="C87" gate="G$1" x="866.14" y="-210.82"/>
-<instance part="C88" gate="G$1" x="858.52" y="-210.82"/>
-<instance part="C89" gate="G$1" x="843.28" y="-210.82"/>
-<instance part="GND20" gate="1" x="889" y="-220.98"/>
-<instance part="GND21" gate="1" x="896.62" y="-220.98"/>
-<instance part="GND22" gate="1" x="904.24" y="-220.98"/>
-<instance part="GND23" gate="1" x="911.86" y="-220.98"/>
-<instance part="GND24" gate="1" x="919.48" y="-220.98"/>
-<instance part="GND87" gate="1" x="927.1" y="-220.98"/>
-<instance part="GND88" gate="1" x="934.72" y="-220.98"/>
-<instance part="GND89" gate="1" x="942.34" y="-220.98"/>
-<instance part="GND90" gate="1" x="949.96" y="-220.98"/>
-<instance part="GND91" gate="1" x="957.58" y="-220.98"/>
-<instance part="GND92" gate="1" x="965.2" y="-220.98"/>
-<instance part="GND93" gate="1" x="972.82" y="-220.98"/>
-<instance part="GND94" gate="1" x="980.44" y="-220.98"/>
-<instance part="GND95" gate="1" x="988.06" y="-220.98"/>
+<instance part="C79" gate="G$1" x="942.34" y="-210.82"/>
+<instance part="C80" gate="G$1" x="934.72" y="-210.82"/>
+<instance part="C81" gate="G$1" x="919.48" y="-210.82"/>
+<instance part="C82" gate="G$1" x="927.1" y="-210.82"/>
+<instance part="C84" gate="G$1" x="911.86" y="-210.82"/>
+<instance part="C85" gate="G$1" x="904.24" y="-210.82"/>
+<instance part="C86" gate="G$1" x="896.62" y="-185.42"/>
+<instance part="C87" gate="G$1" x="896.62" y="-210.82"/>
+<instance part="GND20" gate="1" x="919.48" y="-220.98"/>
+<instance part="GND22" gate="1" x="927.1" y="-220.98"/>
+<instance part="GND23" gate="1" x="934.72" y="-220.98"/>
+<instance part="GND24" gate="1" x="942.34" y="-220.98"/>
+<instance part="GND87" gate="1" x="949.96" y="-220.98"/>
+<instance part="GND88" gate="1" x="957.58" y="-220.98"/>
+<instance part="GND90" gate="1" x="965.2" y="-220.98"/>
+<instance part="GND91" gate="1" x="972.82" y="-220.98"/>
+<instance part="GND92" gate="1" x="980.44" y="-220.98"/>
+<instance part="GND93" gate="1" x="988.06" y="-220.98"/>
 <instance part="GND96" gate="1" x="995.68" y="-220.98"/>
 <instance part="GND97" gate="1" x="1003.3" y="-220.98"/>
 <instance part="GND98" gate="1" x="1010.92" y="-220.98"/>
@@ -7534,44 +7473,36 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="GND100" gate="1" x="1026.16" y="-220.98"/>
 <instance part="GND101" gate="1" x="1033.78" y="-220.98"/>
 <instance part="GND102" gate="1" x="1041.4" y="-220.98"/>
-<instance part="GND103" gate="1" x="850.9" y="-220.98"/>
-<instance part="GND104" gate="1" x="858.52" y="-220.98"/>
-<instance part="GND105" gate="1" x="866.14" y="-220.98"/>
-<instance part="GND106" gate="1" x="873.76" y="-220.98"/>
-<instance part="GND107" gate="1" x="881.38" y="-220.98"/>
-<instance part="GND108" gate="1" x="812.8" y="-220.98"/>
-<instance part="GND109" gate="1" x="820.42" y="-220.98"/>
-<instance part="GND110" gate="1" x="828.04" y="-220.98"/>
-<instance part="GND111" gate="1" x="835.66" y="-220.98"/>
-<instance part="GND112" gate="1" x="843.28" y="-220.98"/>
-<instance part="C90" gate="G$1" x="835.66" y="-210.82"/>
-<instance part="C91" gate="G$1" x="828.04" y="-210.82"/>
-<instance part="C92" gate="G$1" x="820.42" y="-210.82"/>
-<instance part="C93" gate="G$1" x="812.8" y="-210.82"/>
-<instance part="P+6" gate="VCC" x="812.8" y="-203.2" rot="MR0"/>
-<instance part="P+7" gate="VCC" x="820.42" y="-203.2" rot="MR0"/>
-<instance part="P+12" gate="VCC" x="828.04" y="-203.2" rot="MR0"/>
-<instance part="P+13" gate="VCC" x="835.66" y="-203.2" rot="MR0"/>
-<instance part="P+15" gate="VCC" x="843.28" y="-203.2" rot="MR0"/>
-<instance part="P+71" gate="VCC" x="850.9" y="-203.2" rot="MR0"/>
-<instance part="P+72" gate="VCC" x="858.52" y="-203.2" rot="MR0"/>
-<instance part="P+73" gate="VCC" x="866.14" y="-203.2" rot="MR0"/>
-<instance part="P+74" gate="VCC" x="873.76" y="-203.2" rot="MR0"/>
-<instance part="P+75" gate="VCC" x="881.38" y="-203.2" rot="MR0"/>
-<instance part="P+83" gate="VCC" x="889" y="-203.2" rot="MR0"/>
-<instance part="P+84" gate="VCC" x="896.62" y="-203.2" rot="MR0"/>
-<instance part="P+85" gate="VCC" x="904.24" y="-203.2" rot="MR0"/>
-<instance part="P+86" gate="VCC" x="911.86" y="-203.2" rot="MR0"/>
-<instance part="P+87" gate="VCC" x="919.48" y="-203.2" rot="MR0"/>
-<instance part="P+88" gate="VCC" x="927.1" y="-203.2" rot="MR0"/>
-<instance part="P+89" gate="VCC" x="934.72" y="-203.2" rot="MR0"/>
-<instance part="P+90" gate="VCC" x="942.34" y="-203.2" rot="MR0"/>
-<instance part="P+91" gate="VCC" x="949.96" y="-203.2" rot="MR0"/>
-<instance part="P+92" gate="VCC" x="957.58" y="-203.2" rot="MR0"/>
-<instance part="P+93" gate="VCC" x="965.2" y="-203.2" rot="MR0"/>
-<instance part="P+94" gate="VCC" x="972.82" y="-203.2" rot="MR0"/>
-<instance part="P+95" gate="VCC" x="980.44" y="-203.2" rot="MR0"/>
-<instance part="P+96" gate="VCC" x="988.06" y="-203.2" rot="MR0"/>
+<instance part="GND103" gate="1" x="896.62" y="-195.58"/>
+<instance part="GND105" gate="1" x="896.62" y="-220.98"/>
+<instance part="GND106" gate="1" x="904.24" y="-220.98"/>
+<instance part="GND107" gate="1" x="911.86" y="-220.98"/>
+<instance part="GND108" gate="1" x="866.14" y="-220.98"/>
+<instance part="GND109" gate="1" x="873.76" y="-220.98"/>
+<instance part="GND110" gate="1" x="881.38" y="-220.98"/>
+<instance part="GND111" gate="1" x="889" y="-220.98"/>
+<instance part="C90" gate="G$1" x="889" y="-210.82"/>
+<instance part="C91" gate="G$1" x="881.38" y="-210.82"/>
+<instance part="C92" gate="G$1" x="873.76" y="-210.82"/>
+<instance part="C93" gate="G$1" x="866.14" y="-210.82"/>
+<instance part="P+6" gate="VCC" x="866.14" y="-203.2" rot="MR0"/>
+<instance part="P+7" gate="VCC" x="873.76" y="-203.2" rot="MR0"/>
+<instance part="P+12" gate="VCC" x="881.38" y="-203.2" rot="MR0"/>
+<instance part="P+13" gate="VCC" x="889" y="-203.2" rot="MR0"/>
+<instance part="P+71" gate="VCC" x="896.62" y="-177.8" rot="MR0"/>
+<instance part="P+73" gate="VCC" x="896.62" y="-203.2" rot="MR0"/>
+<instance part="P+74" gate="VCC" x="904.24" y="-203.2" rot="MR0"/>
+<instance part="P+75" gate="VCC" x="911.86" y="-203.2" rot="MR0"/>
+<instance part="P+83" gate="VCC" x="919.48" y="-203.2" rot="MR0"/>
+<instance part="P+85" gate="VCC" x="927.1" y="-203.2" rot="MR0"/>
+<instance part="P+86" gate="VCC" x="934.72" y="-203.2" rot="MR0"/>
+<instance part="P+87" gate="VCC" x="942.34" y="-203.2" rot="MR0"/>
+<instance part="P+88" gate="VCC" x="949.96" y="-203.2" rot="MR0"/>
+<instance part="P+89" gate="VCC" x="957.58" y="-203.2" rot="MR0"/>
+<instance part="P+91" gate="VCC" x="965.2" y="-203.2" rot="MR0"/>
+<instance part="P+92" gate="VCC" x="972.82" y="-203.2" rot="MR0"/>
+<instance part="P+93" gate="VCC" x="980.44" y="-203.2" rot="MR0"/>
+<instance part="P+94" gate="VCC" x="988.06" y="-203.2" rot="MR0"/>
 <instance part="P+97" gate="VCC" x="995.68" y="-203.2" rot="MR0"/>
 <instance part="P+98" gate="VCC" x="1003.3" y="-203.2" rot="MR0"/>
 <instance part="P+99" gate="VCC" x="1010.92" y="-203.2" rot="MR0"/>
@@ -7579,14 +7510,12 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="P+101" gate="VCC" x="1026.16" y="-203.2" rot="MR0"/>
 <instance part="P+102" gate="VCC" x="1033.78" y="-203.2" rot="MR0"/>
 <instance part="P+103" gate="VCC" x="1041.4" y="-203.2" rot="MR0"/>
-<instance part="C94" gate="G$1" x="957.58" y="-236.22"/>
-<instance part="C95" gate="G$1" x="949.96" y="-236.22"/>
-<instance part="C96" gate="G$1" x="965.2" y="-236.22"/>
-<instance part="C97" gate="G$1" x="980.44" y="-236.22"/>
-<instance part="C98" gate="G$1" x="972.82" y="-236.22"/>
-<instance part="C99" gate="G$1" x="927.1" y="-236.22"/>
-<instance part="C100" gate="G$1" x="942.34" y="-236.22"/>
-<instance part="C101" gate="G$1" x="934.72" y="-236.22"/>
+<instance part="C94" gate="G$1" x="972.82" y="-236.22"/>
+<instance part="C95" gate="G$1" x="965.2" y="-236.22"/>
+<instance part="C98" gate="G$1" x="980.44" y="-236.22"/>
+<instance part="C99" gate="G$1" x="942.34" y="-236.22"/>
+<instance part="C100" gate="G$1" x="957.58" y="-236.22"/>
+<instance part="C101" gate="G$1" x="949.96" y="-236.22"/>
 <instance part="C102" gate="G$1" x="1018.54" y="-236.22"/>
 <instance part="C103" gate="G$1" x="1010.92" y="-236.22"/>
 <instance part="C104" gate="G$1" x="1026.16" y="-236.22"/>
@@ -7595,30 +7524,27 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="C107" gate="G$1" x="988.06" y="-236.22"/>
 <instance part="C108" gate="G$1" x="1003.3" y="-236.22"/>
 <instance part="C109" gate="G$1" x="995.68" y="-236.22"/>
-<instance part="C110" gate="G$1" x="919.48" y="-236.22"/>
-<instance part="C111" gate="G$1" x="911.86" y="-236.22"/>
-<instance part="C112" gate="G$1" x="889" y="-236.22"/>
-<instance part="C113" gate="G$1" x="904.24" y="-236.22"/>
-<instance part="C114" gate="G$1" x="896.62" y="-236.22"/>
-<instance part="C115" gate="G$1" x="881.38" y="-236.22"/>
-<instance part="C116" gate="G$1" x="873.76" y="-236.22"/>
-<instance part="C117" gate="G$1" x="850.9" y="-236.22"/>
-<instance part="C118" gate="G$1" x="866.14" y="-236.22"/>
-<instance part="C119" gate="G$1" x="858.52" y="-236.22"/>
-<instance part="C120" gate="G$1" x="843.28" y="-236.22"/>
-<instance part="GND113" gate="1" x="889" y="-246.38"/>
-<instance part="GND114" gate="1" x="896.62" y="-246.38"/>
-<instance part="GND115" gate="1" x="904.24" y="-246.38"/>
-<instance part="GND116" gate="1" x="911.86" y="-246.38"/>
-<instance part="GND117" gate="1" x="919.48" y="-246.38"/>
-<instance part="GND118" gate="1" x="927.1" y="-246.38"/>
-<instance part="GND119" gate="1" x="934.72" y="-246.38"/>
-<instance part="GND120" gate="1" x="942.34" y="-246.38"/>
-<instance part="GND121" gate="1" x="949.96" y="-246.38"/>
-<instance part="GND122" gate="1" x="957.58" y="-246.38"/>
-<instance part="GND123" gate="1" x="965.2" y="-246.38"/>
-<instance part="GND124" gate="1" x="972.82" y="-246.38"/>
-<instance part="GND125" gate="1" x="980.44" y="-246.38"/>
+<instance part="C110" gate="G$1" x="934.72" y="-236.22"/>
+<instance part="C111" gate="G$1" x="927.1" y="-236.22"/>
+<instance part="C112" gate="G$1" x="904.24" y="-236.22"/>
+<instance part="C113" gate="G$1" x="919.48" y="-236.22"/>
+<instance part="C114" gate="G$1" x="911.86" y="-236.22"/>
+<instance part="C115" gate="G$1" x="896.62" y="-236.22"/>
+<instance part="C116" gate="G$1" x="889" y="-236.22"/>
+<instance part="C117" gate="G$1" x="858.52" y="-210.82"/>
+<instance part="C118" gate="G$1" x="881.38" y="-236.22"/>
+<instance part="C120" gate="G$1" x="850.9" y="-210.82"/>
+<instance part="GND113" gate="1" x="904.24" y="-246.38"/>
+<instance part="GND114" gate="1" x="911.86" y="-246.38"/>
+<instance part="GND115" gate="1" x="919.48" y="-246.38"/>
+<instance part="GND116" gate="1" x="927.1" y="-246.38"/>
+<instance part="GND117" gate="1" x="934.72" y="-246.38"/>
+<instance part="GND118" gate="1" x="942.34" y="-246.38"/>
+<instance part="GND119" gate="1" x="949.96" y="-246.38"/>
+<instance part="GND120" gate="1" x="957.58" y="-246.38"/>
+<instance part="GND121" gate="1" x="965.2" y="-246.38"/>
+<instance part="GND122" gate="1" x="972.82" y="-246.38"/>
+<instance part="GND124" gate="1" x="980.44" y="-246.38"/>
 <instance part="GND126" gate="1" x="988.06" y="-246.38"/>
 <instance part="GND127" gate="1" x="995.68" y="-246.38"/>
 <instance part="GND128" gate="1" x="1003.3" y="-246.38"/>
@@ -7627,43 +7553,39 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="GND131" gate="1" x="1026.16" y="-246.38"/>
 <instance part="GND132" gate="1" x="1033.78" y="-246.38"/>
 <instance part="GND133" gate="1" x="1041.4" y="-246.38"/>
-<instance part="GND134" gate="1" x="850.9" y="-246.38"/>
-<instance part="GND135" gate="1" x="858.52" y="-246.38"/>
-<instance part="GND136" gate="1" x="866.14" y="-246.38"/>
-<instance part="GND137" gate="1" x="873.76" y="-246.38"/>
-<instance part="GND138" gate="1" x="881.38" y="-246.38"/>
-<instance part="GND139" gate="1" x="812.8" y="-246.38"/>
-<instance part="GND140" gate="1" x="820.42" y="-246.38"/>
-<instance part="GND141" gate="1" x="828.04" y="-246.38"/>
-<instance part="GND142" gate="1" x="835.66" y="-246.38"/>
-<instance part="GND143" gate="1" x="843.28" y="-246.38"/>
-<instance part="C121" gate="G$1" x="835.66" y="-236.22"/>
-<instance part="C122" gate="G$1" x="828.04" y="-236.22"/>
-<instance part="C123" gate="G$1" x="820.42" y="-236.22"/>
-<instance part="C124" gate="G$1" x="812.8" y="-236.22"/>
-<instance part="P+104" gate="VCC" x="812.8" y="-228.6" rot="MR0"/>
-<instance part="P+105" gate="VCC" x="820.42" y="-228.6" rot="MR0"/>
-<instance part="P+106" gate="VCC" x="828.04" y="-228.6" rot="MR0"/>
-<instance part="P+107" gate="VCC" x="835.66" y="-228.6" rot="MR0"/>
-<instance part="P+108" gate="VCC" x="843.28" y="-228.6" rot="MR0"/>
-<instance part="P+109" gate="VCC" x="850.9" y="-228.6" rot="MR0"/>
-<instance part="P+110" gate="VCC" x="858.52" y="-228.6" rot="MR0"/>
-<instance part="P+111" gate="VCC" x="866.14" y="-228.6" rot="MR0"/>
-<instance part="P+112" gate="VCC" x="873.76" y="-228.6" rot="MR0"/>
-<instance part="P+113" gate="VCC" x="881.38" y="-228.6" rot="MR0"/>
-<instance part="P+114" gate="VCC" x="889" y="-228.6" rot="MR0"/>
-<instance part="P+115" gate="VCC" x="896.62" y="-228.6" rot="MR0"/>
-<instance part="P+116" gate="VCC" x="904.24" y="-228.6" rot="MR0"/>
-<instance part="P+117" gate="VCC" x="911.86" y="-228.6" rot="MR0"/>
-<instance part="P+118" gate="VCC" x="919.48" y="-228.6" rot="MR0"/>
-<instance part="P+119" gate="VCC" x="927.1" y="-228.6" rot="MR0"/>
-<instance part="P+120" gate="VCC" x="934.72" y="-228.6" rot="MR0"/>
-<instance part="P+121" gate="VCC" x="942.34" y="-228.6" rot="MR0"/>
-<instance part="P+122" gate="VCC" x="949.96" y="-228.6" rot="MR0"/>
-<instance part="P+123" gate="VCC" x="957.58" y="-228.6" rot="MR0"/>
-<instance part="P+124" gate="VCC" x="965.2" y="-228.6" rot="MR0"/>
-<instance part="P+125" gate="VCC" x="972.82" y="-228.6" rot="MR0"/>
-<instance part="P+126" gate="VCC" x="980.44" y="-228.6" rot="MR0"/>
+<instance part="GND134" gate="1" x="858.52" y="-220.98"/>
+<instance part="GND136" gate="1" x="881.38" y="-246.38"/>
+<instance part="GND137" gate="1" x="889" y="-246.38"/>
+<instance part="GND138" gate="1" x="896.62" y="-246.38"/>
+<instance part="GND139" gate="1" x="820.42" y="-220.98"/>
+<instance part="GND140" gate="1" x="828.04" y="-220.98"/>
+<instance part="GND141" gate="1" x="835.66" y="-220.98"/>
+<instance part="GND142" gate="1" x="843.28" y="-220.98"/>
+<instance part="GND143" gate="1" x="850.9" y="-220.98"/>
+<instance part="C121" gate="G$1" x="843.28" y="-210.82"/>
+<instance part="C122" gate="G$1" x="835.66" y="-210.82"/>
+<instance part="C123" gate="G$1" x="828.04" y="-210.82"/>
+<instance part="C124" gate="G$1" x="820.42" y="-210.82"/>
+<instance part="P+104" gate="VCC" x="820.42" y="-203.2" rot="MR0"/>
+<instance part="P+105" gate="VCC" x="828.04" y="-203.2" rot="MR0"/>
+<instance part="P+106" gate="VCC" x="835.66" y="-203.2" rot="MR0"/>
+<instance part="P+107" gate="VCC" x="843.28" y="-203.2" rot="MR0"/>
+<instance part="P+108" gate="VCC" x="850.9" y="-203.2" rot="MR0"/>
+<instance part="P+109" gate="VCC" x="858.52" y="-203.2" rot="MR0"/>
+<instance part="P+111" gate="VCC" x="881.38" y="-228.6" rot="MR0"/>
+<instance part="P+112" gate="VCC" x="889" y="-228.6" rot="MR0"/>
+<instance part="P+113" gate="VCC" x="896.62" y="-228.6" rot="MR0"/>
+<instance part="P+114" gate="VCC" x="904.24" y="-228.6" rot="MR0"/>
+<instance part="P+115" gate="VCC" x="911.86" y="-228.6" rot="MR0"/>
+<instance part="P+116" gate="VCC" x="919.48" y="-228.6" rot="MR0"/>
+<instance part="P+117" gate="VCC" x="927.1" y="-228.6" rot="MR0"/>
+<instance part="P+118" gate="VCC" x="934.72" y="-228.6" rot="MR0"/>
+<instance part="P+119" gate="VCC" x="942.34" y="-228.6" rot="MR0"/>
+<instance part="P+120" gate="VCC" x="949.96" y="-228.6" rot="MR0"/>
+<instance part="P+121" gate="VCC" x="957.58" y="-228.6" rot="MR0"/>
+<instance part="P+122" gate="VCC" x="965.2" y="-228.6" rot="MR0"/>
+<instance part="P+123" gate="VCC" x="972.82" y="-228.6" rot="MR0"/>
+<instance part="P+125" gate="VCC" x="980.44" y="-228.6" rot="MR0"/>
 <instance part="P+127" gate="VCC" x="988.06" y="-228.6" rot="MR0"/>
 <instance part="P+128" gate="VCC" x="995.68" y="-228.6" rot="MR0"/>
 <instance part="P+129" gate="VCC" x="1003.3" y="-228.6" rot="MR0"/>
@@ -7672,14 +7594,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="P+132" gate="VCC" x="1026.16" y="-228.6" rot="MR0"/>
 <instance part="P+133" gate="VCC" x="1033.78" y="-228.6" rot="MR0"/>
 <instance part="P+134" gate="VCC" x="1041.4" y="-228.6" rot="MR0"/>
-<instance part="C125" gate="G$1" x="957.58" y="-261.62"/>
-<instance part="C126" gate="G$1" x="949.96" y="-261.62"/>
+<instance part="C126" gate="G$1" x="957.58" y="-261.62"/>
 <instance part="C127" gate="G$1" x="965.2" y="-261.62"/>
 <instance part="C128" gate="G$1" x="980.44" y="-261.62"/>
 <instance part="C129" gate="G$1" x="972.82" y="-261.62"/>
-<instance part="C130" gate="G$1" x="927.1" y="-261.62"/>
-<instance part="C131" gate="G$1" x="942.34" y="-261.62"/>
-<instance part="C132" gate="G$1" x="934.72" y="-261.62"/>
+<instance part="C130" gate="G$1" x="934.72" y="-261.62"/>
+<instance part="C131" gate="G$1" x="949.96" y="-261.62"/>
+<instance part="C132" gate="G$1" x="942.34" y="-261.62"/>
 <instance part="C133" gate="G$1" x="1018.54" y="-261.62"/>
 <instance part="C134" gate="G$1" x="1010.92" y="-261.62"/>
 <instance part="C135" gate="G$1" x="1026.16" y="-261.62"/>
@@ -7688,27 +7609,26 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="C138" gate="G$1" x="988.06" y="-261.62"/>
 <instance part="C139" gate="G$1" x="1003.3" y="-261.62"/>
 <instance part="C140" gate="G$1" x="995.68" y="-261.62"/>
-<instance part="C141" gate="G$1" x="919.48" y="-261.62"/>
-<instance part="C142" gate="G$1" x="911.86" y="-261.62"/>
-<instance part="C143" gate="G$1" x="889" y="-261.62"/>
-<instance part="C144" gate="G$1" x="904.24" y="-261.62"/>
-<instance part="C145" gate="G$1" x="896.62" y="-261.62"/>
-<instance part="C146" gate="G$1" x="881.38" y="-261.62"/>
-<instance part="C147" gate="G$1" x="873.76" y="-261.62"/>
-<instance part="C148" gate="G$1" x="850.9" y="-261.62"/>
-<instance part="C149" gate="G$1" x="866.14" y="-261.62"/>
-<instance part="C150" gate="G$1" x="858.52" y="-261.62"/>
-<instance part="C151" gate="G$1" x="843.28" y="-261.62"/>
-<instance part="GND144" gate="1" x="889" y="-271.78"/>
-<instance part="GND145" gate="1" x="896.62" y="-271.78"/>
-<instance part="GND146" gate="1" x="904.24" y="-271.78"/>
-<instance part="GND147" gate="1" x="911.86" y="-271.78"/>
-<instance part="GND148" gate="1" x="919.48" y="-271.78"/>
-<instance part="GND149" gate="1" x="927.1" y="-271.78"/>
-<instance part="GND150" gate="1" x="934.72" y="-271.78"/>
-<instance part="GND151" gate="1" x="942.34" y="-271.78"/>
-<instance part="GND152" gate="1" x="949.96" y="-271.78"/>
-<instance part="GND153" gate="1" x="957.58" y="-271.78"/>
+<instance part="C141" gate="G$1" x="927.1" y="-261.62"/>
+<instance part="C142" gate="G$1" x="919.48" y="-261.62"/>
+<instance part="C143" gate="G$1" x="896.62" y="-261.62"/>
+<instance part="C144" gate="G$1" x="911.86" y="-261.62"/>
+<instance part="C145" gate="G$1" x="904.24" y="-261.62"/>
+<instance part="C146" gate="G$1" x="889" y="-261.62"/>
+<instance part="C147" gate="G$1" x="881.38" y="-261.62"/>
+<instance part="C148" gate="G$1" x="858.52" y="-261.62"/>
+<instance part="C149" gate="G$1" x="873.76" y="-261.62"/>
+<instance part="C150" gate="G$1" x="866.14" y="-261.62"/>
+<instance part="C151" gate="G$1" x="850.9" y="-261.62"/>
+<instance part="GND144" gate="1" x="896.62" y="-271.78"/>
+<instance part="GND145" gate="1" x="904.24" y="-271.78"/>
+<instance part="GND146" gate="1" x="911.86" y="-271.78"/>
+<instance part="GND147" gate="1" x="919.48" y="-271.78"/>
+<instance part="GND148" gate="1" x="927.1" y="-271.78"/>
+<instance part="GND149" gate="1" x="934.72" y="-271.78"/>
+<instance part="GND150" gate="1" x="942.34" y="-271.78"/>
+<instance part="GND151" gate="1" x="949.96" y="-271.78"/>
+<instance part="GND152" gate="1" x="957.58" y="-271.78"/>
 <instance part="GND154" gate="1" x="965.2" y="-271.78"/>
 <instance part="GND155" gate="1" x="972.82" y="-271.78"/>
 <instance part="GND156" gate="1" x="980.44" y="-271.78"/>
@@ -7720,40 +7640,39 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="GND162" gate="1" x="1026.16" y="-271.78"/>
 <instance part="GND163" gate="1" x="1033.78" y="-271.78"/>
 <instance part="GND164" gate="1" x="1041.4" y="-271.78"/>
-<instance part="GND165" gate="1" x="850.9" y="-271.78"/>
-<instance part="GND166" gate="1" x="858.52" y="-271.78"/>
-<instance part="GND167" gate="1" x="866.14" y="-271.78"/>
-<instance part="GND168" gate="1" x="873.76" y="-271.78"/>
-<instance part="GND169" gate="1" x="881.38" y="-271.78"/>
-<instance part="GND170" gate="1" x="812.8" y="-271.78"/>
-<instance part="GND171" gate="1" x="820.42" y="-271.78"/>
-<instance part="GND172" gate="1" x="828.04" y="-271.78"/>
-<instance part="GND173" gate="1" x="835.66" y="-271.78"/>
-<instance part="GND174" gate="1" x="843.28" y="-271.78"/>
-<instance part="C152" gate="G$1" x="835.66" y="-261.62"/>
-<instance part="C153" gate="G$1" x="828.04" y="-261.62"/>
-<instance part="C154" gate="G$1" x="820.42" y="-261.62"/>
-<instance part="C155" gate="G$1" x="812.8" y="-261.62"/>
-<instance part="P+135" gate="VCC" x="812.8" y="-254" rot="MR0"/>
-<instance part="P+136" gate="VCC" x="820.42" y="-254" rot="MR0"/>
-<instance part="P+137" gate="VCC" x="828.04" y="-254" rot="MR0"/>
-<instance part="P+138" gate="VCC" x="835.66" y="-254" rot="MR0"/>
-<instance part="P+139" gate="VCC" x="843.28" y="-254" rot="MR0"/>
-<instance part="P+140" gate="VCC" x="850.9" y="-254" rot="MR0"/>
-<instance part="P+141" gate="VCC" x="858.52" y="-254" rot="MR0"/>
-<instance part="P+142" gate="VCC" x="866.14" y="-254" rot="MR0"/>
-<instance part="P+143" gate="VCC" x="873.76" y="-254" rot="MR0"/>
-<instance part="P+144" gate="VCC" x="881.38" y="-254" rot="MR0"/>
-<instance part="P+145" gate="VCC" x="889" y="-254" rot="MR0"/>
-<instance part="P+146" gate="VCC" x="896.62" y="-254" rot="MR0"/>
-<instance part="P+147" gate="VCC" x="904.24" y="-254" rot="MR0"/>
-<instance part="P+148" gate="VCC" x="911.86" y="-254" rot="MR0"/>
-<instance part="P+149" gate="VCC" x="919.48" y="-254" rot="MR0"/>
-<instance part="P+150" gate="VCC" x="927.1" y="-254" rot="MR0"/>
-<instance part="P+151" gate="VCC" x="934.72" y="-254" rot="MR0"/>
-<instance part="P+152" gate="VCC" x="942.34" y="-254" rot="MR0"/>
-<instance part="P+153" gate="VCC" x="949.96" y="-254" rot="MR0"/>
-<instance part="P+154" gate="VCC" x="957.58" y="-254" rot="MR0"/>
+<instance part="GND165" gate="1" x="858.52" y="-271.78"/>
+<instance part="GND166" gate="1" x="866.14" y="-271.78"/>
+<instance part="GND167" gate="1" x="873.76" y="-271.78"/>
+<instance part="GND168" gate="1" x="881.38" y="-271.78"/>
+<instance part="GND169" gate="1" x="889" y="-271.78"/>
+<instance part="GND170" gate="1" x="820.42" y="-271.78"/>
+<instance part="GND171" gate="1" x="828.04" y="-271.78"/>
+<instance part="GND172" gate="1" x="835.66" y="-271.78"/>
+<instance part="GND173" gate="1" x="843.28" y="-271.78"/>
+<instance part="GND174" gate="1" x="850.9" y="-271.78"/>
+<instance part="C152" gate="G$1" x="843.28" y="-261.62"/>
+<instance part="C153" gate="G$1" x="835.66" y="-261.62"/>
+<instance part="C154" gate="G$1" x="828.04" y="-261.62"/>
+<instance part="C155" gate="G$1" x="820.42" y="-261.62"/>
+<instance part="P+135" gate="VCC" x="820.42" y="-254" rot="MR0"/>
+<instance part="P+136" gate="VCC" x="828.04" y="-254" rot="MR0"/>
+<instance part="P+137" gate="VCC" x="835.66" y="-254" rot="MR0"/>
+<instance part="P+138" gate="VCC" x="843.28" y="-254" rot="MR0"/>
+<instance part="P+139" gate="VCC" x="850.9" y="-254" rot="MR0"/>
+<instance part="P+140" gate="VCC" x="858.52" y="-254" rot="MR0"/>
+<instance part="P+141" gate="VCC" x="866.14" y="-254" rot="MR0"/>
+<instance part="P+142" gate="VCC" x="873.76" y="-254" rot="MR0"/>
+<instance part="P+143" gate="VCC" x="881.38" y="-254" rot="MR0"/>
+<instance part="P+144" gate="VCC" x="889" y="-254" rot="MR0"/>
+<instance part="P+145" gate="VCC" x="896.62" y="-254" rot="MR0"/>
+<instance part="P+146" gate="VCC" x="904.24" y="-254" rot="MR0"/>
+<instance part="P+147" gate="VCC" x="911.86" y="-254" rot="MR0"/>
+<instance part="P+148" gate="VCC" x="919.48" y="-254" rot="MR0"/>
+<instance part="P+149" gate="VCC" x="927.1" y="-254" rot="MR0"/>
+<instance part="P+150" gate="VCC" x="934.72" y="-254" rot="MR0"/>
+<instance part="P+151" gate="VCC" x="942.34" y="-254" rot="MR0"/>
+<instance part="P+152" gate="VCC" x="949.96" y="-254" rot="MR0"/>
+<instance part="P+153" gate="VCC" x="957.58" y="-254" rot="MR0"/>
 <instance part="P+155" gate="VCC" x="965.2" y="-254" rot="MR0"/>
 <instance part="P+156" gate="VCC" x="972.82" y="-254" rot="MR0"/>
 <instance part="P+157" gate="VCC" x="980.44" y="-254" rot="MR0"/>
@@ -7765,17 +7684,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="P+163" gate="VCC" x="1026.16" y="-254" rot="MR0"/>
 <instance part="P+164" gate="VCC" x="1033.78" y="-254" rot="MR0"/>
 <instance part="P+165" gate="VCC" x="1041.4" y="-254" rot="MR0"/>
-<instance part="C156" gate="G$1" x="861.06" y="-7.62"/>
+<instance part="C156" gate="G$1" x="861.06" y="-10.16"/>
 <instance part="IC45" gate="B" x="-50.8" y="320.04"/>
 <instance part="IC26" gate="D" x="165.1" y="137.16"/>
 <instance part="IC75" gate="C" x="165.1" y="124.46"/>
-<instance part="IC43" gate="F" x="-124.46" y="-180.34"/>
-<instance part="IC43" gate="A" x="-124.46" y="-167.64"/>
 <instance part="IC168" gate="D" x="-548.64" y="614.68"/>
 <instance part="IC168" gate="A" x="-568.96" y="622.3"/>
 <instance part="IC108" gate="C" x="-515.62" y="500.38"/>
 <instance part="IC108" gate="B" x="-939.8" y="485.14"/>
-<instance part="IC108" gate="A" x="-53.34" y="261.62"/>
 <instance part="IC49" gate="C" x="167.64" y="617.22"/>
 <instance part="GND175" gate="1" x="157.48" y="609.6"/>
 <instance part="IC54" gate="A" x="-695.96" y="-414.02"/>
@@ -7798,14 +7714,28 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="IC37" gate="D" x="444.5" y="218.44"/>
 <instance part="IC172" gate="B" x="-693.42" y="-147.32"/>
 <instance part="IC108" gate="D" x="-833.12" y="231.14"/>
-<instance part="IC17" gate="D" x="-833.12" y="218.44"/>
-<instance part="IC130" gate="A" x="1107.44" y="388.62"/>
 <instance part="JP2" gate="A" x="1137.92" y="525.78"/>
 <instance part="JP3" gate="A" x="1137.92" y="459.74"/>
 <instance part="JP4" gate="A" x="1292.86" y="520.7"/>
 <instance part="GND176" gate="1" x="1150.62" y="490.22"/>
 <instance part="P+166" gate="VCC" x="1163.32" y="515.62" rot="MR0"/>
-<instance part="JP6" gate="G$1" x="840.74" y="-2.54" rot="R180"/>
+<instance part="JP6" gate="G$1" x="840.74" y="-10.16" rot="R180"/>
+<instance part="P+15" gate="VCC" x="1160.78" y="449.58" rot="MR0"/>
+<instance part="GND21" gate="1" x="1150.62" y="424.18"/>
+<instance part="P+23" gate="VCC" x="1315.72" y="510.54" rot="MR0"/>
+<instance part="GND25" gate="1" x="1305.56" y="487.68"/>
+<instance part="IC33" gate="D" x="1297.94" y="203.2"/>
+<instance part="IC33" gate="A" x="1277.62" y="198.12"/>
+<instance part="IC110" gate="A" x="386.08" y="177.8"/>
+<instance part="IC110" gate="B" x="386.08" y="165.1"/>
+<instance part="IC35" gate="B" x="1107.44" y="388.62"/>
+<instance part="IC35" gate="A" x="1267.46" y="467.36"/>
+<instance part="IC43" gate="F" x="-612.14" y="566.42"/>
+<instance part="IC43" gate="A" x="-612.14" y="548.64"/>
+<instance part="IC130" gate="A" x="-124.46" y="-167.64"/>
+<instance part="IC37" gate="C" x="-124.46" y="-180.34"/>
+<instance part="IC108" gate="A" x="-833.12" y="218.44"/>
+<instance part="IC17" gate="D" x="-53.34" y="261.62"/>
 </instances>
 <busses>
 <bus name="DATA_BUS:DATA[0..7]">
@@ -7851,12 +7781,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="VCC" class="0">
 <segment>
 <pinref part="P+4" gate="VCC" pin="VCC"/>
-<wire x1="861.06" y1="-5.08" x2="861.06" y2="-2.54" width="0.1524" layer="91"/>
 <pinref part="C156" gate="G$1" pin="1"/>
-<wire x1="861.06" y1="-2.54" x2="861.06" y2="0" width="0.1524" layer="91"/>
-<wire x1="861.06" y1="-2.54" x2="843.28" y2="-2.54" width="0.1524" layer="91"/>
-<junction x="861.06" y="-2.54"/>
+<wire x1="861.06" y1="-7.62" x2="861.06" y2="-5.08" width="0.1524" layer="91"/>
 <pinref part="JP6" gate="G$1" pin="2"/>
+<wire x1="861.06" y1="-5.08" x2="861.06" y2="-2.54" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-10.16" x2="850.9" y2="-10.16" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-10.16" x2="850.9" y2="-5.08" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-5.08" x2="861.06" y2="-5.08" width="0.1524" layer="91"/>
+<junction x="861.06" y="-5.08"/>
 </segment>
 <segment>
 <pinref part="IC179" gate="A" pin="DN"/>
@@ -7978,41 +7910,36 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="P+16" gate="VCC" pin="VCC"/>
 <pinref part="C58" gate="G$1" pin="1"/>
-<wire x1="850.9" y1="-154.94" x2="850.9" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-154.94" x2="858.52" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+17" gate="VCC" pin="VCC"/>
 <pinref part="C60" gate="G$1" pin="1"/>
-<wire x1="858.52" y1="-154.94" x2="858.52" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-154.94" x2="866.14" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+18" gate="VCC" pin="VCC"/>
-<wire x1="866.14" y1="-157.48" x2="866.14" y2="-154.94" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-157.48" x2="873.76" y2="-154.94" width="0.1524" layer="91"/>
 <pinref part="C59" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="P+19" gate="VCC" pin="VCC"/>
 <pinref part="C57" gate="G$1" pin="1"/>
-<wire x1="873.76" y1="-154.94" x2="873.76" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-154.94" x2="881.38" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+20" gate="VCC" pin="VCC"/>
 <pinref part="C56" gate="G$1" pin="1"/>
-<wire x1="881.38" y1="-154.94" x2="881.38" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="889" y1="-154.94" x2="889" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+21" gate="VCC" pin="VCC"/>
 <pinref part="C40" gate="G$1" pin="1"/>
-<wire x1="889" y1="-154.94" x2="889" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-154.94" x2="896.62" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+22" gate="VCC" pin="VCC"/>
 <pinref part="C42" gate="G$1" pin="1"/>
-<wire x1="896.62" y1="-154.94" x2="896.62" y2="-157.48" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+23" gate="VCC" pin="VCC"/>
-<pinref part="C41" gate="G$1" pin="1"/>
 <wire x1="904.24" y1="-154.94" x2="904.24" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8106,136 +8033,126 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="P+41" gate="VCC" pin="VCC"/>
 <pinref part="C62" gate="G$1" pin="1"/>
-<wire x1="812.8" y1="-180.34" x2="812.8" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-180.34" x2="820.42" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+42" gate="VCC" pin="VCC"/>
 <pinref part="C55" gate="G$1" pin="1"/>
-<wire x1="820.42" y1="-180.34" x2="820.42" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-180.34" x2="828.04" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+43" gate="VCC" pin="VCC"/>
 <pinref part="C49" gate="G$1" pin="1"/>
-<wire x1="828.04" y1="-180.34" x2="828.04" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-180.34" x2="835.66" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+44" gate="VCC" pin="VCC"/>
 <pinref part="C43" gate="G$1" pin="1"/>
-<wire x1="835.66" y1="-180.34" x2="835.66" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-180.34" x2="843.28" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+45" gate="VCC" pin="VCC"/>
 <pinref part="C61" gate="G$1" pin="1"/>
-<wire x1="843.28" y1="-180.34" x2="843.28" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-180.34" x2="850.9" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+46" gate="VCC" pin="VCC"/>
 <pinref part="C19" gate="G$1" pin="1"/>
-<wire x1="812.8" y1="-154.94" x2="812.8" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-154.94" x2="820.42" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+47" gate="VCC" pin="VCC"/>
 <pinref part="C37" gate="G$1" pin="1"/>
-<wire x1="820.42" y1="-154.94" x2="820.42" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-154.94" x2="828.04" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+48" gate="VCC" pin="VCC"/>
 <pinref part="C28" gate="G$1" pin="1"/>
-<wire x1="828.04" y1="-154.94" x2="828.04" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-154.94" x2="835.66" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+49" gate="VCC" pin="VCC"/>
 <pinref part="C10" gate="G$1" pin="1"/>
-<wire x1="835.66" y1="-154.94" x2="835.66" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-154.94" x2="843.28" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+50" gate="VCC" pin="VCC"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<wire x1="843.28" y1="-154.94" x2="843.28" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-154.94" x2="850.9" y2="-157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+51" gate="VCC" pin="VCC"/>
 <pinref part="C52" gate="G$1" pin="1"/>
-<wire x1="850.9" y1="-180.34" x2="850.9" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-180.34" x2="858.52" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+52" gate="VCC" pin="VCC"/>
 <pinref part="C54" gate="G$1" pin="1"/>
-<wire x1="858.52" y1="-180.34" x2="858.52" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-180.34" x2="866.14" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+53" gate="VCC" pin="VCC"/>
 <pinref part="C53" gate="G$1" pin="1"/>
-<wire x1="866.14" y1="-180.34" x2="866.14" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-180.34" x2="873.76" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+54" gate="VCC" pin="VCC"/>
 <pinref part="C51" gate="G$1" pin="1"/>
-<wire x1="873.76" y1="-180.34" x2="873.76" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-180.34" x2="881.38" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+55" gate="VCC" pin="VCC"/>
 <pinref part="C50" gate="G$1" pin="1"/>
-<wire x1="881.38" y1="-180.34" x2="881.38" y2="-182.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+56" gate="VCC" pin="VCC"/>
-<pinref part="C46" gate="G$1" pin="1"/>
 <wire x1="889" y1="-180.34" x2="889" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+57" gate="VCC" pin="VCC"/>
 <pinref part="C48" gate="G$1" pin="1"/>
-<wire x1="896.62" y1="-180.34" x2="896.62" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-180.34" x2="904.24" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+58" gate="VCC" pin="VCC"/>
 <pinref part="C47" gate="G$1" pin="1"/>
-<wire x1="904.24" y1="-180.34" x2="904.24" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-180.34" x2="911.86" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+59" gate="VCC" pin="VCC"/>
 <pinref part="C45" gate="G$1" pin="1"/>
-<wire x1="911.86" y1="-180.34" x2="911.86" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-180.34" x2="919.48" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+60" gate="VCC" pin="VCC"/>
 <pinref part="C44" gate="G$1" pin="1"/>
-<wire x1="919.48" y1="-180.34" x2="919.48" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-180.34" x2="927.1" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+61" gate="VCC" pin="VCC"/>
 <pinref part="C25" gate="G$1" pin="1"/>
-<wire x1="927.1" y1="-180.34" x2="927.1" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-180.34" x2="934.72" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+62" gate="VCC" pin="VCC"/>
 <pinref part="C27" gate="G$1" pin="1"/>
-<wire x1="934.72" y1="-180.34" x2="934.72" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-180.34" x2="942.34" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+63" gate="VCC" pin="VCC"/>
 <pinref part="C26" gate="G$1" pin="1"/>
-<wire x1="942.34" y1="-180.34" x2="942.34" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-180.34" x2="949.96" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+64" gate="VCC" pin="VCC"/>
 <pinref part="C21" gate="G$1" pin="1"/>
-<wire x1="949.96" y1="-180.34" x2="949.96" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="957.58" y1="-180.34" x2="957.58" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+65" gate="VCC" pin="VCC"/>
 <pinref part="C20" gate="G$1" pin="1"/>
-<wire x1="957.58" y1="-180.34" x2="957.58" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="965.2" y1="-180.34" x2="965.2" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+66" gate="VCC" pin="VCC"/>
 <pinref part="C22" gate="G$1" pin="1"/>
-<wire x1="965.2" y1="-180.34" x2="965.2" y2="-182.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+67" gate="VCC" pin="VCC"/>
-<pinref part="C24" gate="G$1" pin="1"/>
 <wire x1="972.82" y1="-180.34" x2="972.82" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8284,121 +8201,91 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="P+6" gate="VCC" pin="VCC"/>
 <pinref part="C93" gate="G$1" pin="1"/>
-<wire x1="812.8" y1="-205.74" x2="812.8" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-205.74" x2="866.14" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+7" gate="VCC" pin="VCC"/>
 <pinref part="C92" gate="G$1" pin="1"/>
-<wire x1="820.42" y1="-205.74" x2="820.42" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-205.74" x2="873.76" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+12" gate="VCC" pin="VCC"/>
 <pinref part="C91" gate="G$1" pin="1"/>
-<wire x1="828.04" y1="-205.74" x2="828.04" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-205.74" x2="881.38" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+13" gate="VCC" pin="VCC"/>
 <pinref part="C90" gate="G$1" pin="1"/>
-<wire x1="835.66" y1="-205.74" x2="835.66" y2="-208.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+15" gate="VCC" pin="VCC"/>
-<pinref part="C89" gate="G$1" pin="1"/>
-<wire x1="843.28" y1="-205.74" x2="843.28" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="889" y1="-205.74" x2="889" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+71" gate="VCC" pin="VCC"/>
 <pinref part="C86" gate="G$1" pin="1"/>
-<wire x1="850.9" y1="-205.74" x2="850.9" y2="-208.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+72" gate="VCC" pin="VCC"/>
-<pinref part="C88" gate="G$1" pin="1"/>
-<wire x1="858.52" y1="-205.74" x2="858.52" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-180.34" x2="896.62" y2="-182.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+73" gate="VCC" pin="VCC"/>
 <pinref part="C87" gate="G$1" pin="1"/>
-<wire x1="866.14" y1="-205.74" x2="866.14" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-205.74" x2="896.62" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+74" gate="VCC" pin="VCC"/>
 <pinref part="C85" gate="G$1" pin="1"/>
-<wire x1="873.76" y1="-205.74" x2="873.76" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-205.74" x2="904.24" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+75" gate="VCC" pin="VCC"/>
 <pinref part="C84" gate="G$1" pin="1"/>
-<wire x1="881.38" y1="-205.74" x2="881.38" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-205.74" x2="911.86" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+83" gate="VCC" pin="VCC"/>
 <pinref part="C81" gate="G$1" pin="1"/>
-<wire x1="889" y1="-205.74" x2="889" y2="-208.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+84" gate="VCC" pin="VCC"/>
-<pinref part="C83" gate="G$1" pin="1"/>
-<wire x1="896.62" y1="-205.74" x2="896.62" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-205.74" x2="919.48" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+85" gate="VCC" pin="VCC"/>
 <pinref part="C82" gate="G$1" pin="1"/>
-<wire x1="904.24" y1="-205.74" x2="904.24" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-205.74" x2="927.1" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+86" gate="VCC" pin="VCC"/>
 <pinref part="C80" gate="G$1" pin="1"/>
-<wire x1="911.86" y1="-205.74" x2="911.86" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-205.74" x2="934.72" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+87" gate="VCC" pin="VCC"/>
 <pinref part="C79" gate="G$1" pin="1"/>
-<wire x1="919.48" y1="-205.74" x2="919.48" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-205.74" x2="942.34" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+88" gate="VCC" pin="VCC"/>
 <pinref part="C68" gate="G$1" pin="1"/>
-<wire x1="927.1" y1="-205.74" x2="927.1" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-205.74" x2="949.96" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+89" gate="VCC" pin="VCC"/>
 <pinref part="C70" gate="G$1" pin="1"/>
-<wire x1="934.72" y1="-205.74" x2="934.72" y2="-208.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+90" gate="VCC" pin="VCC"/>
-<pinref part="C69" gate="G$1" pin="1"/>
-<wire x1="942.34" y1="-205.74" x2="942.34" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="957.58" y1="-205.74" x2="957.58" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+91" gate="VCC" pin="VCC"/>
 <pinref part="C64" gate="G$1" pin="1"/>
-<wire x1="949.96" y1="-205.74" x2="949.96" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="965.2" y1="-205.74" x2="965.2" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+92" gate="VCC" pin="VCC"/>
 <pinref part="C63" gate="G$1" pin="1"/>
-<wire x1="957.58" y1="-205.74" x2="957.58" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="972.82" y1="-205.74" x2="972.82" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+93" gate="VCC" pin="VCC"/>
 <pinref part="C65" gate="G$1" pin="1"/>
-<wire x1="965.2" y1="-205.74" x2="965.2" y2="-208.28" width="0.1524" layer="91"/>
+<wire x1="980.44" y1="-205.74" x2="980.44" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+94" gate="VCC" pin="VCC"/>
 <pinref part="C67" gate="G$1" pin="1"/>
-<wire x1="972.82" y1="-205.74" x2="972.82" y2="-208.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+95" gate="VCC" pin="VCC"/>
-<pinref part="C66" gate="G$1" pin="1"/>
-<wire x1="980.44" y1="-205.74" x2="980.44" y2="-208.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+96" gate="VCC" pin="VCC"/>
-<pinref part="C76" gate="G$1" pin="1"/>
 <wire x1="988.06" y1="-205.74" x2="988.06" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8437,116 +8324,101 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="P+104" gate="VCC" pin="VCC"/>
 <pinref part="C124" gate="G$1" pin="1"/>
-<wire x1="812.8" y1="-231.14" x2="812.8" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-205.74" x2="820.42" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+105" gate="VCC" pin="VCC"/>
 <pinref part="C123" gate="G$1" pin="1"/>
-<wire x1="820.42" y1="-231.14" x2="820.42" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-205.74" x2="828.04" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+106" gate="VCC" pin="VCC"/>
 <pinref part="C122" gate="G$1" pin="1"/>
-<wire x1="828.04" y1="-231.14" x2="828.04" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-205.74" x2="835.66" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+107" gate="VCC" pin="VCC"/>
 <pinref part="C121" gate="G$1" pin="1"/>
-<wire x1="835.66" y1="-231.14" x2="835.66" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-205.74" x2="843.28" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+108" gate="VCC" pin="VCC"/>
 <pinref part="C120" gate="G$1" pin="1"/>
-<wire x1="843.28" y1="-231.14" x2="843.28" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-205.74" x2="850.9" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+109" gate="VCC" pin="VCC"/>
 <pinref part="C117" gate="G$1" pin="1"/>
-<wire x1="850.9" y1="-231.14" x2="850.9" y2="-233.68" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+110" gate="VCC" pin="VCC"/>
-<pinref part="C119" gate="G$1" pin="1"/>
-<wire x1="858.52" y1="-231.14" x2="858.52" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-205.74" x2="858.52" y2="-208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+111" gate="VCC" pin="VCC"/>
 <pinref part="C118" gate="G$1" pin="1"/>
-<wire x1="866.14" y1="-231.14" x2="866.14" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-231.14" x2="881.38" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+112" gate="VCC" pin="VCC"/>
 <pinref part="C116" gate="G$1" pin="1"/>
-<wire x1="873.76" y1="-231.14" x2="873.76" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="889" y1="-231.14" x2="889" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+113" gate="VCC" pin="VCC"/>
 <pinref part="C115" gate="G$1" pin="1"/>
-<wire x1="881.38" y1="-231.14" x2="881.38" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-231.14" x2="896.62" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+114" gate="VCC" pin="VCC"/>
 <pinref part="C112" gate="G$1" pin="1"/>
-<wire x1="889" y1="-231.14" x2="889" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-231.14" x2="904.24" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+115" gate="VCC" pin="VCC"/>
 <pinref part="C114" gate="G$1" pin="1"/>
-<wire x1="896.62" y1="-231.14" x2="896.62" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-231.14" x2="911.86" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+116" gate="VCC" pin="VCC"/>
 <pinref part="C113" gate="G$1" pin="1"/>
-<wire x1="904.24" y1="-231.14" x2="904.24" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-231.14" x2="919.48" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+117" gate="VCC" pin="VCC"/>
 <pinref part="C111" gate="G$1" pin="1"/>
-<wire x1="911.86" y1="-231.14" x2="911.86" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-231.14" x2="927.1" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+118" gate="VCC" pin="VCC"/>
 <pinref part="C110" gate="G$1" pin="1"/>
-<wire x1="919.48" y1="-231.14" x2="919.48" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-231.14" x2="934.72" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+119" gate="VCC" pin="VCC"/>
 <pinref part="C99" gate="G$1" pin="1"/>
-<wire x1="927.1" y1="-231.14" x2="927.1" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-231.14" x2="942.34" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+120" gate="VCC" pin="VCC"/>
 <pinref part="C101" gate="G$1" pin="1"/>
-<wire x1="934.72" y1="-231.14" x2="934.72" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-231.14" x2="949.96" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+121" gate="VCC" pin="VCC"/>
 <pinref part="C100" gate="G$1" pin="1"/>
-<wire x1="942.34" y1="-231.14" x2="942.34" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="957.58" y1="-231.14" x2="957.58" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+122" gate="VCC" pin="VCC"/>
 <pinref part="C95" gate="G$1" pin="1"/>
-<wire x1="949.96" y1="-231.14" x2="949.96" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="965.2" y1="-231.14" x2="965.2" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+123" gate="VCC" pin="VCC"/>
 <pinref part="C94" gate="G$1" pin="1"/>
-<wire x1="957.58" y1="-231.14" x2="957.58" y2="-233.68" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+124" gate="VCC" pin="VCC"/>
-<pinref part="C96" gate="G$1" pin="1"/>
-<wire x1="965.2" y1="-231.14" x2="965.2" y2="-233.68" width="0.1524" layer="91"/>
+<wire x1="972.82" y1="-231.14" x2="972.82" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+125" gate="VCC" pin="VCC"/>
 <pinref part="C98" gate="G$1" pin="1"/>
-<wire x1="972.82" y1="-231.14" x2="972.82" y2="-233.68" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+126" gate="VCC" pin="VCC"/>
-<pinref part="C97" gate="G$1" pin="1"/>
 <wire x1="980.44" y1="-231.14" x2="980.44" y2="-233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8590,101 +8462,96 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="P+135" gate="VCC" pin="VCC"/>
 <pinref part="C155" gate="G$1" pin="1"/>
-<wire x1="812.8" y1="-256.54" x2="812.8" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-256.54" x2="820.42" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+136" gate="VCC" pin="VCC"/>
 <pinref part="C154" gate="G$1" pin="1"/>
-<wire x1="820.42" y1="-256.54" x2="820.42" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-256.54" x2="828.04" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+137" gate="VCC" pin="VCC"/>
 <pinref part="C153" gate="G$1" pin="1"/>
-<wire x1="828.04" y1="-256.54" x2="828.04" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-256.54" x2="835.66" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+138" gate="VCC" pin="VCC"/>
 <pinref part="C152" gate="G$1" pin="1"/>
-<wire x1="835.66" y1="-256.54" x2="835.66" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-256.54" x2="843.28" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+139" gate="VCC" pin="VCC"/>
 <pinref part="C151" gate="G$1" pin="1"/>
-<wire x1="843.28" y1="-256.54" x2="843.28" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-256.54" x2="850.9" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+140" gate="VCC" pin="VCC"/>
 <pinref part="C148" gate="G$1" pin="1"/>
-<wire x1="850.9" y1="-256.54" x2="850.9" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-256.54" x2="858.52" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+141" gate="VCC" pin="VCC"/>
 <pinref part="C150" gate="G$1" pin="1"/>
-<wire x1="858.52" y1="-256.54" x2="858.52" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-256.54" x2="866.14" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+142" gate="VCC" pin="VCC"/>
 <pinref part="C149" gate="G$1" pin="1"/>
-<wire x1="866.14" y1="-256.54" x2="866.14" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-256.54" x2="873.76" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+143" gate="VCC" pin="VCC"/>
 <pinref part="C147" gate="G$1" pin="1"/>
-<wire x1="873.76" y1="-256.54" x2="873.76" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-256.54" x2="881.38" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+144" gate="VCC" pin="VCC"/>
 <pinref part="C146" gate="G$1" pin="1"/>
-<wire x1="881.38" y1="-256.54" x2="881.38" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="889" y1="-256.54" x2="889" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+145" gate="VCC" pin="VCC"/>
 <pinref part="C143" gate="G$1" pin="1"/>
-<wire x1="889" y1="-256.54" x2="889" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-256.54" x2="896.62" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+146" gate="VCC" pin="VCC"/>
 <pinref part="C145" gate="G$1" pin="1"/>
-<wire x1="896.62" y1="-256.54" x2="896.62" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-256.54" x2="904.24" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+147" gate="VCC" pin="VCC"/>
 <pinref part="C144" gate="G$1" pin="1"/>
-<wire x1="904.24" y1="-256.54" x2="904.24" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-256.54" x2="911.86" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+148" gate="VCC" pin="VCC"/>
 <pinref part="C142" gate="G$1" pin="1"/>
-<wire x1="911.86" y1="-256.54" x2="911.86" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-256.54" x2="919.48" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+149" gate="VCC" pin="VCC"/>
 <pinref part="C141" gate="G$1" pin="1"/>
-<wire x1="919.48" y1="-256.54" x2="919.48" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-256.54" x2="927.1" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+150" gate="VCC" pin="VCC"/>
 <pinref part="C130" gate="G$1" pin="1"/>
-<wire x1="927.1" y1="-256.54" x2="927.1" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-256.54" x2="934.72" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+151" gate="VCC" pin="VCC"/>
 <pinref part="C132" gate="G$1" pin="1"/>
-<wire x1="934.72" y1="-256.54" x2="934.72" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-256.54" x2="942.34" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+152" gate="VCC" pin="VCC"/>
 <pinref part="C131" gate="G$1" pin="1"/>
-<wire x1="942.34" y1="-256.54" x2="942.34" y2="-259.08" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-256.54" x2="949.96" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+153" gate="VCC" pin="VCC"/>
 <pinref part="C126" gate="G$1" pin="1"/>
-<wire x1="949.96" y1="-256.54" x2="949.96" y2="-259.08" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+154" gate="VCC" pin="VCC"/>
-<pinref part="C125" gate="G$1" pin="1"/>
 <wire x1="957.58" y1="-256.54" x2="957.58" y2="-259.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8745,6 +8612,18 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="1143" y1="510.54" x2="1163.32" y2="510.54" width="0.1524" layer="91"/>
 <wire x1="1163.32" y1="510.54" x2="1163.32" y2="513.08" width="0.1524" layer="91"/>
 <pinref part="P+166" gate="VCC" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="JP3" gate="A" pin="28"/>
+<wire x1="1143" y1="444.5" x2="1160.78" y2="444.5" width="0.1524" layer="91"/>
+<wire x1="1160.78" y1="444.5" x2="1160.78" y2="447.04" width="0.1524" layer="91"/>
+<pinref part="P+15" gate="VCC" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="A" pin="28"/>
+<wire x1="1297.94" y1="505.46" x2="1315.72" y2="505.46" width="0.1524" layer="91"/>
+<wire x1="1315.72" y1="505.46" x2="1315.72" y2="508" width="0.1524" layer="91"/>
+<pinref part="P+23" gate="VCC" pin="VCC"/>
 </segment>
 </net>
 <net name="CLR_NOT_OE/CLR_NOT_CS_CYCL_0" class="0">
@@ -9166,7 +9045,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="480.06" x2="1186.18" y2="477.52" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="477.52" x2="1150.62" y2="477.52" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="477.52" x2="1143" y2="477.52" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="2"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="546.1" x2="1186.18" y2="543.56" width="0.1524" layer="91"/>
@@ -9184,8 +9064,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="185.42" y1="139.7" x2="205.74" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="1305.56" y1="538.48" x2="1330.96" y2="538.48" width="0.1524" layer="91"/>
+<wire x1="1297.94" y1="538.48" x2="1330.96" y2="538.48" width="0.1524" layer="91"/>
 <wire x1="1333.5" y1="541.02" x2="1330.96" y2="538.48" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="2"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="238.76" x2="1023.62" y2="236.22" width="0.1524" layer="91"/>
@@ -9276,7 +9157,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="477.52" x2="1186.18" y2="474.98" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="474.98" x2="1150.62" y2="474.98" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="474.98" x2="1143" y2="474.98" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="4"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="543.56" x2="1186.18" y2="541.02" width="0.1524" layer="91"/>
@@ -9295,7 +9177,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="538.48" x2="1330.96" y2="535.94" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="535.94" x2="1305.56" y2="535.94" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="535.94" x2="1297.94" y2="535.94" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="4"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="233.68" x2="1023.62" y2="231.14" width="0.1524" layer="91"/>
@@ -9386,7 +9269,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="474.98" x2="1186.18" y2="472.44" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="472.44" x2="1150.62" y2="472.44" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="472.44" x2="1143" y2="472.44" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="6"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="541.02" x2="1186.18" y2="538.48" width="0.1524" layer="91"/>
@@ -9405,7 +9289,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="535.94" x2="1330.96" y2="533.4" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="533.4" x2="1305.56" y2="533.4" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="533.4" x2="1297.94" y2="533.4" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="6"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="228.6" x2="1023.62" y2="226.06" width="0.1524" layer="91"/>
@@ -9496,7 +9381,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="472.44" x2="1186.18" y2="469.9" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="469.9" x2="1150.62" y2="469.9" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="469.9" x2="1143" y2="469.9" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="8"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="538.48" x2="1186.18" y2="535.94" width="0.1524" layer="91"/>
@@ -9515,7 +9401,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="533.4" x2="1330.96" y2="530.86" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="530.86" x2="1305.56" y2="530.86" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="530.86" x2="1297.94" y2="530.86" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="8"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="223.52" x2="1023.62" y2="220.98" width="0.1524" layer="91"/>
@@ -9606,7 +9493,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="469.9" x2="1186.18" y2="467.36" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="467.36" x2="1150.62" y2="467.36" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="467.36" x2="1143" y2="467.36" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="10"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="535.94" x2="1186.18" y2="533.4" width="0.1524" layer="91"/>
@@ -9625,7 +9513,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="530.86" x2="1330.96" y2="528.32" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="528.32" x2="1305.56" y2="528.32" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="528.32" x2="1297.94" y2="528.32" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="10"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="203.2" x2="1023.62" y2="200.66" width="0.1524" layer="91"/>
@@ -9716,7 +9605,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="467.36" x2="1186.18" y2="464.82" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="464.82" x2="1150.62" y2="464.82" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="464.82" x2="1143" y2="464.82" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="12"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="533.4" x2="1186.18" y2="530.86" width="0.1524" layer="91"/>
@@ -9735,7 +9625,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="528.32" x2="1330.96" y2="525.78" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="525.78" x2="1305.56" y2="525.78" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="525.78" x2="1297.94" y2="525.78" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="12"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="198.12" x2="1023.62" y2="195.58" width="0.1524" layer="91"/>
@@ -9821,7 +9712,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="464.82" x2="1186.18" y2="462.28" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="462.28" x2="1150.62" y2="462.28" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="462.28" x2="1143" y2="462.28" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="14"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="530.86" x2="1186.18" y2="528.32" width="0.1524" layer="91"/>
@@ -9840,7 +9732,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="525.78" x2="1330.96" y2="523.24" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="523.24" x2="1305.56" y2="523.24" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="523.24" x2="1297.94" y2="523.24" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="14"/>
 </segment>
 <segment>
 <wire x1="1021.08" y1="193.04" x2="1023.62" y2="190.5" width="0.1524" layer="91"/>
@@ -9936,7 +9829,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1188.72" y1="462.28" x2="1186.18" y2="459.74" width="0.1524" layer="91"/>
-<wire x1="1186.18" y1="459.74" x2="1150.62" y2="459.74" width="0.1524" layer="91"/>
+<wire x1="1186.18" y1="459.74" x2="1143" y2="459.74" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="16"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="528.32" x2="1186.18" y2="525.78" width="0.1524" layer="91"/>
@@ -9955,7 +9849,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <wire x1="1333.5" y1="523.24" x2="1330.96" y2="520.7" width="0.1524" layer="91"/>
-<wire x1="1330.96" y1="520.7" x2="1305.56" y2="520.7" width="0.1524" layer="91"/>
+<wire x1="1330.96" y1="520.7" x2="1297.94" y2="520.7" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="16"/>
 </segment>
 <segment>
 <pinref part="IC5" gate="A" pin="D2"/>
@@ -10045,14 +9940,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </segment>
 <segment>
 <pinref part="GND10" gate="1" pin="GND"/>
-<wire x1="861.06" y1="-12.7" x2="861.06" y2="-15.24" width="0.1524" layer="91"/>
 <wire x1="861.06" y1="-15.24" x2="861.06" y2="-17.78" width="0.1524" layer="91"/>
+<wire x1="861.06" y1="-17.78" x2="861.06" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="C156" gate="G$1" pin="2"/>
-<wire x1="861.06" y1="-15.24" x2="850.9" y2="-15.24" width="0.1524" layer="91"/>
-<junction x="861.06" y="-15.24"/>
-<wire x1="850.9" y1="-15.24" x2="850.9" y2="-5.08" width="0.1524" layer="91"/>
+<wire x1="861.06" y1="-17.78" x2="850.9" y2="-17.78" width="0.1524" layer="91"/>
+<junction x="861.06" y="-17.78"/>
+<wire x1="850.9" y1="-17.78" x2="850.9" y2="-12.7" width="0.1524" layer="91"/>
 <pinref part="JP6" gate="G$1" pin="1"/>
-<wire x1="850.9" y1="-5.08" x2="843.28" y2="-5.08" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-12.7" x2="843.28" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC103" gate="A" pin="OC"/>
@@ -10381,63 +10276,53 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <junction x="838.2" y="-71.12"/>
 </segment>
 <segment>
-<pinref part="GND25" gate="1" pin="GND"/>
-<pinref part="C46" gate="G$1" pin="2"/>
-<wire x1="889" y1="-193.04" x2="889" y2="-190.5" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="GND26" gate="1" pin="GND"/>
 <pinref part="C48" gate="G$1" pin="2"/>
-<wire x1="896.62" y1="-193.04" x2="896.62" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-193.04" x2="904.24" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND27" gate="1" pin="GND"/>
 <pinref part="C47" gate="G$1" pin="2"/>
-<wire x1="904.24" y1="-193.04" x2="904.24" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-193.04" x2="911.86" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND28" gate="1" pin="GND"/>
 <pinref part="C45" gate="G$1" pin="2"/>
-<wire x1="911.86" y1="-193.04" x2="911.86" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-193.04" x2="919.48" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND29" gate="1" pin="GND"/>
 <pinref part="C44" gate="G$1" pin="2"/>
-<wire x1="919.48" y1="-193.04" x2="919.48" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-193.04" x2="927.1" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND30" gate="1" pin="GND"/>
 <pinref part="C25" gate="G$1" pin="2"/>
-<wire x1="927.1" y1="-193.04" x2="927.1" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-193.04" x2="934.72" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND31" gate="1" pin="GND"/>
 <pinref part="C27" gate="G$1" pin="2"/>
-<wire x1="934.72" y1="-193.04" x2="934.72" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-193.04" x2="942.34" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND32" gate="1" pin="GND"/>
 <pinref part="C26" gate="G$1" pin="2"/>
-<wire x1="942.34" y1="-193.04" x2="942.34" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-193.04" x2="949.96" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND33" gate="1" pin="GND"/>
 <pinref part="C21" gate="G$1" pin="2"/>
-<wire x1="949.96" y1="-193.04" x2="949.96" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="957.58" y1="-193.04" x2="957.58" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND34" gate="1" pin="GND"/>
 <pinref part="C20" gate="G$1" pin="2"/>
-<wire x1="957.58" y1="-193.04" x2="957.58" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="965.2" y1="-193.04" x2="965.2" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND35" gate="1" pin="GND"/>
 <pinref part="C22" gate="G$1" pin="2"/>
-<wire x1="965.2" y1="-193.04" x2="965.2" y2="-190.5" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND36" gate="1" pin="GND"/>
-<pinref part="C24" gate="G$1" pin="2"/>
 <wire x1="972.82" y1="-193.04" x2="972.82" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -10483,41 +10368,36 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="GND45" gate="1" pin="GND"/>
 <pinref part="C58" gate="G$1" pin="2"/>
-<wire x1="850.9" y1="-167.64" x2="850.9" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-167.64" x2="858.52" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND46" gate="1" pin="GND"/>
 <pinref part="C60" gate="G$1" pin="2"/>
-<wire x1="858.52" y1="-167.64" x2="858.52" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-167.64" x2="866.14" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND47" gate="1" pin="GND"/>
 <pinref part="C59" gate="G$1" pin="2"/>
-<wire x1="866.14" y1="-167.64" x2="866.14" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-167.64" x2="873.76" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND48" gate="1" pin="GND"/>
 <pinref part="C57" gate="G$1" pin="2"/>
-<wire x1="873.76" y1="-167.64" x2="873.76" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-167.64" x2="881.38" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND49" gate="1" pin="GND"/>
 <pinref part="C56" gate="G$1" pin="2"/>
-<wire x1="881.38" y1="-165.1" x2="881.38" y2="-167.64" width="0.1524" layer="91"/>
+<wire x1="889" y1="-165.1" x2="889" y2="-167.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND50" gate="1" pin="GND"/>
 <pinref part="C40" gate="G$1" pin="2"/>
-<wire x1="889" y1="-167.64" x2="889" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-167.64" x2="896.62" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND51" gate="1" pin="GND"/>
 <pinref part="C42" gate="G$1" pin="2"/>
-<wire x1="896.62" y1="-167.64" x2="896.62" y2="-165.1" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND52" gate="1" pin="GND"/>
-<pinref part="C41" gate="G$1" pin="2"/>
 <wire x1="904.24" y1="-167.64" x2="904.24" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -10608,77 +10488,77 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="GND72" gate="1" pin="GND"/>
 <pinref part="C52" gate="G$1" pin="2"/>
-<wire x1="850.9" y1="-193.04" x2="850.9" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-193.04" x2="858.52" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND73" gate="1" pin="GND"/>
 <pinref part="C54" gate="G$1" pin="2"/>
-<wire x1="858.52" y1="-193.04" x2="858.52" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-193.04" x2="866.14" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND74" gate="1" pin="GND"/>
 <pinref part="C53" gate="G$1" pin="2"/>
-<wire x1="866.14" y1="-193.04" x2="866.14" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-193.04" x2="873.76" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND75" gate="1" pin="GND"/>
 <pinref part="C51" gate="G$1" pin="2"/>
-<wire x1="873.76" y1="-193.04" x2="873.76" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-193.04" x2="881.38" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND76" gate="1" pin="GND"/>
 <pinref part="C50" gate="G$1" pin="2"/>
-<wire x1="881.38" y1="-193.04" x2="881.38" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="889" y1="-193.04" x2="889" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND77" gate="1" pin="GND"/>
 <pinref part="C19" gate="G$1" pin="2"/>
-<wire x1="812.8" y1="-167.64" x2="812.8" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-167.64" x2="820.42" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND78" gate="1" pin="GND"/>
 <pinref part="C37" gate="G$1" pin="2"/>
-<wire x1="820.42" y1="-167.64" x2="820.42" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-167.64" x2="828.04" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND79" gate="1" pin="GND"/>
 <pinref part="C28" gate="G$1" pin="2"/>
-<wire x1="828.04" y1="-167.64" x2="828.04" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-167.64" x2="835.66" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND80" gate="1" pin="GND"/>
 <pinref part="C10" gate="G$1" pin="2"/>
-<wire x1="835.66" y1="-167.64" x2="835.66" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-167.64" x2="843.28" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND81" gate="1" pin="GND"/>
 <pinref part="C1" gate="G$1" pin="2"/>
-<wire x1="843.28" y1="-167.64" x2="843.28" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-167.64" x2="850.9" y2="-165.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND82" gate="1" pin="GND"/>
 <pinref part="C62" gate="G$1" pin="2"/>
-<wire x1="812.8" y1="-190.5" x2="812.8" y2="-193.04" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-190.5" x2="820.42" y2="-193.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND83" gate="1" pin="GND"/>
 <pinref part="C55" gate="G$1" pin="2"/>
-<wire x1="820.42" y1="-190.5" x2="820.42" y2="-193.04" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-190.5" x2="828.04" y2="-193.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND84" gate="1" pin="GND"/>
 <pinref part="C49" gate="G$1" pin="2"/>
-<wire x1="828.04" y1="-190.5" x2="828.04" y2="-193.04" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-190.5" x2="835.66" y2="-193.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND85" gate="1" pin="GND"/>
 <pinref part="C43" gate="G$1" pin="2"/>
-<wire x1="835.66" y1="-190.5" x2="835.66" y2="-193.04" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-190.5" x2="843.28" y2="-193.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND86" gate="1" pin="GND"/>
 <pinref part="C61" gate="G$1" pin="2"/>
-<wire x1="843.28" y1="-193.04" x2="843.28" y2="-190.5" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-193.04" x2="850.9" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND59" gate="1" pin="GND"/>
@@ -10693,71 +10573,51 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="GND20" gate="1" pin="GND"/>
 <pinref part="C81" gate="G$1" pin="2"/>
-<wire x1="889" y1="-218.44" x2="889" y2="-215.9" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND21" gate="1" pin="GND"/>
-<pinref part="C83" gate="G$1" pin="2"/>
-<wire x1="896.62" y1="-218.44" x2="896.62" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-218.44" x2="919.48" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND22" gate="1" pin="GND"/>
 <pinref part="C82" gate="G$1" pin="2"/>
-<wire x1="904.24" y1="-218.44" x2="904.24" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-218.44" x2="927.1" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND23" gate="1" pin="GND"/>
 <pinref part="C80" gate="G$1" pin="2"/>
-<wire x1="911.86" y1="-218.44" x2="911.86" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-218.44" x2="934.72" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND24" gate="1" pin="GND"/>
 <pinref part="C79" gate="G$1" pin="2"/>
-<wire x1="919.48" y1="-218.44" x2="919.48" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-218.44" x2="942.34" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND87" gate="1" pin="GND"/>
 <pinref part="C68" gate="G$1" pin="2"/>
-<wire x1="927.1" y1="-218.44" x2="927.1" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-218.44" x2="949.96" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND88" gate="1" pin="GND"/>
 <pinref part="C70" gate="G$1" pin="2"/>
-<wire x1="934.72" y1="-218.44" x2="934.72" y2="-215.9" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND89" gate="1" pin="GND"/>
-<pinref part="C69" gate="G$1" pin="2"/>
-<wire x1="942.34" y1="-218.44" x2="942.34" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="957.58" y1="-218.44" x2="957.58" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND90" gate="1" pin="GND"/>
 <pinref part="C64" gate="G$1" pin="2"/>
-<wire x1="949.96" y1="-218.44" x2="949.96" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="965.2" y1="-218.44" x2="965.2" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND91" gate="1" pin="GND"/>
 <pinref part="C63" gate="G$1" pin="2"/>
-<wire x1="957.58" y1="-218.44" x2="957.58" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="972.82" y1="-218.44" x2="972.82" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND92" gate="1" pin="GND"/>
 <pinref part="C65" gate="G$1" pin="2"/>
-<wire x1="965.2" y1="-218.44" x2="965.2" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="980.44" y1="-218.44" x2="980.44" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND93" gate="1" pin="GND"/>
 <pinref part="C67" gate="G$1" pin="2"/>
-<wire x1="972.82" y1="-218.44" x2="972.82" y2="-215.9" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND94" gate="1" pin="GND"/>
-<pinref part="C66" gate="G$1" pin="2"/>
-<wire x1="980.44" y1="-218.44" x2="980.44" y2="-215.9" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND95" gate="1" pin="GND"/>
-<pinref part="C76" gate="G$1" pin="2"/>
 <wire x1="988.06" y1="-218.44" x2="988.06" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -10798,116 +10658,96 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="GND103" gate="1" pin="GND"/>
 <pinref part="C86" gate="G$1" pin="2"/>
-<wire x1="850.9" y1="-218.44" x2="850.9" y2="-215.9" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND104" gate="1" pin="GND"/>
-<pinref part="C88" gate="G$1" pin="2"/>
-<wire x1="858.52" y1="-218.44" x2="858.52" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-193.04" x2="896.62" y2="-190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND105" gate="1" pin="GND"/>
 <pinref part="C87" gate="G$1" pin="2"/>
-<wire x1="866.14" y1="-218.44" x2="866.14" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-218.44" x2="896.62" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND106" gate="1" pin="GND"/>
 <pinref part="C85" gate="G$1" pin="2"/>
-<wire x1="873.76" y1="-218.44" x2="873.76" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-218.44" x2="904.24" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND107" gate="1" pin="GND"/>
 <pinref part="C84" gate="G$1" pin="2"/>
-<wire x1="881.38" y1="-218.44" x2="881.38" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-218.44" x2="911.86" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND108" gate="1" pin="GND"/>
 <pinref part="C93" gate="G$1" pin="2"/>
-<wire x1="812.8" y1="-215.9" x2="812.8" y2="-218.44" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-215.9" x2="866.14" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND109" gate="1" pin="GND"/>
 <pinref part="C92" gate="G$1" pin="2"/>
-<wire x1="820.42" y1="-215.9" x2="820.42" y2="-218.44" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-215.9" x2="873.76" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND110" gate="1" pin="GND"/>
 <pinref part="C91" gate="G$1" pin="2"/>
-<wire x1="828.04" y1="-215.9" x2="828.04" y2="-218.44" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-215.9" x2="881.38" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND111" gate="1" pin="GND"/>
 <pinref part="C90" gate="G$1" pin="2"/>
-<wire x1="835.66" y1="-215.9" x2="835.66" y2="-218.44" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND112" gate="1" pin="GND"/>
-<pinref part="C89" gate="G$1" pin="2"/>
-<wire x1="843.28" y1="-218.44" x2="843.28" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="889" y1="-215.9" x2="889" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND113" gate="1" pin="GND"/>
 <pinref part="C112" gate="G$1" pin="2"/>
-<wire x1="889" y1="-243.84" x2="889" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-243.84" x2="904.24" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND114" gate="1" pin="GND"/>
 <pinref part="C114" gate="G$1" pin="2"/>
-<wire x1="896.62" y1="-243.84" x2="896.62" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-243.84" x2="911.86" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND115" gate="1" pin="GND"/>
 <pinref part="C113" gate="G$1" pin="2"/>
-<wire x1="904.24" y1="-243.84" x2="904.24" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-243.84" x2="919.48" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND116" gate="1" pin="GND"/>
 <pinref part="C111" gate="G$1" pin="2"/>
-<wire x1="911.86" y1="-243.84" x2="911.86" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-243.84" x2="927.1" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND117" gate="1" pin="GND"/>
 <pinref part="C110" gate="G$1" pin="2"/>
-<wire x1="919.48" y1="-243.84" x2="919.48" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-243.84" x2="934.72" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND118" gate="1" pin="GND"/>
 <pinref part="C99" gate="G$1" pin="2"/>
-<wire x1="927.1" y1="-243.84" x2="927.1" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-243.84" x2="942.34" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND119" gate="1" pin="GND"/>
 <pinref part="C101" gate="G$1" pin="2"/>
-<wire x1="934.72" y1="-243.84" x2="934.72" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-243.84" x2="949.96" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND120" gate="1" pin="GND"/>
 <pinref part="C100" gate="G$1" pin="2"/>
-<wire x1="942.34" y1="-243.84" x2="942.34" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="957.58" y1="-243.84" x2="957.58" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND121" gate="1" pin="GND"/>
 <pinref part="C95" gate="G$1" pin="2"/>
-<wire x1="949.96" y1="-243.84" x2="949.96" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="965.2" y1="-243.84" x2="965.2" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND122" gate="1" pin="GND"/>
 <pinref part="C94" gate="G$1" pin="2"/>
-<wire x1="957.58" y1="-243.84" x2="957.58" y2="-241.3" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND123" gate="1" pin="GND"/>
-<pinref part="C96" gate="G$1" pin="2"/>
-<wire x1="965.2" y1="-243.84" x2="965.2" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="972.82" y1="-243.84" x2="972.82" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND124" gate="1" pin="GND"/>
 <pinref part="C98" gate="G$1" pin="2"/>
-<wire x1="972.82" y1="-243.84" x2="972.82" y2="-241.3" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND125" gate="1" pin="GND"/>
-<pinref part="C97" gate="G$1" pin="2"/>
 <wire x1="980.44" y1="-243.84" x2="980.44" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -10953,101 +10793,91 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="GND134" gate="1" pin="GND"/>
 <pinref part="C117" gate="G$1" pin="2"/>
-<wire x1="850.9" y1="-243.84" x2="850.9" y2="-241.3" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND135" gate="1" pin="GND"/>
-<pinref part="C119" gate="G$1" pin="2"/>
-<wire x1="858.52" y1="-243.84" x2="858.52" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-218.44" x2="858.52" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND136" gate="1" pin="GND"/>
 <pinref part="C118" gate="G$1" pin="2"/>
-<wire x1="866.14" y1="-243.84" x2="866.14" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-243.84" x2="881.38" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND137" gate="1" pin="GND"/>
 <pinref part="C116" gate="G$1" pin="2"/>
-<wire x1="873.76" y1="-243.84" x2="873.76" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="889" y1="-243.84" x2="889" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND138" gate="1" pin="GND"/>
 <pinref part="C115" gate="G$1" pin="2"/>
-<wire x1="881.38" y1="-243.84" x2="881.38" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-243.84" x2="896.62" y2="-241.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND139" gate="1" pin="GND"/>
 <pinref part="C124" gate="G$1" pin="2"/>
-<wire x1="812.8" y1="-241.3" x2="812.8" y2="-243.84" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-215.9" x2="820.42" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND140" gate="1" pin="GND"/>
 <pinref part="C123" gate="G$1" pin="2"/>
-<wire x1="820.42" y1="-241.3" x2="820.42" y2="-243.84" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-215.9" x2="828.04" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND141" gate="1" pin="GND"/>
 <pinref part="C122" gate="G$1" pin="2"/>
-<wire x1="828.04" y1="-241.3" x2="828.04" y2="-243.84" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-215.9" x2="835.66" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND142" gate="1" pin="GND"/>
 <pinref part="C121" gate="G$1" pin="2"/>
-<wire x1="835.66" y1="-241.3" x2="835.66" y2="-243.84" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-215.9" x2="843.28" y2="-218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND143" gate="1" pin="GND"/>
 <pinref part="C120" gate="G$1" pin="2"/>
-<wire x1="843.28" y1="-243.84" x2="843.28" y2="-241.3" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-218.44" x2="850.9" y2="-215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND144" gate="1" pin="GND"/>
 <pinref part="C143" gate="G$1" pin="2"/>
-<wire x1="889" y1="-269.24" x2="889" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="896.62" y1="-269.24" x2="896.62" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND145" gate="1" pin="GND"/>
 <pinref part="C145" gate="G$1" pin="2"/>
-<wire x1="896.62" y1="-269.24" x2="896.62" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="904.24" y1="-269.24" x2="904.24" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND146" gate="1" pin="GND"/>
 <pinref part="C144" gate="G$1" pin="2"/>
-<wire x1="904.24" y1="-269.24" x2="904.24" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="911.86" y1="-269.24" x2="911.86" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND147" gate="1" pin="GND"/>
 <pinref part="C142" gate="G$1" pin="2"/>
-<wire x1="911.86" y1="-269.24" x2="911.86" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="-269.24" x2="919.48" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND148" gate="1" pin="GND"/>
 <pinref part="C141" gate="G$1" pin="2"/>
-<wire x1="919.48" y1="-269.24" x2="919.48" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="927.1" y1="-269.24" x2="927.1" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND149" gate="1" pin="GND"/>
 <pinref part="C130" gate="G$1" pin="2"/>
-<wire x1="927.1" y1="-269.24" x2="927.1" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="934.72" y1="-269.24" x2="934.72" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND150" gate="1" pin="GND"/>
 <pinref part="C132" gate="G$1" pin="2"/>
-<wire x1="934.72" y1="-269.24" x2="934.72" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="942.34" y1="-269.24" x2="942.34" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND151" gate="1" pin="GND"/>
 <pinref part="C131" gate="G$1" pin="2"/>
-<wire x1="942.34" y1="-269.24" x2="942.34" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="949.96" y1="-269.24" x2="949.96" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND152" gate="1" pin="GND"/>
 <pinref part="C126" gate="G$1" pin="2"/>
-<wire x1="949.96" y1="-269.24" x2="949.96" y2="-266.7" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND153" gate="1" pin="GND"/>
-<pinref part="C125" gate="G$1" pin="2"/>
 <wire x1="957.58" y1="-269.24" x2="957.58" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -11108,52 +10938,52 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="GND165" gate="1" pin="GND"/>
 <pinref part="C148" gate="G$1" pin="2"/>
-<wire x1="850.9" y1="-269.24" x2="850.9" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="858.52" y1="-269.24" x2="858.52" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND166" gate="1" pin="GND"/>
 <pinref part="C150" gate="G$1" pin="2"/>
-<wire x1="858.52" y1="-269.24" x2="858.52" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="866.14" y1="-269.24" x2="866.14" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND167" gate="1" pin="GND"/>
 <pinref part="C149" gate="G$1" pin="2"/>
-<wire x1="866.14" y1="-269.24" x2="866.14" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="873.76" y1="-269.24" x2="873.76" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND168" gate="1" pin="GND"/>
 <pinref part="C147" gate="G$1" pin="2"/>
-<wire x1="873.76" y1="-269.24" x2="873.76" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="881.38" y1="-269.24" x2="881.38" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND169" gate="1" pin="GND"/>
 <pinref part="C146" gate="G$1" pin="2"/>
-<wire x1="881.38" y1="-269.24" x2="881.38" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="889" y1="-269.24" x2="889" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND170" gate="1" pin="GND"/>
 <pinref part="C155" gate="G$1" pin="2"/>
-<wire x1="812.8" y1="-266.7" x2="812.8" y2="-269.24" width="0.1524" layer="91"/>
+<wire x1="820.42" y1="-266.7" x2="820.42" y2="-269.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND171" gate="1" pin="GND"/>
 <pinref part="C154" gate="G$1" pin="2"/>
-<wire x1="820.42" y1="-266.7" x2="820.42" y2="-269.24" width="0.1524" layer="91"/>
+<wire x1="828.04" y1="-266.7" x2="828.04" y2="-269.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND172" gate="1" pin="GND"/>
 <pinref part="C153" gate="G$1" pin="2"/>
-<wire x1="828.04" y1="-266.7" x2="828.04" y2="-269.24" width="0.1524" layer="91"/>
+<wire x1="835.66" y1="-266.7" x2="835.66" y2="-269.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND173" gate="1" pin="GND"/>
 <pinref part="C152" gate="G$1" pin="2"/>
-<wire x1="835.66" y1="-266.7" x2="835.66" y2="-269.24" width="0.1524" layer="91"/>
+<wire x1="843.28" y1="-266.7" x2="843.28" y2="-269.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND174" gate="1" pin="GND"/>
 <pinref part="C151" gate="G$1" pin="2"/>
-<wire x1="843.28" y1="-269.24" x2="843.28" y2="-266.7" width="0.1524" layer="91"/>
+<wire x1="850.9" y1="-269.24" x2="850.9" y2="-266.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC49" gate="C" pin="I1"/>
@@ -11174,6 +11004,34 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <junction x="1150.62" y="513.08"/>
 <junction x="1150.62" y="508"/>
 <pinref part="GND176" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="JP3" gate="A" pin="18"/>
+<wire x1="1143" y1="457.2" x2="1150.62" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="1150.62" y1="457.2" x2="1150.62" y2="447.04" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="30"/>
+<wire x1="1150.62" y1="447.04" x2="1150.62" y2="441.96" width="0.1524" layer="91"/>
+<wire x1="1143" y1="441.96" x2="1150.62" y2="441.96" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="26"/>
+<wire x1="1143" y1="447.04" x2="1150.62" y2="447.04" width="0.1524" layer="91"/>
+<wire x1="1150.62" y1="441.96" x2="1150.62" y2="426.72" width="0.1524" layer="91"/>
+<junction x="1150.62" y="441.96"/>
+<junction x="1150.62" y="447.04"/>
+<pinref part="GND21" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="A" pin="18"/>
+<wire x1="1297.94" y1="518.16" x2="1305.56" y2="518.16" width="0.1524" layer="91"/>
+<wire x1="1305.56" y1="518.16" x2="1305.56" y2="508" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="30"/>
+<wire x1="1305.56" y1="508" x2="1305.56" y2="502.92" width="0.1524" layer="91"/>
+<wire x1="1305.56" y1="502.92" x2="1305.56" y2="490.22" width="0.1524" layer="91"/>
+<wire x1="1297.94" y1="502.92" x2="1305.56" y2="502.92" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="26"/>
+<wire x1="1297.94" y1="508" x2="1305.56" y2="508" width="0.1524" layer="91"/>
+<junction x="1305.56" y="502.92"/>
+<junction x="1305.56" y="508"/>
+<pinref part="GND25" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="REG_3_OUT_0" class="0">
@@ -11635,8 +11493,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-254" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="538.48" x2="1249.68" y2="538.48" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="538.48" x2="1249.68" y2="538.48" width="0.1524" layer="91"/>
 <label x="1249.68" y="538.48" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="1"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_1" class="0">
@@ -11646,8 +11505,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-256.54" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="535.94" x2="1249.68" y2="535.94" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="535.94" x2="1249.68" y2="535.94" width="0.1524" layer="91"/>
 <label x="1249.68" y="535.94" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="3"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_2" class="0">
@@ -11657,8 +11517,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-259.08" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="533.4" x2="1249.68" y2="533.4" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="533.4" x2="1249.68" y2="533.4" width="0.1524" layer="91"/>
 <label x="1249.68" y="533.4" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="5"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_3" class="0">
@@ -11668,8 +11529,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-261.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="530.86" x2="1249.68" y2="530.86" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="530.86" x2="1249.68" y2="530.86" width="0.1524" layer="91"/>
 <label x="1249.68" y="530.86" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="7"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_4" class="0">
@@ -11679,8 +11541,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-287.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="528.32" x2="1249.68" y2="528.32" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="528.32" x2="1249.68" y2="528.32" width="0.1524" layer="91"/>
 <label x="1249.68" y="528.32" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="9"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_5" class="0">
@@ -11690,8 +11553,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-289.56" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="525.78" x2="1249.68" y2="525.78" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="525.78" x2="1249.68" y2="525.78" width="0.1524" layer="91"/>
 <label x="1249.68" y="525.78" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="11"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_6" class="0">
@@ -11701,8 +11565,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-292.1" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="523.24" x2="1249.68" y2="523.24" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="523.24" x2="1249.68" y2="523.24" width="0.1524" layer="91"/>
 <label x="1249.68" y="523.24" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="13"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_7" class="0">
@@ -11712,8 +11577,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-294.64" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="520.7" x2="1249.68" y2="520.7" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="520.7" x2="1249.68" y2="520.7" width="0.1524" layer="91"/>
 <label x="1249.68" y="520.7" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="15"/>
 </segment>
 </net>
 <net name="IR_DATA_OUT_0" class="0">
@@ -12279,7 +12145,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <label x="1244.6" y="205.74" size="1.778" layer="95"/>
 <wire x1="1244.6" y1="205.74" x2="1290.32" y2="205.74" width="0.1524" layer="91"/>
-<pinref part="IC110" gate="A" pin="I0"/>
+<pinref part="IC33" gate="D" pin="I0"/>
 </segment>
 <segment>
 <wire x1="-601.98" y1="406.4" x2="-652.78" y2="406.4" width="0.1524" layer="91"/>
@@ -12294,12 +12160,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_0" class="0">
 <segment>
-<wire x1="1130.3" y1="543.56" x2="1046.48" y2="543.56" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="543.56" x2="1046.48" y2="543.56" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="543.56" x2="1043.94" y2="546.1" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="1"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="480.06" x2="1046.48" y2="477.52" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="477.52" x2="1130.3" y2="477.52" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="477.52" x2="1135.38" y2="477.52" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="1"/>
 </segment>
 <segment>
 <pinref part="IC86" gate="A" pin="1Y"/>
@@ -12309,12 +12177,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_1" class="0">
 <segment>
-<wire x1="1130.3" y1="541.02" x2="1046.48" y2="541.02" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="541.02" x2="1046.48" y2="541.02" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="541.02" x2="1043.94" y2="543.56" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="3"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="477.52" x2="1046.48" y2="474.98" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="474.98" x2="1130.3" y2="474.98" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="474.98" x2="1135.38" y2="474.98" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="3"/>
 </segment>
 <segment>
 <pinref part="IC86" gate="A" pin="2Y"/>
@@ -12324,12 +12194,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_2" class="0">
 <segment>
-<wire x1="1130.3" y1="538.48" x2="1046.48" y2="538.48" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="538.48" x2="1046.48" y2="538.48" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="538.48" x2="1043.94" y2="541.02" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="5"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="474.98" x2="1046.48" y2="472.44" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="472.44" x2="1130.3" y2="472.44" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="472.44" x2="1135.38" y2="472.44" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="5"/>
 </segment>
 <segment>
 <pinref part="IC86" gate="A" pin="3Y"/>
@@ -12339,12 +12211,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_3" class="0">
 <segment>
-<wire x1="1130.3" y1="535.94" x2="1046.48" y2="535.94" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="535.94" x2="1046.48" y2="535.94" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="535.94" x2="1043.94" y2="538.48" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="7"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="472.44" x2="1046.48" y2="469.9" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="469.9" x2="1130.3" y2="469.9" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="469.9" x2="1135.38" y2="469.9" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="7"/>
 </segment>
 <segment>
 <pinref part="IC86" gate="A" pin="4Y"/>
@@ -12354,12 +12228,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_4" class="0">
 <segment>
-<wire x1="1130.3" y1="533.4" x2="1046.48" y2="533.4" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="533.4" x2="1046.48" y2="533.4" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="533.4" x2="1043.94" y2="535.94" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="9"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="469.9" x2="1046.48" y2="467.36" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="467.36" x2="1130.3" y2="467.36" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="467.36" x2="1135.38" y2="467.36" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="9"/>
 </segment>
 <segment>
 <pinref part="IC87" gate="A" pin="1Y"/>
@@ -12369,12 +12245,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_5" class="0">
 <segment>
-<wire x1="1130.3" y1="530.86" x2="1046.48" y2="530.86" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="530.86" x2="1046.48" y2="530.86" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="530.86" x2="1043.94" y2="533.4" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="11"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="467.36" x2="1046.48" y2="464.82" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="464.82" x2="1130.3" y2="464.82" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="464.82" x2="1135.38" y2="464.82" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="11"/>
 </segment>
 <segment>
 <pinref part="IC87" gate="A" pin="2Y"/>
@@ -12384,12 +12262,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_6" class="0">
 <segment>
-<wire x1="1130.3" y1="528.32" x2="1046.48" y2="528.32" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="528.32" x2="1046.48" y2="528.32" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="528.32" x2="1043.94" y2="530.86" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="13"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="464.82" x2="1046.48" y2="462.28" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="462.28" x2="1130.3" y2="462.28" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="462.28" x2="1135.38" y2="462.28" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="13"/>
 </segment>
 <segment>
 <pinref part="IC87" gate="A" pin="3Y"/>
@@ -12399,12 +12279,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="ADRR_7" class="0">
 <segment>
-<wire x1="1130.3" y1="525.78" x2="1046.48" y2="525.78" width="0.1524" layer="91"/>
+<wire x1="1135.38" y1="525.78" x2="1046.48" y2="525.78" width="0.1524" layer="91"/>
 <wire x1="1046.48" y1="525.78" x2="1043.94" y2="528.32" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="15"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="462.28" x2="1046.48" y2="459.74" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="459.74" x2="1130.3" y2="459.74" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="459.74" x2="1135.38" y2="459.74" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="15"/>
 </segment>
 <segment>
 <pinref part="IC87" gate="A" pin="4Y"/>
@@ -12415,7 +12297,6 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="MEM_NOT_OE" class="0">
 <segment>
 <wire x1="1115.06" y1="502.92" x2="1115.06" y2="436.88" width="0.1524" layer="91"/>
-<wire x1="1130.3" y1="436.88" x2="1115.06" y2="436.88" width="0.1524" layer="91"/>
 <wire x1="1115.06" y1="436.88" x2="1115.06" y2="401.32" width="0.1524" layer="91"/>
 <junction x="1115.06" y="436.88"/>
 <wire x1="1107.44" y1="401.32" x2="1115.06" y2="401.32" width="0.1524" layer="91"/>
@@ -12424,6 +12305,10 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="1158.24" y1="502.92" x2="1158.24" y2="520.7" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="A" pin="20"/>
 <wire x1="1143" y1="520.7" x2="1158.24" y2="520.7" width="0.1524" layer="91"/>
+<wire x1="1115.06" y1="436.88" x2="1153.16" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="1153.16" y1="436.88" x2="1153.16" y2="454.66" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="20"/>
+<wire x1="1153.16" y1="454.66" x2="1143" y2="454.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MEM_NOT_CE" class="0">
@@ -12441,17 +12326,20 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="MEM_NOT_WE" class="0">
 <segment>
-<wire x1="1120.14" y1="495.3" x2="1120.14" y2="429.26" width="0.1524" layer="91"/>
-<wire x1="1120.14" y1="429.26" x2="1120.14" y2="388.62" width="0.1524" layer="91"/>
+<wire x1="1120.14" y1="495.3" x2="1120.14" y2="431.8" width="0.1524" layer="91"/>
+<wire x1="1120.14" y1="431.8" x2="1120.14" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="1120.14" y1="388.62" x2="1117.6" y2="388.62" width="0.1524" layer="91"/>
 <label x="1120.14" y="388.62" size="1.778" layer="95"/>
-<wire x1="1130.3" y1="429.26" x2="1120.14" y2="429.26" width="0.1524" layer="91"/>
-<junction x="1120.14" y="429.26"/>
-<pinref part="IC130" gate="A" pin="O"/>
+<junction x="1120.14" y="431.8"/>
 <wire x1="1120.14" y1="495.3" x2="1153.16" y2="495.3" width="0.1524" layer="91"/>
 <wire x1="1153.16" y1="495.3" x2="1153.16" y2="515.62" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="A" pin="24"/>
 <wire x1="1143" y1="515.62" x2="1153.16" y2="515.62" width="0.1524" layer="91"/>
+<wire x1="1120.14" y1="431.8" x2="1158.24" y2="431.8" width="0.1524" layer="91"/>
+<wire x1="1158.24" y1="431.8" x2="1158.24" y2="449.58" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="24"/>
+<wire x1="1158.24" y1="449.58" x2="1143" y2="449.58" width="0.1524" layer="91"/>
+<pinref part="IC35" gate="B" pin="O"/>
 </segment>
 </net>
 <net name="WRITE_REG_TO_DBUS_MOV" class="0">
@@ -12758,11 +12646,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_8" class="0">
 <segment>
 <wire x1="1043.94" y1="525.78" x2="1046.48" y2="523.24" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="523.24" x2="1130.3" y2="523.24" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="523.24" x2="1135.38" y2="523.24" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="17"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="459.74" x2="1046.48" y2="457.2" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="457.2" x2="1130.3" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="457.2" x2="1135.38" y2="457.2" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="17"/>
 </segment>
 <segment>
 <pinref part="IC88" gate="A" pin="1Y"/>
@@ -12773,11 +12663,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_9" class="0">
 <segment>
 <wire x1="1043.94" y1="523.24" x2="1046.48" y2="520.7" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="520.7" x2="1130.3" y2="520.7" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="520.7" x2="1135.38" y2="520.7" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="19"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="457.2" x2="1046.48" y2="454.66" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="454.66" x2="1130.3" y2="454.66" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="454.66" x2="1135.38" y2="454.66" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="19"/>
 </segment>
 <segment>
 <pinref part="IC88" gate="A" pin="2Y"/>
@@ -12788,11 +12680,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_10" class="0">
 <segment>
 <wire x1="1043.94" y1="520.7" x2="1046.48" y2="518.16" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="518.16" x2="1130.3" y2="518.16" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="518.16" x2="1135.38" y2="518.16" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="21"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="454.66" x2="1046.48" y2="452.12" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="452.12" x2="1130.3" y2="452.12" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="452.12" x2="1135.38" y2="452.12" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="21"/>
 </segment>
 <segment>
 <pinref part="IC88" gate="A" pin="3Y"/>
@@ -12803,11 +12697,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_11" class="0">
 <segment>
 <wire x1="1043.94" y1="518.16" x2="1046.48" y2="515.62" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="515.62" x2="1130.3" y2="515.62" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="515.62" x2="1135.38" y2="515.62" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="23"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="452.12" x2="1046.48" y2="449.58" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="449.58" x2="1130.3" y2="449.58" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="449.58" x2="1135.38" y2="449.58" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="23"/>
 </segment>
 <segment>
 <pinref part="IC88" gate="A" pin="4Y"/>
@@ -12818,11 +12714,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_12" class="0">
 <segment>
 <wire x1="1043.94" y1="515.62" x2="1046.48" y2="513.08" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="513.08" x2="1130.3" y2="513.08" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="513.08" x2="1135.38" y2="513.08" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="25"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="449.58" x2="1046.48" y2="447.04" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="447.04" x2="1130.3" y2="447.04" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="447.04" x2="1135.38" y2="447.04" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="25"/>
 </segment>
 <segment>
 <pinref part="IC89" gate="A" pin="1Y"/>
@@ -12833,11 +12731,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_13" class="0">
 <segment>
 <wire x1="1043.94" y1="513.08" x2="1046.48" y2="510.54" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="510.54" x2="1130.3" y2="510.54" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="510.54" x2="1135.38" y2="510.54" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="27"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="447.04" x2="1046.48" y2="444.5" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="444.5" x2="1130.3" y2="444.5" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="444.5" x2="1135.38" y2="444.5" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="27"/>
 </segment>
 <segment>
 <pinref part="IC89" gate="A" pin="2Y"/>
@@ -12848,11 +12748,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="ADRR_14" class="0">
 <segment>
 <wire x1="1043.94" y1="510.54" x2="1046.48" y2="508" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="508" x2="1130.3" y2="508" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="508" x2="1135.38" y2="508" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="29"/>
 </segment>
 <segment>
 <wire x1="1043.94" y1="444.5" x2="1046.48" y2="441.96" width="0.1524" layer="91"/>
-<wire x1="1046.48" y1="441.96" x2="1130.3" y2="441.96" width="0.1524" layer="91"/>
+<wire x1="1046.48" y1="441.96" x2="1135.38" y2="441.96" width="0.1524" layer="91"/>
+<pinref part="JP3" gate="A" pin="29"/>
 </segment>
 <segment>
 <pinref part="IC89" gate="A" pin="3Y"/>
@@ -13297,7 +13199,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <junction x="-581.66" y="566.42"/>
 <pinref part="IC128" gate="A" pin="I0"/>
 <pinref part="IC128" gate="D" pin="I0"/>
-<pinref part="IC35" gate="A" pin="O"/>
+<pinref part="IC43" gate="F" pin="O"/>
 </segment>
 </net>
 <net name="N$214" class="0">
@@ -13310,7 +13212,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <junction x="-576.58" y="563.88"/>
 <pinref part="IC128" gate="A" pin="I1"/>
 <pinref part="IC128" gate="B" pin="I1"/>
-<pinref part="IC35" gate="B" pin="O"/>
+<pinref part="IC43" gate="A" pin="O"/>
 </segment>
 </net>
 <net name="OPCODE_6" class="0">
@@ -13327,7 +13229,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="-571.5" y1="568.96" x2="-571.5" y2="556.26" width="0.1524" layer="91"/>
 <wire x1="-571.5" y1="556.26" x2="-568.96" y2="556.26" width="0.1524" layer="91"/>
 <label x="-647.7" y="566.42" size="1.778" layer="95"/>
-<pinref part="IC35" gate="A" pin="I"/>
+<pinref part="IC43" gate="F" pin="I"/>
 </segment>
 <segment>
 <pinref part="IC49" gate="B" pin="I1"/>
@@ -13488,7 +13390,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="-840.74" y1="220.98" x2="-866.14" y2="220.98" width="0.1524" layer="91"/>
 <label x="-866.14" y="220.98" size="1.778" layer="95"/>
-<pinref part="IC17" gate="D" pin="I0"/>
+<pinref part="IC108" gate="A" pin="I0"/>
 </segment>
 <segment>
 <pinref part="IC109" gate="D" pin="I0"/>
@@ -13660,7 +13562,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="-571.5" y1="551.18" x2="-571.5" y2="538.48" width="0.1524" layer="91"/>
 <junction x="-571.5" y="538.48"/>
 <label x="-647.7" y="548.64" size="1.778" layer="95"/>
-<pinref part="IC35" gate="B" pin="I"/>
+<pinref part="IC43" gate="A" pin="I"/>
 </segment>
 <segment>
 <wire x1="-548.64" y1="490.22" x2="-576.58" y2="490.22" width="0.1524" layer="91"/>
@@ -13675,7 +13577,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="-840.74" y1="215.9" x2="-866.14" y2="215.9" width="0.1524" layer="91"/>
 <label x="-866.14" y="215.9" size="1.778" layer="95"/>
-<pinref part="IC17" gate="D" pin="I1"/>
+<pinref part="IC108" gate="A" pin="I1"/>
 </segment>
 <segment>
 <pinref part="IC46" gate="A" pin="4B"/>
@@ -13754,7 +13656,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="378.46" y1="180.34" x2="330.2" y2="180.34" width="0.1524" layer="91"/>
 <label x="330.2" y="180.34" size="1.778" layer="95"/>
-<pinref part="IC33" gate="D" pin="I0"/>
+<pinref part="IC110" gate="A" pin="I0"/>
 </segment>
 </net>
 <net name="N$48" class="0">
@@ -14000,8 +13902,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-320.04" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="518.16" x2="1249.68" y2="518.16" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="518.16" x2="1249.68" y2="518.16" width="0.1524" layer="91"/>
 <label x="1249.68" y="518.16" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="17"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_9" class="0">
@@ -14011,8 +13914,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-322.58" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="515.62" x2="1249.68" y2="515.62" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="515.62" x2="1249.68" y2="515.62" width="0.1524" layer="91"/>
 <label x="1249.68" y="515.62" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="19"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_10" class="0">
@@ -14022,8 +13926,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-325.12" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="513.08" x2="1249.68" y2="513.08" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="513.08" x2="1249.68" y2="513.08" width="0.1524" layer="91"/>
 <label x="1249.68" y="513.08" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="21"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_11" class="0">
@@ -14033,8 +13938,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-327.66" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="510.54" x2="1249.68" y2="510.54" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="510.54" x2="1249.68" y2="510.54" width="0.1524" layer="91"/>
 <label x="1249.68" y="510.54" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="23"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_12" class="0">
@@ -14044,8 +13950,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-353.06" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="508" x2="1249.68" y2="508" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="508" x2="1249.68" y2="508" width="0.1524" layer="91"/>
 <label x="1249.68" y="508" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="25"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_13" class="0">
@@ -14055,8 +13962,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-355.6" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="505.46" x2="1249.68" y2="505.46" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="505.46" x2="1249.68" y2="505.46" width="0.1524" layer="91"/>
 <label x="1249.68" y="505.46" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="27"/>
 </segment>
 </net>
 <net name="SP_DATA_OUT_14" class="0">
@@ -14066,8 +13974,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="238.76" y="-358.14" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="1285.24" y1="502.92" x2="1249.68" y2="502.92" width="0.1524" layer="91"/>
+<wire x1="1290.32" y1="502.92" x2="1249.68" y2="502.92" width="0.1524" layer="91"/>
 <label x="1249.68" y="502.92" size="1.778" layer="95"/>
+<pinref part="JP4" gate="A" pin="29"/>
 </segment>
 </net>
 <net name="SP_DATA_OVER/UNDERFLOW" class="0">
@@ -14292,10 +14201,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="N$237" class="0">
 <segment>
-<wire x1="1285.24" y1="495.3" x2="1272.54" y2="495.3" width="0.1524" layer="91"/>
 <wire x1="1272.54" y1="482.6" x2="1272.54" y2="495.3" width="0.1524" layer="91"/>
 <wire x1="1259.84" y1="482.6" x2="1272.54" y2="482.6" width="0.1524" layer="91"/>
 <pinref part="IC85" gate="C" pin="O"/>
+<pinref part="JP4" gate="A" pin="22"/>
+<wire x1="1297.94" y1="513.08" x2="1310.64" y2="513.08" width="0.1524" layer="91"/>
+<wire x1="1310.64" y1="513.08" x2="1310.64" y2="495.3" width="0.1524" layer="91"/>
+<wire x1="1310.64" y1="495.3" x2="1272.54" y2="495.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CLR_NOT_OE_POP" class="0">
@@ -14308,15 +14220,21 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <label x="1211.58" y="495.3" size="1.778" layer="95"/>
 <wire x1="1270" y1="495.3" x2="1211.58" y2="495.3" width="0.1524" layer="91"/>
 <wire x1="1270" y1="495.3" x2="1270" y2="497.84" width="0.1524" layer="91"/>
-<wire x1="1270" y1="497.84" x2="1285.24" y2="497.84" width="0.1524" layer="91"/>
+<wire x1="1270" y1="497.84" x2="1313.18" y2="497.84" width="0.1524" layer="91"/>
+<wire x1="1313.18" y1="497.84" x2="1313.18" y2="515.62" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="20"/>
+<wire x1="1313.18" y1="515.62" x2="1297.94" y2="515.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$236" class="0">
 <segment>
 <wire x1="1277.62" y1="467.36" x2="1280.16" y2="467.36" width="0.1524" layer="91"/>
-<wire x1="1280.16" y1="467.36" x2="1280.16" y2="490.22" width="0.1524" layer="91"/>
-<wire x1="1280.16" y1="490.22" x2="1285.24" y2="490.22" width="0.1524" layer="91"/>
-<pinref part="IC37" gate="F" pin="O"/>
+<wire x1="1280.16" y1="467.36" x2="1280.16" y2="492.76" width="0.1524" layer="91"/>
+<wire x1="1280.16" y1="492.76" x2="1308.1" y2="492.76" width="0.1524" layer="91"/>
+<wire x1="1308.1" y1="492.76" x2="1308.1" y2="510.54" width="0.1524" layer="91"/>
+<pinref part="JP4" gate="A" pin="24"/>
+<wire x1="1308.1" y1="510.54" x2="1297.94" y2="510.54" width="0.1524" layer="91"/>
+<pinref part="IC35" gate="A" pin="O"/>
 </segment>
 </net>
 <net name="OPERAND_REGB_OUTPUT" class="0">
@@ -14335,7 +14253,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="378.46" y1="175.26" x2="330.2" y2="175.26" width="0.1524" layer="91"/>
 <label x="330.2" y="175.26" size="1.778" layer="95"/>
-<pinref part="IC33" gate="D" pin="I1"/>
+<pinref part="IC110" gate="A" pin="I1"/>
 </segment>
 </net>
 <net name="N$102" class="0">
@@ -14403,7 +14321,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="-114.3" y1="-167.64" x2="-88.9" y2="-167.64" width="0.1524" layer="91"/>
 <label x="-111.76" y="-167.64" size="1.778" layer="95"/>
-<pinref part="IC43" gate="A" pin="O"/>
+<pinref part="IC130" gate="A" pin="O"/>
 </segment>
 </net>
 <net name="PTR_HIGH_COUNT_DOWN" class="0">
@@ -14415,7 +14333,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="-114.3" y1="-180.34" x2="-88.9" y2="-180.34" width="0.1524" layer="91"/>
 <label x="-111.76" y="-180.34" size="1.778" layer="95"/>
-<pinref part="IC43" gate="F" pin="O"/>
+<pinref part="IC37" gate="C" pin="O"/>
 </segment>
 </net>
 <net name="N$105" class="0">
@@ -14783,7 +14701,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="1257.3" y1="467.36" x2="1196.34" y2="467.36" width="0.1524" layer="91"/>
 <label x="1196.34" y="467.36" size="1.778" layer="95"/>
-<pinref part="IC37" gate="F" pin="I"/>
+<pinref part="IC35" gate="A" pin="I"/>
 </segment>
 </net>
 <net name="CONNECT_PTR_TO_ABUS/CLR_NOT_OE_LDR" class="0">
@@ -14822,7 +14740,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="1097.28" y1="388.62" x2="977.9" y2="388.62" width="0.1524" layer="91"/>
 <label x="977.9" y="388.62" size="1.778" layer="95"/>
-<pinref part="IC130" gate="A" pin="I"/>
+<pinref part="IC35" gate="B" pin="I"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -15534,7 +15452,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="378.46" y1="167.64" x2="330.2" y2="167.64" width="0.1524" layer="91"/>
 <label x="330.2" y="167.64" size="1.778" layer="95"/>
-<pinref part="IC33" gate="A" pin="I0"/>
+<pinref part="IC110" gate="B" pin="I0"/>
 </segment>
 </net>
 <net name="N$132" class="0">
@@ -15574,10 +15492,10 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="N$2" class="0">
 <segment>
 <pinref part="IC52" gate="D" pin="I0"/>
-<pinref part="IC33" gate="D" pin="O"/>
 <wire x1="398.78" y1="175.26" x2="396.24" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="396.24" y1="175.26" x2="396.24" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="396.24" y1="177.8" x2="393.7" y2="177.8" width="0.1524" layer="91"/>
+<pinref part="IC110" gate="A" pin="O"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -15586,7 +15504,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="396.24" y1="165.1" x2="396.24" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="396.24" y1="170.18" x2="398.78" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="IC52" gate="D" pin="I1"/>
-<pinref part="IC33" gate="A" pin="O"/>
+<pinref part="IC110" gate="B" pin="O"/>
 </segment>
 </net>
 <net name="LATCH_ALU_INPUT_B_ALU" class="0">
@@ -15702,8 +15620,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <net name="FILL_PC_L_JMP_O" class="0">
 <segment>
 <label x="1244.6" y="200.66" size="1.778" layer="95"/>
-<pinref part="IC110" gate="B" pin="I0"/>
 <wire x1="1270" y1="200.66" x2="1244.6" y2="200.66" width="0.1524" layer="91"/>
+<pinref part="IC33" gate="A" pin="I0"/>
 </segment>
 <segment>
 <wire x1="-347.98" y1="-149.86" x2="-289.56" y2="-149.86" width="0.1524" layer="91"/>
@@ -15720,12 +15638,12 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <pinref part="IC35" gate="E" pin="I"/>
 <wire x1="1305.56" y1="203.2" x2="1308.1" y2="203.2" width="0.1524" layer="91"/>
-<pinref part="IC110" gate="A" pin="O"/>
 <wire x1="1308.1" y1="203.2" x2="1310.64" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="1308.1" y1="203.2" x2="1308.1" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="IC31" gate="B" pin="CLK"/>
 <wire x1="1308.1" y1="149.86" x2="1315.72" y2="149.86" width="0.1524" layer="91"/>
 <junction x="1308.1" y="203.2"/>
+<pinref part="IC33" gate="D" pin="O"/>
 </segment>
 </net>
 <net name="N$128" class="0">
@@ -15876,7 +15794,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="378.46" y1="162.56" x2="330.2" y2="162.56" width="0.1524" layer="91"/>
 <label x="330.2" y="162.56" size="1.778" layer="95"/>
-<pinref part="IC33" gate="A" pin="I1"/>
+<pinref part="IC110" gate="B" pin="I1"/>
 </segment>
 <segment>
 <pinref part="IC44" gate="A" pin="1B"/>
@@ -15933,18 +15851,18 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <pinref part="IC104" gate="C" pin="O"/>
 </segment>
 <segment>
-<pinref part="IC110" gate="B" pin="I1"/>
 <wire x1="1270" y1="195.58" x2="1244.6" y2="195.58" width="0.1524" layer="91"/>
 <label x="1244.6" y="195.58" size="1.778" layer="95"/>
+<pinref part="IC33" gate="A" pin="I1"/>
 </segment>
 </net>
 <net name="N$147" class="0">
 <segment>
-<pinref part="IC110" gate="B" pin="O"/>
 <wire x1="1285.24" y1="198.12" x2="1287.78" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="1287.78" y1="198.12" x2="1287.78" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="1287.78" y1="200.66" x2="1290.32" y2="200.66" width="0.1524" layer="91"/>
-<pinref part="IC110" gate="A" pin="I1"/>
+<pinref part="IC33" gate="D" pin="I1"/>
+<pinref part="IC33" gate="A" pin="O"/>
 </segment>
 </net>
 <net name="N$153" class="0">
@@ -16016,14 +15934,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <wire x1="-137.16" y1="-180.34" x2="-134.62" y2="-180.34" width="0.1524" layer="91"/>
 <pinref part="IC125" gate="A" pin="O"/>
-<pinref part="IC43" gate="F" pin="I"/>
+<pinref part="IC37" gate="C" pin="I"/>
 </segment>
 </net>
 <net name="N$162" class="0">
 <segment>
 <wire x1="-137.16" y1="-167.64" x2="-134.62" y2="-167.64" width="0.1524" layer="91"/>
 <pinref part="IC127" gate="D" pin="O"/>
-<pinref part="IC43" gate="A" pin="I"/>
+<pinref part="IC130" gate="A" pin="I"/>
 </segment>
 </net>
 <net name="N$164" class="0">
@@ -16067,8 +15985,11 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="N$69" class="0">
 <segment>
-<wire x1="1112.52" y1="434.34" x2="1130.3" y2="434.34" width="0.1524" layer="91"/>
 <pinref part="IC35" gate="C" pin="O"/>
+<pinref part="JP3" gate="A" pin="22"/>
+<wire x1="1143" y1="452.12" x2="1155.7" y2="452.12" width="0.1524" layer="91"/>
+<wire x1="1155.7" y1="452.12" x2="1155.7" y2="434.34" width="0.1524" layer="91"/>
+<wire x1="1155.7" y1="434.34" x2="1112.52" y2="434.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$70" class="0">
@@ -16285,7 +16206,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="-820.42" y1="218.44" x2="-820.42" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="-820.42" y1="223.52" x2="-810.26" y2="223.52" width="0.1524" layer="91"/>
 <pinref part="IC54" gate="C" pin="I1"/>
-<pinref part="IC17" gate="D" pin="O"/>
+<pinref part="IC108" gate="A" pin="O"/>
 </segment>
 </net>
 <net name="N$217" class="0">
@@ -16630,7 +16551,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <segment>
 <label x="-91.44" y="264.16" size="1.778" layer="95"/>
 <wire x1="-60.96" y1="264.16" x2="-91.44" y2="264.16" width="0.1524" layer="91"/>
-<pinref part="IC108" gate="A" pin="I0"/>
+<pinref part="IC17" gate="D" pin="I0"/>
 </segment>
 </net>
 <net name="FILL_LR_L_SAVE_LR" class="0">
@@ -17259,9 +17180,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <pinref part="IC135" gate="D" pin="O"/>
 </segment>
 <segment>
-<pinref part="IC108" gate="A" pin="I1"/>
 <wire x1="-60.96" y1="259.08" x2="-91.44" y2="259.08" width="0.1524" layer="91"/>
 <label x="-91.44" y="259.08" size="1.778" layer="95"/>
+<pinref part="IC17" gate="D" pin="I1"/>
 </segment>
 </net>
 <net name="NOT_USED2" class="0">
@@ -18266,8 +18187,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="REG0_ZERO" class="0">
 <segment>
-<label x="1061.72" y="-43.18" size="1.778" layer="95"/>
-<wire x1="1033.78" y1="-43.18" x2="1079.5" y2="-43.18" width="0.1524" layer="91"/>
+<label x="1038.86" y="-43.18" size="1.778" layer="95"/>
+<wire x1="1033.78" y1="-43.18" x2="1056.64" y2="-43.18" width="0.1524" layer="91"/>
 <pinref part="IC85" gate="D" pin="O"/>
 </segment>
 <segment>
@@ -18343,11 +18264,11 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="N$33" class="0">
 <segment>
-<pinref part="IC108" gate="A" pin="O"/>
 <wire x1="-45.72" y1="261.62" x2="-43.18" y2="261.62" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="261.62" x2="-43.18" y2="266.7" width="0.1524" layer="91"/>
 <pinref part="IC80" gate="C" pin="I1"/>
 <wire x1="-43.18" y1="266.7" x2="-40.64" y2="266.7" width="0.1524" layer="91"/>
+<pinref part="IC17" gate="D" pin="O"/>
 </segment>
 </net>
 <net name="DASSDADASDASDA" class="0">
@@ -18628,14 +18549,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <approved hash="115,1,990.432,-161.29,C16,,,,,"/>
 <approved hash="115,1,1005.67,-161.29,C17,,,,,"/>
 <approved hash="115,1,998.052,-161.29,C18,,,,,"/>
-<approved hash="115,1,959.952,-186.69,C20,,,,,"/>
-<approved hash="115,1,952.332,-186.69,C21,,,,,"/>
-<approved hash="115,1,967.572,-186.69,C22,,,,,"/>
+<approved hash="115,1,967.572,-186.69,C20,,,,,"/>
+<approved hash="115,1,959.952,-186.69,C21,,,,,"/>
+<approved hash="115,1,975.192,-186.69,C22,,,,,"/>
 <approved hash="115,1,982.812,-186.69,C23,,,,,"/>
-<approved hash="115,1,975.192,-186.69,C24,,,,,"/>
-<approved hash="115,1,929.472,-186.69,C25,,,,,"/>
-<approved hash="115,1,944.712,-186.69,C26,,,,,"/>
-<approved hash="115,1,937.092,-186.69,C27,,,,,"/>
+<approved hash="115,1,937.092,-186.69,C25,,,,,"/>
+<approved hash="115,1,952.332,-186.69,C26,,,,,"/>
+<approved hash="115,1,944.712,-186.69,C27,,,,,"/>
 <approved hash="115,1,1020.91,-186.69,C29,,,,,"/>
 <approved hash="115,1,1013.29,-186.69,C30,,,,,"/>
 <approved hash="115,1,1028.53,-186.69,C31,,,,,"/>
@@ -18646,73 +18566,63 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <approved hash="115,1,998.052,-186.69,C36,,,,,"/>
 <approved hash="115,1,921.852,-161.29,C38,,,,,"/>
 <approved hash="115,1,914.232,-161.29,C39,,,,,"/>
-<approved hash="115,1,891.372,-161.29,C40,,,,,"/>
-<approved hash="115,1,906.612,-161.29,C41,,,,,"/>
-<approved hash="115,1,898.992,-161.29,C42,,,,,"/>
-<approved hash="115,1,921.852,-186.69,C44,,,,,"/>
-<approved hash="115,1,914.232,-186.69,C45,,,,,"/>
-<approved hash="115,1,891.372,-186.69,C46,,,,,"/>
-<approved hash="115,1,906.612,-186.69,C47,,,,,"/>
-<approved hash="115,1,898.992,-186.69,C48,,,,,"/>
-<approved hash="115,1,883.752,-186.69,C50,,,,,"/>
-<approved hash="115,1,876.132,-186.69,C51,,,,,"/>
-<approved hash="115,1,853.272,-186.69,C52,,,,,"/>
-<approved hash="115,1,868.512,-186.69,C53,,,,,"/>
-<approved hash="115,1,860.892,-186.69,C54,,,,,"/>
-<approved hash="115,1,883.752,-161.29,C56,,,,,"/>
-<approved hash="115,1,876.132,-161.29,C57,,,,,"/>
-<approved hash="115,1,853.272,-161.29,C58,,,,,"/>
-<approved hash="115,1,868.512,-161.29,C59,,,,,"/>
-<approved hash="115,1,860.892,-161.29,C60,,,,,"/>
-<approved hash="115,1,844.947,-161.29,C1,,,,,"/>
-<approved hash="115,1,838.032,-161.29,C10,,,,,"/>
-<approved hash="115,1,815.172,-161.29,C19,,,,,"/>
-<approved hash="115,1,830.412,-161.29,C28,,,,,"/>
-<approved hash="115,1,822.792,-161.29,C37,,,,,"/>
-<approved hash="115,1,845.652,-186.69,C61,,,,,"/>
-<approved hash="115,1,838.032,-186.69,C43,,,,,"/>
-<approved hash="115,1,830.412,-186.69,C49,,,,,"/>
-<approved hash="115,1,822.792,-186.69,C55,,,,,"/>
-<approved hash="115,1,815.172,-186.69,C62,,,,,"/>
-<approved hash="115,1,959.952,-212.09,C63,,,,,"/>
-<approved hash="115,1,952.332,-212.09,C64,,,,,"/>
-<approved hash="115,1,967.572,-212.09,C65,,,,,"/>
-<approved hash="115,1,982.812,-212.09,C66,,,,,"/>
-<approved hash="115,1,975.192,-212.09,C67,,,,,"/>
-<approved hash="115,1,929.472,-212.09,C68,,,,,"/>
-<approved hash="115,1,944.712,-212.09,C69,,,,,"/>
-<approved hash="115,1,937.092,-212.09,C70,,,,,"/>
+<approved hash="115,1,898.992,-161.29,C40,,,,,"/>
+<approved hash="115,1,906.612,-161.29,C42,,,,,"/>
+<approved hash="115,1,929.472,-186.69,C44,,,,,"/>
+<approved hash="115,1,921.852,-186.69,C45,,,,,"/>
+<approved hash="115,1,914.232,-186.69,C47,,,,,"/>
+<approved hash="115,1,906.612,-186.69,C48,,,,,"/>
+<approved hash="115,1,891.372,-186.69,C50,,,,,"/>
+<approved hash="115,1,883.752,-186.69,C51,,,,,"/>
+<approved hash="115,1,860.892,-186.69,C52,,,,,"/>
+<approved hash="115,1,876.132,-186.69,C53,,,,,"/>
+<approved hash="115,1,868.512,-186.69,C54,,,,,"/>
+<approved hash="115,1,891.372,-161.29,C56,,,,,"/>
+<approved hash="115,1,883.752,-161.29,C57,,,,,"/>
+<approved hash="115,1,860.892,-161.29,C58,,,,,"/>
+<approved hash="115,1,876.132,-161.29,C59,,,,,"/>
+<approved hash="115,1,868.512,-161.29,C60,,,,,"/>
+<approved hash="115,1,852.567,-161.29,C1,,,,,"/>
+<approved hash="115,1,845.652,-161.29,C10,,,,,"/>
+<approved hash="115,1,822.792,-161.29,C19,,,,,"/>
+<approved hash="115,1,838.032,-161.29,C28,,,,,"/>
+<approved hash="115,1,830.412,-161.29,C37,,,,,"/>
+<approved hash="115,1,853.272,-186.69,C61,,,,,"/>
+<approved hash="115,1,845.652,-186.69,C43,,,,,"/>
+<approved hash="115,1,838.032,-186.69,C49,,,,,"/>
+<approved hash="115,1,830.412,-186.69,C55,,,,,"/>
+<approved hash="115,1,822.792,-186.69,C62,,,,,"/>
+<approved hash="115,1,975.192,-212.09,C63,,,,,"/>
+<approved hash="115,1,967.572,-212.09,C64,,,,,"/>
+<approved hash="115,1,982.812,-212.09,C65,,,,,"/>
+<approved hash="115,1,990.432,-212.09,C67,,,,,"/>
+<approved hash="115,1,952.332,-212.09,C68,,,,,"/>
+<approved hash="115,1,959.952,-212.09,C70,,,,,"/>
 <approved hash="115,1,1020.91,-212.09,C71,,,,,"/>
 <approved hash="115,1,1013.29,-212.09,C72,,,,,"/>
 <approved hash="115,1,1028.53,-212.09,C73,,,,,"/>
 <approved hash="115,1,1043.77,-212.09,C74,,,,,"/>
 <approved hash="115,1,1036.15,-212.09,C75,,,,,"/>
-<approved hash="115,1,990.432,-212.09,C76,,,,,"/>
 <approved hash="115,1,1005.67,-212.09,C77,,,,,"/>
 <approved hash="115,1,998.052,-212.09,C78,,,,,"/>
-<approved hash="115,1,921.852,-212.09,C79,,,,,"/>
-<approved hash="115,1,914.232,-212.09,C80,,,,,"/>
-<approved hash="115,1,891.372,-212.09,C81,,,,,"/>
-<approved hash="115,1,906.612,-212.09,C82,,,,,"/>
-<approved hash="115,1,898.992,-212.09,C83,,,,,"/>
-<approved hash="115,1,883.752,-212.09,C84,,,,,"/>
-<approved hash="115,1,876.132,-212.09,C85,,,,,"/>
-<approved hash="115,1,853.272,-212.09,C86,,,,,"/>
-<approved hash="115,1,868.512,-212.09,C87,,,,,"/>
-<approved hash="115,1,860.892,-212.09,C88,,,,,"/>
-<approved hash="115,1,845.652,-212.09,C89,,,,,"/>
-<approved hash="115,1,838.032,-212.09,C90,,,,,"/>
-<approved hash="115,1,830.412,-212.09,C91,,,,,"/>
-<approved hash="115,1,822.792,-212.09,C92,,,,,"/>
-<approved hash="115,1,815.172,-212.09,C93,,,,,"/>
-<approved hash="115,1,959.952,-237.49,C94,,,,,"/>
-<approved hash="115,1,952.332,-237.49,C95,,,,,"/>
-<approved hash="115,1,967.572,-237.49,C96,,,,,"/>
-<approved hash="115,1,982.812,-237.49,C97,,,,,"/>
-<approved hash="115,1,975.192,-237.49,C98,,,,,"/>
-<approved hash="115,1,929.472,-237.49,C99,,,,,"/>
-<approved hash="115,1,945.417,-237.49,C100,,,,,"/>
-<approved hash="115,1,937.797,-237.49,C101,,,,,"/>
+<approved hash="115,1,944.712,-212.09,C79,,,,,"/>
+<approved hash="115,1,937.092,-212.09,C80,,,,,"/>
+<approved hash="115,1,921.852,-212.09,C81,,,,,"/>
+<approved hash="115,1,929.472,-212.09,C82,,,,,"/>
+<approved hash="115,1,914.232,-212.09,C84,,,,,"/>
+<approved hash="115,1,906.612,-212.09,C85,,,,,"/>
+<approved hash="115,1,898.992,-186.69,C86,,,,,"/>
+<approved hash="115,1,898.992,-212.09,C87,,,,,"/>
+<approved hash="115,1,891.372,-212.09,C90,,,,,"/>
+<approved hash="115,1,883.752,-212.09,C91,,,,,"/>
+<approved hash="115,1,876.132,-212.09,C92,,,,,"/>
+<approved hash="115,1,868.512,-212.09,C93,,,,,"/>
+<approved hash="115,1,975.192,-237.49,C94,,,,,"/>
+<approved hash="115,1,967.572,-237.49,C95,,,,,"/>
+<approved hash="115,1,982.812,-237.49,C98,,,,,"/>
+<approved hash="115,1,944.712,-237.49,C99,,,,,"/>
+<approved hash="115,1,960.657,-237.49,C100,,,,,"/>
+<approved hash="115,1,953.037,-237.49,C101,,,,,"/>
 <approved hash="115,1,1021.62,-237.49,C102,,,,,"/>
 <approved hash="115,1,1014,-237.49,C103,,,,,"/>
 <approved hash="115,1,1029.24,-237.49,C104,,,,,"/>
@@ -18721,29 +18631,27 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <approved hash="115,1,991.137,-237.49,C107,,,,,"/>
 <approved hash="115,1,1006.38,-237.49,C108,,,,,"/>
 <approved hash="115,1,998.757,-237.49,C109,,,,,"/>
-<approved hash="115,1,922.557,-237.49,C110,,,,,"/>
-<approved hash="115,1,914.937,-237.49,C111,,,,,"/>
-<approved hash="115,1,892.077,-237.49,C112,,,,,"/>
-<approved hash="115,1,907.317,-237.49,C113,,,,,"/>
-<approved hash="115,1,899.697,-237.49,C114,,,,,"/>
-<approved hash="115,1,884.457,-237.49,C115,,,,,"/>
-<approved hash="115,1,876.837,-237.49,C116,,,,,"/>
-<approved hash="115,1,853.977,-237.49,C117,,,,,"/>
-<approved hash="115,1,869.217,-237.49,C118,,,,,"/>
-<approved hash="115,1,861.597,-237.49,C119,,,,,"/>
-<approved hash="115,1,846.357,-237.49,C120,,,,,"/>
-<approved hash="115,1,838.737,-237.49,C121,,,,,"/>
-<approved hash="115,1,831.117,-237.49,C122,,,,,"/>
-<approved hash="115,1,823.497,-237.49,C123,,,,,"/>
-<approved hash="115,1,815.877,-237.49,C124,,,,,"/>
-<approved hash="115,1,960.657,-262.89,C125,,,,,"/>
-<approved hash="115,1,953.037,-262.89,C126,,,,,"/>
+<approved hash="115,1,937.797,-237.49,C110,,,,,"/>
+<approved hash="115,1,930.177,-237.49,C111,,,,,"/>
+<approved hash="115,1,907.317,-237.49,C112,,,,,"/>
+<approved hash="115,1,922.557,-237.49,C113,,,,,"/>
+<approved hash="115,1,914.937,-237.49,C114,,,,,"/>
+<approved hash="115,1,899.697,-237.49,C115,,,,,"/>
+<approved hash="115,1,892.077,-237.49,C116,,,,,"/>
+<approved hash="115,1,861.597,-212.09,C117,,,,,"/>
+<approved hash="115,1,884.457,-237.49,C118,,,,,"/>
+<approved hash="115,1,853.977,-212.09,C120,,,,,"/>
+<approved hash="115,1,846.357,-212.09,C121,,,,,"/>
+<approved hash="115,1,838.737,-212.09,C122,,,,,"/>
+<approved hash="115,1,831.117,-212.09,C123,,,,,"/>
+<approved hash="115,1,823.497,-212.09,C124,,,,,"/>
+<approved hash="115,1,960.657,-262.89,C126,,,,,"/>
 <approved hash="115,1,968.277,-262.89,C127,,,,,"/>
 <approved hash="115,1,983.517,-262.89,C128,,,,,"/>
 <approved hash="115,1,975.897,-262.89,C129,,,,,"/>
-<approved hash="115,1,930.177,-262.89,C130,,,,,"/>
-<approved hash="115,1,945.417,-262.89,C131,,,,,"/>
-<approved hash="115,1,937.797,-262.89,C132,,,,,"/>
+<approved hash="115,1,937.797,-262.89,C130,,,,,"/>
+<approved hash="115,1,953.037,-262.89,C131,,,,,"/>
+<approved hash="115,1,945.417,-262.89,C132,,,,,"/>
 <approved hash="115,1,1021.62,-262.89,C133,,,,,"/>
 <approved hash="115,1,1014,-262.89,C134,,,,,"/>
 <approved hash="115,1,1029.24,-262.89,C135,,,,,"/>
@@ -18752,22 +18660,26 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <approved hash="115,1,991.137,-262.89,C138,,,,,"/>
 <approved hash="115,1,1006.38,-262.89,C139,,,,,"/>
 <approved hash="115,1,998.757,-262.89,C140,,,,,"/>
-<approved hash="115,1,922.557,-262.89,C141,,,,,"/>
-<approved hash="115,1,914.937,-262.89,C142,,,,,"/>
-<approved hash="115,1,892.077,-262.89,C143,,,,,"/>
-<approved hash="115,1,907.317,-262.89,C144,,,,,"/>
-<approved hash="115,1,899.697,-262.89,C145,,,,,"/>
-<approved hash="115,1,884.457,-262.89,C146,,,,,"/>
-<approved hash="115,1,876.837,-262.89,C147,,,,,"/>
-<approved hash="115,1,853.977,-262.89,C148,,,,,"/>
-<approved hash="115,1,869.217,-262.89,C149,,,,,"/>
-<approved hash="115,1,861.597,-262.89,C150,,,,,"/>
-<approved hash="115,1,846.357,-262.89,C151,,,,,"/>
-<approved hash="115,1,838.737,-262.89,C152,,,,,"/>
-<approved hash="115,1,831.117,-262.89,C153,,,,,"/>
-<approved hash="115,1,823.497,-262.89,C154,,,,,"/>
-<approved hash="115,1,815.877,-262.89,C155,,,,,"/>
-<approved hash="115,1,864.137,-8.89,C156,,,,,"/>
+<approved hash="115,1,930.177,-262.89,C141,,,,,"/>
+<approved hash="115,1,922.557,-262.89,C142,,,,,"/>
+<approved hash="115,1,899.697,-262.89,C143,,,,,"/>
+<approved hash="115,1,914.937,-262.89,C144,,,,,"/>
+<approved hash="115,1,907.317,-262.89,C145,,,,,"/>
+<approved hash="115,1,892.077,-262.89,C146,,,,,"/>
+<approved hash="115,1,884.457,-262.89,C147,,,,,"/>
+<approved hash="115,1,861.597,-262.89,C148,,,,,"/>
+<approved hash="115,1,876.837,-262.89,C149,,,,,"/>
+<approved hash="115,1,869.217,-262.89,C150,,,,,"/>
+<approved hash="115,1,853.977,-262.89,C151,,,,,"/>
+<approved hash="115,1,846.357,-262.89,C152,,,,,"/>
+<approved hash="115,1,838.737,-262.89,C153,,,,,"/>
+<approved hash="115,1,831.117,-262.89,C154,,,,,"/>
+<approved hash="115,1,823.497,-262.89,C155,,,,,"/>
+<approved hash="115,1,864.137,-11.43,C156,,,,,"/>
+<approved hash="115,1,1139.15,527.181,JP2,,,,,"/>
+<approved hash="115,1,1139.15,461.141,JP3,,,,,"/>
+<approved hash="115,1,1294.09,522.101,JP4,,,,,"/>
+<approved hash="115,1,843.043,-12.8312,JP6,,,,,"/>
 </errors>
 </schematic>
 </drawing>
