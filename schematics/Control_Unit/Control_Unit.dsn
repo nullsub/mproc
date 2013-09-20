@@ -1,9 +1,9 @@
-(PCB "/home/chrisu/projects/mproc/schematics/Control_Unit/Control_Unit.brd"
+(PCB "C:/Users/chrisu/Documents/GitHub/mproc/schematics/Control_Unit/Control_Unit.brd"
   (parser
     (string_quote ")
     (space_in_quoted_tokens on)
     (host_cad CadSoft)
-    (host_version 'EAGLE Version 6.2.0 Copyright (c) 1988-2012 CadSoft')
+    (host_version 'EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft')
   )
   (resolution mm 10000)
   (unit mm)
@@ -11,16 +11,16 @@
     (layer "1#Top"  (type signal))
     (layer "16#Bottom"  (type signal))
     (boundary 
-      (rect pcb  -0.317500 0.000000 50.470000 50.790000)
+      (rect pcb  0.000000 0.000000 49.835000 49.837500)
     )
-    (boundary (path signal 0 -0.317500 0.000000 50.470000 0.000000))
-    (boundary (path signal 0 50.470000 0.000000 50.470000 50.790000))
-    (boundary (path signal 0 50.470000 50.790000 -0.317500 50.790000))
-    (boundary (path signal 0 -0.317500 50.790000 -0.317500 0.000000))
+    (boundary (path signal 0 0.000000 0.000000 49.835000 0.000000))
+    (boundary (path signal 0 49.835000 0.000000 49.835000 49.837500))
+    (boundary (path signal 0 49.835000 49.837500 0.000000 49.837500))
+    (boundary (path signal 0 0.000000 49.837500 0.000000 0.000000))
     (via
-       "Round1$0.060959"
+       "Round1$0.076197"
     )
-    (rule (width 0.025400)(clearance 0.020319))
+    (rule (width 0.038100)(clearance 0.038100))
     (control
       (via_at_smd on)
     )
@@ -28,853 +28,739 @@
   (placement
     (place_control (flip_style rotate_first))
     (component "C1206$rcl" 
-      (place "C1" 42.227500 14.922500 Back 0.000000)
+      (place "C1" 40.640000 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C2" 1.270000 5.397500 Back 180.000000)
+      (place "C2" 1.587500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C3" 29.527500 2.222500 Back 0.000000)
+      (place "C3" 29.210000 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C4" 6.350000 5.397500 Back 0.000000)
+      (place "C4" 6.667500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C5" 11.112500 8.572500 Back 0.000000)
+      (place "C5" 11.747500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C6" 6.350000 11.747500 Back 180.000000)
+      (place "C6" 1.587500 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C7" 11.430000 11.747500 Back 180.000000)
+      (place "C7" 12.382500 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C8" 18.415000 2.222500 Back 0.000000)
+      (place "C8" 18.097500 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C9" 7.302500 27.622500 Back 180.000000)
+      (place "C9" 6.985000 27.940000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C10" 31.750000 11.747500 Back 0.000000)
+      (place "C10" 23.495000 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C11" 6.985000 24.447500 Back 180.000000)
+      (place "C11" 6.985000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C12" 7.302500 43.497500 Back 180.000000)
+      (place "C12" 7.302500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C13" 46.672500 18.097500 Back 180.000000)
+      (place "C13" 12.065000 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C14" 7.620000 40.322500 Back 180.000000)
+      (place "C14" 8.572500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C15" 1.270000 40.322500 Back 180.000000)
+      (place "C15" 1.587500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C16" 6.667500 18.097500 Back 180.000000)
+      (place "C16" 6.667500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C17" 1.587500 24.447500 Back 180.000000)
+      (place "C17" 1.270000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C18" 46.355000 46.672500 Back 180.000000)
+      (place "C18" 44.767500 43.815000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C19" 23.177500 30.797500 Back 180.000000)
+      (place "C19" 24.130000 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C20" 6.350000 30.797500 Back 180.000000)
+      (place "C20" 6.985000 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C21" 1.270000 18.097500 Back 180.000000)
+      (place "C21" 1.587500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C22" 40.005000 46.672500 Back 0.000000)
+      (place "C22" 22.860000 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C23" 30.480000 46.672500 Back 0.000000)
+      (place "C23" 28.892500 43.815000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C25" 18.415000 49.212500 Front 270.000000)
+      (place "C26" 39.052500 43.815000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C26" 42.545000 46.672500 Back 180.000000)
+      (place "C27" 32.702500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C27" 34.607500 40.005000 Back 0.000000)
+      (place "C28" 6.667500 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C28" 7.302500 21.272500 Back 180.000000)
+      (place "C29" 24.130000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C29" 24.130000 24.447500 Back 180.000000)
+      (place "C30" 39.687500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C30" 40.640000 33.972500 Back 0.000000)
+      (place "C31" 1.587500 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C31" 1.270000 2.222500 Back 180.000000)
+      (place "C32" 27.940000 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C32" 28.257500 21.272500 Back 180.000000)
+      (place "C33" 28.892500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C33" 29.845000 33.972500 Back 180.000000)
+      (place "C34" 31.115000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C34" 31.115000 24.447500 Back 180.000000)
+      (place "C35" 30.797500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C35" 29.845000 18.097500 Back 180.000000)
+      (place "C36" 28.575000 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C36" 26.670000 14.922500 Back 180.000000)
+      (place "C37" 44.767500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C37" 44.767500 43.497500 Back 180.000000)
+      (place "C38" 17.780000 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C38" 21.590000 8.572500 Back 180.000000)
+      (place "C39" 12.382500 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C39" 11.430000 30.797500 Back 180.000000)
+      (place "C40" 6.667500 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C40" 10.795000 2.222500 Back 0.000000)
+      (place "C42" 6.667500 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C42" 6.350000 8.572500 Back 180.000000)
+      (place "C43" 18.415000 27.940000 Back 0.000000)
     )
     (component "C1206$rcl" 
-      (place "C43" 18.732500 27.622500 Back 0.000000)
+      (place "C44" 33.020000 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C44" 1.587500 37.147500 Back 180.000000)
+      (place "C47" 17.462500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C45" 29.210000 30.797500 Back 180.000000)
+      (place "C48" 28.892500 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C47" 17.462500 43.497500 Back 180.000000)
+      (place "C49" 2.540000 46.355000 Back 270.000000)
     )
     (component "C1206$rcl" 
-      (place "C48" 12.700000 37.147500 Back 0.000000)
+      (place "C50" 27.622500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C49" 1.905000 48.577500 Back 270.000000)
+      (place "C51" 40.957500 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C50" 27.940000 43.497500 Back 180.000000)
+      (place "C52" 40.640000 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C51" 42.227500 8.572500 Back 0.000000)
+      (place "C53" 6.350000 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C52" 42.227500 11.747500 Back 180.000000)
+      (place "C54" 1.587500 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C53" 1.270000 14.922500 Back 180.000000)
+      (place "C55" 1.270000 27.940000 Back 0.000000)
     )
     (component "C1206$rcl" 
-      (place "C54" 1.270000 11.747500 Back 180.000000)
+      (place "C56" 23.812500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C55" 1.587500 27.622500 Back 0.000000)
+      (place "C57" 45.402500 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C56" 24.130000 33.972500 Back 180.000000)
+      (place "C58" 39.687500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C57" 45.720000 30.797500 Back 180.000000)
+      (place "C59" 32.067500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C58" 40.005000 40.322500 Back 180.000000)
+      (place "C60" 18.732500 43.815000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C59" 32.067500 5.397500 Back 0.000000)
+      (place "C61" 35.877500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C60" 19.050000 46.672500 Back 180.000000)
+      (place "C62" 42.545000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C61" 36.512500 18.097500 Back 180.000000)
+      (place "C63" 15.240000 46.355000 Back 90.000000)
     )
     (component "C1206$rcl" 
-      (place "C62" 43.180000 24.447500 Back 180.000000)
+      (place "C64" 12.065000 46.355000 Back 270.000000)
     )
     (component "C1206$rcl" 
-      (place "C63" 17.462500 49.212500 Front 90.000000)
+      (place "C65" 33.972500 43.815000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C64" 11.747500 48.577500 Back 90.000000)
+      (place "C67" 23.812500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C65" 34.925000 46.672500 Back 180.000000)
+      (place "C68" 5.715000 46.355000 Back 270.000000)
     )
     (component "C1206$rcl" 
-      (place "C67" 6.985000 37.147500 Back 180.000000)
+      (place "C70" 36.830000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C68" 4.762500 48.577500 Back 270.000000)
+      (place "C71" 18.415000 31.115000 Back 0.000000)
     )
     (component "C1206$rcl" 
-      (place "C70" 37.147500 24.447500 Back 180.000000)
+      (place "C72" 33.020000 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C71" 29.845000 37.147500 Back 0.000000)
+      (place "C73" 1.587500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C72" 33.655000 21.272500 Back 180.000000)
+      (place "C74" 23.812500 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C73" 1.270000 33.972500 Back 0.000000)
+      (place "C75" 45.402500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C74" 23.495000 2.222500 Back 180.000000)
+      (place "C77" 13.652500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C75" 46.672500 40.322500 Back 180.000000)
+      (place "C78" 6.667500 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C77" 40.640000 37.147500 Back 180.000000)
+      (place "C79" 31.115000 27.940000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C78" 44.450000 2.222500 Back 180.000000)
+      (place "C80" 18.415000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C79" 31.115000 27.622500 Back 180.000000)
+      (place "C81" 6.667500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C80" 18.415000 24.447500 Back 180.000000)
+      (place "C82" 38.100000 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C81" 6.985000 33.972500 Back 180.000000)
+      (place "C84" 23.812500 43.815000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C82" 40.005000 30.797500 Back 180.000000)
+      (place "C85" 1.587500 21.590000 Back 0.000000)
     )
     (component "C1206$rcl" 
-      (place "C84" 24.447500 46.672500 Back 180.000000)
+      (place "C86" 38.417500 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C85" 1.270000 21.272500 Back 0.000000)
+      (place "C87" 12.382500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C86" 38.735000 21.272500 Back 180.000000)
+      (place "C90" 1.587500 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C87" 18.097500 18.097500 Back 180.000000)
+      (place "C91" 12.382500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C90" 37.465000 46.672500 Back 180.000000)
+      (place "C92" 17.145000 43.815000 Front 270.000000)
     )
     (component "C1206$rcl" 
-      (place "C91" 12.382500 43.497500 Back 0.000000)
+      (place "C93" 1.587500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C92" 17.462500 46.672500 Front 90.000000)
+      (place "C99" 23.812500 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C93" 1.587500 43.497500 Back 180.000000)
+      (place "C100" 21.907500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C94" 1.587500 8.572500 Back 180.000000)
+      (place "C101" 26.987500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C95" 42.545000 27.622500 Back 0.000000)
+      (place "C110" 12.382500 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C98" 40.957500 2.222500 Back 180.000000)
+      (place "C111" 18.097500 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C99" 21.590000 14.922500 Back 180.000000)
+      (place "C112" 17.145000 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C100" 21.907500 5.397500 Back 180.000000)
+      (place "C113" 45.402500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C101" 26.987500 5.397500 Back 180.000000)
+      (place "C114" 33.655000 12.065000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C102" 42.227500 5.397500 Back 0.000000)
+      (place "C115" 22.860000 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C103" 37.147500 27.622500 Back 0.000000)
+      (place "C116" 18.732500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C104" 16.192500 8.572500 Back 0.000000)
+      (place "C117" 31.115000 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C105" 16.827500 14.922500 Back 180.000000)
+      (place "C118" 12.700000 24.765000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C106" 11.430000 5.397500 Back 180.000000)
+      (place "C120" 43.497500 21.590000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C107" 37.147500 11.747500 Back 180.000000)
+      (place "C121" 40.640000 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C108" 32.067500 8.572500 Back 0.000000)
+      (place "C122" 8.890000 46.355000 Back 270.000000)
     )
     (component "C1206$rcl" 
-      (place "C109" 26.670000 8.572500 Back 180.000000)
+      (place "C123" 24.130000 27.940000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C110" 6.667500 14.922500 Back 180.000000)
+      (place "C124" 39.052500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C111" 26.670000 11.747500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C112" 17.462500 21.272500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C113" 45.720000 33.972500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C114" 45.720000 37.147500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C115" 22.542500 21.272500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C116" 18.415000 33.972500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C117" 34.607500 30.797500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C118" 12.700000 24.447500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C120" 43.497500 21.272500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C121" 24.130000 37.147500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C122" 8.255000 48.577500 Back 270.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C123" 24.130000 27.622500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C124" 38.735000 43.497500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C126" 32.385000 46.672500 Back 180.000000)
+      (place "C126" 42.545000 27.940000 Back 180.000000)
     )
     (component "C1206$rcl" 
       (place "C127" 1.270000 31.115000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C128" 14.922500 48.577500 Back 270.000000)
+      (place "C129" 22.542500 40.640000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C129" 22.860000 43.497500 Back 180.000000)
+      (place "C130" 15.557500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C130" 13.017500 40.322500 Back 180.000000)
+      (place "C131" 33.972500 34.290000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C131" 35.560000 33.972500 Back 180.000000)
+      (place "C132" 36.830000 27.940000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C132" 3.810000 40.322500 Back 180.000000)
+      (place "C141" 12.065000 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C133" 17.145000 30.797500 Back 180.000000)
+      (place "C142" 18.415000 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C134" 33.972500 43.497500 Back 180.000000)
+      (place "C143" 41.592500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C135" 20.002500 40.322500 Back 180.000000)
+      (place "C144" 18.097500 18.415000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C136" 18.415000 37.147500 Back 180.000000)
+      (place "C145" 16.827500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C137" 35.560000 37.147500 Back 0.000000)
+      (place "C146" 34.925000 8.890000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C138" 6.985000 2.222500 Back 0.000000)
+      (place "C147" 34.925000 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C139" 12.700000 33.972500 Back 180.000000)
+      (place "C148" 12.382500 2.540000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C140" 21.590000 11.747500 Back 180.000000)
+      (place "C149" 39.052500 5.715000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C141" 16.510000 11.747500 Back 180.000000)
+      (place "C150" 34.925000 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C142" 11.747500 14.922500 Back 180.000000)
+      (place "C151" 12.700000 27.940000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C143" 42.227500 18.097500 Back 180.000000)
+      (place "C153" 25.717500 37.465000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C144" 23.812500 18.097500 Back 0.000000)
+      (place "C154" 29.210000 15.240000 Back 180.000000)
     )
     (component "C1206$rcl" 
-      (place "C145" 16.827500 5.397500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C146" 37.147500 8.572500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C147" 35.242500 2.222500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C148" 13.652500 2.222500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C149" 37.147500 5.397500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C150" 37.147500 14.922500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C151" 12.700000 27.622500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C152" 12.382500 18.097500 Back 0.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C153" 29.845000 40.322500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C154" 31.750000 14.922500 Back 180.000000)
-    )
-    (component "C1206$rcl" 
-      (place "C155" 23.177500 40.322500 Back 0.000000)
+      (place "C155" 20.637500 37.465000 Back 180.000000)
     )
     (component "C025-025X050$rcl" 
-      (place "C156" 47.625000 26.035000 Front 270.000000)
+      (place "C156" 48.260000 28.892500 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC1" 3.175000 2.540000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC2" 3.175000 34.290000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC1" 3.175000 40.322500 Front 0.000000)
+      (place "IC3" 44.450000 27.940000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC2" 8.890000 40.322500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC3" 44.450000 27.622500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC4" 8.890000 33.972500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC5" 14.605000 33.972500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC6" 20.320000 33.972500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC7" 36.195000 40.322500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC8" 3.175000 33.972500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC9" 38.100000 18.097500 Front 0.000000)
+      (place "IC9" 37.782500 18.415000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC10" 38.417500 11.747500 Front 0.000000)
+      (place "IC10" 30.162500 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC11" 33.337500 11.747500 Front 0.000000)
+      (place "IC11" 25.082500 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC12" 7.937500 30.797500 Front 0.000000)
+      (place "IC12" 8.572500 31.115000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC13" 5.397500 47.625000 Front 270.000000)
+      (place "IC13" 2.540000 44.767500 Front 270.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC14" 28.257500 11.747500 Front 0.000000)
+      (place "IC14" 19.685000 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC15" 23.177500 11.747500 Front 0.000000)
+      (place "IC15" 13.970000 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC16" 2.857500 11.747500 Front 0.000000)
+      (place "IC16" 20.002500 15.240000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC17" 30.480000 46.672500 Front 0.000000)
+      (place "IC17" 30.480000 43.815000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC18" 25.082500 40.322500 Front 0.000000)
+      (place "IC18" 22.225000 37.465000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC19" 15.240000 47.625000 Front 270.000000)
+      (place "IC19" 15.240000 44.767500 Front 270.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC20" 43.497500 8.572500 Front 0.000000)
+      (place "IC20" 42.545000 8.890000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC21" 47.307500 37.147500 Front 0.000000)
+      (place "IC21" 15.240000 34.290000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC22" 2.857500 5.397500 Front 0.000000)
+      (place "IC22" 3.175000 5.715000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC23" 8.572500 47.625000 Front 270.000000)
+      (place "IC23" 5.715000 44.767500 Front 270.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC24" 28.257500 14.922500 Front 0.000000)
+      (place "IC24" 25.400000 15.240000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC25" 42.227500 37.147500 Front 0.000000)
+      (place "IC25" 20.320000 34.290000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC26" 38.417500 14.922500 Front 0.000000)
+      (place "IC26" 32.385000 18.415000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC27" 12.065000 47.625000 Front 270.000000)
+      (place "IC27" 8.890000 44.767500 Front 270.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC28" 8.572500 21.272500 Front 0.000000)
+      (place "IC28" 8.255000 21.590000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC29" 28.257500 5.397500 Front 0.000000)
+      (place "IC29" 28.575000 5.715000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC30" 29.210000 43.497500 Front 0.000000)
+      (place "IC30" 29.210000 40.640000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC31" 18.732500 21.272500 Front 0.000000)
+      (place "IC31" 2.859100 31.115000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC32" 34.607500 43.497500 Front 0.000000)
+      (place "IC32" 34.607500 40.640000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC33" 43.497500 11.747500 Front 0.000000)
+      (place "IC33" 42.227500 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC34" 42.227500 33.972500 Front 0.000000)
+      (place "IC34" 46.990000 34.290000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC35" 35.877500 46.672500 Front 0.000000)
+      (place "IC35" 35.560000 43.815000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC37" 47.307500 40.322500 Front 0.000000)
+      (place "IC36" 46.991600 37.465000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC38" 13.652500 21.272500 Front 0.000000)
+      (place "IC38" 13.652500 21.590000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC39" 25.400000 46.672500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC40" 14.605000 40.322500 Front 0.000000)
+      (place "IC39" 25.400000 43.815000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC41" 13.652500 43.497500 Front 0.000000)
+      (place "IC40" 46.990000 31.115000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC41" 13.970000 40.640000 Front 0.000000)
     )
     (component "DIL20$74xx-eu" 
-      (place "IC42" 44.450000 18.097500 Front 0.000000)
+      (place "IC42" 44.132500 18.415000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC43" 33.337500 8.572500 Front 0.000000)
+      (place "IC43" 30.480000 8.890000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC44" 8.890000 2.222500 Front 0.000000)
+      (place "IC44" 14.287500 2.540000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC46" 8.572500 2.540000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC45" 7.937500 5.397500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC46" 3.175000 2.222500 Front 0.000000)
+      (place "IC47" 45.085000 21.590000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC47" 45.085000 21.272500 Front 0.000000)
+      (place "IC48" 42.227500 2.540000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC49" 20.320000 46.672500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC50" 26.035000 33.972500 Front 0.000000)
+      (place "IC49" 20.320000 43.815000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC51" 13.017500 14.922500 Front 0.000000)
+      (place "IC51" 3.175000 21.590000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC52" 13.017500 11.747500 Front 0.000000)
+      (place "IC52" 8.255000 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC54" 2.857500 18.097500 Front 0.000000)
+      (place "IC54" 24.447500 21.590000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC55" 47.307500 30.797500 Front 0.000000)
+      (place "IC55" 30.797500 2.540000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC56" 38.735000 27.622500 Front 0.000000)
+      (place "IC56" 38.735000 27.940000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC57" 33.020000 27.622500 Front 0.000000)
+      (place "IC57" 33.020000 27.940000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC58" 20.320000 27.622500 Front 0.000000)
+      (place "IC58" 20.320000 27.940000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC59" 14.605000 27.622500 Front 0.000000)
+      (place "IC59" 14.605000 27.940000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC60" 8.890000 27.622500 Front 0.000000)
+      (place "IC60" 8.890000 27.940000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC61" 3.175000 27.622500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC62" 26.035000 37.147500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC65" 30.480000 40.322500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC66" 14.605000 37.147500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC67" 20.320000 37.147500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC68" 3.175000 37.147500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC69" 8.890000 37.147500 Front 0.000000)
+      (place "IC61" 3.175000 27.940000 Front 0.000000)
     )
     (component "DIL20$74xx-eu" 
-      (place "IC72" 26.670000 27.622500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC74" 33.337500 14.922500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC75" 40.005000 21.272500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC76" 13.017500 5.397500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC77" 25.400000 18.097500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC78" 7.937500 14.922500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC79" 19.685000 18.097500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC80" 13.017500 8.572500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC81" 23.177500 8.572500 Front 0.000000)
-    )
-    (component "DIL16$custom_parts" 
-      (place "IC82" 13.335000 30.797500 Front 0.000000)
-    )
-    (component "DIL16$custom_parts" 
-      (place "IC83" 19.050000 30.797500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC84" 38.417500 5.397500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC85" 20.002500 40.322500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC86" 8.255000 18.097500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC87" 13.970000 18.097500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC88" 24.130000 21.272500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC89" 29.845000 21.272500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC91" 43.497500 5.397500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC92" 24.765000 30.797500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC94" 30.480000 30.797500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC95" 36.195000 30.797500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC97" 41.910000 30.797500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC98" 44.450000 24.447500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC101" 43.497500 14.922500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC102" 3.175000 21.272500 Front 0.000000)
+      (place "IC63" 35.242500 37.465000 Front 0.000000)
     )
     (component "DIL20$74xx-eu" 
-      (place "IC103" 31.750000 18.097500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC104" 2.857500 30.797500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC105" 38.735000 24.447500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC106" 33.020000 24.447500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC108" 18.097500 8.572500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC109" 2.857500 14.922500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC110" 38.417500 8.572500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC111" 20.320000 24.447500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC112" 33.337500 5.397500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC113" 14.605000 24.447500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC114" 8.890000 24.447500 Front 0.000000)
-    )
-    (component "DIL16$74xx-eu" 
-      (place "IC115" 3.492500 24.447500 Front 0.000000)
+      (place "IC64" 28.257500 37.465000 Front 0.000000)
     )
     (component "DIL20$74xx-eu" 
-      (place "IC116" 26.670000 24.447500 Front 0.000000)
+      (place "IC70" 26.670000 31.115000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC71" 33.655000 31.115000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC72" 26.670000 27.940000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC73" 36.195000 12.065000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC117" 18.097500 11.747500 Front 0.000000)
+      (place "IC74" 30.797500 15.240000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC124" 7.937500 8.572500 Front 0.000000)
+      (place "IC75" 40.005000 21.590000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC125" 23.177500 5.397500 Front 0.000000)
+      (place "IC76" 13.335000 5.715000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC126" 14.605000 2.222500 Front 0.000000)
+      (place "IC77" 42.545000 15.240000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC127" 37.147500 37.147500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC128" 18.097500 5.397500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC129" 23.812500 43.497500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC130" 34.925000 21.272500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC133" 47.307500 33.972500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC134" 8.572500 43.497500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC135" 18.732500 43.497500 Front 0.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC136" 2.222500 47.625000 Front 270.000000)
-    )
-    (component "DIL14$74xx-eu" 
-      (place "IC141" 2.857500 8.572500 Front 0.000000)
+      (place "IC78" 3.175000 15.240000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC164" 25.400000 2.222500 Front 0.000000)
+      (place "IC79" 20.002500 18.415000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC80" 25.400000 2.540000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC81" 19.050000 8.890000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC82" 14.287500 31.115000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC83" 20.320000 31.115000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC84" 40.640000 31.115000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC85" 17.145000 37.465000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC165" 31.115000 2.222500 Front 0.000000)
+      (place "IC86" 8.255000 15.240000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC166" 36.830000 2.222500 Front 0.000000)
+      (place "IC87" 8.572500 18.415000 Front 0.000000)
     )
     (component "DIL16$74xx-eu" 
-      (place "IC167" 42.545000 2.222500 Front 0.000000)
+      (place "IC88" 19.050000 21.590000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC89" 14.287500 18.415000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC90" 4.127500 37.465000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC91" 9.207500 34.290000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC93" 41.592500 5.715000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC98" 44.450000 24.765000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC99" 34.607500 5.715000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC100" 11.112500 37.465000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC168" 20.002500 2.222500 Front 0.000000)
+      (place "IC101" 36.512500 15.240000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC102" 14.287500 15.240000 Front 0.000000)
+    )
+    (component "DIL20$74xx-eu" 
+      (place "IC103" 26.352500 18.415000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC105" 38.735000 24.765000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC106" 33.020000 24.765000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC169" 23.177500 14.922500 Front 0.000000)
+      (place "IC108" 13.652500 8.890000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC172" 37.147500 33.972500 Front 0.000000)
+      (place "IC110" 36.512500 8.890000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC111" 20.320000 24.765000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC173" 7.937500 11.747500 Front 0.000000)
+      (place "IC112" 29.527500 21.590000 Front 0.000000)
     )
-    (component "DIL16$custom_parts" 
-      (place "IC175" 46.990000 43.497500 Front 0.000000)
+    (component "DIL16$74xx-eu" 
+      (place "IC113" 14.605000 24.765000 Front 0.000000)
     )
-    (component "DIL16$custom_parts" 
-      (place "IC176" 40.957500 43.497500 Front 0.000000)
+    (component "DIL16$74xx-eu" 
+      (place "IC114" 8.890000 24.765000 Front 0.000000)
     )
-    (component "DIL16$custom_parts" 
-      (place "IC177" 46.990000 46.672500 Front 0.000000)
+    (component "DIL16$74xx-eu" 
+      (place "IC115" 3.175000 24.765000 Front 0.000000)
     )
-    (component "DIL16$custom_parts" 
-      (place "IC178" 41.275000 46.672500 Front 0.000000)
-    )
-    (component "DIL16$custom_parts" 
-      (place "IC179" 31.750000 33.972500 Front 0.000000)
-    )
-    (component "DIL16$custom_parts" 
-      (place "IC180" 31.750000 37.147500 Front 0.000000)
-    )
-    (component "DIL16$custom_parts" 
-      (place "IC181" 41.910000 40.322500 Front 0.000000)
-    )
-    (component "DIL16$custom_parts" 
-      (place "IC182" 3.175000 43.497500 Front 0.000000)
+    (component "DIL20$74xx-eu" 
+      (place "IC116" 26.670000 24.765000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC190" 28.257500 8.572500 Front 0.000000)
+      (place "IC117" 36.512500 2.540000 Front 0.000000)
     )
     (component "DIL14$74xx-eu" 
-      (place "IC191" 18.097500 14.922500 Front 0.000000)
+      (place "IC124" 8.255000 8.890000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC125" 23.495000 5.715000 Front 0.000000)
+    )
+    (component "DIL16$74xx-eu" 
+      (place "IC126" 20.002500 2.540000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC127" 25.400000 34.290000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC128" 18.415000 5.715000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC129" 24.130000 40.640000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC134" 8.890000 40.640000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC135" 19.050000 40.640000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC136" 8.255000 5.715000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC141" 3.175000 8.890000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC168" 34.607500 21.590000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC169" 12.065000 44.767500 Front 270.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC172" 30.480000 34.290000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC173" 3.175000 12.065000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC175" 46.672500 40.640000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC176" 40.957500 40.640000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC177" 46.672500 43.815000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC178" 40.957500 43.815000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC179" 35.877500 34.290000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC180" 41.592500 34.290000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC181" 41.592500 37.465000 Front 0.000000)
+    )
+    (component "DIL16$custom_parts" 
+      (place "IC182" 3.492500 40.640000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC190" 24.447500 8.890000 Front 0.000000)
+    )
+    (component "DIL14$74xx-eu" 
+      (place "IC191" 3.175000 18.415000 Front 0.000000)
     )
     (component "2X20$pinhead" 
-      (place "JP1" 48.895000 21.590000 Front 90.000000)
+      (place "JP1" 48.577500 21.907500 Front 90.000000)
     )
     (component "2X15$pinhead" 
-      (place "JP2" 34.607500 49.212500 Front 0.000000)
+      (place "JP2" 33.020000 46.355000 Front 0.000000)
     )
     (component "2X15$pinhead" 
-      (place "JP3" 24.447500 49.212500 Front 0.000000)
+      (place "JP3" 22.225000 46.355000 Front 0.000000)
     )
     (component "2X15$pinhead" 
-      (place "JP4" 44.767500 49.212500 Front 0.000000)
+      (place "JP4" 43.815000 46.355000 Front 0.000000)
     )
     (component "1X02$pinhead" 
-      (place "JP6" 46.990000 15.557500 Front 270.000000)
+      (place "JP6" 46.672500 15.875000 Front 270.000000)
     )
     (component "2X20$pinhead" 
-      (place "JP9" 46.990000 7.937500 Front 90.000000)
+      (place "JP9" 46.355000 8.255000 Front 90.000000)
     )
     (component "2X20$pinhead" 
-      (place "JP10" 48.895000 7.937500 Front 270.000000)
+      (place "JP10" 48.577500 8.255000 Front 270.000000)
     )
   )
   (library
@@ -1039,12 +925,12 @@
       (pin "Rectangle1" "1" -0.350000 0.000000)
       (pin "Rectangle1" "2" 0.350000 0.000000)
     )
-    (padstack "ViaDefault$0.060959"
-      (shape (circle signal 0.101597 0 0))
+    (padstack "ViaDefault$0.076200"
+      (shape (circle signal 0.152400 0 0))
     )
-    (padstack "Round1$0.060959" 
-      (shape (circle "1#Top" 0.101597 0 0))
-      (shape (circle "16#Bottom" 0.101597 0 0))
+    (padstack "Round1$0.076197" 
+      (shape (circle "1#Top" 0.152397 0 0))
+      (shape (circle "16#Bottom" 0.152397 0 0))
       (attach off)
     )
     (padstack "Oblong1" 
@@ -1072,16 +958,16 @@
   )
   (network
     (net "!CLR_CARRY_BIT"
-      (pins  "IC31"-"1" "JP1"-"12")
+      (pins  "JP1"-"12" "IC117"-"13")
     )
     (net "!REGISTER_RESET"
-      (pins  "IC165"-"11" "IC164"-"1" "IC165"-"13" "IC165"-"14" "IC165"-"1" "IC166"-"1" "IC167"-"1" "IC167"-"14" "IC167"-"13" "IC167"-"11" "IC167"-"6" "IC165"-"6" "IC177"-"14" "IC178"-"14" "IC176"-"14" "IC175"-"14" "JP1"-"8" "IC49"-"9")
+      (pins  "IC177"-"14" "IC178"-"14" "IC176"-"14" "IC175"-"14" "JP1"-"8" "IC179"-"14" "IC180"-"14" "IC182"-"14" "IC181"-"14" "IC83"-"14" "IC82"-"14")
     )
     (net "!RING_CNTR_RESET"
-      (pins  "IC15"-"1" "IC14"-"13" "IC10"-"4" "IC10"-"13" "IC11"-"1" "IC11"-"13" "IC14"-"1" "IC117"-"13" "IC15"-"13" "IC117"-"1" "JP1"-"10")
+      (pins  "IC15"-"1" "IC14"-"13" "IC10"-"4" "IC10"-"13" "IC11"-"1" "IC11"-"13" "IC14"-"1" "IC15"-"13" "IC117"-"1" "JP1"-"10")
     )
     (net "!SET_CARRY_BIT"
-      (pins  "IC31"-"4" "JP1"-"14")
+      (pins  "JP1"-"14" "IC117"-"10")
     )
     (net "ADRR_0"
       (pins  "IC86"-"4" "JP2"-"1" "JP3"-"1")
@@ -1129,19 +1015,16 @@
       (pins  "IC89"-"9" "JP2"-"29" "JP3"-"29")
     )
     (net "ADRR_15"
-      (pins  "IC35"-"13" "IC34"-"12" "IC89"-"12")
+      (pins  "IC89"-"12" "IC25"-"9" "IC35"-"5")
     )
     (net "ALU_CARRY_BIT"
-      (pins  "IC78"-"9" "IC40"-"3" "IC31"-"5" "JP1"-"7")
+      (pins  "IC78"-"9" "JP1"-"7" "IC117"-"9" "IC40"-"1")
     )
     (net "ALU_CARRY_IN"
-      (pins  "JP9"-"34" "IC40"-"4")
+      (pins  "JP9"-"34" "IC40"-"3")
     )
     (net "ALU_CARRY_OUT"
-      (pins  "IC101"-"4" "IC127"-"1" "IC31"-"9")
-    )
-    (net "ALU_CARRY_OUT_"
-      (pins  "JP9"-"32" "IC31"-"12" "IC31"-"2")
+      (pins  "IC101"-"12" "JP9"-"32" "IC117"-"12" "IC31"-"12")
     )
     (net "ALU_NR1_ENABLE_ALU"
       (pins  "IC18"-"3" "IC191"-"1" "IC33"-"9")
@@ -1174,7 +1057,7 @@
       (pins  "IC173"-"9" "IC27"-"11" "IC17"-"2")
     )
     (net "CLR_NOT_OE/CLR_NOT_CS_CYCL_0"
-      (pins  "IC17"-"1" "IC80"-"6" "IC85"-"5")
+      (pins  "IC17"-"1" "IC80"-"6" "IC48"-"8")
     )
     (net "CLR_NOT_OE/CLR_NOT_CS_CYCL_2"
       (pins  "IC80"-"11" "IC17"-"5")
@@ -1183,7 +1066,7 @@
       (pins  "IC54"-"1" "JP4"-"20")
     )
     (net "CONNECT_PTR_TO_ABUS/CLR_NOT_OE_LDR"
-      (pins  "IC173"-"3" "IC25"-"4" "IC85"-"6")
+      (pins  "IC173"-"3" "IC25"-"4" "IC48"-"9")
     )
     (net "CONNECT_PTR_TO_ABUS/CONNECT_REG_TO_DBUS/CLR_NOT_WE/SELECTOR_TABLE_2_STR"
       (pins  "IC173"-"8" "IC25"-"5" "IC124"-"1" "IC35"-"3")
@@ -1195,43 +1078,40 @@
       (pins  "IC172"-"11" "IC52"-"4")
     )
     (net "CYCL_1"
-      (pins  "IC10"-"5" "IC10"-"12" "IC80"-"5" "JP1"-"20")
+      (pins  "IC10"-"5" "IC10"-"12" "IC80"-"5" "JP1"-"22")
     )
     (net "CYCL_3"
-      (pins  "IC11"-"5" "IC11"-"12" "IC91"-"5" "JP1"-"24")
+      (pins  "IC11"-"5" "IC11"-"12" "IC127"-"13" "JP1"-"26")
     )
     (net "CYCL_4"
-      (pins  "IC14"-"2" "IC11"-"9" "IC91"-"1" "JP1"-"26")
-    )
-    (net "DASSDADASDASDA"
-      (pins  "IC83"-"14" "IC82"-"14" "IC69"-"6" "IC50"-"14" "IC50"-"13" "IC50"-"11" "IC50"-"6" "IC5"-"14" "IC5"-"13" "IC5"-"11" "IC8"-"14" "IC8"-"13" "IC8"-"11" "IC8"-"6" "IC65"-"14" "IC65"-"13" "IC65"-"6" "IC65"-"11" "IC67"-"14" "IC67"-"13" "IC67"-"11" "IC67"-"6" "IC69"-"14" "IC69"-"13" "IC69"-"11" "IC5"-"6" "IC68"-"1" "IC69"-"1" "IC5"-"1" "IC6"-"1" "IC50"-"1" "IC4"-"1" "IC8"-"1" "IC7"-"1" "IC65"-"1" "IC62"-"1" "IC67"-"1" "IC66"-"1" "IC179"-"14" "IC180"-"14" "IC182"-"14" "IC181"-"14" "IC1"-"1" "IC2"-"1" "IC2"-"14" "IC2"-"6" "IC2"-"11" "IC2"-"13" "IC92"-"1" "IC94"-"1" "IC95"-"1" "IC97"-"1" "IC97"-"6" "IC97"-"14" "IC97"-"13" "IC97"-"11" "IC94"-"14" "IC94"-"6" "IC94"-"11" "IC94"-"13" "IC49"-"8")
+      (pins  "IC14"-"2" "IC11"-"9" "JP1"-"28" "IC127"-"1")
     )
     (net "DATA0"
-      (pins  "IC7"-"3" "IC62"-"3" "IC66"-"3" "IC68"-"3" "IC72"-"2" "IC42"-"2" "IC179"-"15" "IC181"-"15" "IC4"-"3" "IC6"-"3" "IC164"-"3" "IC166"-"3" "IC1"-"3" "IC77"-"3" "IC82"-"15" "IC92"-"3" "IC95"-"3" "IC116"-"2" "JP9"-"23" "JP2"-"2" "JP3"-"2" "JP4"-"2")
+      (pins  "IC72"-"2" "IC42"-"2" "IC179"-"15" "IC181"-"15" "IC77"-"3" "IC82"-"15" "IC116"-"2" "JP9"-"23" "JP2"-"2" "JP3"-"2" "JP4"-"2" "IC71"-"3" "IC63"-"3" "IC64"-"3" "IC91"-"3" "IC90"-"3" "IC84"-"3" "IC70"-"3" "IC73"-"3" "IC100"-"3" "IC99"-"3" "IC93"-"3")
     )
     (net "DATA1"
-      (pins  "IC7"-"4" "IC62"-"4" "IC66"-"4" "IC68"-"4" "IC72"-"5" "IC42"-"5" "IC179"-"1" "IC181"-"1" "IC4"-"4" "IC6"-"4" "IC164"-"4" "IC166"-"4" "IC1"-"4" "IC77"-"6" "IC82"-"1" "IC92"-"4" "IC95"-"4" "IC116"-"5" "JP9"-"25" "JP2"-"4" "JP3"-"4" "JP4"-"4")
+      (pins  "IC72"-"5" "IC42"-"5" "IC179"-"1" "IC181"-"1" "IC77"-"6" "IC82"-"1" "IC116"-"5" "JP9"-"25" "JP2"-"4" "JP3"-"4" "JP4"-"4" "IC71"-"4" "IC63"-"4" "IC64"-"4" "IC91"-"4" "IC90"-"4" "IC84"-"4" "IC70"-"4" "IC73"-"4" "IC100"-"4" "IC99"-"4" "IC93"-"4")
     )
     (net "DATA2"
-      (pins  "IC7"-"6" "IC62"-"6" "IC66"-"6" "IC68"-"6" "IC72"-"6" "IC42"-"6" "IC179"-"10" "IC181"-"10" "IC4"-"6" "IC6"-"6" "IC164"-"6" "IC166"-"6" "IC1"-"6" "IC77"-"10" "IC82"-"10" "IC92"-"6" "IC95"-"6" "IC116"-"6" "JP9"-"27" "JP2"-"6" "JP3"-"6" "JP4"-"6")
+      (pins  "IC72"-"6" "IC42"-"6" "IC179"-"10" "IC181"-"10" "IC77"-"10" "IC82"-"10" "IC116"-"6" "JP9"-"27" "JP2"-"6" "JP3"-"6" "JP4"-"6" "IC71"-"7" "IC63"-"7" "IC64"-"7" "IC91"-"7" "IC90"-"7" "IC84"-"7" "IC70"-"7" "IC73"-"7" "IC100"-"7" "IC99"-"7" "IC93"-"7")
     )
     (net "DATA3"
-      (pins  "IC7"-"11" "IC62"-"11" "IC66"-"11" "IC68"-"11" "IC72"-"9" "IC42"-"9" "IC179"-"9" "IC181"-"9" "IC4"-"11" "IC6"-"11" "IC164"-"11" "IC166"-"11" "IC1"-"11" "IC77"-"13" "IC82"-"9" "IC92"-"11" "IC95"-"11" "IC116"-"9" "JP9"-"29" "JP2"-"8" "JP3"-"8" "JP4"-"8")
+      (pins  "IC72"-"9" "IC42"-"9" "IC179"-"9" "IC181"-"9" "IC77"-"13" "IC82"-"9" "IC116"-"9" "JP9"-"29" "JP2"-"8" "JP3"-"8" "JP4"-"8" "IC71"-"8" "IC63"-"8" "IC64"-"8" "IC91"-"8" "IC90"-"8" "IC84"-"8" "IC70"-"8" "IC73"-"8" "IC100"-"8" "IC99"-"8" "IC93"-"8")
     )
     (net "DATA4"
-      (pins  "IC7"-"13" "IC62"-"13" "IC66"-"13" "IC68"-"13" "IC72"-"12" "IC42"-"12" "IC180"-"15" "IC182"-"15" "IC4"-"13" "IC6"-"13" "IC164"-"13" "IC166"-"13" "IC1"-"13" "IC79"-"3" "IC83"-"15" "IC92"-"13" "IC95"-"13" "IC116"-"12" "JP9"-"31" "JP2"-"10" "JP3"-"10" "JP4"-"10")
+      (pins  "IC72"-"12" "IC42"-"12" "IC180"-"15" "IC182"-"15" "IC79"-"3" "IC83"-"15" "IC116"-"12" "JP9"-"31" "JP2"-"10" "JP3"-"10" "JP4"-"10" "IC71"-"13" "IC63"-"13" "IC64"-"13" "IC91"-"13" "IC90"-"13" "IC84"-"13" "IC70"-"13" "IC73"-"13" "IC100"-"13" "IC99"-"13" "IC93"-"13")
     )
     (net "DATA5"
-      (pins  "IC7"-"14" "IC62"-"14" "IC66"-"14" "IC68"-"14" "IC72"-"15" "IC42"-"15" "IC180"-"1" "IC182"-"1" "IC4"-"14" "IC6"-"14" "IC164"-"14" "IC1"-"14" "IC79"-"6" "IC83"-"1" "IC95"-"14" "IC92"-"14" "IC116"-"15" "JP9"-"33" "JP2"-"12" "JP3"-"12" "JP4"-"12")
+      (pins  "IC72"-"15" "IC42"-"15" "IC180"-"1" "IC182"-"1" "IC79"-"6" "IC83"-"1" "IC116"-"15" "JP9"-"33" "JP2"-"12" "JP3"-"12" "JP4"-"12" "IC71"-"14" "IC63"-"14" "IC91"-"14" "IC90"-"14" "IC84"-"14" "IC70"-"14" "IC73"-"14" "IC100"-"14" "IC99"-"14" "IC93"-"14")
     )
     (net "DATA6"
-      (pins  "IC8"-"3" "IC65"-"3" "IC67"-"3" "IC69"-"3" "IC72"-"16" "IC42"-"16" "IC180"-"10" "IC182"-"10" "IC5"-"3" "IC50"-"3" "IC165"-"3" "IC166"-"14" "IC167"-"3" "IC2"-"3" "IC79"-"10" "IC83"-"10" "IC94"-"3" "IC97"-"3" "IC116"-"16" "JP9"-"35" "JP2"-"14" "JP3"-"14" "JP4"-"14")
+      (pins  "IC72"-"16" "IC42"-"16" "IC180"-"10" "IC182"-"10" "IC79"-"10" "IC83"-"10" "IC116"-"16" "JP9"-"35" "JP2"-"14" "JP3"-"14" "JP4"-"14" "IC63"-"17" "IC64"-"14" "IC64"-"17" "IC91"-"17" "IC90"-"17" "IC84"-"17" "IC70"-"17" "IC73"-"17" "IC100"-"17" "IC99"-"17" "IC93"-"17" "IC71"-"17")
     )
     (net "DATA7"
-      (pins  "IC8"-"4" "IC65"-"4" "IC67"-"4" "IC69"-"4" "IC72"-"19" "IC42"-"19" "IC180"-"9" "IC182"-"9" "IC5"-"4" "IC50"-"4" "IC165"-"4" "IC167"-"4" "IC2"-"4" "IC79"-"13" "IC83"-"9" "IC94"-"4" "IC97"-"4" "IC116"-"19" "JP9"-"37" "JP2"-"16" "JP3"-"16" "JP4"-"16")
+      (pins  "IC72"-"19" "IC42"-"19" "IC180"-"9" "IC182"-"9" "IC79"-"13" "IC83"-"9" "IC116"-"19" "JP9"-"37" "JP2"-"16" "JP3"-"16" "JP4"-"16" "IC63"-"18" "IC64"-"18" "IC91"-"18" "IC90"-"18" "IC84"-"18" "IC70"-"18" "IC73"-"18" "IC100"-"18" "IC99"-"18" "IC93"-"18" "IC71"-"18")
     )
     (net "DATA_BUS_ENABLE_LATCH"
-      (pins  "IC72"-"11" "IC109"-"3" "IC37"-"1")
+      (pins  "IC72"-"11" "IC101"-"3" "IC35"-"9")
     )
     (net "DBUS_SELECTOR_TABLE_2"
       (pins  "IC46"-"1" "IC124"-"3" "IC110"-"1")
@@ -1240,31 +1120,31 @@
       (pins  "IC22"-"10" "IC22"-"13" "IC85"-"1")
     )
     (net "FILL_LR_H_SAVE_LR"
-      (pins  "IC29"-"9" "IC84"-"12" "IC81"-"3")
+      (pins  "IC29"-"9" "IC81"-"3" "IC2"-"12")
     )
     (net "FILL_LR_L_SAVE_LR"
-      (pins  "IC29"-"1" "IC84"-"9" "IC81"-"8")
+      (pins  "IC29"-"1" "IC81"-"8" "IC1"-"4")
     )
     (net "FILL_PC_H_RET"
       (pins  "IC29"-"12" "IC51"-"11" "IC17"-"12")
     )
     (net "FILL_PC_L_JMP_O"
-      (pins  "IC38"-"11" "IC84"-"1" "IC33"-"1")
+      (pins  "IC38"-"11" "IC33"-"1" "IC101"-"13" "IC80"-"9")
     )
     (net "FILL_PC_L_RET"
-      (pins  "IC51"-"3" "IC29"-"4" "IC84"-"2")
+      (pins  "IC51"-"3" "IC29"-"4" "IC80"-"10")
     )
     (net "FILL_PTR_H_SET_PTR"
-      (pins  "IC169"-"5" "IC169"-"1" "IC26"-"8")
+      (pins  "IC169"-"1" "IC26"-"8" "IC2"-"5")
     )
     (net "FILL_PTR_L_PTR_ADD"
-      (pins  "IC104"-"8" "IC33"-"2")
+      (pins  "IC33"-"2" "IC31"-"13" "IC24"-"8")
     )
     (net "FILL_PTR_L_SET_PTR"
-      (pins  "IC172"-"12" "IC26"-"3" "IC169"-"10")
+      (pins  "IC172"-"12" "IC26"-"3" "IC2"-"2")
     )
     (net "FILL_REGISTER_ALU/ALU_TO_DBUS"
-      (pins  "IC75"-"11" "IC169"-"13" "IC31"-"3" "IC33"-"12")
+      (pins  "IC75"-"11" "IC169"-"13" "IC117"-"11" "IC54"-"8")
     )
     (net "FILL_REGISTER_LDR"
       (pins  "IC173"-"4" "IC27"-"6" "IC108"-"5")
@@ -1279,13 +1159,13 @@
       (pins  "IC41"-"2" "IC41"-"10" "IC39"-"2" "IC39"-"10" "IC136"-"6")
     )
     (net "GND"
-      (pins  "IC4"-"8" "IC5"-"8" "IC6"-"8" "IC7"-"8" "IC8"-"8" "IC10"-"7" "IC11"-"7" "IC14"-"7" "IC15"-"7" "IC3"-"8" "IC9"-"8" "IC56"-"8" "IC57"-"8" "IC58"-"8" "IC59"-"8" "IC60"-"8" "IC61"-"8" "IC62"-"8" "IC65"-"8" "IC66"-"8" "IC67"-"8" "IC68"-"8" "IC69"-"8" "IC72"-"10" "IC12"-"7" "IC13"-"7" "IC16"-"7" "IC18"-"7" "IC19"-"7" "IC20"-"7" "IC21"-"7" "IC42"-"10" "IC103"-"10" "IC128"-"7" "IC129"-"7" "IC46"-"8" "IC49"-"7" "IC50"-"8" "IC177"-"8" "IC178"-"8" "IC175"-"8" "IC176"-"8" "IC179"-"8" "IC180"-"8" "IC181"-"8" "IC182"-"8" "IC126"-"8" "IC82"-"8" "IC83"-"8" "IC86"-"8" "IC87"-"8" "IC88"-"8" "IC89"-"8" "IC164"-"8" "IC165"-"8" "IC166"-"8" "IC167"-"8" "IC168"-"7" "IC169"-"7" "IC172"-"7" "IC173"-"7" "IC190"-"7" "IC191"-"7" "IC22"-"7" "IC25"-"7" "IC32"-"7" "IC52"-"7" "IC55"-"7" "IC27"-"7" "IC28"-"7" "IC74"-"7" "IC75"-"7" "IC78"-"7" "IC23"-"7" "IC24"-"7" "IC26"-"7" "IC30"-"7" "IC34"-"7" "IC39"-"7" "IC41"-"7" "IC76"-"7" "IC35"-"7" "IC37"-"7" "IC43"-"7" "IC47"-"7" "IC61"-"7" "IC60"-"7" "IC59"-"7" "IC58"-"7" "IC57"-"7" "IC56"-"7" "IC3"-"7" "IC9"-"7" "IC103"-"1" "IC176"-"10" "IC176"-"1" "IC176"-"15" "IC175"-"9" "IC175"-"10" "IC175"-"1" "IC175"-"15" "IC178"-"10" "IC178"-"1" "IC178"-"15" "IC177"-"15" "IC177"-"1" "IC177"-"10" "IC177"-"9" "IC178"-"9" "IC176"-"9" "IC46"-"15" "IC86"-"15" "IC87"-"15" "IC88"-"15" "IC89"-"15" "IC126"-"15" "IC1"-"8" "IC2"-"8" "IC38"-"7" "IC77"-"8" "IC79"-"8" "IC77"-"15" "IC79"-"15" "IC84"-"7" "IC101"-"7" "IC104"-"7" "IC108"-"7" "IC110"-"7" "IC124"-"7" "IC125"-"7" "IC127"-"7" "IC130"-"7" "IC33"-"7" "IC17"-"7" "IC80"-"7" "IC91"-"7" "IC112"-"7" "IC109"-"7" "IC117"-"7" "IC29"-"7" "IC51"-"7" "IC81"-"7" "IC92"-"8" "IC94"-"8" "IC95"-"8" "IC97"-"8" "IC98"-"8" "IC102"-"8" "IC105"-"8" "IC106"-"8" "IC111"-"8" "IC113"-"8" "IC114"-"8" "IC115"-"8" "IC116"-"10" "IC115"-"7" "IC114"-"7" "IC113"-"7" "IC111"-"7" "IC106"-"7" "IC105"-"7" "IC98"-"7" "IC102"-"7" "IC133"-"7" "IC46"-"14" "IC134"-"7" "IC135"-"7" "IC136"-"7" "IC141"-"7" "IC102"-"12" "IC115"-"12" "IC114"-"12" "IC113"-"12" "IC106"-"12" "IC105"-"12" "IC98"-"12" "JP9"-"21" "JP9"-"17" "JP9"-"39" "JP9"-"18" "JP9"-"22" "JP9"-"40" "JP10"-"17" "JP10"-"21" "JP10"-"39" "JP10"-"18" "JP10"-"22" "JP10"-"40" "IC31"-"7" "IC40"-"8" "IC40"-"2" "IC40"-"1" "IC40"-"5" "IC40"-"6" "IC40"-"11" "IC40"-"10" "IC40"-"14" "IC40"-"13" "IC44"-"8" "IC45"-"7" "IC44"-"15" "JP1"-"2" "JP1"-"1" "JP1"-"39" "JP1"-"3" "JP1"-"6" "JP1"-"5" "JP1"-"21" "JP1"-"18" "IC111"-"12" "JP1"-"15" "JP1"-"40" "C14"-"2" "C32"-"2" "C43"-"2" "C49"-"2" "C55"-"2" "C62"-"2" "C56"-"2" "C2"-"2" "C3"-"2" "C9"-"2" "C8"-"2" "C7"-"2" "C61"-"2" "C60"-"2" "C6"-"2" "C59"-"2" "C58"-"2" "C57"-"2" "C54"-"2" "C53"-"2" "C52"-"2" "C51"-"2" "C50"-"2" "C5"-"2" "C48"-"2" "C47"-"2" "C45"-"2" "C44"-"2" "C42"-"2" "C40"-"2" "C4"-"2" "C39"-"2" "C38"-"2" "C37"-"2" "C36"-"2" "C35"-"2" "C34"-"2" "C33"-"2" "C31"-"2" "C30"-"2" "C1"-"2" "C10"-"2" "C11"-"2" "C12"-"2" "C13"-"2" "C15"-"2" "C16"-"2" "C17"-"2" "C18"-"2" "C19"-"2" "C20"-"2" "C21"-"2" "C22"-"2" "C23"-"2" "C25"-"2" "C26"-"2" "C28"-"2" "C27"-"2" "C29"-"2" "C81"-"2" "C82"-"2" "C80"-"2" "C79"-"2" "C68"-"2" "C70"-"2" "C64"-"2" "C63"-"2" "C65"-"2" "C67"-"2" "C78"-"2" "C77"-"2" "C72"-"2" "C71"-"2" "C73"-"2" "C75"-"2" "C74"-"2" "C86"-"2" "C87"-"2" "C85"-"2" "C84"-"2" "C93"-"2" "C92"-"2" "C91"-"2" "C90"-"2" "C112"-"2" "C114"-"2" "C113"-"2" "C111"-"2" "C110"-"2" "C99"-"2" "C101"-"2" "C100"-"2" "C95"-"2" "C94"-"2" "C98"-"2" "C107"-"2" "C109"-"2" "C108"-"2" "C103"-"2" "C102"-"2" "C104"-"2" "C106"-"2" "C105"-"2" "C117"-"2" "C118"-"2" "C116"-"2" "C115"-"2" "C124"-"2" "C123"-"2" "C122"-"2" "C121"-"2" "C120"-"2" "C143"-"2" "C145"-"2" "C144"-"2" "C142"-"2" "C141"-"2" "C130"-"2" "C132"-"2" "C131"-"2" "C126"-"2" "C127"-"2" "C129"-"2" "C128"-"2" "C138"-"2" "C140"-"2" "C139"-"2" "C134"-"2" "C133"-"2" "C135"-"2" "C137"-"2" "C136"-"2" "C148"-"2" "C150"-"2" "C149"-"2" "C147"-"2" "C146"-"2" "C155"-"2" "C154"-"2" "C153"-"2" "C152"-"2" "C151"-"2" "C156"-"2" "IC49"-"10" "IC54"-"7" "IC85"-"7" "JP2"-"18" "JP2"-"26" "JP2"-"30" "JP6"-"1" "JP3"-"18" "JP3"-"30" "JP3"-"26" "JP4"-"18" "JP4"-"30" "JP4"-"26")
+      (pins  "IC10"-"7" "IC11"-"7" "IC14"-"7" "IC15"-"7" "IC3"-"8" "IC9"-"8" "IC56"-"8" "IC57"-"8" "IC58"-"8" "IC59"-"8" "IC60"-"8" "IC61"-"8" "IC72"-"10" "IC12"-"7" "IC13"-"7" "IC16"-"7" "IC18"-"7" "IC19"-"7" "IC20"-"7" "IC21"-"7" "IC42"-"10" "IC103"-"10" "IC128"-"7" "IC129"-"7" "IC46"-"8" "IC49"-"7" "IC177"-"8" "IC178"-"8" "IC175"-"8" "IC176"-"8" "IC179"-"8" "IC180"-"8" "IC181"-"8" "IC182"-"8" "IC126"-"8" "IC82"-"8" "IC83"-"8" "IC86"-"8" "IC87"-"8" "IC88"-"8" "IC89"-"8" "IC168"-"7" "IC169"-"7" "IC172"-"7" "IC173"-"7" "IC190"-"7" "IC191"-"7" "IC22"-"7" "IC25"-"7" "IC32"-"7" "IC52"-"7" "IC55"-"7" "IC27"-"7" "IC28"-"7" "IC74"-"7" "IC75"-"7" "IC78"-"7" "IC23"-"7" "IC24"-"7" "IC26"-"7" "IC30"-"7" "IC34"-"7" "IC39"-"7" "IC41"-"7" "IC76"-"7" "IC35"-"7" "IC43"-"7" "IC47"-"7" "IC61"-"7" "IC60"-"7" "IC59"-"7" "IC58"-"7" "IC57"-"7" "IC56"-"7" "IC3"-"7" "IC9"-"7" "IC103"-"1" "IC176"-"10" "IC176"-"1" "IC176"-"15" "IC175"-"9" "IC175"-"10" "IC175"-"1" "IC175"-"15" "IC178"-"10" "IC178"-"1" "IC178"-"15" "IC177"-"15" "IC177"-"1" "IC177"-"10" "IC177"-"9" "IC178"-"9" "IC176"-"9" "IC46"-"15" "IC86"-"15" "IC87"-"15" "IC88"-"15" "IC89"-"15" "IC126"-"15" "IC38"-"7" "IC77"-"8" "IC79"-"8" "IC77"-"15" "IC79"-"15" "IC101"-"7" "IC108"-"7" "IC110"-"7" "IC124"-"7" "IC125"-"7" "IC127"-"7" "IC33"-"7" "IC17"-"7" "IC80"-"7" "IC112"-"7" "IC117"-"7" "IC29"-"7" "IC51"-"7" "IC81"-"7" "IC98"-"8" "IC102"-"8" "IC105"-"8" "IC106"-"8" "IC111"-"8" "IC113"-"8" "IC114"-"8" "IC115"-"8" "IC116"-"10" "IC115"-"7" "IC114"-"7" "IC113"-"7" "IC111"-"7" "IC106"-"7" "IC105"-"7" "IC98"-"7" "IC102"-"7" "IC46"-"14" "IC134"-"7" "IC135"-"7" "IC136"-"7" "IC141"-"7" "IC102"-"12" "IC115"-"12" "IC114"-"12" "IC113"-"12" "IC106"-"12" "IC105"-"12" "IC98"-"12" "JP9"-"21" "JP9"-"17" "JP9"-"39" "JP9"-"18" "JP9"-"22" "JP9"-"40" "JP10"-"17" "JP10"-"21" "JP10"-"39" "JP10"-"18" "JP10"-"22" "JP10"-"40" "IC44"-"8" "IC44"-"15" "JP1"-"2" "JP1"-"1" "JP1"-"39" "JP1"-"3" "JP1"-"6" "JP1"-"5" "JP1"-"21" "JP1"-"18" "IC111"-"12" "JP1"-"15" "JP1"-"40" "C32"-"2" "C43"-"2" "C49"-"2" "C55"-"2" "C62"-"2" "C56"-"2" "C2"-"2" "C3"-"2" "C9"-"2" "C8"-"2" "C7"-"2" "C61"-"2" "C60"-"2" "C6"-"2" "C59"-"2" "C58"-"2" "C57"-"2" "C54"-"2" "C53"-"2" "C52"-"2" "C51"-"2" "C50"-"2" "C5"-"2" "C48"-"2" "C47"-"2" "C44"-"2" "C42"-"2" "C40"-"2" "C4"-"2" "C39"-"2" "C38"-"2" "C37"-"2" "C36"-"2" "C35"-"2" "C34"-"2" "C33"-"2" "C31"-"2" "C30"-"2" "C1"-"2" "C10"-"2" "C11"-"2" "C12"-"2" "C13"-"2" "C15"-"2" "C16"-"2" "C17"-"2" "C18"-"2" "C19"-"2" "C20"-"2" "C21"-"2" "C22"-"2" "C23"-"2" "C26"-"2" "C28"-"2" "C27"-"2" "C29"-"2" "C81"-"2" "C82"-"2" "C80"-"2" "C79"-"2" "C68"-"2" "C70"-"2" "C64"-"2" "C63"-"2" "C65"-"2" "C67"-"2" "C78"-"2" "C77"-"2" "C72"-"2" "C71"-"2" "C73"-"2" "C75"-"2" "C74"-"2" "C86"-"2" "C87"-"2" "C85"-"2" "C84"-"2" "C93"-"2" "C92"-"2" "C91"-"2" "C90"-"2" "C112"-"2" "C114"-"2" "C113"-"2" "C111"-"2" "C110"-"2" "C99"-"2" "C101"-"2" "C100"-"2" "C117"-"2" "C118"-"2" "C116"-"2" "C115"-"2" "C124"-"2" "C123"-"2" "C122"-"2" "C121"-"2" "C120"-"2" "C143"-"2" "C145"-"2" "C144"-"2" "C142"-"2" "C141"-"2" "C130"-"2" "C132"-"2" "C131"-"2" "C126"-"2" "C127"-"2" "C129"-"2" "C148"-"2" "C150"-"2" "C149"-"2" "C147"-"2" "C146"-"2" "C155"-"2" "C154"-"2" "C153"-"2" "C151"-"2" "C156"-"2" "IC54"-"7" "IC85"-"7" "JP2"-"18" "JP2"-"26" "JP2"-"30" "JP6"-"1" "JP3"-"18" "JP3"-"30" "JP3"-"26" "JP4"-"18" "JP4"-"30" "JP4"-"26" "C14"-"2" "IC36"-"7" "JP1"-"16" "JP1"-"20" "IC48"-"7" "IC31"-"7" "IC40"-"7" "IC63"-"10" "IC64"-"10" "IC70"-"10" "IC71"-"10" "IC73"-"10" "IC84"-"10" "IC90"-"10" "IC91"-"10" "IC93"-"10" "IC99"-"10" "IC100"-"10" "IC71"-"1" "IC63"-"1" "IC64"-"1" "IC2"-"7" "IC73"-"1" "IC70"-"1" "IC84"-"1" "IC90"-"1" "IC91"-"1" "IC93"-"1" "IC99"-"1" "IC100"-"1" "IC1"-"7")
     )
     (net "HGGJHGGJZGZ77UZGHGHHGHGHGHGHJGHJ"
       (pins  "IC173"-"2" "IC28"-"3")
     )
     (net "INPUT_REG0"
-      (pins  "IC129"-"3" "IC30"-"1" "IC126"-"3" "IC41"-"1" "IC41"-"4" "IC135"-"1" "IC135"-"4" "IC28"-"4")
+      (pins  "IC129"-"3" "IC30"-"1" "IC126"-"3" "IC41"-"1" "IC41"-"4" "IC135"-"1" "IC135"-"4" "IC31"-"4")
     )
     (net "INPUT_REG1"
       (pins  "IC129"-"6" "IC30"-"4" "IC126"-"6" "IC41"-"9" "IC41"-"12" "IC135"-"9" "IC135"-"12")
@@ -1297,7 +1177,7 @@
       (pins  "IC129"-"11" "IC30"-"12" "IC126"-"13" "IC39"-"9" "IC39"-"12" "IC134"-"9" "IC134"-"12")
     )
     (net "INPUT_REG_IS_NOT_OUTPUT_REG"
-      (pins  "IC76"-"1" "IC76"-"4" "IC76"-"9" "IC76"-"12" "IC108"-"8" "IC85"-"3" "IC133"-"1")
+      (pins  "IC76"-"1" "IC76"-"4" "IC76"-"9" "IC76"-"12" "IC108"-"8" "IC85"-"3" "IC54"-"11" "IC48"-"12")
     )
     (net "IO_INPUT1_0"
       (pins  "IC61"-"12" "JP10"-"2")
@@ -1348,85 +1228,85 @@
       (pins  "JP10"-"38" "IC102"-"15")
     )
     (net "IO_OUTPUT1_0"
-      (pins  "IC164"-"2" "JP10"-"1" "IC115"-"14")
+      (pins  "JP10"-"1" "IC115"-"14" "IC63"-"2")
     )
     (net "IO_OUTPUT1_1"
-      (pins  "IC164"-"5" "JP10"-"3" "IC114"-"14")
+      (pins  "JP10"-"3" "IC114"-"14" "IC63"-"5")
     )
     (net "IO_OUTPUT1_2"
-      (pins  "IC164"-"7" "JP10"-"5" "IC113"-"14")
+      (pins  "JP10"-"5" "IC113"-"14" "IC63"-"6")
     )
     (net "IO_OUTPUT1_3"
-      (pins  "IC164"-"10" "JP10"-"7" "IC111"-"14")
+      (pins  "JP10"-"7" "IC111"-"14" "IC63"-"9")
     )
     (net "IO_OUTPUT1_4"
-      (pins  "IC164"-"12" "JP10"-"9" "IC106"-"14")
+      (pins  "JP10"-"9" "IC106"-"14" "IC63"-"12")
     )
     (net "IO_OUTPUT1_5"
-      (pins  "IC164"-"15" "JP10"-"11" "IC105"-"14")
+      (pins  "JP10"-"11" "IC105"-"14" "IC63"-"15")
     )
     (net "IO_OUTPUT1_6"
-      (pins  "IC165"-"2" "JP10"-"13" "IC98"-"14")
+      (pins  "JP10"-"13" "IC98"-"14" "IC63"-"16")
     )
     (net "IO_OUTPUT1_7"
-      (pins  "IC165"-"5" "JP10"-"15" "IC102"-"14")
+      (pins  "JP10"-"15" "IC102"-"14" "IC63"-"19")
     )
     (net "IO_OUTPUT2_0"
-      (pins  "IC166"-"2" "JP10"-"23" "IC115"-"13")
+      (pins  "JP10"-"23" "IC115"-"13" "IC64"-"2")
     )
     (net "IO_OUTPUT2_1"
-      (pins  "IC166"-"5" "JP10"-"25" "IC114"-"13")
+      (pins  "JP10"-"25" "IC114"-"13" "IC64"-"5")
     )
     (net "IO_OUTPUT2_2"
-      (pins  "IC166"-"7" "JP10"-"27" "IC113"-"13")
+      (pins  "JP10"-"27" "IC113"-"13" "IC64"-"6")
     )
     (net "IO_OUTPUT2_3"
-      (pins  "IC166"-"10" "JP10"-"29" "IC111"-"13")
+      (pins  "JP10"-"29" "IC111"-"13" "IC64"-"9")
     )
     (net "IO_OUTPUT2_4"
-      (pins  "IC166"-"12" "JP10"-"31" "IC106"-"13")
+      (pins  "JP10"-"31" "IC106"-"13" "IC64"-"12")
     )
     (net "IO_OUTPUT2_5"
-      (pins  "IC166"-"15" "JP10"-"33" "IC105"-"13")
+      (pins  "JP10"-"33" "IC105"-"13" "IC64"-"15")
     )
     (net "IO_OUTPUT2_6"
-      (pins  "IC167"-"2" "JP10"-"35" "IC98"-"13")
+      (pins  "JP10"-"35" "IC98"-"13" "IC64"-"16")
     )
     (net "IO_OUTPUT2_7"
-      (pins  "IC167"-"5" "JP10"-"37" "IC102"-"13")
+      (pins  "JP10"-"37" "IC102"-"13" "IC64"-"19")
     )
     (net "IO_OUTPUT_REG_1_LOAD_INPUT"
-      (pins  "IC39"-"8" "IC165"-"9" "IC164"-"9")
+      (pins  "IC39"-"8" "IC63"-"11")
     )
     (net "IO_OUTPUT_REG_2_LOAD_INPUT"
-      (pins  "IC167"-"9" "IC166"-"9" "IC39"-"11")
+      (pins  "IC39"-"11" "IC64"-"11")
     )
     (net "IR_DATA_OUT_0"
-      (pins  "IC4"-"2" "IC61"-"4")
+      (pins  "IC61"-"4" "IC90"-"2")
     )
     (net "IR_DATA_OUT_1"
-      (pins  "IC4"-"5" "IC60"-"4")
+      (pins  "IC60"-"4" "IC90"-"5")
     )
     (net "IR_DATA_OUT_2"
-      (pins  "IC4"-"7" "IC59"-"4")
+      (pins  "IC59"-"4" "IC90"-"6")
     )
     (net "IR_DATA_OUT_3"
-      (pins  "IC4"-"10" "IC58"-"4")
+      (pins  "IC58"-"4" "IC90"-"9")
     )
     (net "IR_DATA_OUT_4"
-      (pins  "IC4"-"12" "IC57"-"4")
+      (pins  "IC57"-"4" "IC90"-"12")
     )
     (net "IR_DATA_OUT_5"
-      (pins  "IC4"-"15" "IC56"-"4")
+      (pins  "IC56"-"4" "IC90"-"15")
     )
     (net "IR_DATA_OUT_6"
-      (pins  "IC5"-"2" "IC3"-"4")
+      (pins  "IC3"-"4" "IC90"-"16")
     )
     (net "IR_DATA_OUT_7"
-      (pins  "IC5"-"5" "IC104"-"4" "IC125"-"1" "IC130"-"9" "IC130"-"13" "IC125"-"10" "IC9"-"4" "IC130"-"5")
+      (pins  "IC125"-"10" "IC9"-"4" "IC36"-"12" "IC36"-"9" "IC101"-"9" "IC47"-"11" "IC49"-"10" "IC90"-"19")
     )
     (net "IR_LOAD_INPUT"
-      (pins  "IC4"-"9" "IC5"-"9" "IC80"-"12" "IC91"-"3")
+      (pins  "IC80"-"12" "IC127"-"3" "IC90"-"11")
     )
     (net "LATCH_ALU_INPUT_B_ALU"
       (pins  "IC75"-"3" "IC110"-"12" "IC190"-"12")
@@ -1435,76 +1315,76 @@
       (pins  "IC38"-"3" "IC110"-"9" "IC172"-"4")
     )
     (net "LATCH_ALU_INPUT_B_PTR_ADD"
-      (pins  "IC104"-"11" "IC173"-"12" "IC110"-"10")
+      (pins  "IC173"-"12" "IC110"-"10" "IC23"-"3")
     )
     (net "LDR"
       (pins  "IC112"-"12" "IC27"-"2" "IC27"-"5" "IC21"-"3" "IC28"-"2")
     )
     (net "LR_DATA_OUT_0"
-      (pins  "IC92"-"2" "IC115"-"4")
+      (pins  "IC115"-"4" "IC99"-"2")
     )
     (net "LR_DATA_OUT_1"
-      (pins  "IC92"-"5" "IC114"-"4")
+      (pins  "IC114"-"4" "IC99"-"5")
     )
     (net "LR_DATA_OUT_2"
-      (pins  "IC92"-"7" "IC113"-"4")
+      (pins  "IC113"-"4" "IC99"-"6")
     )
     (net "LR_DATA_OUT_3"
-      (pins  "IC92"-"10" "IC111"-"4")
+      (pins  "IC111"-"4" "IC99"-"9")
     )
     (net "LR_DATA_OUT_4"
-      (pins  "IC92"-"12" "IC106"-"4")
+      (pins  "IC106"-"4" "IC99"-"12")
     )
     (net "LR_DATA_OUT_5"
-      (pins  "IC92"-"15" "IC105"-"4")
+      (pins  "IC105"-"4" "IC99"-"15")
     )
     (net "LR_DATA_OUT_6"
-      (pins  "IC94"-"2" "IC98"-"4")
+      (pins  "IC98"-"4" "IC99"-"16")
     )
     (net "LR_DATA_OUT_7"
-      (pins  "IC94"-"5" "IC102"-"4")
+      (pins  "IC102"-"4" "IC99"-"19")
     )
     (net "LR_DATA_OUT_8"
-      (pins  "IC95"-"2" "IC115"-"3")
+      (pins  "IC115"-"3" "IC100"-"2")
     )
     (net "LR_DATA_OUT_9"
-      (pins  "IC95"-"5" "IC114"-"3")
+      (pins  "IC114"-"3" "IC100"-"5")
     )
     (net "LR_DATA_OUT_10"
-      (pins  "IC95"-"7" "IC113"-"3")
+      (pins  "IC113"-"3" "IC100"-"6")
     )
     (net "LR_DATA_OUT_11"
-      (pins  "IC95"-"10" "IC111"-"3")
+      (pins  "IC111"-"3" "IC100"-"9")
     )
     (net "LR_DATA_OUT_12"
-      (pins  "IC95"-"12" "IC106"-"3")
+      (pins  "IC106"-"3" "IC100"-"12")
     )
     (net "LR_DATA_OUT_13"
-      (pins  "IC95"-"15" "IC105"-"3")
+      (pins  "IC105"-"3" "IC100"-"15")
     )
     (net "LR_DATA_OUT_14"
-      (pins  "IC97"-"2" "IC98"-"3")
+      (pins  "IC98"-"3" "IC100"-"16")
     )
     (net "LR_DATA_OUT_15"
-      (pins  "IC97"-"5" "IC102"-"3")
+      (pins  "IC102"-"3" "IC100"-"19")
     )
-    (net "LR_H_LOAD_INPUT"
-      (pins  "IC133"-"13" "IC84"-"11")
+    (net "LR_H_LOAD_INPUT_NOT"
+      (pins  "IC100"-"11" "IC2"-"11")
     )
     (net "LR_H_LOAD_INPUT_TABLE_1"
-      (pins  "IC135"-"6" "IC84"-"13")
+      (pins  "IC135"-"6" "IC2"-"13")
     )
-    (net "LR_L_LOAD_INPUT"
-      (pins  "IC133"-"11" "IC84"-"8")
+    (net "LR_L_LOAD_INPUT_NOT"
+      (pins  "IC99"-"11" "IC1"-"6")
     )
     (net "LR_L_LOAD_INPUT_TABLE_1"
-      (pins  "IC135"-"3" "IC84"-"10")
+      (pins  "IC135"-"3" "IC1"-"5")
     )
     (net "MEM_NOT_CE"
-      (pins  "IC34"-"10" "IC34"-"13" "IC17"-"8")
+      (pins  "IC36"-"2" "IC85"-"4" "IC25"-"10")
     )
     (net "MEM_NOT_OE"
-      (pins  "IC85"-"4" "JP2"-"20" "JP3"-"20")
+      (pins  "JP2"-"20" "JP3"-"20" "IC48"-"10")
     )
     (net "MEM_NOT_WE"
       (pins  "JP2"-"24" "JP3"-"24" "IC35"-"4")
@@ -1539,11 +1419,14 @@
     (net "N$11"
       (pins  "IC52"-"13" "IC110"-"6")
     )
+    (net "N$12"
+      (pins  "IC116"-"11" "IC34"-"8" "IC49"-"12")
+    )
     (net "N$13"
-      (pins  "IC112"-"3" "IC54"-"11")
+      (pins  "IC112"-"3" "IC108"-"1")
     )
     (net "N$14"
-      (pins  "IC42"-"1" "IC42"-"11" "IC35"-"10")
+      (pins  "IC42"-"1" "IC42"-"11" "IC54"-"10")
     )
     (net "N$15"
       (pins  "IC74"-"13" "IC28"-"10" "IC28"-"13" "IC74"-"10" "IC125"-"11")
@@ -1563,8 +1446,11 @@
     (net "N$20"
       (pins  "IC85"-"12" "IC25"-"11")
     )
+    (net "N$21"
+      (pins  "IC112"-"8" "IC108"-"2" "IC169"-"4")
+    )
     (net "N$22"
-      (pins  "IC125"-"5" "IC130"-"3" "IC28"-"6")
+      (pins  "IC125"-"5" "IC47"-"12")
     )
     (net "N$23"
       (pins  "IC59"-"5" "IC72"-"7")
@@ -1591,13 +1477,13 @@
       (pins  "IC46"-"11" "IC22"-"11")
     )
     (net "N$31"
-      (pins  "IC34"-"11" "IC35"-"5")
+      (pins  "IC36"-"3" "JP3"-"22")
     )
     (net "N$32"
-      (pins  "IC84"-"4" "IC45"-"6")
+      (pins  "IC36"-"6" "IC48"-"2")
     )
     (net "N$33"
-      (pins  "IC80"-"10" "IC17"-"11")
+      (pins  "IC17"-"11" "IC48"-"6")
     )
     (net "N$34"
       (pins  "IC19"-"11" "IC124"-"13")
@@ -1629,11 +1515,14 @@
     (net "N$43"
       (pins  "IC21"-"12" "IC21"-"5" "IC18"-"5" "IC18"-"13" "IC19"-"5" "IC19"-"13" "IC20"-"5" "IC20"-"13" "IC47"-"8")
     )
+    (net "N$44"
+      (pins  "IC34"-"13" "IC35"-"10")
+    )
     (net "N$46"
       (pins  "IC58"-"5" "IC72"-"8")
     )
     (net "N$47"
-      (pins  "IC44"-"1" "IC45"-"8")
+      (pins  "IC44"-"1" "IC33"-"11")
     )
     (net "N$48"
       (pins  "IC49"-"6" "IC108"-"9")
@@ -1646,6 +1535,9 @@
     )
     (net "N$51"
       (pins  "IC49"-"3" "IC108"-"10")
+    )
+    (net "N$52"
+      (pins  "IC116"-"1" "IC49"-"11")
     )
     (net "N$53"
       (pins  "IC34"-"2" "IC34"-"5" "IC108"-"6")
@@ -1689,23 +1581,17 @@
     (net "N$66"
       (pins  "JP9"-"8" "IC42"-"8")
     )
-    (net "N$68"
-      (pins  "IC34"-"9" "IC35"-"12")
+    (net "N$67"
+      (pins  "IC35"-"6" "IC36"-"1")
     )
-    (net "N$69"
-      (pins  "IC35"-"6" "JP3"-"22")
+    (net "N$68"
+      (pins  "IC101"-"1" "IC35"-"12")
     )
     (net "N$70"
-      (pins  "IC34"-"8" "IC35"-"9")
+      (pins  "JP2"-"22" "IC25"-"8")
     )
     (net "N$71"
       (pins  "IC32"-"13" "IC30"-"11")
-    )
-    (net "N$72"
-      (pins  "IC1"-"9" "IC2"-"9" "IC133"-"6")
-    )
-    (net "N$73"
-      (pins  "IC182"-"11" "IC181"-"11" "IC133"-"4")
     )
     (net "N$75"
       (pins  "IC72"-"14" "IC56"-"5")
@@ -1739,12 +1625,6 @@
     )
     (net "N$97"
       (pins  "IC24"-"13" "IC26"-"2" "IC26"-"5" "IC26"-"10" "IC20"-"8")
-    )
-    (net "N$99"
-      (pins  "IC35"-"8" "JP2"-"22")
-    )
-    (net "N$101"
-      (pins  "IC44"-"10" "IC45"-"3")
     )
     (net "N$102"
       (pins  "IC126"-"12" "IC22"-"12")
@@ -1801,7 +1681,7 @@
       (pins  "IC103"-"5" "JP9"-"3")
     )
     (net "N$121"
-      (pins  "IC52"-"8" "IC25"-"9")
+      (pins  "IC52"-"8" "IC169"-"9")
     )
     (net "N$122"
       (pins  "IC173"-"5" "IC27"-"3")
@@ -1816,40 +1696,25 @@
       (pins  "IC79"-"7" "IC103"-"14")
     )
     (net "N$126"
-      (pins  "IC17"-"3" "IC17"-"9")
+      (pins  "IC17"-"3" "IC85"-"5")
     )
     (net "N$127"
       (pins  "IC103"-"17" "IC79"-"9")
     )
     (net "N$128"
-      (pins  "IC101"-"12" "IC130"-"8")
-    )
-    (net "N$129"
-      (pins  "IC109"-"10" "IC130"-"10")
-    )
-    (net "N$130"
-      (pins  "IC23"-"3" "IC47"-"13")
-    )
-    (net "N$131"
-      (pins  "IC24"-"8" "IC47"-"11")
+      (pins  "IC101"-"4" "IC49"-"8")
     )
     (net "N$132"
-      (pins  "IC38"-"10" "IC38"-"2" "IC38"-"5" "IC38"-"13" "IC101"-"2" "IC124"-"5" "IC125"-"6")
+      (pins  "IC38"-"10" "IC38"-"2" "IC38"-"5" "IC38"-"13" "IC124"-"5" "IC125"-"6")
     )
     (net "N$134"
       (pins  "IC103"-"18" "IC79"-"12")
     )
-    (net "N$135"
-      (pins  "IC35"-"11" "IC31"-"11" "IC33"-"11")
-    )
     (net "N$136"
       (pins  "IC41"-"5" "IC41"-"13" "IC39"-"5" "IC39"-"13" "IC136"-"3")
     )
-    (net "N$137"
-      (pins  "IC101"-"3" "IC101"-"5")
-    )
     (net "N$139"
-      (pins  "IC101"-"6" "IC101"-"13" "IC104"-"5")
+      (pins  "IC101"-"11" "IC101"-"5" "IC101"-"10")
     )
     (net "N$141"
       (pins  "IC181"-"5" "IC26"-"11")
@@ -1870,25 +1735,22 @@
       (pins  "IC172"-"2" "IC23"-"6")
     )
     (net "N$147"
-      (pins  "IC33"-"13" "IC33"-"3")
+      (pins  "IC33"-"3" "IC54"-"9")
     )
     (net "N$148"
       (pins  "IC33"-"6" "JP9"-"28")
     )
     (net "N$149"
-      (pins  "IC125"-"13" "IC130"-"4")
+      (pins  "IC125"-"13" "IC31"-"6" "IC47"-"13")
     )
     (net "N$150"
       (pins  "IC52"-"6" "IC52"-"10")
     )
     (net "N$151"
-      (pins  "IC101"-"8" "IC173"-"13")
+      (pins  "IC173"-"13" "IC125"-"3")
     )
     (net "N$152"
       (pins  "IC110"-"13" "IC110"-"8")
-    )
-    (net "N$153"
-      (pins  "IC127"-"6" "IC127"-"2")
     )
     (net "N$154"
       (pins  "IC52"-"3" "IC52"-"9")
@@ -1902,38 +1764,26 @@
     (net "N$157"
       (pins  "IC23"-"11" "IC54"-"3")
     )
-    (net "N$158"
-      (pins  "IC125"-"3" "IC37"-"5")
-    )
     (net "N$159"
-      (pins  "IC127"-"3" "IC127"-"13" "IC125"-"2")
+      (pins  "IC36"-"13" "IC36"-"10" "IC31"-"11")
     )
     (net "N$160"
       (pins  "IC169"-"2" "IC26"-"6")
     )
-    (net "N$161"
-      (pins  "IC127"-"12" "IC130"-"12")
-    )
-    (net "N$162"
-      (pins  "IC127"-"11" "IC130"-"1")
-    )
     (net "N$163"
-      (pins  "IC84"-"5" "IC84"-"3")
+      (pins  "IC80"-"8" "IC48"-"3")
     )
     (net "N$164"
-      (pins  "IC127"-"9" "IC130"-"6")
+      (pins  "IC127"-"9" "IC47"-"10")
     )
     (net "N$166"
       (pins  "IC127"-"10" "IC124"-"6" "IC125"-"9")
-    )
-    (net "N$167"
-      (pins  "IC95"-"9" "IC97"-"9" "IC133"-"12")
     )
     (net "N$170"
       (pins  "IC103"-"6" "JP9"-"5")
     )
     (net "N$171"
-      (pins  "IC44"-"6" "IC45"-"11")
+      (pins  "IC44"-"6" "IC17"-"8")
     )
     (net "N$172"
       (pins  "IC103"-"9" "JP9"-"7")
@@ -1966,7 +1816,7 @@
       (pins  "IC85"-"11" "IC25"-"3")
     )
     (net "N$194"
-      (pins  "IC109"-"11" "IC81"-"2" "IC81"-"5" "IC81"-"10" "IC81"-"13")
+      (pins  "IC81"-"2" "IC81"-"5" "IC81"-"10" "IC81"-"13" "IC127"-"6")
     )
     (net "N$196"
       (pins  "IC172"-"13" "IC24"-"11")
@@ -1981,25 +1831,22 @@
       (pins  "IC20"-"3" "IC78"-"10")
     )
     (net "N$200"
-      (pins  "IC17"-"6" "IC17"-"10")
+      (pins  "IC17"-"6" "IC85"-"6")
     )
     (net "N$201"
-      (pins  "IC91"-"11" "IC80"-"1")
+      (pins  "IC80"-"1" "IC54"-"13")
     )
     (net "N$202"
       (pins  "IC33"-"8" "JP9"-"30")
     )
     (net "N$203"
-      (pins  "IC91"-"8" "IC80"-"2")
+      (pins  "IC80"-"2" "IC169"-"6")
     )
     (net "N$204"
       (pins  "IC190"-"2" "IC74"-"8")
     )
-    (net "N$205"
-      (pins  "IC91"-"12" "IC133"-"2")
-    )
     (net "N$206"
-      (pins  "IC91"-"13" "IC54"-"13")
+      (pins  "IC54"-"12" "IC108"-"3")
     )
     (net "N$208"
       (pins  "IC178"-"12" "IC175"-"5")
@@ -2016,9 +1863,6 @@
     (net "N$212"
       (pins  "IC128"-"1" "IC128"-"12" "IC43"-"12")
     )
-    (net "N$213"
-      (pins  "IC54"-"9" "IC108"-"3")
-    )
     (net "N$214"
       (pins  "IC128"-"2" "IC128"-"5" "IC43"-"2")
     )
@@ -2029,13 +1873,10 @@
       (pins  "IC176"-"5" "IC175"-"12")
     )
     (net "N$217"
-      (pins  "IC54"-"8" "IC108"-"11")
-    )
-    (net "N$218"
-      (pins  "IC112"-"8" "IC91"-"9" "IC54"-"12")
+      (pins  "IC108"-"11" "IC48"-"11")
     )
     (net "N$219"
-      (pins  "IC109"-"8" "IC51"-"2" "IC51"-"5" "IC51"-"10" "IC51"-"13")
+      (pins  "IC51"-"2" "IC51"-"5" "IC51"-"10" "IC51"-"13" "IC34"-"11")
     )
     (net "N$220"
       (pins  "IC112"-"9" "IC112"-"6")
@@ -2056,7 +1897,7 @@
       (pins  "IC29"-"13" "IC51"-"8")
     )
     (net "N$227"
-      (pins  "IC91"-"10" "IC54"-"10")
+      (pins  "IC48"-"13" "IC169"-"5")
     )
     (net "N$228"
       (pins  "JP9"-"16" "IC42"-"18")
@@ -2066,9 +1907,6 @@
     )
     (net "N$233"
       (pins  "IC29"-"10" "IC81"-"6")
-    )
-    (net "N$234"
-      (pins  "IC92"-"9" "IC94"-"9" "IC133"-"10")
     )
     (net "N$235"
       (pins  "IC135"-"5" "IC135"-"13" "IC134"-"5" "IC134"-"13" "IC136"-"11")
@@ -2100,11 +1938,8 @@
     (net "N$248"
       (pins  "IC141"-"3" "IC141"-"9")
     )
-    (net "N$249"
-      (pins  "IC141"-"10" "IC141"-"11")
-    )
     (net "N$252"
-      (pins  "IC25"-"10" "IC141"-"6")
+      (pins  "IC141"-"6" "IC169"-"10")
     )
     (net "N$258"
       (pins  "IC115"-"5" "IC116"-"3")
@@ -2131,16 +1966,7 @@
       (pins  "IC102"-"5" "IC116"-"18")
     )
     (net "N$266"
-      (pins  "IC25"-"8" "IC109"-"2" "IC109"-"5")
-    )
-    (net "N$267"
-      (pins  "IC116"-"11" "IC109"-"6" "IC37"-"3")
-    )
-    (net "N$268"
-      (pins  "IC109"-"1" "IC37"-"8")
-    )
-    (net "N$269"
-      (pins  "IC116"-"1" "IC37"-"4")
+      (pins  "IC101"-"2" "IC34"-"10" "IC169"-"8")
     )
     (net "NOT_USED2"
       (pins  "IC134"-"3")
@@ -2155,31 +1981,31 @@
       (pins  "IC134"-"11")
     )
     (net "OPCODE_0"
-      (pins  "IC12"-"9" "IC12"-"4" "IC47"-"1" "IC6"-"2")
+      (pins  "IC12"-"9" "IC12"-"4" "IC47"-"1" "IC91"-"2")
     )
     (net "OPCODE_1"
-      (pins  "IC12"-"10" "IC12"-"13" "IC47"-"3" "IC6"-"5")
+      (pins  "IC12"-"10" "IC12"-"13" "IC47"-"3" "IC91"-"5")
     )
     (net "OPCODE_2"
-      (pins  "IC16"-"13" "IC16"-"5" "IC13"-"13" "IC13"-"5" "IC47"-"5" "IC6"-"7")
+      (pins  "IC16"-"13" "IC16"-"5" "IC13"-"13" "IC13"-"5" "IC47"-"5" "IC91"-"6")
     )
     (net "OPCODE_3"
-      (pins  "IC18"-"2" "IC18"-"10" "IC19"-"2" "IC19"-"10" "IC20"-"2" "IC20"-"10" "IC21"-"2" "IC21"-"10" "IC47"-"9" "IC6"-"10")
+      (pins  "IC18"-"2" "IC18"-"10" "IC19"-"2" "IC19"-"10" "IC20"-"2" "IC20"-"10" "IC21"-"2" "IC21"-"10" "IC47"-"9" "IC91"-"9")
     )
     (net "OPCODE_4"
-      (pins  "IC129"-"9" "IC129"-"4" "IC49"-"4" "IC6"-"12" "IC46"-"3" "IC43"-"3" "IC108"-"12")
+      (pins  "IC129"-"9" "IC129"-"4" "IC49"-"4" "IC46"-"3" "IC43"-"3" "IC108"-"12" "IC91"-"12")
     )
     (net "OPCODE_5"
-      (pins  "IC129"-"13" "IC129"-"10" "IC6"-"15" "IC46"-"6" "IC49"-"1" "IC109"-"12" "IC130"-"11" "IC43"-"5" "IC108"-"1")
+      (pins  "IC129"-"13" "IC129"-"10" "IC46"-"6" "IC49"-"1" "IC43"-"5" "IC108"-"13" "IC127"-"4" "IC35"-"11" "IC91"-"15")
     )
     (net "OPCODE_6"
-      (pins  "IC128"-"9" "IC128"-"4" "IC49"-"5" "IC50"-"2" "IC46"-"10" "IC34"-"1" "IC43"-"11" "IC108"-"13" "IC43"-"13")
+      (pins  "IC128"-"9" "IC128"-"4" "IC49"-"5" "IC46"-"10" "IC34"-"1" "IC43"-"11" "IC43"-"13" "IC91"-"16")
     )
     (net "OPCODE_7"
-      (pins  "IC128"-"13" "IC128"-"10" "IC50"-"5" "IC49"-"2" "IC46"-"13" "IC136"-"1" "IC136"-"4" "IC43"-"9" "IC43"-"1" "IC108"-"2")
+      (pins  "IC128"-"13" "IC128"-"10" "IC49"-"2" "IC46"-"13" "IC136"-"1" "IC136"-"4" "IC43"-"9" "IC43"-"1" "IC91"-"19")
     )
     (net "OPCODE_LOAD_INPUT/CYCL_2"
-      (pins  "IC50"-"9" "IC6"-"9" "IC10"-"9" "IC11"-"2" "IC80"-"4" "JP1"-"22")
+      (pins  "IC10"-"9" "IC11"-"2" "IC80"-"4" "JP1"-"24" "IC91"-"11")
     )
     (net "OPERAND_REGB_OUTPUT"
       (pins  "IC126"-"1" "IC168"-"6" "IC85"-"2" "IC110"-"2")
@@ -2188,7 +2014,7 @@
       (pins  "IC126"-"2" "IC76"-"3")
     )
     (net "OUTPUT_REG0_JMP"
-      (pins  "IC128"-"3" "IC76"-"2" "IC28"-"5")
+      (pins  "IC128"-"3" "IC76"-"2" "IC31"-"5")
     )
     (net "OUTPUT_REG1"
       (pins  "IC126"-"5" "IC76"-"6")
@@ -2200,13 +2026,13 @@
       (pins  "IC126"-"14" "IC76"-"11")
     )
     (net "PC_COUNT_UP"
-      (pins  "IC179"-"5" "IC54"-"4")
+      (pins  "IC179"-"5" "IC2"-"8")
     )
     (net "PC_COUNT_UP_FETCH1"
-      (pins  "IC80"-"13" "IC91"-"6" "IC54"-"5")
+      (pins  "IC80"-"13" "IC127"-"11" "IC2"-"9")
     )
     (net "PC_COUNT_UP_FETCH2/CYCL_5"
-      (pins  "IC14"-"5" "IC14"-"12" "JP1"-"28" "IC54"-"6")
+      (pins  "IC14"-"5" "IC14"-"12" "JP1"-"30" "IC2"-"10")
     )
     (net "PC_DATA_OUT_0"
       (pins  "IC179"-"3" "IC86"-"3" "IC77"-"2" "IC115"-"2")
@@ -2256,59 +2082,59 @@
     (net "PC_DATA_OUT_15"
       (pins  "IC182"-"7" "IC89"-"13" "IC102"-"1")
     )
-    (net "PC_HIGH_LOAD_INPUT"
-      (pins  "IC133"-"3" "IC80"-"8")
-    )
     (net "PC_HIGH_LOAD_INPUT_JMP"
-      (pins  "IC190"-"9" "IC28"-"11" "IC80"-"9")
+      (pins  "IC190"-"9" "IC28"-"11" "IC48"-"5")
+    )
+    (net "PC_HIGH_LOAD_INPUT_NOT"
+      (pins  "IC182"-"11" "IC181"-"11" "IC48"-"4")
     )
     (net "PC_H_COUNT_DOWN_JMP_O"
-      (pins  "IC104"-"6" "IC75"-"9")
+      (pins  "IC75"-"9" "IC101"-"8")
     )
     (net "PC_H_COUNT_UP_JMP_O"
-      (pins  "IC101"-"11" "IC26"-"13")
+      (pins  "IC26"-"13" "IC101"-"6")
     )
     (net "PC_H_LOAD_INPUT_TABLE_1"
       (pins  "IC135"-"11" "IC17"-"13")
     )
-    (net "PC_LOW_LOAD_INPUT"
-      (pins  "IC84"-"6" "IC133"-"9")
-    )
     (net "PC_LOW_LOAD_INPUT_JMP"
-      (pins  "IC190"-"1" "IC74"-"11" "IC45"-"4")
+      (pins  "IC190"-"1" "IC74"-"11" "IC36"-"4")
+    )
+    (net "PC_LOW_LOAD_INPUT_NOT"
+      (pins  "IC180"-"11" "IC179"-"11" "IC48"-"1")
     )
     (net "PC_L_LOAD_INPUT_TABLE_1"
-      (pins  "IC135"-"8" "IC45"-"5")
+      (pins  "IC135"-"8" "IC36"-"5")
     )
     (net "POP"
-      (pins  "IC24"-"2" "IC24"-"5" "IC24"-"10" "IC21"-"11" "IC23"-"13" "IC112"-"2")
+      (pins  "IC24"-"2" "IC24"-"5" "IC21"-"11" "IC23"-"13" "IC112"-"2" "IC31"-"2")
     )
     (net "PTR_ADD"
-      (pins  "IC20"-"6" "IC104"-"13" "IC101"-"10" "IC104"-"2" "IC104"-"10" "IC127"-"5" "IC124"-"4" "IC112"-"5")
+      (pins  "IC20"-"6" "IC124"-"4" "IC112"-"5" "IC125"-"2" "IC23"-"2" "IC28"-"5" "IC24"-"10")
     )
     (net "PTR_DATA_OUT_0"
-      (pins  "IC86"-"2" "IC61"-"14" "IC1"-"2")
+      (pins  "IC86"-"2" "IC61"-"14" "IC93"-"2")
     )
     (net "PTR_DATA_OUT_1"
-      (pins  "IC86"-"5" "IC60"-"14" "IC1"-"5")
+      (pins  "IC86"-"5" "IC60"-"14" "IC93"-"5")
     )
     (net "PTR_DATA_OUT_2"
-      (pins  "IC1"-"7" "IC86"-"11" "IC59"-"14")
+      (pins  "IC86"-"11" "IC59"-"14" "IC93"-"6")
     )
     (net "PTR_DATA_OUT_3"
-      (pins  "IC86"-"14" "IC58"-"14" "IC1"-"10")
+      (pins  "IC86"-"14" "IC58"-"14" "IC93"-"9")
     )
     (net "PTR_DATA_OUT_4"
-      (pins  "IC87"-"2" "IC57"-"14" "IC1"-"12")
+      (pins  "IC87"-"2" "IC57"-"14" "IC93"-"12")
     )
     (net "PTR_DATA_OUT_5"
-      (pins  "IC87"-"5" "IC56"-"14" "IC1"-"15")
+      (pins  "IC87"-"5" "IC56"-"14" "IC93"-"15")
     )
     (net "PTR_DATA_OUT_6"
-      (pins  "IC87"-"11" "IC3"-"14" "IC2"-"2")
+      (pins  "IC87"-"11" "IC3"-"14" "IC93"-"16")
     )
     (net "PTR_DATA_OUT_7"
-      (pins  "IC87"-"14" "IC9"-"14" "IC2"-"5")
+      (pins  "IC87"-"14" "IC9"-"14" "IC93"-"19")
     )
     (net "PTR_DATA_OUT_8"
       (pins  "IC82"-"3" "IC88"-"2" "IC61"-"13")
@@ -2335,22 +2161,22 @@
       (pins  "IC83"-"7" "IC89"-"14" "IC9"-"13")
     )
     (net "PTR_HIGH_COUNT_DOWN"
-      (pins  "IC82"-"4" "IC37"-"6")
+      (pins  "IC82"-"4" "IC36"-"8")
     )
     (net "PTR_HIGH_COUNT_UP"
-      (pins  "IC82"-"5" "IC130"-"2")
+      (pins  "IC82"-"5" "IC36"-"11")
     )
     (net "PTR_H_LOAD_INPUT_NOT"
-      (pins  "IC83"-"11" "IC82"-"11" "IC169"-"6")
+      (pins  "IC83"-"11" "IC82"-"11" "IC2"-"6")
     )
-    (net "PTR_L_LOAD_INPUT"
-      (pins  "IC169"-"8" "IC133"-"5")
+    (net "PTR_L_LOAD_INPUT_NOT"
+      (pins  "IC93"-"11" "IC2"-"3")
     )
     (net "PTR_TO_ABUS/!PC_TO_ABUS"
       (pins  "IC86"-"1" "IC87"-"1" "IC88"-"1" "IC89"-"1" "IC25"-"6")
     )
     (net "PUSH"
-      (pins  "IC23"-"5" "IC23"-"10" "IC21"-"8" "IC23"-"2" "IC112"-"10")
+      (pins  "IC23"-"5" "IC23"-"10" "IC21"-"8" "IC112"-"10" "IC31"-"10")
     )
     (net "REG0_ZERO"
       (pins  "IC78"-"1" "IC78"-"4" "JP1"-"11" "IC85"-"13")
@@ -2374,139 +2200,139 @@
       (pins  "IC46"-"9" "IC44"-"11")
     )
     (net "REGISTER_OUTPUT_SEL_3"
-      (pins  "IC109"-"4" "IC44"-"12" "IC37"-"9")
+      (pins  "IC44"-"12" "IC35"-"13" "IC34"-"9")
     )
     (net "REGISTER_OUTPUT_SEL_3_"
       (pins  "IC46"-"12" "IC44"-"14")
     )
     (net "REGS_OUTPUT_TO_DATABUS_ENABLE"
-      (pins  "IC72"-"1" "IC37"-"2")
+      (pins  "IC72"-"1" "IC35"-"8")
     )
     (net "REG_0_LOAD_INPUT"
-      (pins  "IC8"-"9" "IC7"-"9" "IC32"-"3")
+      (pins  "IC32"-"3" "IC84"-"11")
     )
     (net "REG_0_OUT_0"
-      (pins  "IC7"-"2" "IC55"-"1" "JP1"-"23" "IC61"-"3")
+      (pins  "IC55"-"1" "JP1"-"23" "IC61"-"3" "IC84"-"2")
     )
     (net "REG_0_OUT_1"
-      (pins  "IC55"-"2" "IC7"-"5" "JP1"-"25" "IC60"-"3")
+      (pins  "IC55"-"2" "JP1"-"25" "IC60"-"3" "IC84"-"5")
     )
     (net "REG_0_OUT_2"
-      (pins  "IC7"-"7" "IC55"-"4" "JP1"-"27" "IC59"-"3")
+      (pins  "IC55"-"4" "JP1"-"27" "IC59"-"3" "IC84"-"6")
     )
     (net "REG_0_OUT_3"
-      (pins  "IC7"-"10" "IC55"-"5" "JP1"-"29" "IC58"-"3")
+      (pins  "IC55"-"5" "JP1"-"29" "IC58"-"3" "IC84"-"9")
     )
     (net "REG_0_OUT_4"
-      (pins  "IC7"-"12" "IC55"-"9" "JP1"-"31" "IC57"-"3")
+      (pins  "IC55"-"9" "JP1"-"31" "IC57"-"3" "IC84"-"12")
     )
     (net "REG_0_OUT_5"
-      (pins  "IC7"-"15" "IC55"-"10" "JP1"-"33" "IC56"-"3")
+      (pins  "IC55"-"10" "JP1"-"33" "IC56"-"3" "IC84"-"15")
     )
     (net "REG_0_OUT_6"
-      (pins  "IC8"-"2" "IC55"-"12" "JP1"-"35" "IC3"-"3")
+      (pins  "IC55"-"12" "JP1"-"35" "IC3"-"3" "IC84"-"16")
     )
     (net "REG_0_OUT_7"
-      (pins  "IC8"-"5" "IC55"-"13" "JP1"-"37" "IC9"-"3")
+      (pins  "IC55"-"13" "JP1"-"37" "IC9"-"3" "IC84"-"19")
     )
     (net "REG_1_LOAD_INPUT"
-      (pins  "IC65"-"9" "IC62"-"9" "IC32"-"6")
+      (pins  "IC32"-"6" "IC70"-"11")
     )
     (net "REG_1_OUT_0"
-      (pins  "IC62"-"2" "IC61"-"2")
+      (pins  "IC61"-"2" "IC70"-"2")
     )
     (net "REG_1_OUT_1"
-      (pins  "IC62"-"5" "IC60"-"2")
+      (pins  "IC60"-"2" "IC70"-"5")
     )
     (net "REG_1_OUT_2"
-      (pins  "IC62"-"7" "IC59"-"2")
+      (pins  "IC59"-"2" "IC70"-"6")
     )
     (net "REG_1_OUT_3"
-      (pins  "IC62"-"10" "IC58"-"2")
+      (pins  "IC58"-"2" "IC70"-"9")
     )
     (net "REG_1_OUT_4"
-      (pins  "IC62"-"12" "IC57"-"2")
+      (pins  "IC57"-"2" "IC70"-"12")
     )
     (net "REG_1_OUT_5"
-      (pins  "IC62"-"15" "IC56"-"2")
+      (pins  "IC56"-"2" "IC70"-"15")
     )
     (net "REG_1_OUT_6"
-      (pins  "IC65"-"2" "IC3"-"2")
+      (pins  "IC3"-"2" "IC70"-"16")
     )
     (net "REG_1_OUT_7"
-      (pins  "IC65"-"5" "IC9"-"2")
+      (pins  "IC9"-"2" "IC70"-"19")
     )
     (net "REG_2_LOAD_INPUT"
-      (pins  "IC66"-"9" "IC67"-"9" "IC32"-"8")
+      (pins  "IC32"-"8" "IC73"-"11")
     )
     (net "REG_2_OUT_0"
-      (pins  "IC66"-"2" "IC61"-"1")
+      (pins  "IC61"-"1" "IC73"-"2")
     )
     (net "REG_2_OUT_1"
-      (pins  "IC66"-"5" "IC60"-"1")
+      (pins  "IC60"-"1" "IC73"-"5")
     )
     (net "REG_2_OUT_2"
-      (pins  "IC66"-"7" "IC59"-"1")
+      (pins  "IC59"-"1" "IC73"-"6")
     )
     (net "REG_2_OUT_3"
-      (pins  "IC66"-"10" "IC58"-"1")
+      (pins  "IC58"-"1" "IC73"-"9")
     )
     (net "REG_2_OUT_4"
-      (pins  "IC66"-"12" "IC57"-"1")
+      (pins  "IC57"-"1" "IC73"-"12")
     )
     (net "REG_2_OUT_5"
-      (pins  "IC66"-"15" "IC56"-"1")
+      (pins  "IC56"-"1" "IC73"-"15")
     )
     (net "REG_2_OUT_6"
-      (pins  "IC67"-"2" "IC3"-"1")
+      (pins  "IC3"-"1" "IC73"-"16")
     )
     (net "REG_2_OUT_7"
-      (pins  "IC67"-"5" "IC9"-"1")
+      (pins  "IC9"-"1" "IC73"-"19")
     )
     (net "REG_3_LOAD_INPUT"
-      (pins  "IC68"-"9" "IC69"-"9" "IC32"-"11")
+      (pins  "IC32"-"11" "IC71"-"11")
     )
     (net "REG_3_OUT_0"
-      (pins  "IC68"-"2" "IC61"-"15")
+      (pins  "IC61"-"15" "IC71"-"2")
     )
     (net "REG_3_OUT_1"
-      (pins  "IC68"-"5" "IC60"-"15")
+      (pins  "IC60"-"15" "IC71"-"5")
     )
     (net "REG_3_OUT_2"
-      (pins  "IC68"-"7" "IC59"-"15")
+      (pins  "IC59"-"15" "IC71"-"6")
     )
     (net "REG_3_OUT_3"
-      (pins  "IC68"-"10" "IC58"-"15")
+      (pins  "IC58"-"15" "IC71"-"9")
     )
     (net "REG_3_OUT_4"
-      (pins  "IC68"-"12" "IC57"-"15")
+      (pins  "IC57"-"15" "IC71"-"12")
     )
     (net "REG_3_OUT_5"
-      (pins  "IC68"-"15" "IC56"-"15")
+      (pins  "IC56"-"15" "IC71"-"15")
     )
     (net "REG_3_OUT_6"
-      (pins  "IC69"-"2" "IC3"-"15")
+      (pins  "IC3"-"15" "IC71"-"16")
     )
     (net "REG_3_OUT_7"
-      (pins  "IC69"-"5" "IC9"-"15")
+      (pins  "IC9"-"15" "IC71"-"19")
     )
     (net "RING_CNTR_CLOCK"
-      (pins  "IC15"-"3" "IC10"-"3" "IC10"-"11" "IC11"-"3" "IC11"-"11" "IC14"-"11" "IC14"-"3" "IC15"-"11" "IC117"-"3" "IC117"-"11" "JP1"-"4")
+      (pins  "IC15"-"3" "IC10"-"3" "IC10"-"11" "IC11"-"3" "IC11"-"11" "IC14"-"11" "IC14"-"3" "IC15"-"11" "IC117"-"3" "JP1"-"4")
     )
     (net "SAVE_LR/RET"
-      (pins  "IC112"-"13" "IC20"-"11" "IC109"-"13" "IC109"-"9")
+      (pins  "IC112"-"13" "IC20"-"11" "IC127"-"5" "IC34"-"12")
     )
     (net "SECOND_LATCH_SELECT"
-      (pins  "IC141"-"5" "IC141"-"8" "IC44"-"13" "IC45"-"9")
+      (pins  "IC141"-"5" "IC141"-"8" "IC44"-"13" "IC33"-"12")
     )
     (net "SELECT_CARRY_BIT"
-      (pins  "IC40"-"15" "IC191"-"8" "IC78"-"13" "IC75"-"2" "IC75"-"5" "IC75"-"13")
+      (pins  "IC191"-"8" "IC78"-"13" "IC75"-"2" "IC75"-"5" "IC75"-"13" "IC40"-"2")
     )
     (net "SP_COUNT_DOWN"
-      (pins  "IC177"-"4" "IC47"-"10")
+      (pins  "IC177"-"4" "IC31"-"3")
     )
     (net "SP_COUNT_UP"
-      (pins  "IC177"-"5" "IC47"-"12")
+      (pins  "IC177"-"5" "IC31"-"8")
     )
     (net "SP_DATA_OUT_0"
       (pins  "IC177"-"3" "JP4"-"1")
@@ -2557,28 +2383,25 @@
       (pins  "IC176"-"7" "JP1"-"9")
     )
     (net "STATE_0/CYCL_6"
-      (pins  "IC78"-"12" "IC74"-"1" "IC74"-"9" "IC28"-"1" "IC27"-"9" "IC23"-"1" "IC23"-"12" "IC24"-"12" "IC38"-"9" "IC101"-"9" "IC51"-"4" "IC81"-"12" "IC14"-"9" "IC15"-"2" "JP1"-"30")
+      (pins  "IC78"-"12" "IC74"-"1" "IC74"-"9" "IC28"-"1" "IC27"-"9" "IC23"-"12" "IC24"-"12" "IC38"-"9" "IC51"-"4" "IC81"-"12" "IC14"-"9" "IC15"-"2" "IC125"-"1" "JP1"-"32" "IC31"-"9")
     )
     (net "STATE_1/CYCL_7"
-      (pins  "IC75"-"1" "IC74"-"4" "IC74"-"12" "IC27"-"1" "IC27"-"12" "IC23"-"4" "IC24"-"1" "IC26"-"1" "IC104"-"12" "IC38"-"1" "IC51"-"1" "IC81"-"9" "IC15"-"5" "IC15"-"12" "JP1"-"32")
+      (pins  "IC75"-"1" "IC74"-"4" "IC74"-"12" "IC27"-"1" "IC27"-"12" "IC23"-"4" "IC24"-"1" "IC26"-"1" "IC38"-"1" "IC51"-"1" "IC81"-"9" "IC15"-"5" "IC15"-"12" "JP1"-"34" "IC23"-"1")
     )
     (net "STATE_2/CYCL_8"
-      (pins  "IC75"-"4" "IC28"-"9" "IC27"-"4" "IC23"-"9" "IC24"-"4" "IC26"-"4" "IC38"-"4" "IC104"-"1" "IC51"-"9" "IC81"-"4" "IC15"-"9" "IC117"-"2" "JP1"-"34")
+      (pins  "IC75"-"4" "IC28"-"9" "IC27"-"4" "IC23"-"9" "IC24"-"4" "IC26"-"4" "IC38"-"4" "IC51"-"9" "IC81"-"4" "IC15"-"9" "IC117"-"2" "JP1"-"36" "IC28"-"4")
     )
     (net "STATE_3/CYCL_9"
-      (pins  "IC28"-"12" "IC24"-"9" "IC26"-"9" "IC75"-"12" "IC38"-"12" "IC104"-"9" "IC81"-"1" "IC51"-"12" "IC117"-"5" "IC117"-"12" "JP1"-"36")
-    )
-    (net "STATE_4/CYCL_10"
-      (pins  "IC101"-"1" "IC127"-"4" "IC10"-"2" "IC117"-"9" "JP1"-"38")
+      (pins  "IC28"-"12" "IC26"-"9" "IC75"-"12" "IC38"-"12" "IC81"-"1" "IC51"-"12" "IC117"-"5" "IC10"-"2" "JP1"-"38" "IC31"-"1" "IC24"-"9")
     )
     (net "STR"
       (pins  "IC27"-"13" "IC21"-"6" "IC27"-"10" "IC112"-"4")
     )
     (net "TABLE_1_INPUT_PTR_HIGH"
-      (pins  "IC39"-"6" "IC169"-"4")
+      (pins  "IC39"-"6" "IC2"-"4")
     )
     (net "TABLE_1_INPUT_PTR_L"
-      (pins  "IC39"-"3" "IC169"-"9")
+      (pins  "IC39"-"3" "IC2"-"1")
     )
     (net "TABLE_1_INPUT_REG0"
       (pins  "IC41"-"3" "IC32"-"1")
@@ -2593,31 +2416,31 @@
       (pins  "IC41"-"11" "IC32"-"12")
     )
     (net "TWO_BYTE_CMD"
-      (pins  "IC91"-"4" "IC91"-"2" "IC80"-"3")
-    )
-    (net "UNNAME"
-      (pins  "IC180"-"11" "IC179"-"11" "IC133"-"8")
+      (pins  "IC80"-"3" "IC127"-"12" "IC127"-"2")
     )
     (net "VCC"
-      (pins  "IC4"-"16" "IC5"-"16" "IC6"-"16" "IC7"-"16" "IC8"-"16" "IC10"-"14" "IC11"-"14" "IC14"-"14" "IC15"-"14" "IC3"-"16" "IC9"-"16" "IC56"-"16" "IC57"-"16" "IC58"-"16" "IC59"-"16" "IC60"-"16" "IC61"-"16" "IC62"-"16" "IC65"-"16" "IC66"-"16" "IC67"-"16" "IC68"-"16" "IC69"-"16" "IC72"-"20" "IC12"-"14" "IC13"-"14" "IC16"-"14" "IC18"-"14" "IC19"-"14" "IC20"-"14" "IC21"-"14" "IC42"-"20" "IC103"-"20" "IC128"-"14" "IC129"-"14" "IC46"-"16" "IC49"-"14" "IC50"-"16" "IC177"-"16" "IC178"-"16" "IC175"-"16" "IC176"-"16" "IC179"-"16" "IC180"-"16" "IC181"-"16" "IC182"-"16" "IC126"-"16" "IC82"-"16" "IC83"-"16" "IC86"-"16" "IC87"-"16" "IC88"-"16" "IC89"-"16" "IC164"-"16" "IC165"-"16" "IC166"-"16" "IC167"-"16" "IC168"-"14" "IC169"-"14" "IC172"-"14" "IC173"-"14" "IC190"-"14" "IC191"-"14" "IC22"-"14" "IC25"-"14" "IC32"-"14" "IC52"-"14" "IC55"-"14" "IC27"-"14" "IC28"-"14" "IC74"-"14" "IC75"-"14" "IC78"-"14" "IC23"-"14" "IC24"-"14" "IC26"-"14" "IC30"-"14" "IC34"-"14" "IC39"-"14" "IC41"-"14" "IC76"-"14" "IC35"-"14" "IC37"-"14" "IC43"-"14" "IC47"-"14" "IC179"-"4" "IC178"-"11" "IC177"-"11" "IC175"-"11" "IC176"-"11" "IC1"-"16" "IC2"-"16" "IC38"-"14" "IC77"-"16" "IC79"-"16" "IC84"-"14" "IC101"-"14" "IC104"-"14" "IC108"-"14" "IC110"-"14" "IC124"-"14" "IC125"-"14" "IC127"-"14" "IC130"-"14" "IC33"-"14" "IC17"-"14" "IC80"-"14" "IC91"-"14" "IC112"-"14" "IC109"-"14" "IC117"-"14" "IC29"-"14" "IC51"-"14" "IC81"-"14" "IC92"-"16" "IC94"-"16" "IC95"-"16" "IC97"-"16" "IC98"-"16" "IC102"-"16" "IC105"-"16" "IC106"-"16" "IC111"-"16" "IC113"-"16" "IC114"-"16" "IC115"-"16" "IC116"-"20" "IC133"-"14" "IC134"-"14" "IC135"-"14" "IC136"-"14" "IC141"-"14" "IC10"-"1" "IC10"-"10" "IC11"-"4" "IC11"-"10" "IC14"-"4" "IC14"-"10" "IC15"-"4" "IC15"-"10" "IC117"-"4" "IC117"-"10" "JP10"-"19" "JP10"-"20" "JP9"-"20" "JP9"-"19" "IC31"-"14" "IC40"-"16" "IC31"-"13" "IC31"-"10" "IC44"-"16" "IC45"-"14" "JP1"-"19" "JP1"-"17" "C56"-"1" "C25"-"1" "C27"-"1" "C62"-"1" "C55"-"1" "C49"-"1" "C43"-"1" "C61"-"1" "C52"-"1" "C54"-"1" "C53"-"1" "C51"-"1" "C50"-"1" "C48"-"1" "C47"-"1" "C45"-"1" "C44"-"1" "C26"-"1" "C21"-"1" "C20"-"1" "C22"-"1" "C23"-"1" "C34"-"1" "C36"-"1" "C35"-"1" "C30"-"1" "C29"-"1" "C31"-"1" "C33"-"1" "C32"-"1" "C14"-"1" "C15"-"1" "C13"-"1" "C12"-"1" "C17"-"1" "C18"-"1" "C19"-"1" "C37"-"1" "C28"-"1" "C10"-"1" "C1"-"1" "C60"-"1" "C58"-"1" "C57"-"1" "C40"-"1" "C42"-"1" "C39"-"1" "C38"-"1" "C7"-"1" "C9"-"1" "C8"-"1" "C3"-"1" "C2"-"1" "C4"-"1" "C6"-"1" "C5"-"1" "C11"-"1" "C16"-"1" "C59"-"1" "C93"-"1" "C92"-"1" "C91"-"1" "C90"-"1" "C86"-"1" "C87"-"1" "C85"-"1" "C84"-"1" "C81"-"1" "C82"-"1" "C80"-"1" "C79"-"1" "C68"-"1" "C70"-"1" "C64"-"1" "C63"-"1" "C65"-"1" "C67"-"1" "C78"-"1" "C77"-"1" "C72"-"1" "C71"-"1" "C73"-"1" "C75"-"1" "C74"-"1" "C124"-"1" "C123"-"1" "C122"-"1" "C121"-"1" "C120"-"1" "C117"-"1" "C118"-"1" "C116"-"1" "C115"-"1" "C112"-"1" "C114"-"1" "C113"-"1" "C111"-"1" "C110"-"1" "C99"-"1" "C101"-"1" "C100"-"1" "C95"-"1" "C94"-"1" "C98"-"1" "C107"-"1" "C109"-"1" "C108"-"1" "C103"-"1" "C102"-"1" "C104"-"1" "C106"-"1" "C105"-"1" "C155"-"1" "C154"-"1" "C153"-"1" "C152"-"1" "C151"-"1" "C148"-"1" "C150"-"1" "C149"-"1" "C147"-"1" "C146"-"1" "C143"-"1" "C145"-"1" "C144"-"1" "C142"-"1" "C141"-"1" "C130"-"1" "C132"-"1" "C131"-"1" "C126"-"1" "C127"-"1" "C129"-"1" "C128"-"1" "C138"-"1" "C140"-"1" "C139"-"1" "C134"-"1" "C133"-"1" "C135"-"1" "C137"-"1" "C136"-"1" "C156"-"1" "IC54"-"14" "IC85"-"14" "JP2"-"28" "JP6"-"2" "JP3"-"28" "JP4"-"28")
+      (pins  "IC10"-"14" "IC11"-"14" "IC14"-"14" "IC15"-"14" "IC3"-"16" "IC9"-"16" "IC56"-"16" "IC57"-"16" "IC58"-"16" "IC59"-"16" "IC60"-"16" "IC61"-"16" "IC72"-"20" "IC12"-"14" "IC13"-"14" "IC16"-"14" "IC18"-"14" "IC19"-"14" "IC20"-"14" "IC21"-"14" "IC42"-"20" "IC103"-"20" "IC128"-"14" "IC129"-"14" "IC46"-"16" "IC49"-"14" "IC177"-"16" "IC178"-"16" "IC175"-"16" "IC176"-"16" "IC179"-"16" "IC180"-"16" "IC181"-"16" "IC182"-"16" "IC126"-"16" "IC82"-"16" "IC83"-"16" "IC86"-"16" "IC87"-"16" "IC88"-"16" "IC89"-"16" "IC168"-"14" "IC169"-"14" "IC172"-"14" "IC173"-"14" "IC190"-"14" "IC191"-"14" "IC22"-"14" "IC25"-"14" "IC32"-"14" "IC52"-"14" "IC55"-"14" "IC27"-"14" "IC28"-"14" "IC74"-"14" "IC75"-"14" "IC78"-"14" "IC23"-"14" "IC24"-"14" "IC26"-"14" "IC30"-"14" "IC34"-"14" "IC39"-"14" "IC41"-"14" "IC76"-"14" "IC35"-"14" "IC43"-"14" "IC47"-"14" "IC179"-"4" "IC178"-"11" "IC177"-"11" "IC175"-"11" "IC176"-"11" "IC38"-"14" "IC77"-"16" "IC79"-"16" "IC101"-"14" "IC108"-"14" "IC110"-"14" "IC124"-"14" "IC125"-"14" "IC127"-"14" "IC33"-"14" "IC17"-"14" "IC80"-"14" "IC112"-"14" "IC117"-"14" "IC29"-"14" "IC51"-"14" "IC81"-"14" "IC98"-"16" "IC102"-"16" "IC105"-"16" "IC106"-"16" "IC111"-"16" "IC113"-"16" "IC114"-"16" "IC115"-"16" "IC116"-"20" "IC134"-"14" "IC135"-"14" "IC136"-"14" "IC141"-"14" "IC10"-"1" "IC10"-"10" "IC11"-"4" "IC11"-"10" "IC14"-"4" "IC14"-"10" "IC15"-"4" "IC15"-"10" "IC117"-"4" "JP10"-"19" "JP10"-"20" "JP9"-"20" "JP9"-"19" "IC44"-"16" "JP1"-"19" "JP1"-"17" "C56"-"1" "C27"-"1" "C62"-"1" "C55"-"1" "C49"-"1" "C43"-"1" "C61"-"1" "C52"-"1" "C54"-"1" "C53"-"1" "C51"-"1" "C50"-"1" "C48"-"1" "C47"-"1" "C44"-"1" "C26"-"1" "C21"-"1" "C20"-"1" "C22"-"1" "C23"-"1" "C34"-"1" "C36"-"1" "C35"-"1" "C30"-"1" "C29"-"1" "C31"-"1" "C33"-"1" "C15"-"1" "C13"-"1" "C12"-"1" "C17"-"1" "C18"-"1" "C19"-"1" "C37"-"1" "C28"-"1" "C10"-"1" "C1"-"1" "C60"-"1" "C58"-"1" "C57"-"1" "C40"-"1" "C42"-"1" "C39"-"1" "C38"-"1" "C7"-"1" "C9"-"1" "C8"-"1" "C3"-"1" "C2"-"1" "C4"-"1" "C6"-"1" "C5"-"1" "C11"-"1" "C16"-"1" "C59"-"1" "C93"-"1" "C92"-"1" "C91"-"1" "C90"-"1" "C86"-"1" "C87"-"1" "C85"-"1" "C84"-"1" "C81"-"1" "C82"-"1" "C80"-"1" "C79"-"1" "C68"-"1" "C70"-"1" "C64"-"1" "C63"-"1" "C65"-"1" "C67"-"1" "C78"-"1" "C77"-"1" "C72"-"1" "C71"-"1" "C73"-"1" "C75"-"1" "C124"-"1" "C123"-"1" "C122"-"1" "C121"-"1" "C120"-"1" "C117"-"1" "C118"-"1" "C116"-"1" "C115"-"1" "C112"-"1" "C114"-"1" "C113"-"1" "C111"-"1" "C110"-"1" "C99"-"1" "C101"-"1" "C100"-"1" "C155"-"1" "C154"-"1" "C153"-"1" "C151"-"1" "C148"-"1" "C150"-"1" "C149"-"1" "C147"-"1" "C146"-"1" "C143"-"1" "C145"-"1" "C144"-"1" "C142"-"1" "C141"-"1" "C130"-"1" "C132"-"1" "C131"-"1" "C126"-"1" "C127"-"1" "C129"-"1" "C156"-"1" "IC54"-"14" "IC85"-"14" "JP2"-"28" "JP6"-"2" "JP3"-"28" "JP4"-"28" "C14"-"1" "C32"-"1" "C74"-"1" "IC36"-"14" "IC48"-"14" "IC31"-"14" "IC49"-"13" "IC49"-"9" "IC40"-"14" "IC63"-"20" "IC64"-"20" "IC70"-"20" "IC71"-"20" "IC73"-"20" "IC84"-"20" "IC90"-"20" "IC91"-"20" "IC93"-"20" "IC99"-"20" "IC100"-"20" "IC2"-"14" "IC1"-"14")
     )
     (net "WRITE_LR_H_DBUS_RET"
-      (pins  "IC141"-"2" "IC29"-"11" "IC45"-"12")
+      (pins  "IC141"-"2" "IC29"-"11" "IC17"-"9")
     )
     (net "WRITE_LR_L_DBUS_RET"
       (pins  "IC141"-"1" "IC29"-"6")
     )
+    (net "WRITE_PC_H/WRITE_PC_L_DBUS_SAVE_LR"
+      (pins  "IC44"-"10" "IC141"-"10" "IC141"-"11")
+    )
     (net "WRITE_PC_H_DBUS_SAVE_LR"
-      (pins  "IC29"-"8" "IC141"-"13" "IC45"-"2")
+      (pins  "IC29"-"8" "IC141"-"13")
     )
     (net "WRITE_PC_L_ALU_LATCH_JMP_O"
       (pins  "IC77"-"1" "IC79"-"1" "IC172"-"6")
     )
     (net "WRITE_PC_L_DBUS_SAVE_LR"
-      (pins  "IC29"-"3" "IC141"-"12" "IC45"-"1" "IC45"-"13")
+      (pins  "IC29"-"3" "IC141"-"12" "IC17"-"10")
     )
     (net "WRITE_PTR_L_TO_DBUS_PTR_ADD"
-      (pins  "IC173"-"11" "IC44"-"3" "IC45"-"10" "IC110"-"5")
+      (pins  "IC173"-"11" "IC44"-"3" "IC110"-"5" "IC33"-"13")
     )
     (net "WRITE_REGB_TO_DBUS_ALU"
       (pins  "IC168"-"9" "IC75"-"6")
@@ -2629,7 +2452,7 @@
       (pins  "IC38"-"6" "IC168"-"2" "IC110"-"4")
     )
     (net "WRITE_REGB_TO_DBUS_PTR_ADD"
-      (pins  "IC104"-"3" "IC168"-"1")
+      (pins  "IC168"-"1" "IC28"-"6")
     )
     (net "WRITE_REGB_TO_DBUS_SET_PTR"
       (pins  "IC168"-"10" "IC169"-"3")
