@@ -102,25 +102,26 @@
 	The second instruction Nibble defines the operand registers.
 	Table 0 is used by MOV, SET\_PTR and ALU
 	\begin{center}
+		JMP(Z/C) uses "reg0, number" to encode "JMP(Z/C) PC\_H, number" thus JMP(Z/C) reg0, number cant be used.\\
 		\begin{tabular}{|c|c|p{6cm}|}
 			\hline
-			Nibble 2 & Involved Registers & Note \\ \hline
-			0x0 & reg0, number & JMP(Z/C) uses this operand byte to encode JMP(Z/C) PC\_H, number thus JMP(Z/C) reg0, number cant be used. \\ \hline
-			0x1 & reg0, reg1 & \\ \hline
-			0x2 & reg0, reg2 & \\ \hline
-			0x3 & reg0, reg3 & \\ \hline
-			0x4 & reg1, reg0 & \\ \hline
-			0x5 & reg1, number & \\ \hline
-			0x6 & reg1, reg2 & \\ \hline
-			0x7 & reg1, reg3 & \\ \hline
-			0x8 & reg2, reg0 & \\ \hline
-			0x9 & reg2, reg1 & \\ \hline
-			0xA & reg2, number & \\ \hline
-			0xB & reg2, reg3 & \\ \hline
-			0xC & reg3, reg0 & \\ \hline
-			0xD & reg3, reg1 & \\ \hline
-			0xE & reg3, reg2 & \\ \hline
-			0xF & reg3, number & \\ \hline
+			Nibble 2 & Involved Registers \\ \hline
+			0x0 & reg0, number \\ \hline
+			0x1 & reg0, reg1  \\ \hline
+			0x2 & reg0, reg2 \\ \hline
+			0x3 & reg0, reg3 \\ \hline
+			0x4 & reg1, reg0 \\ \hline
+			0x5 & reg1, number \\ \hline
+			0x6 & reg1, reg2 \\ \hline
+			0x7 & reg1, reg3 \\ \hline
+			0x8 & reg2, reg0 \\ \hline
+			0x9 & reg2, reg1 \\ \hline
+			0xA & reg2, number \\ \hline
+			0xB & reg2, reg3 \\ \hline
+			0xC & reg3, reg0 \\ \hline
+			0xD & reg3, reg1 \\ \hline
+			0xE & reg3, reg2 \\ \hline
+			0xF & reg3, number \\ \hline
 		\end{tabular}
 	\end{center}	
 	\newpage
@@ -238,5 +239,5 @@
 	\subsection{Assembler}
 	Supports .define  and CALL macro. CALL regA, regB equals to SAVE\_LR; CALL regA, regB
 	\subsection{Emulator}
-	Does not yet support clock emulation. It just executes the binary
+	Does not yet support timing simulation. It just executes the binary
 \end{document}

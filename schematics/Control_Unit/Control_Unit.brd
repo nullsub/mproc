@@ -2911,7 +2911,6 @@ design rules under a new name.</description>
 <contactref element="C129" pad="1"/>
 <contactref element="IC85" pad="14"/>
 <contactref element="JP2" pad="28"/>
-<contactref element="JP3" pad="28"/>
 <contactref element="C14" pad="1"/>
 <contactref element="C32" pad="1"/>
 <contactref element="C74" pad="1"/>
@@ -2934,16 +2933,17 @@ design rules under a new name.</description>
 <contactref element="IC4" pad="14"/>
 <contactref element="IC6" pad="16"/>
 <contactref element="IC7" pad="16"/>
-<contactref element="IC7" pad="11"/>
-<contactref element="IC6" pad="11"/>
-<contactref element="IC6" pad="4"/>
 <contactref element="IC180" pad="4"/>
-<contactref element="IC7" pad="4"/>
 <contactref element="IC5" pad="14"/>
 <contactref element="IC8" pad="14"/>
 <contactref element="JP3" pad="12"/>
 <contactref element="IC2" pad="14"/>
 <contactref element="IC25" pad="14"/>
+<contactref element="IC7" pad="11"/>
+<contactref element="IC6" pad="11"/>
+<contactref element="IC6" pad="4"/>
+<contactref element="IC7" pad="4"/>
+<contactref element="JP3" pad="28"/>
 <wire x1="47.625" y1="45.72" x2="46.0375" y2="48.26" width="0" layer="19" extent="1-1"/>
 <wire x1="44.45" y1="45.72" x2="46.0375" y2="48.26" width="0" layer="19" extent="1-1"/>
 <wire x1="44.4175" y1="44.7675" x2="44.45" y2="45.72" width="0" layer="19" extent="16-16"/>
@@ -4598,7 +4598,7 @@ design rules under a new name.</description>
 <wire x1="4.445" y1="1.27" x2="3.81" y2="36.83" width="0" layer="19" extent="1-1"/>
 <wire x1="9.8425" y1="1.27" x2="4.445" y2="1.27" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="INPUT_REG0/OPCODE_5/OPCODE_4_IS_NULL">
+<signal name="INPUT_REG0/OPC4/5_IS_NULL">
 <contactref element="IC129" pad="3"/>
 <contactref element="IC30" pad="1"/>
 <contactref element="IC126" pad="3"/>
@@ -5130,7 +5130,7 @@ design rules under a new name.</description>
 <wire x1="7.62" y1="38.735" x2="44.7691" y2="33.3375" width="0" layer="19" extent="1-1"/>
 <wire x1="2.54" y1="8.255" x2="7.62" y2="38.735" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="CONNECT_PTR_TO_ABUS/CONNECT_REG_TO_DBUS/CLR_NOT_WE/SELECTOR_TABLE_2_STR">
+<signal name="CNNCT_PTR_TO_ABUS/CNNCT_REG_TO_DBUS/CLR_NOT_WE/SELECTOR_2_STR">
 <contactref element="IC173" pad="8"/>
 <contactref element="IC35" pad="3"/>
 <contactref element="IC36" pad="2"/>
@@ -6506,7 +6506,7 @@ design rules under a new name.</description>
 <contactref element="JP1" pad="3"/>
 <wire x1="19.945" y1="19.0525" x2="48.895" y2="16.8275" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="UNUSED">
+<signal name="NOT_USED1">
 <contactref element="IC34" pad="6"/>
 </signal>
 <signal name="N$139">
