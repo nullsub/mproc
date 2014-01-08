@@ -67,7 +67,7 @@ test: all $(ALL_TEST_TARGETS)
 clean:
 	@echo "cleaned build"
 	@$(REMOVE) $(OUTDIR)
-	$(foreach test,$(ALL_TESTS), rm tests/$(test)/$(test).bin;)
+	$(foreach test,$(ALL_TESTS), rm tests/$(test)/*.bin -f;)
 
 # Create output files directory
 $(shell mkdir -p $(OUTDIR))
