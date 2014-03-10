@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.2">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -60,8 +60,8 @@
 <wire x1="100" y1="0" x2="100" y2="80" width="0" layer="20"/>
 <wire x1="100" y1="80" x2="0" y2="80" width="0" layer="20"/>
 <wire x1="0" y1="80" x2="0" y2="0" width="0" layer="20"/>
-<dimension x1="0" y1="80" x2="100.33" y2="80.01" x3="50.16436875" y3="86.35550625" layer="16"/>
-<dimension x1="100" y1="80" x2="100.33" y2="0" x3="114.145240625" y3="40.057665625" layer="16"/>
+<dimension x1="0" y1="80" x2="100.33" y2="80.01" x3="50.16436875" y3="86.35550625" textsize="3.5" layer="16"/>
+<dimension x1="100" y1="80" x2="100.33" y2="0" x3="114.145240625" y3="40.057665625" textsize="3.5" layer="16"/>
 </plain>
 <libraries>
 <library name="pinhead">
@@ -1813,7 +1813,7 @@ Extended by Federico Battaglin &lt;author&gt;&amp;lt;federico.rd@fdpinternationa
 <class number="0" name="default" width="0" drill="0">
 </class>
 </classes>
-<designrules>
+<designrules name="default">
 <description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
 Die Standard-Design-Rules sind so gewählt, dass sie für 

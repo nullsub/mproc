@@ -8,7 +8,7 @@
 \begin{document}
 	\maketitle
 	\begin{abstract}
-		MPROC is a 16 bit CPU built out of TTL logic chips. The 74HCTxxx logic series is used.
+	MPROC is a 16 bit CPU built out of TTL logic chips. The 74HCTxxx logic series is used.
 	\end{abstract}
 	\tableofcontents
 	\newpage
@@ -27,36 +27,41 @@
 
 	\subsection {Stack}
 	\begin{itemize}
-		\item 32kb Stack FIFO. The stack memory can only be addressed via PUSH and POP. No stack pointer arithmetic is possible because the stack is not connected to the address-bus. Thus we have a total of 32kb Ram +32KB Stack = 64kb RAM and 32kb ROM.
+		\item 32kb Stack FIFO. The stack memory can only be addressed via PUSH and POP. No stack pointer arithmetic is possible because the stack is not connected to the address-bus.
+			Thus we have a total of 32kb Ram +32KB Stack = 64kb RAM and 32kb ROM.
 		\item The Stack pointer is implemented using 74xx193 binary counter chips. 
 	\end{itemize}
 
 	\subsection{I/O}
 	\begin{itemize}
-		\item I/O can be written to with PUSH and read from with POP. 
+		\item I/O can be read and written to with PUSH and POP. 
 		\item There are 2 output ports and one input port. All 8 bits wide.
 	\end{itemize}
 
 	\subsection{Memory}
 	\begin{itemize}
-		\item Ram(w24129ak12) and Flash(W29EE011) is connected to the same address Bus. The memory devices have both three-states outputs. The bank register(PTR) controls with the highest bit(bit14 on the address bus) whether RAM or the flash will be targeted. Writing to the flash will not work since a whole page(256bits) needs to be written at once. Maybe I can upgrade this later with a more decent flash chip, which will allow easy writing just like the ram.
+		\item Ram(w24129ak12) and Flash(W29EE011) is connected to the same address Bus. The memory devices have both three-states outputs.
+			The bank register(PTR) controls with the highest bit(bit14 on the address bus) whether RAM or the flash will be targeted.
+			Writing to the flash will not work since a whole page(256bits) needs to be written at once. Maybe I can upgrade this later with a more decent flash chip,
+			which will allow easy writing just like the ram.
 	\end{itemize}
 
 	\subsection {Registers}
-	\tiny\begin{center}
+	\small
+		\makebox[\linewidth] {
 		\begin{tabular}{|c|c|c|c|}
 			\hline
-			Register & Used by & Width & Note\\ \hline
-			SP & PUSH/POP & 16 & Stack Pointer\\ \hline
-			PC & JMP[Z/C] & 16 & ProgramCounter\\ \hline
-			IR & - & 16 & Instruction Register, holds current instruction\\ \hline
-			LR & SAVE\_LR, RET, PUSH/POP & 16 &  Link Register, stores current return address\\ \hline
-			PTR & STR, LDR & 16 & Pointer Register\\\hline
-			OutputReg[0..1] & POP & 8 & Output ports\\ \hline
-			InputReg0] & PUSH & 8 & Input ports\\ \hline
-			Reg[0..3] & MOV, STR, LDR, PUSH/POP & 8 & General Purpose registers\\ \hline
+			Register & Used by & Note & Width\\ \hline
+			SP & PUSH/POP & Stack Pointer & 16\\ \hline
+			PC & JMP[Z/C] & ProgramCounter & 16\\ \hline
+			IR & - & Holds current instruction & 16\\ \hline
+			LR & SAVE\_LR, RET, PUSH/POP & Stores current return address & 16\\ \hline
+			PTR & STR, LDR & Pointer Register & 16\\ \hline
+			OutputReg[0..1] & POP & Output ports & 8\\ \hline
+			InputReg0] & PUSH & Input ports & 8\\ \hline
+			Reg[0..3] & MOV, STR, LDR, PUSH/POP & General Purpose registers & 8\\ \hline
 		\end{tabular}
-	\end{center}
+		}
 	\newpage
 	\section{Instructions}
 	\small\begin{center}	
@@ -68,9 +73,10 @@
 				For example JMP -17 jumps 17 bytes up.
 		\end{itemize}
 		\subsection{Instruction Set}
+		\makebox[\linewidth]{
 		\begin{tabular}{|c|c|c|c|}
 			\hline
-			Nibble 1 & Instruction & Note & Decode Table\\ \hline
+			Nibble 1 & Instruction & Note & Decoder\\ \hline
 			0x0 & ADD regA, regB & regA + regB. Result in regA & 0\\ \hline
 			0x1 & SUB regA, regB & regA - regB. Result in regA & 0 \\ \hline
 			0x2 & NOR regA, regB & regA = !(regA OR regB) & 0 \\ \hline
@@ -92,6 +98,7 @@
 			0xE & PUSH regA & Push regA to the stack & 2\\ \hline
 			0xF & POP regA & Pop stack item into regA & 1\\	\hline
 		\end{tabular}	
+		}
 		\begin{itemize}
 			\item PTR\_ADD number adds number to PTR; [-128 \textless \space number \textless \space 128]
 			\item regA is a register, regB is a register or a number.\newline
@@ -99,10 +106,11 @@
 	\end{center}
 	\newpage
 	\subsection{Argument Decode Table 0}
-	The second instruction Nibble defines the operand registers.
-	Table 0 is used by MOV, SET\_PTR and ALU
-	\begin{center}
+		The second instruction Nibble defines the operand registers.
+		Table 0 is used by MOV, SET\_PTR and ALU \\
 		JMP(Z/C) uses "reg0, number" to encode "JMP(Z/C) PC\_H, number" thus JMP(Z/C) reg0, number cant be used.\\
+		\newline
+		\makebox[\linewidth] {
 		\begin{tabular}{|c|c|p{6cm}|}
 			\hline
 			Nibble 2 & Involved Registers \\ \hline
@@ -123,7 +131,7 @@
 			0xE & reg3, reg2 \\ \hline
 			0xF & reg3, number \\ \hline
 		\end{tabular}
-	\end{center}	
+		}
 	\newpage
 	\subsection{Argument Input Table 1}
 	Used by LDR and POP
@@ -190,7 +198,7 @@
 		\end{tabular}
 	\end{center}
 	\subsection{Fetch and Decode}
-	\begin{center}
+		\makebox[\linewidth] {
 		\begin{tabular}{|c|c|}
 			\hline
 			Step & Fetch and Decode \\ \hline
@@ -198,46 +206,48 @@
 			2 & Do Mem Read and IR write Signals \\ \hline
 			3 & Inrement PC. Twice when two byte command.\\ \hline
 		\end{tabular}
-	\end{center}	
+		}
 	\newpage
 	\subsection{Execution Steps}
-	{\tiny
-	\begin{center}
-		\begin{tabular}{|c|p{2cm}|p{3cm}|p{3cm}|p{2cm}|c|}
+	{\scriptsize
+		\makebox[\linewidth]{
+		\newline
+		\begin{tabular}{|c|p{2cm}|p{3cm}|p{3cm}|p{2cm}|}
 			\hline
-			Command & 1 & 2 & 3 & 4 & 5 \\ \hline
-			ALU & Write regA to DBUS. High to low triggered & Latch regA from DBUS for the ALU. Happens at the High to low transition. & Write RegB to DBUS & At the High to low transition of the state signal the ALU output is latched & Fill Reg\\ \hline
-			MOV(Z) & Write regB to DBUS & Fill Regs & & &\\ \hline
-			LDR & & & & & \\ \hline
-			STR & & & & & \\ \hline
-			JMP(C/Z) & Write RegA to DBUS & Fill PC\_LOW. & Write RegB to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH & \\ \hline
-			JMP(Offset) & Write PC\_L to ALU & Latch PC\_L to ALU input & Write RegB to DBUS. & Fill PC\_L with ALU & Inc or Dec PC\_H depending on carry\\ \hline
-			PTR\_ADD & Write IR to DBUS & Write PTR\_L to ALU & ADD/SUB ALU& Fill PTR\_L with ALU & When carry inc. PTR\_H\\ \hline
-			SET\_PTR & Write RegB to DBUS & Fill PTR\_L. & Write RegA to DBUS & Fill PTR\_H. & \\ \hline
-			PUSH & Decrement SP & & & & \\ \hline
-			POP & & & Increment SP & & \\ \hline
-			& & & & & \\ \hline
+			Command & 1 & 2 & 3 & 4 \\ \hline
+			ALU & Write regA to DBUS. High to low triggered & Latch regA from DBUS for the ALU. Happens at the High to low transition. & Write RegB to DBUS, Latch ALU output at low to high edge of state-signal & Fill Reg\\ \hline
+			MOV(Z) & Write regB to DBUS & Fill Regs & &\\ \hline
+			JMP(C/Z) & Write RegA to DBUS & Fill PC\_LOW. & Write RegB to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH \\ \hline
+			JMP(Offset) & Write PC\_L to ALU & Latch PC\_L to ALU input & Write RegB to DBUS, Fill PC\_L with ALU and Inc or Dec PC\_H depending on carry &\\ \hline
+			PTR\_ADD & Write IR to DBUS & Latch & Write RegB to DBUS, Fill PTR\_L, Inc/Dec PTR\_H & \\ \hline
+			SET\_PTR & Write RegB to DBUS & Fill PTR\_L. & Write RegA to DBUS & Fill PTR\_H. \\ \hline
+			SAVE\_PTR & & & & \\ \hline
+			RET & & & & \\ \hline
+			LDR & & & & \\ \hline
+			STR & & & & \\ \hline
+			PUSH & Decrement SP & & & \\ \hline
+			POP & & & Increment SP & \\ \hline
 		\end{tabular}
-	\end{center}
+		}
 	}
 	\newpage
 	\section{Current Problems}
-	\subsection{DBUS Selector Encoding}
-	PTR\_ADD and SAVE\_LR/RET need custom WRITE\_XXX\_DBUS signals. To be able to encode those for the dbus selector another multiplexer needs to be added.
-	\subsection{SAVE\_LR Implementation and RET}
-	SAVE\_LR does not know whether the following JMP instructions takes one or two bytes. How to decide whether to save PC+1 with SAVE\_LR or PC+2?
-	\subsection{ALU}
-	ALU carry\_out signal is changed by NOR and AND instructions. Need a flip flop or something similar.
-	Do we need a flip flop for REG1\_ZERO\_MOVZ if reg1 is changed during a MOVZ instruction(Which could in turn have an effect on the STATE\_SIGNAL of the MOV instruction)?
-	\subsection{Startup}
-	How to initialize the registers when power is turned on?
-	RING\_CNTR\_CLR needs to go high. This clears the Ring Counter. Is this signal low active?
-	CLR\_ALL\_REGS\_NOT needs to go low for a short period and then for the rest of the time HIGH
-	\subsection{Memory Access}
-	Read: Can we apply the address, clear\_not\_oe and clear\_not\_cs in one instruction and fill the registers in the following instruction? 2 cycle memory access would be possible with this!
+		\subsection{DBUS Selector Encoding}
+			PTR\_ADD and SAVE\_LR/RET need custom WRITE\_XXX\_DBUS signals. To be able to encode those for the dbus selector another multiplexer needs to be added.
+		\subsection{SAVE\_LR Implementation and RET}
+			SAVE\_LR does not know whether the following JMP instructions takes one or two bytes. How to decide whether to save PC+1 with SAVE\_LR or PC+2?
+		\subsection{ALU}
+			ALU carry\_out signal is changed by NOR and AND instructions. Need a flip flop or something similar.
+			Do we need a flip flop for REG1\_ZERO\_MOVZ if reg1 is changed during a MOVZ instruction(Which could in turn have an effect on the STATE\_SIGNAL of the MOV instruction)?
+		\subsection{Startup}
+			How to initialize the registers when power is turned on?
+			RING\_CNTR\_CLR needs to go high. This clears the Ring Counter. Is this signal low active?
+			CLR\_ALL\_REGS\_NOT needs to go low for a short period and then for the rest of the time HIGH
+		\subsection{Memory Access}
+			Read: Can we apply the address, clear\_not\_oe and clear\_not\_cs in one instruction and fill the registers in the following instruction? 2 cycle memory access would be possible with this!
 	\section{Toolchain}
-	\subsection{Assembler}
-	Supports .define  and CALL macro. CALL regA, regB equals to SAVE\_LR; CALL regA, regB
-	\subsection{Emulator}
-	Does not yet support timing simulation. It just executes the binary
+		\subsection{Assembler}
+			Supports .define  and CALL macro. CALL regA, regB equals to SAVE\_LR; CALL regA, regB
+		\subsection{Emulator}
+			Does not yet support timing simulation. It just executes the binary
 \end{document}
