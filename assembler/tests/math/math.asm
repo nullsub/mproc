@@ -28,7 +28,6 @@
 	CALL	reg3, LOW(itoa16)
 	MOV	reg3, HIGH(uart_print)
 	CALL	reg3, LOW(uart_print)
-;Print result
 
 	;halt the emulator
 	MOV	reg2, 0

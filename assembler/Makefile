@@ -62,7 +62,7 @@ ALL_TEST_SRC = $(foreach test,$(ALL_TESTS), tests/$(test)/$(test).asm)
 	$(OUTDIR)/$(TARGET).elf $<
 
 test: all $(ALL_TEST_TARGETS)
-	@echo "Testing done"
+	@echo "tests built"
 
 clean:
 	@echo "cleaned build"

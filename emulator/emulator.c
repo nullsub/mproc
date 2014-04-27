@@ -10,8 +10,6 @@
 #define RAM_SIZE	0x7FFF
 #define STACK_SIZE	0x7FFF
 
-#define MAX_UART_LINE	100
-
 void dump_mem();
 
 struct cpu {
@@ -144,9 +142,9 @@ const struct arg_entry arg_table[3][16] = {
 uint8_t get_byte(uint16_t address)
 {
 	if(address == 0x0000) {
+		//printf("registers:\n reg0: 0x%.2x, reg1: 0x%.2x\n", cpu.reg0, cpu.reg1);
+		//printf("i16(reg0,reg1): %i \n", (cpu.reg0) | (cpu.reg1 << 8));
 		dump_mem();
-	//	printf("registers:\n reg0: 0x%.2x, reg1: 0x%.2x\n", cpu.reg0, cpu.reg1);
-	//	printf("i16(reg0,reg1): %i \n", (cpu.reg0) | (cpu.reg1 << 8));
 		exit(0);
 		return 0;
 	}
@@ -242,9 +240,6 @@ void emu(FILE * file)
 	cpu.sp = 0x0000;
 	cpu.carry = 0;
 
-	char uart_bffr[MAX_UART_LINE];
-	int uart_i = 0;
-
 	while(1) {
 		struct instruction crrnt_instr = get_instruction();
 
@@ -295,12 +290,7 @@ void emu(FILE * file)
 			case STR:
 				tmp16_bit = ((cpu.ptr_high << 8)|(cpu.ptr_low));
 				if(tmp16_bit == UART) {
-					uart_bffr[uart_i++] = *arg2;
-					if(*arg1 == '\n' || uart_i >= MAX_UART_LINE-1) {
-						uart_bffr[uart_i] = 0x00;
-						printf("%s", uart_bffr);
-						uart_i = 0;
-					}
+					printf("%c", *arg2);
 				}
 				write_byte(*arg2, tmp16_bit);
 				break;
