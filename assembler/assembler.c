@@ -1,6 +1,5 @@
 /*TODO:
  * use malloc instead of static WORD_LENGTH defines
- * implement range check for PTR_ADD operand. PTR_ADD 254 should emit an error! now it emits PTR_ADD -2
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,13 +54,14 @@ const struct opcode opcodes[] = {
 	{"JMPZ",0,0x07},
 	{"JMPC",0,0x08},
 	{"STR",2,0x09},
-	{"LDA",1,0x0A},
-	{"SET_PTR",0,0x0B},
-	{"PTR_ADD",2,0x0C},
-	{"SAVE_LR",1,0x0D},
-	{"RET",1,0x1D},
+	{"LDR",1,0x0A},
+	{"STR_I",2,0x0B},
+	{"LDR_I",1,0x0C},
+	{"SET_PTR",0,0x0D},
 	{"PUSH",2,0x0E},
 	{"POP",1,0x0F},
+	{"RET",1,0xEF},
+	{"SAVE_LR",1,0xFF},
 };
 
 struct arg_entry {

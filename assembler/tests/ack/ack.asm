@@ -74,7 +74,7 @@ n_loop_end:
         ;halt the emulator
         MOV     reg2, 0
         SET_PTR reg2, 0
-        LDA     reg2; halts the emulator
+        LDR     reg2; halts the emulator
 
 equals_str:
 .db " = ", 0x00
@@ -128,16 +128,15 @@ ack_ret:
 uart_print:
         SET_PTR reg0, reg1
 uart_print_loop:
-        LDA     reg0
+        LDR_I     reg0
         JMPZ    uart_print_end
         PUSH    ptr_low
         PUSH    ptr_high
         MOV     reg2, HIGH(UART)
         SET_PTR reg2, LOW(UART)
-        STR     reg0
+        STR   reg0
         POP     ptr_high
         POP     ptr_low
-        PTR_ADD 1
         JMP     uart_print_loop
 uart_print_end:
         RET
@@ -158,9 +157,7 @@ itoa_100_loop:
         JMP     itoa_100_loop
 itoa_end_100_loop:
         MOV     reg0, reg1
-        STR     reg2
-        PTR_ADD 1
-
+        STR_I     reg2
         MOV     reg2, 0x30 ;ASCII 0
 itoa_10_loop:
         MOV     reg1, reg0
@@ -169,16 +166,13 @@ itoa_10_loop:
         ADD     reg2, 1
         JMP     itoa_10_loop
 itoa_end_10_loop:
-        STR     reg2
-        PTR_ADD 1
+        STR_I     reg2
         ;add the rest
         ADD     reg1, 0x30
-        STR     reg1
-        PTR_ADD 1
+        STR_I     reg1
         ;end
         MOV     reg2, 0x0A
-;        STR     reg2
-;        PTR_ADD 1
+;        STR_I     reg2
         MOV     reg2, 0x00
         STR     reg2
         MOV     reg0, HIGH(ITOA_MEM)

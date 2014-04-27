@@ -8,7 +8,7 @@
 ;halt the emulator
 	MOV	reg2, 0
 	SET_PTR	reg2, 0
-	LDA	reg2; halts the emulator
+	LDR	reg2; halts the emulator
 
 ;compute reg0 fibonacci numbers and print them via UART
 ;ARG1 = nr of fibonacci iterations. max is 255
@@ -55,7 +55,7 @@ fibonacci_end:
 uart_print: 
 	SET_PTR	reg0, reg1
 uart_print_loop:
-	LDA	reg0
+	LDR_I	reg0
 	JMPZ	uart_print_end
 	PUSH	ptr_low
 	PUSH	ptr_high
@@ -64,7 +64,6 @@ uart_print_loop:
 	STR	reg0
 	POP	ptr_high
 	POP	ptr_low
-	PTR_ADD 1
 	JMP	uart_print_loop
 uart_print_end:	
 	RET
@@ -85,8 +84,7 @@ itoa_100_loop:
 	JMP	itoa_100_loop
 itoa_end_100_loop:
 	MOV	reg0, reg1
-	STR	reg2
-	PTR_ADD 1
+	STR_I	reg2
 	
 	MOV	reg2, 0x30 ;ASCII 0
 itoa_10_loop:
@@ -97,16 +95,13 @@ itoa_10_loop:
 	JMP	itoa_10_loop
 itoa_end_10_loop:
 	MOV	reg0, reg1
-	STR	reg2
-	PTR_ADD 1
+	STR_I	reg2
 ;add the rest
 	ADD	reg0, 0x30
-	STR	reg0
-	PTR_ADD	1
+	STR_I	reg0
 ;end
 	MOV	reg2, 0x0A
-	STR	reg2
-	PTR_ADD	1
+	STR_I	reg2
 	MOV	reg2, 0x00
 	STR	reg2
 	MOV	reg0, HIGH(ITOA_MEM)

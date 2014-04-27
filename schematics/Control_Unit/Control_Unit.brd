@@ -2069,6 +2069,7 @@ design rules under a new name.</description>
 <element name="IC55" library="74xx-eu" package="DIL14" value="74HCT32N" x="41.5925" y="5.3975"/>
 <element name="IC62" library="74xx-eu" package="DIL14" value="74HCT08N" x="37.7825" y="20.0025"/>
 <element name="IC40" library="74xx-eu" package="DIL14" value="74HCT08N" x="35.2425" y="12.7"/>
+<element name="IC61" library="74xx-eu" package="DIL14" value="74HCT08N" x="-3.175" y="2.2225"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2386,6 +2387,7 @@ design rules under a new name.</description>
 <contactref element="IC55" pad="7"/>
 <contactref element="IC62" pad="7"/>
 <contactref element="IC40" pad="7"/>
+<contactref element="IC61" pad="7"/>
 <wire x1="48.895" y1="45.72" x2="48.26" y2="45.72" width="0" layer="19" extent="1-1"/>
 <wire x1="48.895" y1="43.815" x2="48.895" y2="45.72" width="0" layer="19" extent="1-1"/>
 <wire x1="48.5775" y1="42.2275" x2="48.895" y2="43.815" width="0" layer="19" extent="1-1"/>
@@ -2680,6 +2682,7 @@ design rules under a new name.</description>
 <wire x1="1.9375" y1="9.2075" x2="2.255" y2="12.7" width="0" layer="19" extent="16-16"/>
 <wire x1="1.9375" y1="5.715" x2="1.9375" y2="9.2075" width="0" layer="19" extent="16-16"/>
 <wire x1="1.9375" y1="2.2225" x2="1.9375" y2="5.715" width="0" layer="19" extent="16-16"/>
+<wire x1="-1.27" y1="1.27" x2="1.9375" y2="2.2225" width="0" layer="19" extent="16-16"/>
 <wire x1="28.925" y1="9.2075" x2="28.29" y2="12.7" width="0" layer="19" extent="16-16"/>
 <wire x1="28.2575" y1="8.255" x2="28.925" y2="9.2075" width="0" layer="19" extent="16-16"/>
 <wire x1="28.29" y1="5.715" x2="28.2575" y2="8.255" width="0" layer="19" extent="16-16"/>
@@ -2945,6 +2948,7 @@ design rules under a new name.</description>
 <contactref element="IC131" pad="13"/>
 <contactref element="IC62" pad="14"/>
 <contactref element="IC40" pad="14"/>
+<contactref element="IC61" pad="14"/>
 <wire x1="47.625" y1="45.72" x2="46.99" y2="48.26" width="0" layer="19" extent="1-1"/>
 <wire x1="44.45" y1="45.72" x2="47.625" y2="45.72" width="0" layer="19" extent="1-1"/>
 <wire x1="44.4175" y1="44.7675" x2="44.45" y2="45.72" width="0" layer="19" extent="16-16"/>
@@ -3186,6 +3190,7 @@ design rules under a new name.</description>
 <wire x1="46.6725" y1="7.3025" x2="46.0375" y2="7.3025" width="0" layer="19" extent="1-1"/>
 <wire x1="48.26" y1="7.9375" x2="46.6725" y2="7.3025" width="0" layer="19" extent="1-1"/>
 <wire x1="48.895" y1="7.9375" x2="48.26" y2="7.9375" width="0" layer="19" extent="1-1"/>
+<wire x1="-5.08" y1="3.175" x2="1.2375" y2="2.2225" width="0" layer="19" extent="16-16"/>
 <wire x1="48.895" y1="21.9075" x2="42.5125" y2="23.8125" width="0" layer="19" extent="16-16"/>
 <wire x1="48.895" y1="21.2725" x2="48.895" y2="21.9075" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -4818,13 +4823,9 @@ design rules under a new name.</description>
 </signal>
 <signal name="PTR_HIGH_COUNT_UP">
 <contactref element="IC69" pad="5"/>
-<contactref element="IC62" pad="6"/>
-<wire x1="39.0525" y1="19.05" x2="24.13" y2="33.3375" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PTR_HIGH_COUNT_DOWN">
 <contactref element="IC69" pad="4"/>
-<contactref element="IC62" pad="11"/>
-<wire x1="37.7825" y1="20.955" x2="23.495" y2="33.3375" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$105">
 <contactref element="IC69" pad="13"/>
@@ -5224,10 +5225,10 @@ design rules under a new name.</description>
 </signal>
 <signal name="N$97">
 <contactref element="IC92" pad="2"/>
-<contactref element="IC91" pad="8"/>
 <contactref element="IC88" pad="10"/>
+<contactref element="IC91" pad="6"/>
 <wire x1="24.765" y1="13.6525" x2="23.1775" y2="15.24" width="0" layer="19" extent="1-1"/>
-<wire x1="22.5425" y1="6.35" x2="24.765" y2="13.6525" width="0" layer="19" extent="1-1"/>
+<wire x1="21.9075" y1="4.445" x2="24.765" y2="13.6525" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LATCH_ALU_INPUT_B/WRITE_REGB_TO_DBUS_JMP_O">
 <contactref element="IC1" pad="2"/>
@@ -5255,27 +5256,6 @@ design rules under a new name.</description>
 <contactref element="IC88" pad="6"/>
 <wire x1="14.9225" y1="8.255" x2="25.4" y2="11.7475" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="LATCH_ALU_INPUT_B/WRITE_REGB_TO_DBUS_PTR_ADD">
-<contactref element="IC89" pad="3"/>
-<contactref element="IC1" pad="10"/>
-<wire x1="24.765" y1="1.27" x2="42.2275" y2="10.16" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="WRITE_PTR_L_TO_DBUS_PTR_ADD">
-<contactref element="IC12" pad="3"/>
-<contactref element="IC17" pad="2"/>
-<contactref element="IC99" pad="6"/>
-<wire x1="12.3825" y1="15.24" x2="34.29" y2="33.3375" width="0" layer="19" extent="1-1"/>
-<wire x1="15.24" y1="11.7475" x2="12.3825" y2="15.24" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="ALU_OUTPUT_ENABLE/FILL_PTR_L_PTR_ADD">
-<contactref element="IC72" pad="6"/>
-<contactref element="IC55" pad="2"/>
-<contactref element="IC62" pad="5"/>
-<contactref element="IC62" pad="13"/>
-<wire x1="36.5125" y1="20.955" x2="38.4175" y2="19.05" width="0" layer="19" extent="1-1"/>
-<wire x1="37.465" y1="4.445" x2="38.4175" y2="19.05" width="0" layer="19" extent="1-1"/>
-<wire x1="40.3225" y1="4.445" x2="37.465" y2="4.445" width="0" layer="19" extent="1-1"/>
-</signal>
 <signal name="N$202">
 <contactref element="JP5" pad="30"/>
 <contactref element="IC49" pad="8"/>
@@ -5294,13 +5274,6 @@ design rules under a new name.</description>
 <contactref element="IC62" pad="2"/>
 <wire x1="15.5575" y1="3.175" x2="36.5125" y2="19.05" width="0" layer="19" extent="1-1"/>
 <wire x1="8.89" y1="35.2425" x2="36.5125" y2="19.05" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="N$166">
-<contactref element="IC71" pad="6"/>
-<contactref element="IC108" pad="9"/>
-<contactref element="IC59" pad="9"/>
-<wire x1="9.8425" y1="17.145" x2="9.525" y2="35.2425" width="0" layer="19" extent="1-1"/>
-<wire x1="4.445" y1="15.24" x2="9.8425" y2="17.145" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ALU_NR2_ENABLE_JMP_O_PTR_ADD">
 <contactref element="IC108" pad="8"/>
@@ -5375,19 +5348,7 @@ design rules under a new name.</description>
 <wire x1="27.6225" y1="6.35" x2="30.1625" y2="11.7475" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PTR_ADD">
-<contactref element="IC91" pad="6"/>
 <contactref element="IC48" pad="5"/>
-<contactref element="IC89" pad="2"/>
-<contactref element="IC99" pad="5"/>
-<contactref element="IC71" pad="5"/>
-<contactref element="IC72" pad="5"/>
-<contactref element="IC52" pad="2"/>
-<wire x1="14.605" y1="11.7475" x2="27.305" y2="19.05" width="0" layer="19" extent="1-1"/>
-<wire x1="7.62" y1="12.065" x2="14.605" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="3.81" y1="15.24" x2="7.62" y2="12.065" width="0" layer="19" extent="1-1"/>
-<wire x1="21.9075" y1="4.445" x2="14.605" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="24.13" y1="1.27" x2="21.9075" y2="4.445" width="0" layer="19" extent="1-1"/>
-<wire x1="36.83" y1="4.445" x2="24.13" y2="1.27" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STR">
 <contactref element="IC95" pad="6"/>
@@ -5414,18 +5375,12 @@ design rules under a new name.</description>
 </signal>
 <signal name="SAVE_LR/RET">
 <contactref element="IC48" pad="13"/>
-<contactref element="IC91" pad="11"/>
-<contactref element="IC59" pad="5"/>
-<contactref element="IC92" pad="9"/>
-<wire x1="25.7175" y1="17.145" x2="25.4" y2="20.955" width="0" layer="19" extent="1-1"/>
-<wire x1="20.6375" y1="6.35" x2="25.7175" y2="17.145" width="0" layer="19" extent="1-1"/>
-<wire x1="8.89" y1="33.3375" x2="25.4" y2="20.955" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LDR">
 <contactref element="IC48" pad="12"/>
-<contactref element="IC95" pad="3"/>
 <contactref element="IC100" pad="10"/>
-<wire x1="25.0825" y1="4.445" x2="26.035" y2="20.955" width="0" layer="19" extent="1-1"/>
+<contactref element="IC91" pad="11"/>
+<wire x1="20.6375" y1="6.35" x2="26.035" y2="20.955" width="0" layer="19" extent="1-1"/>
 <wire x1="3.81" y1="20.955" x2="26.035" y2="20.955" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$13">
@@ -5678,10 +5633,10 @@ design rules under a new name.</description>
 </signal>
 <signal name="SECOND_LATCH_SELECT">
 <contactref element="IC12" pad="13"/>
-<contactref element="IC17" pad="1"/>
 <contactref element="IC65" pad="8"/>
-<wire x1="11.7475" y1="15.24" x2="34.925" y2="35.2425" width="0" layer="19" extent="1-1"/>
-<wire x1="5.08" y1="42.2275" x2="11.7475" y2="15.24" width="0" layer="19" extent="1-1"/>
+<contactref element="IC12" pad="1"/>
+<wire x1="33.02" y1="33.3375" x2="34.925" y2="35.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="5.08" y1="42.2275" x2="33.02" y2="33.3375" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$61">
 <contactref element="JP5" pad="14"/>
@@ -5754,11 +5709,6 @@ design rules under a new name.</description>
 <contactref element="IC118" pad="2"/>
 <wire x1="35.8775" y1="10.16" x2="46.0375" y2="11.1125" width="0" layer="19" extent="1-1"/>
 <wire x1="35.2425" y1="8.255" x2="35.8775" y2="10.16" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="N$47">
-<contactref element="IC12" pad="1"/>
-<contactref element="IC17" pad="3"/>
-<wire x1="13.0175" y1="15.24" x2="33.02" y2="33.3375" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$171">
 <contactref element="IC12" pad="6"/>
@@ -6151,77 +6101,57 @@ design rules under a new name.</description>
 <wire x1="26.035" y1="19.05" x2="8.255" y2="43.815" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STATE_0/CYCL_3">
-<contactref element="IC100" pad="9"/>
 <contactref element="IC54" pad="5"/>
 <contactref element="IC54" pad="12"/>
 <contactref element="JP4" pad="30"/>
-<contactref element="IC99" pad="4"/>
-<contactref element="IC99" pad="1"/>
+<contactref element="IC40" pad="9"/>
+<contactref element="IC100" pad="9"/>
 <contactref element="IC100" pad="12"/>
 <contactref element="IC100" pad="4"/>
 <contactref element="IC130" pad="4"/>
-<contactref element="IC40" pad="9"/>
-<contactref element="IC78" pad="9"/>
+<contactref element="IC61" pad="9"/>
 <wire x1="36.5125" y1="13.6525" x2="48.26" y2="25.0825" width="0" layer="19" extent="1-1"/>
 <wire x1="35.56" y1="3.175" x2="36.5125" y2="13.6525" width="0" layer="19" extent="1-1"/>
 <wire x1="36.83" y1="1.27" x2="35.56" y2="3.175" width="0" layer="19" extent="1-1"/>
-<wire x1="13.97" y1="11.7475" x2="36.5125" y2="13.6525" width="0" layer="19" extent="1-1"/>
-<wire x1="12.065" y1="11.7475" x2="13.97" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="4.445" y1="13.6525" x2="12.065" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="3.175" y1="19.05" x2="4.445" y2="13.6525" width="0" layer="19" extent="1-1"/>
-<wire x1="2.54" y1="20.955" x2="3.175" y2="19.05" width="0" layer="19" extent="1-1"/>
-<wire x1="4.445" y1="20.955" x2="2.54" y2="20.955" width="0" layer="19" extent="1-1"/>
-<wire x1="18.415" y1="33.3375" x2="4.445" y2="20.955" width="0" layer="19" extent="1-1"/>
+<wire x1="18.415" y1="33.3375" x2="36.5125" y2="13.6525" width="0" layer="19" extent="1-1"/>
+<wire x1="4.445" y1="20.955" x2="18.415" y2="33.3375" width="0" layer="19" extent="1-1"/>
+<wire x1="2.54" y1="20.955" x2="4.445" y2="20.955" width="0" layer="19" extent="1-1"/>
+<wire x1="3.175" y1="19.05" x2="2.54" y2="20.955" width="0" layer="19" extent="1-1"/>
+<wire x1="-1.905" y1="3.175" x2="3.175" y2="19.05" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STATE_1/CYCL_4">
-<contactref element="IC92" pad="1"/>
-<contactref element="IC100" pad="1"/>
-<contactref element="IC89" pad="1"/>
-<contactref element="IC92" pad="4"/>
 <contactref element="IC72" pad="1"/>
 <contactref element="IC54" pad="9"/>
 <contactref element="JP4" pad="32"/>
 <contactref element="IC105" pad="2"/>
-<contactref element="IC126" pad="4"/>
 <contactref element="IC108" pad="1"/>
-<contactref element="IC130" pad="9"/>
-<contactref element="IC130" pad="12"/>
 <contactref element="IC40" pad="4"/>
 <contactref element="IC52" pad="4"/>
+<contactref element="IC126" pad="4"/>
+<contactref element="IC130" pad="9"/>
+<contactref element="IC130" pad="12"/>
 <wire x1="35.2425" y1="11.7475" x2="48.26" y2="25.7175" width="0" layer="19" extent="1-1"/>
 <wire x1="29.5275" y1="11.7475" x2="35.2425" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="24.4475" y1="15.24" x2="29.5275" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="22.5425" y1="15.24" x2="24.4475" y2="15.24" width="0" layer="19" extent="1-1"/>
 <wire x1="34.29" y1="4.445" x2="35.2425" y2="11.7475" width="0" layer="19" extent="1-1"/>
 <wire x1="37.465" y1="3.175" x2="34.29" y2="4.445" width="0" layer="19" extent="1-1"/>
 <wire x1="29.5275" y1="1.27" x2="34.29" y2="4.445" width="0" layer="19" extent="1-1"/>
-<wire x1="23.495" y1="1.27" x2="29.5275" y2="1.27" width="0" layer="19" extent="1-1"/>
-<wire x1="8.89" y1="12.065" x2="22.5425" y2="15.24" width="0" layer="19" extent="1-1"/>
+<wire x1="8.89" y1="12.065" x2="29.5275" y2="11.7475" width="0" layer="19" extent="1-1"/>
 <wire x1="6.6675" y1="15.24" x2="8.89" y2="12.065" width="0" layer="19" extent="1-1"/>
-<wire x1="1.27" y1="19.05" x2="6.6675" y2="15.24" width="0" layer="19" extent="1-1"/>
-<wire x1="19.685" y1="35.2425" x2="22.5425" y2="15.24" width="0" layer="19" extent="1-1"/>
-<wire x1="17.78" y1="35.2425" x2="19.685" y2="35.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="17.78" y1="35.2425" x2="6.6675" y2="15.24" width="0" layer="19" extent="1-1"/>
+<wire x1="19.685" y1="35.2425" x2="17.78" y2="35.2425" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STATE_2/CYCL_5">
 <contactref element="JP4" pad="34"/>
-<contactref element="IC126" pad="1"/>
 <contactref element="IC105" pad="5"/>
 <contactref element="IC105" pad="12"/>
-<contactref element="IC126" pad="12"/>
 <contactref element="IC52" pad="12"/>
-<contactref element="IC88" pad="9"/>
 <contactref element="IC40" pad="12"/>
 <contactref element="IC72" pad="9"/>
-<contactref element="IC52" pad="1"/>
 <wire x1="34.6075" y1="13.6525" x2="48.26" y2="26.3525" width="0" layer="19" extent="1-1"/>
-<wire x1="28.8925" y1="13.6525" x2="34.6075" y2="13.6525" width="0" layer="19" extent="1-1"/>
-<wire x1="27.6225" y1="11.7475" x2="28.8925" y2="13.6525" width="0" layer="19" extent="1-1"/>
-<wire x1="25.4" y1="13.6525" x2="27.6225" y2="11.7475" width="0" layer="19" extent="1-1"/>
 <wire x1="37.465" y1="6.35" x2="34.6075" y2="13.6525" width="0" layer="19" extent="1-1"/>
 <wire x1="31.4325" y1="1.27" x2="37.465" y2="6.35" width="0" layer="19" extent="1-1"/>
 <wire x1="30.1625" y1="3.175" x2="31.4325" y2="1.27" width="0" layer="19" extent="1-1"/>
-<wire x1="8.255" y1="13.97" x2="25.4" y2="13.6525" width="0" layer="19" extent="1-1"/>
-<wire x1="6.985" y1="12.065" x2="8.255" y2="13.97" width="0" layer="19" extent="1-1"/>
+<wire x1="8.255" y1="13.97" x2="30.1625" y2="3.175" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$56">
 <contactref element="IC54" pad="2"/>
@@ -6266,19 +6196,15 @@ design rules under a new name.</description>
 <wire x1="35.56" y1="4.445" x2="39.6875" y2="8.255" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STATE_3/CYCL_6">
-<contactref element="IC72" pad="4"/>
 <contactref element="IC53" pad="2"/>
 <contactref element="IC105" pad="9"/>
-<contactref element="IC126" pad="9"/>
 <contactref element="IC52" pad="9"/>
 <contactref element="IC40" pad="1"/>
 <contactref element="IC72" pad="12"/>
-<wire x1="33.3375" y1="11.7475" x2="30.7975" y2="13.6525" width="0" layer="19" extent="1-1"/>
 <wire x1="35.56" y1="6.35" x2="33.3375" y2="11.7475" width="0" layer="19" extent="1-1"/>
-<wire x1="36.195" y1="4.445" x2="35.56" y2="6.35" width="0" layer="19" extent="1-1"/>
-<wire x1="32.0675" y1="3.175" x2="36.195" y2="4.445" width="0" layer="19" extent="1-1"/>
-<wire x1="40.64" y1="1.27" x2="36.195" y2="4.445" width="0" layer="19" extent="1-1"/>
-<wire x1="10.16" y1="13.97" x2="30.7975" y2="13.6525" width="0" layer="19" extent="1-1"/>
+<wire x1="32.0675" y1="3.175" x2="35.56" y2="6.35" width="0" layer="19" extent="1-1"/>
+<wire x1="40.64" y1="1.27" x2="35.56" y2="6.35" width="0" layer="19" extent="1-1"/>
+<wire x1="10.16" y1="13.97" x2="33.3375" y2="11.7475" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENABLE_ALU_OUTPUT/FILL_REGISTER_ALU">
 <contactref element="IC17" pad="13"/>
@@ -6293,9 +6219,9 @@ design rules under a new name.</description>
 <wire x1="7.9375" y1="15.24" x2="13.0175" y2="17.145" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STORE_ALU_OUTPUT/STORE_CARRY_TMP_JMP_O">
-<contactref element="IC112" pad="9"/>
 <contactref element="IC40" pad="11"/>
-<wire x1="35.2425" y1="13.6525" x2="31.75" y2="45.72" width="0" layer="19" extent="1-1"/>
+<contactref element="IC67" pad="11"/>
+<wire x1="35.2425" y1="13.6525" x2="35.56" y2="45.72" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ENABLE_ALU_OUTPUT">
 <contactref element="IC14" pad="9"/>
@@ -6354,11 +6280,6 @@ design rules under a new name.</description>
 <contactref element="IC62" pad="1"/>
 <wire x1="35.8775" y1="19.05" x2="38.4175" y2="20.955" width="0" layer="19" extent="1-1"/>
 <wire x1="37.7825" y1="10.16" x2="35.8775" y2="19.05" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="STORE_ALU_OUTPUT/STORE_CARRY_TMP_PTR_ADD">
-<contactref element="IC112" pad="10"/>
-<contactref element="IC52" pad="3"/>
-<wire x1="8.255" y1="12.065" x2="31.115" y2="45.72" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="FILL_PTR_H_SET_PTR">
 <contactref element="IC39" pad="6"/>
@@ -6465,11 +6386,7 @@ design rules under a new name.</description>
 <wire x1="5.08" y1="38.735" x2="40.64" y2="15.24" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="STORE_ALU_OUTPUT_JMP_PTR_ADD">
-<contactref element="IC112" pad="8"/>
-<contactref element="IC67" pad="11"/>
 <contactref element="IC112" pad="13"/>
-<wire x1="32.385" y1="45.72" x2="35.56" y2="45.72" width="0" layer="19" extent="1-1"/>
-<wire x1="29.21" y1="45.72" x2="32.385" y2="45.72" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PC_COUNT_UP_RET">
 <contactref element="IC126" pad="8"/>
@@ -6488,15 +6405,11 @@ design rules under a new name.</description>
 <signal name="CARRY&amp;&amp;IR_DATA">
 <contactref element="IC62" pad="8"/>
 <contactref element="IC88" pad="4"/>
-<contactref element="IC62" pad="12"/>
-<wire x1="37.1475" y1="20.955" x2="39.6875" y2="20.955" width="0" layer="19" extent="1-1"/>
-<wire x1="24.13" y1="11.7475" x2="37.1475" y2="20.955" width="0" layer="19" extent="1-1"/>
+<wire x1="24.13" y1="11.7475" x2="39.6875" y2="20.955" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="CARRY&amp;&amp;!IR_DATA">
 <contactref element="IC88" pad="12"/>
 <contactref element="IC62" pad="3"/>
-<contactref element="IC62" pad="4"/>
-<wire x1="37.7825" y1="19.05" x2="37.1475" y2="19.05" width="0" layer="19" extent="1-1"/>
 <wire x1="23.495" y1="13.6525" x2="37.1475" y2="19.05" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$11">
@@ -6511,16 +6424,18 @@ design rules under a new name.</description>
 </signal>
 <signal name="WQWJKDHSAAASDFXGHCJFDSAAS">
 <contactref element="IC108" pad="6"/>
-<contactref element="IC71" pad="4"/>
 <contactref element="IC40" pad="5"/>
 <contactref element="IC40" pad="13"/>
 <contactref element="IC40" pad="2"/>
 <contactref element="IC40" pad="10"/>
+<contactref element="IC108" pad="9"/>
+<contactref element="IC59" pad="9"/>
 <wire x1="35.8775" y1="11.7475" x2="35.8775" y2="13.6525" width="0" layer="19" extent="1-1"/>
 <wire x1="33.9725" y1="13.6525" x2="35.8775" y2="13.6525" width="0" layer="19" extent="1-1"/>
 <wire x1="33.9725" y1="11.7475" x2="35.8775" y2="11.7475" width="0" layer="19" extent="1-1"/>
 <wire x1="9.8425" y1="15.24" x2="33.9725" y2="13.6525" width="0" layer="19" extent="1-1"/>
-<wire x1="3.175" y1="15.24" x2="9.8425" y2="15.24" width="0" layer="19" extent="1-1"/>
+<wire x1="9.8425" y1="17.145" x2="9.8425" y2="15.24" width="0" layer="19" extent="1-1"/>
+<wire x1="9.525" y1="35.2425" x2="9.8425" y2="17.145" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PC_L_TO_DBUS">
 <contactref element="IC49" pad="5"/>
@@ -6540,6 +6455,65 @@ design rules under a new name.</description>
 <contactref element="IC99" pad="11"/>
 <contactref element="IC67" pad="9"/>
 <wire x1="13.97" y1="13.6525" x2="36.83" y2="45.72" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$17">
+<contactref element="IC59" pad="5"/>
+<contactref element="IC92" pad="9"/>
+<wire x1="25.7175" y1="17.145" x2="8.89" y2="33.3375" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$33">
+<contactref element="IC78" pad="9"/>
+</signal>
+<signal name="N$79">
+<contactref element="IC99" pad="1"/>
+</signal>
+<signal name="N$91">
+<contactref element="IC100" pad="1"/>
+</signal>
+<signal name="N$92">
+<contactref element="IC92" pad="4"/>
+</signal>
+<signal name="N$93">
+<contactref element="IC126" pad="1"/>
+</signal>
+<signal name="N$94">
+<contactref element="IC126" pad="12"/>
+</signal>
+<signal name="N$95">
+<contactref element="IC126" pad="9"/>
+</signal>
+<signal name="N$96">
+<contactref element="IC99" pad="4"/>
+</signal>
+<signal name="N$99">
+<contactref element="IC89" pad="1"/>
+</signal>
+<signal name="N$100">
+<contactref element="IC92" pad="1"/>
+</signal>
+<signal name="N$101">
+<contactref element="IC88" pad="9"/>
+</signal>
+<signal name="LDR_I">
+<contactref element="IC89" pad="2"/>
+<contactref element="IC99" pad="5"/>
+<contactref element="IC91" pad="8"/>
+<wire x1="24.13" y1="1.27" x2="22.5425" y2="6.35" width="0" layer="19" extent="1-1"/>
+<wire x1="14.605" y1="11.7475" x2="22.5425" y2="6.35" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$32">
+<contactref element="IC95" pad="3"/>
+<contactref element="IC61" pad="10"/>
+<wire x1="-2.54" y1="3.175" x2="25.0825" y2="4.445" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$98">
+<contactref element="IC99" pad="6"/>
+</signal>
+<signal name="N$108">
+<contactref element="IC89" pad="3"/>
+</signal>
+<signal name="N$90">
+<contactref element="IC61" pad="8"/>
 </signal>
 </signals>
 </board>

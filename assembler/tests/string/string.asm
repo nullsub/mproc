@@ -9,7 +9,7 @@
 ;halt the emulator
 	MOV	reg2, 0
 	SET_PTR	reg2, 0
-	LDA	reg2; halts the emulator
+	LDR	reg2; halts the emulator
 
 ;print a null terminated c-string.
 ;reg0 = HIGH(String)
@@ -17,7 +17,7 @@
 uart_print: 
 	SET_PTR	reg0, reg1
 uart_print_loop:
-	LDA	reg0
+	LDR_I	reg0
 	JMPZ	uart_print_end
 	PUSH	ptr_low
 	PUSH	ptr_high
@@ -26,7 +26,6 @@ uart_print_loop:
 	STR	reg0
 	POP	ptr_high
 	POP	ptr_low
-	PTR_ADD 1
 	JMP	uart_print_loop
 uart_print_end:	
 	RET

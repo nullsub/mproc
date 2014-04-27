@@ -42,7 +42,7 @@ struct cpu {
 	int carry;
 } cpu;
 
-enum opcodes {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDA, SET_PTR, PTR_ADD, SAVE_LR, PUSH, POP};
+enum opcodes {ADD = 0x00, SUB, NOR, AND, MOV, MOVZ, JMP, JMPZ, JMPC, STR, LDR, STR_I, LDR_I, SET_PTR, PUSH, POP};
 
 struct opcode {
 	char name[10];
@@ -69,10 +69,10 @@ const struct opcode opcodes[] = {
 	{"JMPZ", 0, JMPZ},
 	{"JMPC", 0, JMPC},
 	{"STR", 2, STR},
-	{"LDA", 1, LDA},
+	{"LDR", 1, LDR},
+	{"STR_I", 2, STR_I},
+	{"LDR_I", 1, LDR_I},
 	{"SET_PTR", 0, SET_PTR},
-	{"PTR_ADD", 2, PTR_ADD},
-	{"SAVE_LR", 1, SAVE_LR},
 	{"PUSH", 2, PUSH},
 	{"POP", 1, POP},
 };
@@ -243,6 +243,8 @@ void emu(FILE * file)
 	while(1) {
 		struct instruction crrnt_instr = get_instruction();
 
+//		printf("cmd_name: %s\n", crrnt_instr.name);
+
 		uint8_t *arg1 = crrnt_instr.arg1;
 		uint8_t *arg2 = crrnt_instr.arg2;
 		uint16_t tmp16_bit;
@@ -278,12 +280,14 @@ void emu(FILE * file)
 				cpu.ptr_high = *arg1;
 				cpu.ptr_low = *arg2;
 				break;
-			case PTR_ADD:
-				tmp16_bit = ((cpu.ptr_high << 8) | (cpu.ptr_low));
+			case STR_I:
+				tmp16_bit = ((cpu.ptr_high << 8)|(cpu.ptr_low));
+				if(tmp16_bit == UART) {
+					printf("%c", *arg2);
+				}
+				write_byte(*arg2, tmp16_bit);
 
-				int8_t nr = *arg2;
-				tmp16_bit += nr;
-
+				tmp16_bit += 1;
 				cpu.ptr_low = (uint8_t)(tmp16_bit & 0x00FF);
 				cpu.ptr_high = (uint8_t)((tmp16_bit >> 8));
 				break;
@@ -294,19 +298,16 @@ void emu(FILE * file)
 				}
 				write_byte(*arg2, tmp16_bit);
 				break;
-			case LDA:
-				*arg2 = get_byte((cpu.ptr_high << 8) | (cpu.ptr_low));
+			case LDR_I:
+				tmp16_bit = ((cpu.ptr_high << 8)|(cpu.ptr_low));
+				*arg2 = get_byte(tmp16_bit);
+
+				tmp16_bit += 1;
+				cpu.ptr_low = (uint8_t)(tmp16_bit & 0x00FF);
+				cpu.ptr_high = (uint8_t)((tmp16_bit >> 8));
 				break;
-			case SAVE_LR:
-				if(crrnt_instr.opcode != SAVE_LR) { // RET is encoded as SAVE_LR
-					cpu.pc_low = cpu.lr_low;
-					cpu.pc_high = cpu.lr_high;
-					inc_pc();
-					inc_pc();
-					break;
-				}
-				cpu.lr_low = cpu.pc_low;
-				cpu.lr_high = cpu.pc_high;
+			case LDR:
+				*arg2 = get_byte((cpu.ptr_high << 8) | (cpu.ptr_low));
 				break;
 			case JMPZ:
 				if(!cpu.reg0)
@@ -329,12 +330,22 @@ void emu(FILE * file)
 				cpu.stack[cpu.sp] = *arg2;
 				break;
 			case POP:
-				if(cpu.sp == 0) {
-					printf("stack underflow!\n");
-					return;
+				if((crrnt_instr.opcode & 0xF0) == 0xE0) { //RET
+					cpu.pc_low = cpu.lr_low;
+					cpu.pc_high = cpu.lr_high;
+					inc_pc();
+					inc_pc();
+				} else if((crrnt_instr.opcode & 0xF0) == 0xF0) { //SAVE_LR
+					cpu.lr_low = cpu.pc_low;
+					cpu.lr_high = cpu.pc_high;
+				} else { //POP
+					if(cpu.sp == 0) {
+						printf("stack underflow!\n");
+						return;
+					}
+					*arg2 = cpu.stack[cpu.sp];
+					cpu.sp --;
 				}
-				*arg2 = cpu.stack[cpu.sp];
-				cpu.sp --;
 				break;
 			default:
 				printf("unknown command in switch\n");

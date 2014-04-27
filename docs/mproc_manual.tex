@@ -20,7 +20,7 @@
 		\item Data-bus is 8 bits wide.
 		\item Address-bus is 15 bits wide: 0x0000 to 0x7FFF is the ram, 0x8000 to 0xFFFF is the flash! 
 		\item Thus we have 32kb flash and 32kb ram. We can execute both from ram and flash.
-		\item The Pointer Register PTR is used for 16 memory access. See SET\_PTR, PTR\_ADD.
+		\item The Pointer Register PTR is used for 16 memory access. See SET\_PTR.
 		\item PC is 16 bits wide: P\_L:0...7; PC\_H:8...15.
 		\item ALU is 8 bits wide.
 	\end{itemize}
@@ -76,7 +76,7 @@
 		\makebox[\linewidth]{
 		\begin{tabular}{|c|c|c|c|}
 			\hline
-			Nibble 1 & Instruction & Note & Decoder\\ \hline
+			Nibble 2 & Instruction & Note & Decoder\\ \hline
 			0x0 & ADD regA, regB & regA + regB. Result in regA & 0\\ \hline
 			0x1 & SUB regA, regB & regA - regB. Result in regA & 0 \\ \hline
 			0x2 & NOR regA, regB & regA = !(regA OR regB) & 0 \\ \hline
@@ -91,29 +91,29 @@
 			0x8 & JMPC number & Add sigend number to PC if carry is set & 0\\ \hline
 			0x9 & STR regA & Store regA where PTR points to & 2\\ \hline
 			0xA & LDR regA & Load into regA where PTR points to & 1\\ \hline
-			0xB & SET\_PTR regA, regB & Set PTR\_H to regA, PTR\_L to regB & 0\\ \hline
-			0xC & PTR\_ADD regB & add regB to PTR & 2\\ \hline
-			0xD0 & SAVE\_LR & Save PC + 1 in LR &   \\ \hline
-			0xD1 & RET & Restore LR in PC &   \\ \hline
+			0xB & STR\_I regA & Store regA where PTR points to. Post increment PTR & 2\\ \hline
+			0xC & LDR\_I regA & Load into regA where PTR points to. Post increment PTR & 1\\ \hline
+			0xD & SET\_PTR regA, regB & Set PTR\_H to regA, PTR\_L to regB & 0\\ \hline
 			0xE & PUSH regA & Push regA to the stack & 2\\ \hline
 			0xF & POP regA & Pop stack item into regA & 1\\	\hline
+			0xEF & RET & Restore LR in PC &   \\ \hline
+			0xFF & SAVE\_LR & Save PC + 1 in LR &   \\ \hline
 		\end{tabular}	
 		}
 		\begin{itemize}
-			\item PTR\_ADD number adds number to PTR; [-128 \textless \space number \textless \space 128]
 			\item regA is a register, regB is a register or a number.\newline
 		\end{itemize}
 	\end{center}
 	\newpage
 	\subsection{Argument Decode Table 0}
 		The second instruction Nibble defines the operand registers.
-		Table 0 is used by MOV, SET\_PTR and ALU \\
+		Table 0 is used by MOV, and ALU \\
 		JMP(Z/C) uses "reg0, number" to encode "JMP(Z/C) PC\_H, number" thus JMP(Z/C) reg0, number cant be used.\\
 		\newline
 		\makebox[\linewidth] {
 		\begin{tabular}{|c|c|p{6cm}|}
 			\hline
-			Nibble 2 & Involved Registers \\ \hline
+			Nibble 1 & Involved Registers \\ \hline
 			0x0 & reg0, number \\ \hline
 			0x1 & reg0, reg1  \\ \hline
 			0x2 & reg0, reg2 \\ \hline
@@ -134,31 +134,35 @@
 		}
 	\newpage
 	\subsection{Argument Input Table 1}
-	Used by LDR and POP
+	Used by LDR(\_I)and POP
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Nibble 2 & Involved Registers \\ \hline
+			Nibble 1 & Involved Registers \\ \hline
 			0x0 & reg0 \\ \hline
 			0x1 & reg1 \\ \hline
 			0x2 & reg2 \\ \hline
 			0x3 & reg3 \\ \hline
 			0x4 & PTR\_L\\ \hline
 			0x5 & PTR\_H \\ \hline
-			0x6 & io\_out0 \\ \hline
-			0x7 & io\_out1 \\ \hline
-			0x8 & LR\_LOW \\ \hline
-			0x9 & LR\_HIGH \\ \hline
-			0xA & PC\_LOW \\ \hline
-			0xB & PC\_HIGH \\ \hline
+			0x6 & LR\_LOW \\ \hline
+			0x7 & LR\_HIGH \\ \hline
+			0x8 & PC\_LOW  \\ \hline
+			0x9 & PC\_HIGH \\ \hline
+			0xA & io\_out0 \\ \hline
+			0xB & io\_out1 \\ \hline
+			0xE & --used-- \\ \hline
+			0xF & --used-- \\ \hline
 		\end{tabular}
+		RET is encoded as POP with 0xE as argument nibble.\\
+		SAVE\_LR is encoded as POP with 0F  as argument nibble.\\
 	\end{center}	
 	\subsection{Argument Output Table 2}
-	Used by STR, PUSH and PTR\_ADD
+	Used by STR(\_I), PUSH
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Nibble 2 & Involved Registers \\ \hline
+			Nibble 1 & Involved Registers \\ \hline
 			0x0 & number \\ \hline
 			0x1 & reg0 \\ \hline
 			0x2 & reg1 \\ \hline
@@ -166,14 +170,14 @@
 			0x4 & reg3 \\ \hline
 			0x5 & PTR\_L \\ \hline
 			0x6 & PTR\_H \\ \hline
-			0x7 & io\_in0 \\ \hline
-			0x8 & LR\_LOW \\ \hline
-			0x9 & LR\_HIGH \\ \hline
-			0xA & PC\_LOW \\ \hline
-			0xB & PC\_HIGH \\ \hline
-			0xC & io\_in1 \\ \hline
-			0xD & io\_out0 \\ \hline
-			0xE & io\_out1 \\ \hline
+			0x7 & LR\_L \\ \hline
+			0x8 & LR\_H \\ \hline
+			0x9 & PC\_L \\ \hline
+			0xA & PC\_H \\ \hline
+			0xB & io\_out0 \\ \hline
+			0xC & io\_out1 \\ \hline
+			0xD & io\_in0 \\ \hline
+			0xE & io\_in1 \\ \hline
 		\end{tabular}
 	\end{center}
 	\section{Calling Convention}
@@ -219,7 +223,6 @@
 			MOV(Z) & Write regB to DBUS & Fill Regs & &\\ \hline
 			JMP(C/Z) & Write RegA to DBUS & Fill PC\_LOW. & Write RegB to DBUS. This is done using the multiplexer to use an input selector as an ouput selector & Fill PC\_HIGH \\ \hline
 			JMP(Offset) & Write PC\_L to ALU & Latch PC\_L to ALU input & Write RegB to DBUS, Fill PC\_L with ALU and Inc or Dec PC\_H depending on carry &\\ \hline
-			PTR\_ADD & Write IR to DBUS & Latch & Write RegB to DBUS, Fill PTR\_L, Inc/Dec PTR\_H & \\ \hline
 			SET\_PTR & Write RegB to DBUS & Fill PTR\_L. & Write RegA to DBUS & Fill PTR\_H. \\ \hline
 			SAVE\_PTR & & & & \\ \hline
 			RET & & & & \\ \hline
@@ -233,7 +236,7 @@
 	\newpage
 	\section{Current Problems}
 		\subsection{DBUS Selector Encoding}
-			PTR\_ADD and SAVE\_LR/RET need custom WRITE\_XXX\_DBUS signals. To be able to encode those for the dbus selector another multiplexer needs to be added.
+			SAVE\_LR/RET need custom WRITE\_XXX\_DBUS signals. To be able to encode those for the dbus selector another multiplexer needs to be added.
 		\subsection{SAVE\_LR Implementation and RET}
 			SAVE\_LR does not know whether the following JMP instructions takes one or two bytes. How to decide whether to save PC+1 with SAVE\_LR or PC+2?
 		\subsection{ALU}
