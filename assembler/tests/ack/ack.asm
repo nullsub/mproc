@@ -1,8 +1,11 @@
+;calculates and displays ackerman function
+
 .define ITOA_MEM        0x7E00 ;some free ram for a string
 .define UART            0x7FD0
 
 .define MAX_N           3
 .define MAX_M           4
+
 
 	PUSH 0 ; current n
 n_loop_start:

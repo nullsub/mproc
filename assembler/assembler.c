@@ -12,7 +12,9 @@
 #define WORD_LENGTH		50  //MAX instruction or ARG length in the source file
 
 unsigned int curr_line = 0;
-FILE *src_file;
+
+unsigned int count_included_files = 0;
+char ** included_files = NULL;
 
 const uint16_t bin_offset = 0x7FFF;
 
@@ -150,8 +152,8 @@ struct label_table provide_label; // provides the actual numbers
 struct label_table need_label; //labels which need to be exchanged by the numbers
 
 int translate(char *); //translates one stament to the opcode
-int get_statement(char **); //returns line number. If end of file, it returns 0
-int get_line(char **str); //return line number
+int get_statement(char **, FILE * src_file); //returns line number. If end of file, it returns 0
+int get_line(char **str, FILE * src_file); //return line number
 void add_byte(uint8_t c);
 void fix_labels();
 void failure_exit(char * cause);
@@ -193,24 +195,46 @@ int get_number_8(char *str, int8_t *c)
 	return ret;
 }
 
-void assemble(FILE * file, char * output_file_name)
+void processFile(FILE * file)
 {
-	target_bin = NULL;
-	defines = NULL;
-	provide_label.nr = 0;
-	need_label.nr = 0;
-	src_file = file;
-
 	curr_statement = NULL;
-	int line_nr = get_statement(&curr_statement);
+	int line_nr = get_statement(&curr_statement, file);
 	while(line_nr) {
 		if(translate(curr_statement)) {
 			failure_exit("broken statement");
 			return;
 		}
-		line_nr = get_statement(&curr_statement);
+		line_nr = get_statement(&curr_statement, file);
 	}
-	free(curr_statement);
+	free(curr_statement); //???
+}
+
+FILE * get_file_from_search_path(char * filename)
+{
+	return fopen(filename, "r");
+}
+
+void assemble(FILE * main_file, char * output_file_name)
+{
+	target_bin = NULL;
+	defines = NULL;
+	provide_label.nr = 0;
+	need_label.nr = 0;
+
+	processFile(file);
+
+	while(count_included_files) {
+		FILE *file = get_file_from_search_path(included_files[count_included_files-1]);
+		if (file == 0) {
+			printf("Could not open file: %s\n", included_files[count_included_files-1]);
+			exit(-1);
+		}
+		processFile(file);
+		fclose(file);
+		free(included_files[count_included_files-1]);
+		count_included_files --;
+	}
+	free(included_files);
 
 	fix_labels();
 	free_lists();
@@ -225,11 +249,12 @@ void assemble(FILE * file, char * output_file_name)
 	free(target_bin);
 }
 
-int get_statement(char **str) //returns line number. If end of file, it returns 0
+//returns line number. If end of file, it returns 0
+int get_statement(char **str, FILE * src_file)
 {
 	unsigned int line_nr;
 	while(1) {
-		line_nr = get_line(str);
+		line_nr = get_line(str, src_file);
 		//printf("get_st returned %s \n", *str);
 		if(line_nr == 0)
 			return 0;
@@ -364,7 +389,7 @@ int preprocess(char **str) //resolve macros and defines before a statement is in
 
 	get_word(*str, name, 0);
 
-	if(!strcmp(".define",name)) { //whether there are new defines
+	if(!strcmp(".define", name)) { //whether there are new defines
 		get_word(*str, name, 1);
 		if(name == NULL) {
 			failure_exit("broken define");
@@ -373,24 +398,38 @@ int preprocess(char **str) //resolve macros and defines before a statement is in
 		if(val == NULL) {
 			failure_exit("broken define");
 		}
-		add_define_list(name,val);
+		add_define_list(name, val);
+		return 0;
+	}
+	if(!strcmp(".include", name)) { //include following files
+		get_word(*str, name, 1);
+		if(name == NULL ||  strlen(name) == 0) {
+			failure_exit("broken include statement");
+		}
+		count_included_files ++;
+		if(included_files == NULL) {
+			included_files = malloc(sizeof(char **) * count_included_files);
+		}
+		included_files = realloc(included_files, sizeof(char **) * count_included_files);
+		included_files[count_included_files-1] = malloc(strlen(name));
+		strcpy(included_files[count_included_files-1], name);
 		return 0;
 	}
 	return 1;
 }
 
-int get_line(char **str)
+int get_line(char **str, FILE * src_file)
 {
 	char c;
 	*str = realloc(*str, 1);
 	do{  //remove leading space
-		c = fgetc (src_file);
+		c = fgetc(src_file);
 		if(c == EOF) {
 			*str = 0x00;
 			return 0;
 		}
 		if(c == '\n') {
-			curr_line++; //advance to next line
+			curr_line ++; //advance to next line
 		}
 	} while(c == ' ' || c == '\r' || c == '\n');
 
@@ -563,7 +602,7 @@ struct instruction * decode_instruction(char * statement)
 
 int translate(char *line) //translates one stament to opcode
 {
-	struct instruction * cmd =  decode_instruction(line);
+	struct instruction * cmd = decode_instruction(line);
 
 	switch(cmd->type) {
 		case ONE_BYTE_CMD:
