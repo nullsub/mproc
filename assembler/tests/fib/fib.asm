@@ -1,5 +1,6 @@
 .define	ITOA_MEM	0x7E00 ;some free ram for a string
-.define	UART		0x7FD0 
+.include /home/chrisu/projects/mproc/assembler/lib/string.asm
+
 ;main
 	MOV	reg0, 13
 	MOV	reg3, HIGH(compute_fibonacci)
@@ -19,7 +20,6 @@ compute_fibonacci:
 	MOV	reg2, reg1 ;reg2 is prev-prev result 1
 	SUB	reg0, 0x02 ; dont need to loop for the numbers 0 and 1
 fibonacci_loop:
-	
 	JMPZ	fibonacci_end
 	JMPC	fibonacci_end
 
@@ -47,25 +47,6 @@ fibonacci_loop:
 fibonacci_end:
 	POP	lr_high
 	POP	lr_low
-	RET
-
-;print a null terminated c-string.
-;reg0 = HIGH(String)
-;reg1 = LOW(String)
-uart_print: 
-	SET_PTR	reg0, reg1
-uart_print_loop:
-	LDR_I	reg0
-	JMPZ	uart_print_end
-	PUSH	ptr_low
-	PUSH	ptr_high
-	MOV	reg2, HIGH(UART)
-	SET_PTR	reg2, LOW(UART)
-	STR	reg0
-	POP	ptr_high
-	POP	ptr_low
-	JMP	uart_print_loop
-uart_print_end:	
 	RET
 
 ;convert int to string

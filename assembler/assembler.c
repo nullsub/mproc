@@ -1,6 +1,7 @@
 /*TODO:
  * use malloc instead of static WORD_LENGTH defines
  * check whether there is more than one define in a word
+ * allow multiple defines in one line
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -207,7 +208,7 @@ void process_file(FILE * file)
 		}
 		line_nr = get_statement(&curr_statement, file);
 	}
-	free(curr_statement); //???
+	free(curr_statement); //curr_statement is allways realloced with new size. free finaly
 }
 
 void assemble(FILE * main_file, char * output_file_name)
@@ -277,8 +278,12 @@ void add_define_list(char *name, char *str)
 	}
 
 	struct define * define_list_curr = defines;
-	while(define_list_curr->next)
+	while(define_list_curr->next) {
+		if(!strcmp(define_list_curr->next->name, name)) {
+			failure_exit("define already exists");
+		}
 		define_list_curr = define_list_curr->next;
+	}
 
 	define_list_curr->next = (struct define *) malloc(sizeof(struct define));
 	define_list_curr->next->next = NULL;
@@ -332,8 +337,8 @@ void apply_defines(char **str)
 
 void apply_macros(char **str)
 {
-	char token[WORD_LENGTH];
-	char token_name[WORD_LENGTH];
+	char * token = (char *) malloc(strlen(*str));
+	char * token_name = (char *) malloc(strlen(*str));
 	int16_t c;
 	unsigned int i = 0;
 
@@ -349,7 +354,7 @@ void apply_macros(char **str)
 		token_name[i] = loc[i];
 		i++;
 		token_name[i] = 0x00;
-		if(get_number_16(token,&c)) {
+		if(get_number_16(token, &c)) {
 			c = c & 0xFF; //apply LOW mask
 			snprintf(token, 4, "%d", c);
 			exchange_str(str, token_name, token);
@@ -366,23 +371,20 @@ void apply_macros(char **str)
 		token_name[i] = loc[i];
 		i++;
 		token_name[i] = 0x00;
-
 		if(get_number_16(token, &c)) {
 			c = c >> 8; //apply HIGH mask
 			snprintf(token, 4, "%d", c);
 			exchange_str(str, token_name, token);
 		}
 	}
+	free(token);
+	free(token_name);
 }
 
 //resolve macros and defines before a statement is interpreted!
 int preprocess(char **str) 
 {
-	char name[WORD_LENGTH];
-	char val[WORD_LENGTH];
-
-	apply_defines(str);
-	apply_macros(str);
+	char * name = (char *) malloc(strlen(*str));
 
 	get_word(*str, name, 0);
 
@@ -391,11 +393,17 @@ int preprocess(char **str)
 		if(name == NULL) {
 			failure_exit("broken define");
 		}
+		char * val = (char *) malloc(strlen(*str));
 		get_word(*str, val, 2);
 		if(val == NULL) {
 			failure_exit("broken define");
 		}
+		apply_defines(&val);
+		apply_macros(&val);
+
 		add_define_list(name, val);
+		free(val);
+		free(name);
 		return 0;
 	}
 	if(!strcmp(".include", name)) { 
@@ -410,8 +418,13 @@ int preprocess(char **str)
 		included_files = realloc(included_files, sizeof(char **) * count_included_files);
 		included_files[count_included_files-1] = malloc(strlen(name));
 		strcpy(included_files[count_included_files-1], name);
+		free(name);
 		return 0;
 	}
+	apply_defines(str);
+	apply_macros(str);
+	free(name);
+
 	return 1;
 }
 
@@ -485,7 +498,7 @@ void add_constant(char * constant)
 				continue;
 			}
 
-			char tmp[WORD_LENGTH];
+			char * tmp = (char *) malloc(strlen(constant));
 			int cnt = 0;
 			while(constant[cnt+i] && constant[cnt+i] != ' ' && constant[cnt+i] != '\t' && constant[cnt+i] != ',') {
 				tmp[cnt] = constant[cnt+i];
@@ -496,6 +509,7 @@ void add_constant(char * constant)
 
 			get_number_8(tmp, &c);
 			add_byte(c);
+			free(tmp);
 		}
 	}
 }
@@ -729,8 +743,8 @@ void fix_labels()
 						}
 						break;
 					default:
-						    printf("unknown label type!\n");
-						    exit(-1);
+						printf("unknown label type!\n");
+						exit(-1);
 				}
 				target_bin[need->target_offset] = byte;
 				break;
