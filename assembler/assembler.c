@@ -1,5 +1,6 @@
 /*TODO:
  * use malloc instead of static WORD_LENGTH defines
+ * check whether there is more than one define in a word
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,10 +9,11 @@
 #include "assembler.h"
 
 #define COMMENT_CHAR		';'
-#define MAX_OPCODE_LENGTH 	2 //Max length in bytes an instruction might take
-#define WORD_LENGTH		50  //MAX instruction or ARG length in the source file
+#define MAX_OPCODE_LENGTH 	2	//max length in bytes an instruction might take
+#define WORD_LENGTH		50 	//max instruction or arg length in source file
 
-unsigned int curr_line = 0;
+unsigned int curr_line;
+char * curr_file;
 
 unsigned int count_included_files = 0;
 char ** included_files = NULL;
@@ -23,12 +25,9 @@ unsigned int target_bin_len = 0;
 
 char *curr_statement;
 
-int push_ret = 0;
-int push_ret_nr = 0;
-
 enum cmd {NO_CMD, ONE_BYTE_CMD, TWO_BYTE_CMD};
 
-struct instruction{
+struct instruction {
 	char name[WORD_LENGTH];
 	char arg1[WORD_LENGTH];
 	char arg2[WORD_LENGTH];
@@ -195,8 +194,10 @@ int get_number_8(char *str, int8_t *c)
 	return ret;
 }
 
-void processFile(FILE * file)
+void process_file(FILE * file)
 {
+	curr_line = 0;
+	curr_file = ""; //TODO get filename from FILE
 	curr_statement = NULL;
 	int line_nr = get_statement(&curr_statement, file);
 	while(line_nr) {
@@ -209,11 +210,6 @@ void processFile(FILE * file)
 	free(curr_statement); //???
 }
 
-FILE * get_file_from_search_path(char * filename)
-{
-	return fopen(filename, "r");
-}
-
 void assemble(FILE * main_file, char * output_file_name)
 {
 	target_bin = NULL;
@@ -221,15 +217,15 @@ void assemble(FILE * main_file, char * output_file_name)
 	provide_label.nr = 0;
 	need_label.nr = 0;
 
-	processFile(file);
+	process_file(main_file);
 
 	while(count_included_files) {
-		FILE *file = get_file_from_search_path(included_files[count_included_files-1]);
-		if (file == 0) {
+		FILE *file = fopen(included_files[count_included_files-1], "r");
+		if(file == 0) {
 			printf("Could not open file: %s\n", included_files[count_included_files-1]);
 			exit(-1);
 		}
-		processFile(file);
+		process_file(file);
 		fclose(file);
 		free(included_files[count_included_files-1]);
 		count_included_files --;
@@ -290,10 +286,10 @@ void add_define_list(char *name, char *str)
 	define_list_curr->next->name = (char *) malloc(strlen(name) + 1);
 	strcpy(define_list_curr->next->str, str);
 	strcpy(define_list_curr->next->name, name);
-	return;
 }
 
-void exchange_str(char **str1, char * str2, char * str3) //exchange every str2 in str1 with str3--> cpy it to str1
+//exchange every str2 in str1 with str3--> cpy it to str1
+void exchange_str(char **str1, char * str2, char * str3) 
 {
 	const char *src = *str1;
 	char *target = NULL;
@@ -379,7 +375,8 @@ void apply_macros(char **str)
 	}
 }
 
-int preprocess(char **str) //resolve macros and defines before a statement is interpreted!
+//resolve macros and defines before a statement is interpreted!
+int preprocess(char **str) 
 {
 	char name[WORD_LENGTH];
 	char val[WORD_LENGTH];
@@ -401,9 +398,9 @@ int preprocess(char **str) //resolve macros and defines before a statement is in
 		add_define_list(name, val);
 		return 0;
 	}
-	if(!strcmp(".include", name)) { //include following files
+	if(!strcmp(".include", name)) { 
 		get_word(*str, name, 1);
-		if(name == NULL ||  strlen(name) == 0) {
+		if(name == NULL || strlen(name) == 0) {
 			failure_exit("broken include statement");
 		}
 		count_included_files ++;
@@ -575,7 +572,7 @@ struct instruction * decode_instruction(char * statement)
 	get_word(statement, cmd->arg1, 1);
 
 	if(strlen(cmd->arg1) && cmd->arg1[strlen(cmd->arg1)-1] == ',')
-		cmd->arg1[strlen(cmd->arg1)-1] = 0x00; //get rid of the ','
+		cmd->arg1[strlen(cmd->arg1)-1] = 0x00; //get rid of ','
 
 	get_word(statement, cmd->arg2, 2);
 
@@ -600,7 +597,7 @@ struct instruction * decode_instruction(char * statement)
 	return cmd;
 }
 
-int translate(char *line) //translates one stament to opcode
+int translate(char *line) //translates one statement to opcode
 {
 	struct instruction * cmd = decode_instruction(line);
 
@@ -750,7 +747,7 @@ void fix_labels()
 
 void failure_exit(char * cause)
 {
-	printf("%s at line %i:\t\t%s\n", cause, curr_line, curr_statement);
+	printf("%s: %s at line %i:\t\t%s\n", curr_file, cause, curr_line, curr_statement);
 	exit(-1);
 }
 
