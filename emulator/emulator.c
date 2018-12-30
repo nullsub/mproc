@@ -156,7 +156,7 @@ uint8_t get_byte(uint16_t address)
 void write_byte(uint8_t val, uint16_t address)
 {
 	if(address >= RAM_SIZE) {
-		printf("Flash is read only\n");
+		printf("Flash is read only: address: %06x \n", address);
 		//cpu.flash[address-0x7FFF] = val;
 		return;
 	}

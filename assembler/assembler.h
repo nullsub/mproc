@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-void assemble(FILE *file, char * output_name);
+void assemble(char * input_file, char * output_name);
 
 #endif //ASSEMBLER_H_

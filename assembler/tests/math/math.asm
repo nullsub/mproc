@@ -1,5 +1,5 @@
-.define	ITOA_MEM	0x7E00 ;some free ram for a string
-.include /home/chrisu/projects/mproc/assembler/lib/string.asm
+.include ../../lib/uart_print.asm
+.define ITOA_MEM        0x7E00 ;some free ram for a string
 
 ;Add two 16bit integers
 	MOV	reg0, LOW(500)

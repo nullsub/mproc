@@ -1,10 +1,5 @@
 .define	UART		0x7FD0 
 
-;halt the emulator --> only library file
-	MOV	reg2, 0
-	SET_PTR	reg2, 0
-	LDR	reg2; halts the emulator
-
 ;print a null terminated c-string.
 ;reg0 = HIGH(String)
 ;reg1 = LOW(String)

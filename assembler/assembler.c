@@ -2,8 +2,10 @@
  * use malloc instead of static WORD_LENGTH defines
  * check whether there is more than one define in a word
  * allow multiple defines in one line
+ * only apply define to words -> dont replace parts of a string by a define
  */
 #include <stdio.h>
+#include <libgen.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -136,11 +138,6 @@ struct label_entry {
 	struct label_entry * next;
 };
 
-struct label_table {
-	int nr;
-	struct label_entry *first;
-};
-
 struct define {
 	char *str;
 	char *name;
@@ -148,8 +145,8 @@ struct define {
 };
 struct define *defines;
 
-struct label_table provide_label; // provides the actual numbers
-struct label_table need_label; //labels which need to be exchanged by the numbers
+struct label_entry *provide_label; // provides the actual numbers
+struct label_entry *need_label; //labels which need to be exchanged by the numbers
 
 int translate(char *); //translates one stament to the opcode
 int get_statement(char **, FILE * src_file); //returns line number. If end of file, it returns 0
@@ -157,11 +154,13 @@ int get_line(char **str, FILE * src_file); //return line number
 void add_byte(uint8_t c);
 void fix_labels();
 void failure_exit(char * cause);
-int preprocess(char **str); //preprocess one line
+void apply_defines(char **str);
+void apply_defines_macros(char **str);
+void parse_defines_includes(char *str);
 void get_word(char * str, char * target, int word_nr);
 
 void print_table();
-void add_label(char * label_name, unsigned int target_offset, enum label_type type, struct label_table *target);
+void add_label(char * label_name, unsigned int target_offset, enum label_type type, struct label_entry **target);
 void add_define_list(char *name, char *list);
 void free_lists();
 
@@ -195,41 +194,66 @@ int get_number_8(char *str, int8_t *c)
 	return ret;
 }
 
-void process_file(FILE * file)
+void process_file(char * filename)
 {
+	FILE *file = fopen(filename, "r" );
+	if (file == 0) {
+		printf( "Could not open file: %s\n", filename);
+		return;
+	}
+
 	curr_line = 0;
-	curr_file = ""; //TODO get filename from FILE
+	curr_file = filename;
 	curr_statement = NULL;
 	int line_nr = get_statement(&curr_statement, file);
 	while(line_nr) {
+		apply_defines_macros(&curr_statement);
 		if(translate(curr_statement)) {
 			failure_exit("broken statement");
 			return;
 		}
 		line_nr = get_statement(&curr_statement, file);
 	}
-	free(curr_statement); //curr_statement is allways realloced with new size. free finaly
+	free(curr_statement); //curr_statement is allways realloced with new size. thus only one free neccessary
+	fclose(file);
 }
 
-void assemble(FILE * main_file, char * output_file_name)
+void run_preprocessor(char * filename)
+{
+	FILE *file = fopen(filename, "r" );
+	if (file == 0) {
+		printf( "Could not open file: %s\n", filename);
+		return;
+	}
+
+	curr_line = 0;
+	curr_file = filename;
+	curr_statement = NULL;
+	int line_nr = get_statement(&curr_statement, file);
+	while(line_nr) {
+		parse_defines_includes(curr_statement);
+		line_nr = get_statement(&curr_statement, file);
+	}
+	free(curr_statement); //curr_statement is allways realloced with new size. thus only one free neccessary
+	fclose(file);
+}
+
+void assemble(char * input_file, char * output_file_name)
 {
 	target_bin = NULL;
 	defines = NULL;
-	provide_label.nr = 0;
-	need_label.nr = 0;
+	provide_label = NULL;
+	need_label = NULL;
 
-	process_file(main_file);
+	run_preprocessor(input_file);
+	for(int crrnt_include_file = 0; crrnt_include_file < count_included_files; crrnt_include_file ++) {
+		run_preprocessor(included_files[crrnt_include_file]);
+	}
 
-	while(count_included_files) {
-		FILE *file = fopen(included_files[count_included_files-1], "r");
-		if(file == 0) {
-			printf("Could not open file: %s\n", included_files[count_included_files-1]);
-			exit(-1);
-		}
-		process_file(file);
-		fclose(file);
-		free(included_files[count_included_files-1]);
-		count_included_files --;
+	process_file(input_file);
+	for(int crrnt_include_file = 0; crrnt_include_file < count_included_files; crrnt_include_file ++) {
+		process_file(included_files[crrnt_include_file]);
+		free(included_files[crrnt_include_file]);
 	}
 	free(included_files);
 
@@ -252,15 +276,14 @@ int get_statement(char **str, FILE * src_file)
 	unsigned int line_nr;
 	while(1) {
 		line_nr = get_line(str, src_file);
-		//printf("get_st returned %s \n", *str);
+		//printf("get_st returned %s, line_nr: %i \n", *str, line_nr);
 		if(line_nr == 0)
 			return 0;
 		char * comment = strchr(*str, COMMENT_CHAR);
 		if(comment != NULL)
 			*comment = 0x00;
 		if(strlen(*str) > 2) {
-			if(preprocess(str))
-				return line_nr;
+			return line_nr;
 		}
 	}
 }
@@ -278,6 +301,9 @@ void add_define_list(char *name, char *str)
 	}
 
 	struct define * define_list_curr = defines;
+	if(!strcmp(define_list_curr->name, name)) {
+		failure_exit("define already exists");
+	}
 	while(define_list_curr->next) {
 		if(!strcmp(define_list_curr->next->name, name)) {
 			failure_exit("define already exists");
@@ -339,7 +365,7 @@ void apply_macros(char **str)
 {
 	char * token = (char *) malloc(strlen(*str));
 	char * token_name = (char *) malloc(strlen(*str));
-	int16_t c;
+	int16_t c = 0;
 	unsigned int i = 0;
 
 	//FIXME, check whether there is more than one define in a word
@@ -381,20 +407,25 @@ void apply_macros(char **str)
 	free(token_name);
 }
 
-//resolve macros and defines before a statement is interpreted!
-int preprocess(char **str) 
+void apply_defines_macros(char **str) 
 {
-	char * name = (char *) malloc(strlen(*str));
+	apply_defines(str);
+	apply_macros(str);
+}
 
-	get_word(*str, name, 0);
+void parse_defines_includes(char *str) 
+{
+	char * name = (char *) malloc(strlen(str));
+
+	get_word(str, name, 0);
 
 	if(!strcmp(".define", name)) { //whether there are new defines
-		get_word(*str, name, 1);
+		get_word(str, name, 1);
 		if(name == NULL) {
 			failure_exit("broken define");
 		}
-		char * val = (char *) malloc(strlen(*str));
-		get_word(*str, val, 2);
+		char * val = (char *) malloc(strlen(str));
+		get_word(str, val, 2);
 		if(val == NULL) {
 			failure_exit("broken define");
 		}
@@ -403,29 +434,43 @@ int preprocess(char **str)
 
 		add_define_list(name, val);
 		free(val);
-		free(name);
-		return 0;
 	}
 	if(!strcmp(".include", name)) { 
-		get_word(*str, name, 1);
+		get_word(str, name, 1);
 		if(name == NULL || strlen(name) == 0) {
 			failure_exit("broken include statement");
 		}
-		count_included_files ++;
-		if(included_files == NULL) {
-			included_files = malloc(sizeof(char **) * count_included_files);
+		char * path = malloc(strlen(curr_file) + strlen(name) + 2);
+		strcpy(path, curr_file);
+		dirname(path);
+		if(strlen(name) > 2 && name[0] == '/') {
+			path = name; // is absolute path
+		} else {
+			strcpy(&path[strlen(path)], "/");
+			strcpy(&path[strlen(path)], name);
 		}
-		included_files = realloc(included_files, sizeof(char **) * count_included_files);
-		included_files[count_included_files-1] = malloc(strlen(name));
-		strcpy(included_files[count_included_files-1], name);
-		free(name);
-		return 0;
-	}
-	apply_defines(str);
-	apply_macros(str);
-	free(name);
+		FILE *file = fopen(path, "r" );
+		if (file == 0) {
+			failure_exit( "Could not open file");
+		}
+		fclose(file);
 
-	return 1;
+		int already_included = 0;
+		for(int i = 0; i < count_included_files; i++) {
+			if(!strcmp(included_files[i], path)) {
+				already_included = 1; //file already included, dont include again	
+				break;
+			}
+		}
+		if(!already_included) {
+			count_included_files ++;
+			included_files = realloc(included_files, sizeof(char **) * count_included_files);
+			included_files[count_included_files-1] = malloc(strlen(path));
+			strcpy(included_files[count_included_files-1], path);
+		}
+		free(path);
+	}
+	free(name);
 }
 
 int get_line(char **str, FILE * src_file)
@@ -582,6 +627,14 @@ struct instruction * decode_instruction(char * statement)
 		cmd->type = NO_CMD;
 		return cmd;
 	}
+	if(!strcmp(cmd->name, ".define")) {
+		cmd->type = NO_CMD;
+		return cmd;
+	}
+	if(!strcmp(cmd->name, ".include")) {
+		cmd->type = NO_CMD;
+		return cmd;
+	}
 
 	get_word(statement, cmd->arg1, 1);
 
@@ -661,17 +714,16 @@ void add_byte(uint8_t c)
 	target_bin[target_bin_len++] = c;
 }
 
-void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_table *target)
+void add_label(char * label_name, unsigned int offset, enum label_type type, struct label_entry **target)
 {
 	if(target == &provide_label) { //do not add the same label twice
-		struct label_entry *test = provide_label.first;
-		for(int j = 0; j < provide_label.nr; j++) {
-			if(!strcmp(test->name, label_name))
+		struct label_entry *label = provide_label;
+		for(; label != NULL; label = label->next) {
+			if(!strcmp(label->name, label_name))
 				failure_exit("label declared more than once.");
-			test = test->next;
 		}
 	}
-	struct label_entry **crrnt = &target->first;
+	struct label_entry **crrnt = target;
 
 	while((*crrnt))
 		crrnt = &(*crrnt)->next;
@@ -682,7 +734,6 @@ void add_label(char * label_name, unsigned int offset, enum label_type type, str
 	strcpy((*crrnt)->name, label_name);
 	(*crrnt)->target_offset = offset;
 	(*crrnt)->type = type;
-	target->nr ++;
 }
 
 void free_label(struct label_entry *label)
@@ -706,21 +757,17 @@ void free_define(struct define *def)
 
 void free_lists()
 {
-	free_label(need_label.first);
-	free_label(provide_label.first);
+	free_label(need_label);
+	free_label(provide_label);
 
 	free_define(defines);
 }
 
 void fix_labels()
 {
-	struct label_entry *need = need_label.first;
-	struct label_entry *prov = provide_label.first;
-	int found;
-	for(int i = 0; i < need_label.nr; i++) {
-		found = 0;
-		prov = provide_label.first;
-		for(int j = 0; j < provide_label.nr; j++) {
+	for(struct label_entry *need = need_label; need != NULL; need = need->next) {
+		int found = 0;
+		for(struct label_entry *prov = provide_label; prov != NULL; prov = prov->next) {
 			if(!strcmp(need->name, prov->name)) {
 				found = 1;
 				int8_t byte;
@@ -749,19 +796,17 @@ void fix_labels()
 				target_bin[need->target_offset] = byte;
 				break;
 			}
-			prov = prov->next;
 		}
 		if(!found) {
 			printf("could not find label %s\n", need->name);
 			exit(-1);
 		}
-		need = need->next;
 	}
 }
 
 void failure_exit(char * cause)
 {
-	printf("%s: %s at line %i:\t\t%s\n", curr_file, cause, curr_line, curr_statement);
+	printf("%s:%i %s: \t%s\n", curr_file, curr_line, cause, curr_statement);
 	exit(-1);
 }
 

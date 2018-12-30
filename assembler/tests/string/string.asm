@@ -1,5 +1,4 @@
-.define	UART		0x7FD0 
-.include /home/chrisu/projects/mproc/assembler/lib/string.asm
+.include ../../lib/uart_print.asm
 
 ;print Hello world
 	MOV	reg0, HIGH(hello_world)
