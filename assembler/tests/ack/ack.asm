@@ -1,12 +1,10 @@
-;calculates and displays ackerman function
-
-.define ITOA_MEM        0x7E00 ;some free ram for a string
-.define UART            0x7FD0
+.include ../../lib/uart_print.asm
+.include ../../lib/itoa.asm
 
 .define MAX_N           3
 .define MAX_M           4
 
-
+;calculates and displays ackerman function
 	PUSH 0 ; current n
 n_loop_start:
 
@@ -48,13 +46,8 @@ m_loop_start:
 
         MOV     reg3, HIGH(itoa)
         CALL    reg3, LOW(itoa)
-        MOV     reg3, HIGH(uart_print)
-        CALL    reg3, LOW(uart_print)
-
-        MOV     reg0, HIGH(newline_str)
-        MOV     reg1, LOW(newline_str)
-        MOV     reg3, HIGH(uart_print)
-        CALL    reg3, LOW(uart_print)
+        MOV     reg3, HIGH(uart_println)
+        CALL    reg3, LOW(uart_println)
 
 	POP 	reg0
 	MOV 	reg1, reg0
@@ -83,8 +76,6 @@ equals_str:
 .db " = ", 0x00
 comma_str:
 .db ", ", 0x00
-newline_str:
-.db 0x0A, 0x00
 
 ;calculate ackermann function. result in reg0
 ;reg0 = n
@@ -124,60 +115,3 @@ ack_ret:
 	POP	lr_high
 	POP	lr_low
 	RET	
-
-;print a null terminated c-string.
-;reg0 = HIGH(String)
-;reg1 = LOW(String)
-uart_print:
-        SET_PTR reg0, reg1
-uart_print_loop:
-        LDR_I     reg0
-        JMPZ    uart_print_end
-        PUSH    ptr_low
-        PUSH    ptr_high
-        MOV     reg2, HIGH(UART)
-        SET_PTR reg2, LOW(UART)
-        STR   reg0
-        POP     ptr_high
-        POP     ptr_low
-        JMP     uart_print_loop
-uart_print_end:
-        RET
-
-;convert uint8_t to string
-;reg0 nr to be converted
-;returns STRING ptr in reg0, reg1
-itoa:
-        MOV     reg2, HIGH(ITOA_MEM)
-        SET_PTR reg2, LOW(ITOA_MEM)
-
-        MOV     reg2, 0x30; ASCII 0
-itoa_100_loop:
-        MOV     reg1, reg0
-        SUB     reg0, 100 ;if > 100
-        JMPC    itoa_end_100_loop
-        ADD     reg2, 1
-        JMP     itoa_100_loop
-itoa_end_100_loop:
-        MOV     reg0, reg1
-        STR_I     reg2
-        MOV     reg2, 0x30 ;ASCII 0
-itoa_10_loop:
-        MOV     reg1, reg0
-        SUB     reg0, 10
-        JMPC    itoa_end_10_loop
-        ADD     reg2, 1
-        JMP     itoa_10_loop
-itoa_end_10_loop:
-        STR_I     reg2
-        ;add the rest
-        ADD     reg1, 0x30
-        STR_I     reg1
-        ;end
-        MOV     reg2, 0x0A
-;        STR_I     reg2
-        MOV     reg2, 0x00
-        STR     reg2
-        MOV     reg0, HIGH(ITOA_MEM)
-        MOV     reg1, LOW(ITOA_MEM)
-        RET

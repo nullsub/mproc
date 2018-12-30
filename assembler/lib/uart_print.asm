@@ -18,3 +18,23 @@ uart_print_loop:
 	JMP	uart_print_loop
 uart_print_end:	
 	RET
+
+uart_println: 
+	PUSH 	lr_low
+	PUSH 	lr_high
+	PUSH 	reg3
+	MOV 	reg3, HIGH(uart_print)
+	CALL 	reg3, LOW(uart_print)
+
+        MOV     reg0, HIGH(uart_new_line_string)
+        MOV     reg1, LOW(uart_new_line_string)
+        MOV     reg3, HIGH(uart_print)
+        CALL    reg3, LOW(uart_print)
+	
+	POP 	reg3
+	POP 	lr_high
+	POP 	lr_low
+	RET
+
+uart_new_line_string:
+.db 0x0A, 0x00

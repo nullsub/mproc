@@ -34,8 +34,8 @@ fibonacci_loop:
 	MOV	reg2, HIGH(itoa)
 	CALL	reg2, LOW(itoa)
 
-	MOV	reg2, HIGH(uart_print)
-	CALL	reg2, LOW(uart_print)
+	MOV	reg2, HIGH(uart_println)
+	CALL	reg2, LOW(uart_println)
 
 	POP	reg2
 	POP	reg1
