@@ -11,8 +11,8 @@
 ;Print result
 	MOV	reg3, HIGH(itoa16)
 	CALL	reg3, LOW(itoa16)
-	MOV	reg3, HIGH(uart_print)
-	CALL	reg3, LOW(uart_print)
+	MOV	reg3, HIGH(uart_println)
+	CALL	reg3, LOW(uart_println)
 
 ;subtract two 16bit integers
 	MOV	reg0, LOW(15000)
@@ -25,8 +25,8 @@
 ;Print result
 	MOV	reg3, HIGH(itoa16)
 	CALL	reg3, LOW(itoa16)
-	MOV	reg3, HIGH(uart_print)
-	CALL	reg3, LOW(uart_print)
+	MOV	reg3, HIGH(uart_println)
+	CALL	reg3, LOW(uart_println)
 
 	;halt the emulator
 	MOV	reg2, 0

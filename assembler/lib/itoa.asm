@@ -33,8 +33,6 @@ itoa_end_10_loop:
 	ADD	reg1, 0x30
 	STR_I	reg1
 	;end
-	;MOV	reg2, 0x0A //add new line here??
-	;STR_I	reg2
 	MOV	reg2, 0x00
 	STR	reg2
 	MOV	reg0, HIGH(ITOA_MEM)
@@ -103,8 +101,6 @@ itoa16_end_10_loop:
 	ADD	reg1, 0x30
 	STR_I	reg1
 	;end
-	MOV	reg2, 0x0A
-	STR_I	reg2
 	MOV	reg2, 0x00
 	STR	reg2
 	MOV	reg0, HIGH(ITOA_MEM)

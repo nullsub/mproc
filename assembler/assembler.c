@@ -276,7 +276,6 @@ int get_statement(char **str, FILE * src_file)
 	unsigned int line_nr;
 	while(1) {
 		line_nr = get_line(str, src_file);
-		//printf("get_st returned %s, line_nr: %i \n", *str, line_nr);
 		if(line_nr == 0)
 			return 0;
 		char * comment = strchr(*str, COMMENT_CHAR);
@@ -482,6 +481,9 @@ int get_line(char **str, FILE * src_file)
 		if(c == EOF) {
 			*str = 0x00;
 			return 0;
+		}
+		if(c < 0x08 || c > 0x99) {
+			failure_exit("invalid encoding");
 		}
 		if(c == '\n') {
 			curr_line ++; //advance to next line
