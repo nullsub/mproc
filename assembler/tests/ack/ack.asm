@@ -4,6 +4,16 @@
 .define MAX_N           3
 .define MAX_M           4
 
+	MOV 	reg0, 4
+	MOV 	reg1, 1
+        MOV     reg3, HIGH(ack)
+        CALL    reg3, LOW(ack)
+
+        MOV     reg3, HIGH(itoa16)
+        CALL    reg3, LOW(itoa16)
+        MOV     reg3, HIGH(uart_println)
+        CALL    reg3, LOW(uart_println)
+
 ;calculates and displays ackerman function
 	PUSH 0 ; current n
 n_loop_start:
@@ -15,8 +25,9 @@ m_loop_start:
 	PUSH 	reg1
 	PUSH 	reg0
 	MOV	reg0, reg1
-        MOV     reg3, HIGH(itoa)
-        CALL    reg3, LOW(itoa)
+	MOV	reg1, 0
+        MOV     reg3, HIGH(itoa16)
+        CALL    reg3, LOW(itoa16)
         MOV     reg3, HIGH(uart_print)
         CALL    reg3, LOW(uart_print)
 
@@ -27,8 +38,10 @@ m_loop_start:
 
 	POP 	reg0
 	PUSH	reg0
-        MOV     reg3, HIGH(itoa)
-        CALL    reg3, LOW(itoa)
+	MOV	reg1, 0
+        MOV     reg3, HIGH(itoa16)
+        MOV     reg3, HIGH(itoa16)
+        CALL    reg3, LOW(itoa16)
         MOV     reg3, HIGH(uart_print)
         CALL    reg3, LOW(uart_print)
 
@@ -44,8 +57,8 @@ m_loop_start:
         MOV     reg3, HIGH(ack)
         CALL    reg3, LOW(ack)
 
-        MOV     reg3, HIGH(itoa)
-        CALL    reg3, LOW(itoa)
+        MOV     reg3, HIGH(itoa16)
+        CALL    reg3, LOW(itoa16)
         MOV     reg3, HIGH(uart_println)
         CALL    reg3, LOW(uart_println)
 
@@ -77,7 +90,7 @@ equals_str:
 comma_str:
 .db ", ", 0x00
 
-;calculate ackermann function. result in reg0
+;calculate ackermann function. result in reg0, reg1
 ;reg0 = n
 ;reg1 = m
 ack:
@@ -112,6 +125,7 @@ end_n_null:
 	ADD reg1, 1
 	MOV reg0, reg1
 ack_ret:
+	MOV reg1, 0
 	POP	lr_high
 	POP	lr_low
 	RET	
