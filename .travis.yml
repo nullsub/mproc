@@ -1,0 +1,7 @@
+script:
+  - cd assembler
+  - make
+  - make test
+  - cd ../emulator
+  - make 
+  - make test
